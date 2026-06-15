@@ -43,3 +43,7 @@ temp/
 
 # Ollama cache
 ollama_data/
+
+# Gmail OAuth
+tokens/
+configs/google_credentials.json
