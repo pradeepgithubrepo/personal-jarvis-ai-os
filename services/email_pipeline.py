@@ -144,7 +144,12 @@ class EmailPipeline:
                 ),
             )
         )
-
+        summary = (
+            intent.get(
+                "summary"
+            )
+            or email["subject"]
+        )    
         details = {}
 
         if (

@@ -75,6 +75,50 @@ class SignalRepository:
             session.close()
 
     @staticmethod
+    def get_finance_signals():
+
+        session = SessionLocal()
+
+        try:
+
+            return (
+                session.query(
+                    Signal
+                )
+                .filter(
+                    Signal.category
+                    == "finance"
+                )
+                .all()
+            )
+
+        finally:
+
+            session.close()
+
+    @staticmethod
+    def get_shopping_signals():
+
+        session = SessionLocal()
+
+        try:
+
+            return (
+                session.query(
+                    Signal
+                )
+                .filter(
+                    Signal.category
+                    == "shopping"
+                )
+                .all()
+            )
+
+        finally:
+
+            session.close()
+
+    @staticmethod
     def get_signals_by_category(
         category,
     ):
