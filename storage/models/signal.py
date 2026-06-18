@@ -3,6 +3,7 @@ from datetime import datetime
 from sqlalchemy import (
     String,
     DateTime,
+    Text,
 )
 
 from sqlalchemy.orm import (
@@ -12,31 +13,14 @@ from sqlalchemy.orm import (
 
 from storage.models.base import Base
 
-class Task(Base):
 
-    __tablename__ = "tasks"
+class Signal(Base):
+
+    __tablename__ = "signals"
 
     id: Mapped[int] = (
         mapped_column(
             primary_key=True
-        )
-    )
-
-    title: Mapped[str] = (
-        mapped_column(
-            String(500)
-        )
-    )
-
-    category: Mapped[str] = (
-        mapped_column(
-            String(100)
-        )
-    )
-
-    priority: Mapped[str] = (
-        mapped_column(
-            String(50)
         )
     )
 
@@ -46,16 +30,33 @@ class Task(Base):
         )
     )
 
-    status: Mapped[str] = (
+    signal_type: Mapped[str] = (
         mapped_column(
-            String(50),
-            default="pending"
+            String(100)
         )
     )
 
-    due_date: Mapped[str] = (
+    category: Mapped[str] = (
         mapped_column(
-            String(100),
+            String(100)
+        )
+    )
+
+    importance: Mapped[str] = (
+        mapped_column(
+            String(50)
+        )
+    )
+
+    summary: Mapped[str] = (
+        mapped_column(
+            String(1000)
+        )
+    )
+
+    raw_json: Mapped[str] = (
+        mapped_column(
+            Text,
             nullable=True
         )
     )

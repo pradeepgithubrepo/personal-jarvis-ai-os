@@ -42,6 +42,13 @@ from skills.email.extractors.shopping_extractor import (
     ShoppingExtractor,
 )
 
+from skills.email.todo_extractor import (
+    TodoExtractor,
+)
+
+from storage.repositories.task_repository import (
+    TaskRepository,
+)
 
 def startup():
 
@@ -149,6 +156,10 @@ def startup():
         ShoppingExtractor()
     )
 
+    todo_extractor = (
+    TodoExtractor()
+    )
+
     # ---------------------------------
     # Email Signal Filtering
     # ---------------------------------
@@ -226,9 +237,6 @@ def startup():
 
         details = {}
 
-        # ---------------------------------
-        # Specialized Extractors
-        # ---------------------------------
         if (
             category
             == "finance"
@@ -250,42 +258,113 @@ def startup():
             )
 
         # ---------------------------------
-        # Logging
+        # Task Extraction
         # ---------------------------------
-        logger.success(
-            f"""
-Intent:
-{intent.get(
-    'intent',
-    'unknown'
-)}
 
-Category:
-{category}
-
-Priority:
-{intent.get(
-    'priority',
-    'medium'
-)}
-
-Action Required:
-{intent.get(
-    'action_required',
-    False
-)}
-
-Details:
-{details}
-"""
+        todo = (
+            todo_extractor
+            .extract(email)
         )
 
-    emails = filtered_emails
+        if (
+            todo.get(
+                "create_task",
+                False,
+            )
+            and
+            todo.get(
+                "confidence",
+                0,
+            ) >= 80
+        ):
 
-    logger.success(
-        f"Filtered emails: "
-        f"{len(emails)}"
-    )
+            TaskRepository.create_task(
+                    title=todo.get(
+                        "title",
+                        email["subject"],
+                    ),
+                    category=todo.get(
+                        "category",
+                        category,
+                    ),
+                    priority=todo.get(
+                        "priority",
+                        "medium",
+                    ),
+                    source="email",
+                    due_date=todo.get(
+                        "due_date",
+                    ),
+            )
+
+            logger.success(
+                f"TASK CREATED → "
+                f"{todo.get('title')}"
+            )
+
+            # ---------------------------------
+            # Logging
+            # ---------------------------------
+            logger.success(
+                f"""
+                Intent:
+                {intent.get(
+                    'intent',
+                    'unknown'
+                )}
+
+                Category:
+                {category}
+
+                Priority:
+                {intent.get(
+                    'priority',
+                    'medium'
+                )}
+
+                Action Required:
+                {intent.get(
+                    'action_required',
+                    False
+                )}
+
+                Details:
+                {details}
+                """
+            )
+
+            emails = filtered_emails
+
+            logger.success(
+                    f"""
+                Intent:
+                {intent.get(
+                    'intent',
+                    'unknown'
+                )}
+
+                Category:
+                {category}
+
+                Priority:
+                {intent.get(
+                    'priority',
+                    'medium'
+                )}
+
+                Action Required:
+                {intent.get(
+                    'action_required',
+                    False
+                )}
+
+                Details:
+                {details}
+
+                Task:
+                {todo}
+                """
+            )
 
     # ---------------------------------
     # Final Clean Output
