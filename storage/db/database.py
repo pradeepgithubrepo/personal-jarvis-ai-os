@@ -24,6 +24,7 @@ def initialize_database():
     from storage.models.base import Base
     from storage.models.runtime_event import RuntimeEvent
     from storage.models.signal import Signal
+    from storage.models.mobile_signal import MobileSignal
     from storage.models.task import Task
 
     Base.metadata.create_all(bind=engine)

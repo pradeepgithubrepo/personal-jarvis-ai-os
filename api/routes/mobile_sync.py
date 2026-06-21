@@ -6,6 +6,10 @@ from api.schemas.mobile_sync import (
     SyncRequest
 )
 
+from storage.repositories.mobile_signal_repository import (
+    MobileSignalRepository
+)
+
 router = APIRouter(
     prefix="/mobile",
     tags=["Mobile Sync"]
@@ -38,14 +42,20 @@ async def sync_signals(
 
     for signal in request.signals:
 
-        print(
-            signal.model_dump()
+        MobileSignalRepository.save_signal(
+
+            device_id=
+                request.device_id,
+
+            source=
+                signal.source,
+
+            sender=
+                signal.sender,
+
+            message=
+                signal.message,
+
+            timestamp=
+                signal.timestamp
         )
-
-    return {
-
-        "status": "success",
-
-        "received":
-            len(request.signals)
-    }
