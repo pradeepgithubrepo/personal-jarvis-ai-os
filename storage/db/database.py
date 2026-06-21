@@ -26,6 +26,12 @@ def initialize_database():
     from storage.models.signal import Signal
     from storage.models.mobile_signal import MobileSignal
     from storage.models.task import Task
+    from storage.models.signal_classification import SignalClassification
+    from storage.models.todo import Todo
+    from storage.models.financial_event import FinancialEvent
+    from storage.models.fyi_event import FyiEvent
+    from storage.models.daily_brief import DailyBrief
+    from storage.models.category_correction import CategoryCorrection
 
     Base.metadata.create_all(bind=engine)
 
@@ -50,9 +56,17 @@ def initialize_database():
             conn.execute(text("CREATE UNIQUE INDEX IF NOT EXISTS ix_signals_message_id ON signals (message_id)"))
             conn.commit()
 
-        # Clear old entries from signals table to ensure clean slate as per user feedback
-        logger.info("Clearing old entries from signals table for a clean slate...")
-        conn.execute(text("DELETE FROM signals"))
-        conn.commit()
+        # Check existing columns in financial_events
+        result_fin = conn.execute(text("PRAGMA table_info(financial_events)"))
+        columns_fin = [row[1] for row in result_fin.fetchall()]
+        if "category" not in columns_fin:
+            logger.info("Migrating database: adding category to financial_events")
+            conn.execute(text("ALTER TABLE financial_events ADD COLUMN category VARCHAR(100)"))
+            conn.commit()
+
+        # Clear old entries from signals table to ensure clean slate as per user feedback (Moved to onetime_load.py)
+        # logger.info("Clearing old entries from signals table for a clean slate...")
+        # conn.execute(text("DELETE FROM signals"))
+        # conn.commit()
 
     logger.success("SQLite connected successfully")

@@ -1,0 +1,52 @@
+{
+  "ignore_topics": [
+    "badminton",
+    "shuttle",
+    "racket",
+    "tournament"
+  ],
+  "merchant_categories": {
+    "flipkart": "SHOPPING",
+    "amazon": "SHOPPING",
+    "zepto": "GROCERY",
+    "blinkit": "GROCERY",
+    "bigbasket": "GROCERY",
+    "swiggy": "FOOD",
+    "zomato": "FOOD",
+    "tata1mg": "MEDICAL",
+    "apollo": "MEDICAL",
+    "airtel": "UTILITIES",
+    "jio": "UTILITIES",
+    "saravanastores": "GROCERY",
+    "premieergasoline": "FUEL"
+  },
+  "upi_patterns": {
+    "shobanakumari": "FAMILY",
+    "pkalai": "FAMILY",
+    "nagarajan": "FAMILY",
+    "paytm": "WALLET",
+    "amazonpay": "SHOPPING"
+  },
+  "custom_categories": {
+    "fish": [
+      "fishtown",
+      "fisherman",
+      "meen"
+    ],
+    "mutton": [
+      "mutton",
+      "goat",
+      "meat"
+    ],
+    "vegetables": [
+      "vegetable",
+      "greens"
+    ]
+  },
+  "financial_ignore": [
+    "cashback",
+    "reward points",
+    "statement generated",
+    "credit limit"
+  ]
+}
