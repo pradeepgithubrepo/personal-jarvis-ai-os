@@ -61,6 +61,15 @@ class Signal(Base):
         )
     )
 
+    message_id: Mapped[str | None] = (
+        mapped_column(
+            String(255),
+            index=True,
+            nullable=True,
+            unique=True
+        )
+    )
+
     created_at: Mapped[
         datetime
     ] = mapped_column(

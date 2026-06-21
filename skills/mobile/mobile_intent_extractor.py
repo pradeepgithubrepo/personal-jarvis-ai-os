@@ -1,42 +1,43 @@
+# skills/mobile/mobile_intent_extractor.py
+
 import json
 from loguru import logger
-
 from configs.constants import TaskType
 from intelligence.routing.router import IntelligenceRouter
 
 
-class EmailIntentExtractor:
+class MobileIntentExtractor:
 
     def __init__(self):
         self.router = IntelligenceRouter()
 
-    def extract_intent(self, email: dict) -> dict:
+    def extract_intent(self, signal: dict) -> dict:
         """
-        Extracts intent, category, importance priority, summary, task action-required,
-        due date, and rich details from an email in a single local LLM call.
+        Uses local LLM to classify and structure mobile notifications.
+        Returns a dict with intent, category, priority, summary, and details.
         """
         prompt = f"""
-You are an advanced email intent classifier and information extractor.
+You are a mobile notification classifier and information extractor.
 
-Analyze the following email and extract the relevant information.
-Return ONLY valid JSON. Do not include markdown code block wrappers (like ```json), notes, or explanations.
+Classify the following mobile signal notification.
+Return ONLY valid JSON. No explanations, no markdown block wrappers (like ```json), no notes.
 
 Field specifications:
 1. "intent": Must be strictly one of these values: "financial_transaction", "otp", "delivery_update", "shopping_order", "school_update", "personal_chat", "work_chat", "important", "ignore".
 2. "category": Must be strictly one of these values: "finance", "security", "shopping", "education", "personal", "work", "general".
 3. "priority": Must be strictly one of these values: "high", "medium", "low", "ignore".
-   - HIGH: For "school_update" or "personal_chat" updates from family, bank spend alerts/financial transactions, or urgent action needed.
-   - MEDIUM: Work updates, order status updates, standard tasks.
-   - LOW: Non-urgent updates, general receipts, newsletter digests.
+   - HIGH: For "school_update" or "personal_chat" updates (e.g. spouse, parenting), bank alerts/financial transactions, or urgent action items.
+   - MEDIUM: General orders, courier delivery notifications, work updates.
+   - LOW: General informational messages, non-urgent receipts.
    - IGNORE: For "otp" (verification codes) or marketing spam.
-4. "action_required": Set to true if the email is a "task" that requires the user to act, false if it is "FYI" (purely informational) or should be ignored.
+4. "action_required": Set to true if the notification is a "task" that requires the user to act, false if it is "FYI" (purely informational) or should be ignored.
 5. "due_date": YYYY-MM-DD or null if no deadline is specified.
-6. "summary": A brief, clear synthesis of the email content.
+6. "summary": A brief, clear synthesis of the notification message.
 7. "details": A JSON object containing key-value pairs depending on the intent:
    
    - If intent is "financial_transaction":
      {{
-       "amount": "value (e.g., 650.00)",
+       "amount": "value (e.g., 1500.00)",
        "currency": "value (e.g., INR)",
        "paid_to": "merchant name or null",
        "paid_from": "source bank name or card suffix or null",
@@ -57,10 +58,10 @@ Field specifications:
 
    - If intent is "shopping_order" or "delivery_update":
      {{
-       "merchant": "store name or null",
-       "product": "item name or description or null",
-       "order_status": "placed/shipped/delivered/etc. or null",
-       "delivery_date": "YYYY-MM-DD or null"
+       "merchant": "merchant or store name or null",
+       "product": "product name or null",
+       "order_status": "placed/shipped/delivered/out for delivery/etc.",
+       "delivery_date": "YYYY-MM-DD or relative time like today or null"
      }}
 
    - If intent is "otp":
@@ -75,38 +76,38 @@ Rules:
 - For "school_update" or "personal_chat": Priority must be "high". Classify inside details as "classification": "task" (if action_required is true) or "FYI" (if action_required is false).
 - For "otp": Priority must be "ignore". action_required must be false.
 
-Example JSON structure for a school task email:
+Example JSON structure for a WhatsApp school task notification:
 {{
   "intent": "school_update",
   "category": "education",
   "priority": "high",
-  "summary": "Homework submission deadline for kids by Monday",
+  "summary": "WhatsApp update regarding child science homework due by Wednesday",
   "action_required": true,
-  "due_date": "2026-06-23",
+  "due_date": "2026-06-25",
   "details": {{
     "classification": "task",
-    "sender_name": "Greenwood School",
-    "message_content": "Please submit science project homework by Monday.",
-    "action_items": ["Submit science project homework"]
+    "sender_name": "Class Group",
+    "message_content": "Submit science project model by Wednesday.",
+    "action_items": ["Submit science project model"]
   }}
 }}
 
-Email Details:
-Sender: {email.get("sender")}
-Subject: {email.get("subject")}
-Snippet: {email.get("snippet")}
-Body: {email.get("body")[:3000]}
+Notification Details:
+Source: {signal.get("source")}
+Sender: {signal.get("sender")}
+Message: {signal.get("message")}
 
 JSON Output:
 """
 
         try:
+            # We classify mobile tasks under TaskType.EMAIL to route locally
             response = self.router.ask(
                 prompt=prompt,
                 task_type=TaskType.EMAIL,
             )
 
-            logger.info(f"Unified Email LLM Raw Response:\n{response}")
+            logger.info(f"Mobile Signal LLM Raw Response:\n{response}")
 
             cleaned = (
                 response
@@ -128,7 +129,7 @@ JSON Output:
                 if field in result and isinstance(result[field], str) and "|" in result[field]:
                     result[field] = result[field].split("|")[0].strip()
 
-            # Schema validations & sanitizations
+            # Ensure schema validations
             if "intent" not in result:
                 result["intent"] = "important"
             if "category" not in result:
@@ -138,7 +139,7 @@ JSON Output:
             else:
                 result["priority"] = str(result["priority"]).lower()
             if "summary" not in result or not result["summary"]:
-                result["summary"] = email.get("subject") or "No Subject"
+                result["summary"] = signal.get("message")[:100] if signal.get("message") else "No message text"
             if "action_required" not in result:
                 result["action_required"] = False
             if "due_date" not in result:
@@ -154,60 +155,59 @@ JSON Output:
             elif intent_val in ("school_update", "personal_chat"):
                 result["priority"] = "high"
                 details = result["details"]
-                # Default details classification if LLM omitted it
                 if "classification" not in details:
                     details["classification"] = "task" if result["action_required"] else "FYI"
-                # Ensure action_required matches classification
                 if details["classification"] == "task":
                     result["action_required"] = True
                 else:
                     result["action_required"] = False
-
+                
             return result
 
         except Exception as e:
-            logger.warning(f"Failed to parse email intent extraction JSON: {e}. Running fallback heuristics.")
-            return self._fallback_extraction(email)
+            logger.warning(f"Failed to parse mobile intent JSON: {e}. Falling back to default extraction.")
+            return self._fallback_extraction(signal)
 
-    def _fallback_extraction(self, email: dict) -> dict:
+    def _fallback_extraction(self, signal: dict) -> dict:
         """
-        Fallback heuristic logic if the local LLM fails to output valid JSON.
+        Simple fallback heuristic based on keywords if LLM fails.
         """
-        subject_lower = (email.get("subject") or "").lower()
-        body_lower = (email.get("body") or "").lower()
-
+        msg_lower = (signal.get("message") or "").lower()
+        
         intent = "important"
         category = "general"
         priority = "medium"
         action_required = False
         details = {}
-
-        if "school" in subject_lower or "school" in body_lower or "homework" in body_lower or "homework" in subject_lower:
+        
+        if "school" in msg_lower or "homework" in msg_lower:
             intent = "school_update"
             category = "education"
             priority = "high"
-            action_required = "homework" in body_lower or "submit" in body_lower or "pay" in body_lower
+            action_required = "submit" in msg_lower or "homework" in msg_lower
             details = {
                 "classification": "task" if action_required else "FYI",
-                "sender_name": email.get("sender"),
-                "message_content": email.get("subject"),
-                "action_items": [email.get("subject")] if action_required else []
+                "sender_name": signal.get("sender"),
+                "message_content": signal.get("message"),
+                "action_items": [signal.get("message")] if action_required else []
             }
-        elif "otp" in body_lower or "verification code" in body_lower:
+        elif "otp" in msg_lower or "verification code" in msg_lower:
             intent = "otp"
             category = "security"
             priority = "ignore"
             action_required = False
-        # Heuristic for Finance
-        elif any(kw in subject_lower or kw in body_lower for kw in ["debited", "credited", "spent", "spent on", "upi txn", "hdfc", "sbi", "axis"]):
+            details = {
+                "otp_code": None,
+                "service": signal.get("sender")
+            }
+        elif any(x in msg_lower for x in ["debited", "credited", "spent", "spent on", "card ending", "upi txn"]):
             intent = "financial_transaction"
             category = "finance"
             priority = "high"
             
             import re
-            amount_match = re.search(r"(?:rs\.?|inr)\s?([\d,]+(?:\.\d+)?)", body_lower)
+            amount_match = re.search(r"(?:rs\.?|inr)\s?([\d,]+(?:\.\d+)?)", msg_lower)
             amount = amount_match.group(1).replace(",", "") if amount_match else None
-            
             details = {
                 "amount": amount,
                 "currency": "INR",
@@ -215,20 +215,26 @@ JSON Output:
                 "paid_from": None,
                 "receiver_vpa": None,
                 "transaction_id": None,
-                "transaction_type": "debit" if "debited" in body_lower or "spent" in body_lower else "credit",
-                "payment_channel": "UPI" if "upi" in body_lower else None,
+                "transaction_type": "debit" if "debited" in msg_lower or "spent" in msg_lower else "credit",
+                "payment_channel": "UPI" if "upi" in msg_lower else None,
                 "transaction_status": "successful"
             }
-        elif any(kw in subject_lower for kw in ["order confirmation", "your order", "shipped", "delivered"]):
-            intent = "shopping_order"
+        elif "delivery" in msg_lower or "courier" in msg_lower or "out for delivery" in msg_lower:
+            intent = "delivery_update"
             category = "shopping"
             priority = "medium"
-
+            details = {
+                "merchant": signal.get("sender"),
+                "product": None,
+                "order_status": "Out for Delivery" if "out for delivery" in msg_lower else "in transit",
+                "delivery_date": "Today" if "today" in msg_lower else None
+            }
+        
         return {
             "intent": intent,
             "category": category,
             "priority": priority,
-            "summary": email.get("subject") or "No Subject",
+            "summary": signal.get("message")[:100] if signal.get("message") else "No message text",
             "action_required": action_required,
             "due_date": None,
             "details": details

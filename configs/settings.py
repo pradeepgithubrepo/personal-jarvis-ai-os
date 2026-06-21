@@ -27,6 +27,12 @@ class Settings(BaseSettings):
     email_poll_interval_minutes: int
     expense_refresh_days: int
 
+    # Supabase / Consumer
+    supabase_url: str
+    supabase_key: str
+    supabase_bucket: str = "jarvis-signals"
+    consumer_poll_interval_minutes: int = 10
+
     class Config:
         env_file = ".env"
 

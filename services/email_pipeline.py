@@ -3,69 +3,34 @@ from loguru import logger
 from ingestion.email.gmail_client import (
     GmailClient,
 )
-
 from ingestion.email.email_reader import (
     EmailReader,
 )
-
 from skills.email.email_noise_filter import (
     EmailNoiseFilter,
 )
-
-from skills.email.email_scoring_engine import (
-    EmailScoringEngine,
-)
-
 from skills.email.email_intent_extractor import (
     EmailIntentExtractor,
 )
-
-from skills.email.extractors.financial_extractor import (
-    FinancialExtractor,
-)
-
-from skills.email.extractors.shopping_extractor import (
-    ShoppingExtractor,
-)
-
-from skills.email.todo_extractor import (
-    TodoExtractor,
-)
-
 from storage.repositories.task_repository import (
     TaskRepository,
 )
-
 from storage.repositories.signal_repository import (
     SignalRepository,
 )
-
 from skills.email.category_normalizer import (
     CategoryNormalizer,
 )
 
+
 class EmailPipeline:
 
     def __init__(self):
-
-        self.intent_extractor = (
+        self.extractor = (
             EmailIntentExtractor()
         )
 
-        self.financial_extractor = (
-            FinancialExtractor()
-        )
-
-        self.shopping_extractor = (
-            ShoppingExtractor()
-        )
-
-        self.todo_extractor = (
-            TodoExtractor()
-        )
-
     def run(self):
-
         gmail_client = (
             GmailClient()
         )
@@ -102,16 +67,36 @@ class EmailPipeline:
         self,
         email,
     ):
+        email_id = email.get("id")
 
+        # 1. Deduplication check
+        if email_id and SignalRepository.exists_message_id(email_id):
+            logger.info(
+                f"Skipping already processed email ID: {email_id} "
+                f"({email.get('subject')})"
+            )
+            return
+
+        # 2. Rule-based Noise Filter check
         if (
             EmailNoiseFilter
             .is_noise(email)
         ):
-
             logger.info(
                 f"DROP → "
                 f"{email['subject']}"
             )
+            
+            # Save the noise email message ID to avoid processing it again
+            if email_id:
+                SignalRepository.create_signal(
+                    source="email",
+                    signal_type="ignore",
+                    category="general",
+                    importance="ignore",
+                    summary=email["subject"],
+                    message_id=email_id
+                )
 
             return
 
@@ -120,139 +105,104 @@ class EmailPipeline:
             f"{email['subject']}"
         )
 
-        score_result = (
-            EmailScoringEngine
-            .score_email(email)
-        )
-
-        intent = (
-            self.intent_extractor
-            .extract_intent(email)
-        )
-
-
-        category = (
-            CategoryNormalizer
-            .normalize(
-                intent.get(
-                    "intent",
-                    "unknown",
-                ),
-                intent.get(
-                    "category",
-                    "general",
-                ),
-            )
-        )
-        summary = (
-            intent.get(
-                "summary"
-            )
-            or email["subject"]
-        )    
-        details = {}
-
-        if (
-            category
-            == "finance"
-        ):
-
-            details = (
-                self.financial_extractor
-                .extract(email)
+        # 3. Single-pass comprehensive LLM processing
+        try:
+            extracted = (
+                self.extractor
+                .extract_intent(email)
             )
 
-        elif (
-            category
-            == "shopping"
-        ):
-
-            details = (
-                self.shopping_extractor
-                .extract(email)
+            category = (
+                CategoryNormalizer
+                .normalize(
+                    extracted.get(
+                        "intent",
+                        "unknown",
+                    ),
+                    extracted.get(
+                        "category",
+                        "general",
+                    ),
+                )
             )
 
-        # ----------------------
-        # Signal Storage
-        # ----------------------
-
-        signal_type = (
-            intent.get(
-                "intent",
-                "unknown",
-            )
-        )
-
-        if category == "finance":
-
-            signal_type = (
-                "financial_transaction"
+            summary = (
+                extracted.get(
+                    "summary"
+                )
+                or email["subject"]
             )
 
-        SignalRepository.create_signal(
-            source="email",
-            signal_type=signal_type,
-            category=category,
-            importance=score_result.get(
-                "priority",
-                "medium",
-            ),
-            summary=summary,
-            raw_data=details,
-        )
-
-        # ----------------------
-        # Task Creation
-        # ----------------------
-
-        todo = (
-            self.todo_extractor
-            .extract(email)
-        )
-
-        if (
-            todo.get(
-                "create_task",
-                False,
-            )
-            and
-            todo.get(
-                "confidence",
-                0,
-            ) >= 80
-        ):
-
-            TaskRepository.create_task(
-                title=todo.get(
-                    "title",
-                    email["subject"],
-                ),
-                category=todo.get(
-                    "category",
-                    category,
-                ),
-                priority=todo.get(
+            importance = (
+                extracted.get(
                     "priority",
                     "medium",
-                ),
-                source="email",
-                due_date=todo.get(
-                    "due_date",
-                ),
+                )
             )
 
-        logger.success(
-            f"""
-Intent:
-{intent.get('intent')}
+            signal_type = (
+                extracted.get(
+                    "intent",
+                    "unknown",
+                )
+            )
 
-Category:
-{category}
+            details = (
+                extracted.get(
+                    "details"
+                )
+                or {}
+            )
 
-Priority:
-{score_result.get('priority')}
+            # 3.2 OTP/Ignore check - discard right away
+            if signal_type == "otp" or importance == "ignore":
+                logger.info(f"OTP/Ignore email discarded: {summary}.")
+                return
 
-Details:
-{details}
-"""
-        )
+            # 3.5 Cross-channel duplicate check
+            if SignalRepository.is_duplicate_signal(category, signal_type, details, summary):
+                logger.info(
+                    f"Cross-channel duplicate detected for email: {summary}. Skipping."
+                )
+                return
+
+            # 4. Store structured signal in the unified 'signals' table
+            SignalRepository.create_signal(
+                source="email",
+                signal_type=signal_type,
+                category=category,
+                importance=importance,
+                summary=summary,
+                raw_data=details,
+                message_id=email_id,
+            )
+
+            # 5. Task Creation if required
+            if (
+                extracted.get(
+                    "action_required",
+                    False,
+                )
+            ):
+                TaskRepository.create_task(
+                    title=summary,
+                    category=category,
+                    priority=importance,
+                    source="email",
+                    due_date=extracted.get(
+                        "due_date"
+                    ),
+                )
+
+            logger.success(
+                f"\nProcessed Email ID {email_id}:\n"
+                f"Intent: {signal_type}\n"
+                f"Category: {category}\n"
+                f"Priority: {importance}\n"
+                f"Details: {details}\n"
+            )
+
+        except Exception as ex:
+            logger.error(
+                f"Failed to process email ID {email_id}: {ex}"
+            )

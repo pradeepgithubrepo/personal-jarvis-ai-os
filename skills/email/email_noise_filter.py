@@ -27,7 +27,6 @@ class EmailNoiseFilter:
         "credit card",
         "statement",
         "bill",
-        "otp",
         "order",
         "delivery",
         "premium due",
@@ -38,6 +37,14 @@ class EmailNoiseFilter:
         "debited",
         "upi",
         "refund",
+        "school",
+        "homework",
+        "assignment",
+        "class",
+        "parent",
+        "kids",
+        "family",
+        "personal",
     ]
 
     BLOCKED_SENDERS = [
@@ -88,6 +95,25 @@ class EmailNoiseFilter:
             )
             .lower()
         )
+
+        body = (
+            email.get(
+                "body",
+                "",
+            )
+            .lower()
+        )
+
+        # Discard OTPs right away
+        if (
+            "otp" in subject or
+            "verification code" in subject or
+            "one-time password" in subject or
+            "verification code" in body or
+            "one-time password" in body or
+            "otp" in body
+        ):
+            return True
 
         score = 0
 

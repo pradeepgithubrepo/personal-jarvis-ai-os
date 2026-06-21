@@ -114,6 +114,9 @@ class EmailReader:
 
                 unread_emails.append(
                     {
+                        "id":
+                        message["id"],
+
                         "account":
                         account_name,
 
