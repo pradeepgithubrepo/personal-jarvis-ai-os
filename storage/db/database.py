@@ -32,6 +32,21 @@ def initialize_database():
     from storage.models.fyi_event import FyiEvent
     from storage.models.daily_brief import DailyBrief
     from storage.models.category_correction import CategoryCorrection
+    from storage.models.spending_category import SpendingCategory
+    from storage.models.monthly_category_spend import MonthlyCategorySpend
+    from storage.models.monthly_category_trend import MonthlyCategoryTrend
+    from storage.models.processed_file import ProcessedFile
+    from storage.models.financial_transaction_classification import FinancialTransactionClassification
+    from storage.models.monthly_spending_summary import MonthlySpendingSummary
+
+    # Drop legacy tables to recreate with updated schemas cleanly
+    from sqlalchemy import text
+    with engine.connect() as conn:
+        conn.execute(text("DROP TABLE IF EXISTS monthly_category_trends"))
+        conn.execute(text("DROP TABLE IF EXISTS monthly_category_spend"))
+        conn.execute(text("DROP TABLE IF EXISTS monthly_financial_summary"))
+        conn.execute(text("DROP TABLE IF EXISTS salary_cycles"))
+        conn.commit()
 
     Base.metadata.create_all(bind=engine)
 

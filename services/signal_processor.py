@@ -2,6 +2,7 @@
 
 import json
 import re
+import uuid
 from datetime import datetime, timedelta
 from loguru import logger
 from storage.db.database import SessionLocal
@@ -11,6 +12,7 @@ from storage.models.task import Task
 from storage.models.todo import Todo
 from storage.models.financial_event import FinancialEvent
 from storage.models.fyi_event import FyiEvent
+from services.supabase_repo import SupabaseRepo
 
 
 class SignalProcessor:
@@ -43,6 +45,27 @@ class SignalProcessor:
         from services.rules_engine import RulesEngine
         if RulesEngine.should_ignore_signal(signal.summary or "", signal.raw_json):
             return "IGNORE", 1.0
+
+        # If badminton-related, importance is always low
+        is_badminton = False
+        if "badminton" in summary_lower:
+            is_badminton = True
+        elif signal.raw_json:
+            try:
+                details_check = json.loads(signal.raw_json) if isinstance(signal.raw_json, str) else signal.raw_json
+                if isinstance(details_check, dict):
+                    for val in details_check.values():
+                        if isinstance(val, str) and "badminton" in val.lower():
+                            is_badminton = True
+                            break
+            except Exception:
+                pass
+
+        if is_badminton:
+            if signal.importance != "low":
+                logger.info(f"Overriding badminton signal ID {signal.id} importance from {signal.importance} to 'low'")
+                signal.importance = "low"
+                db_session.add(signal)
 
         # 1. IGNORE RULE (OTP / Ignore priority / Spam)
         if (
@@ -281,7 +304,38 @@ class SignalProcessor:
                 if not due_date:
                     due_date = cls.parse_and_normalize_due_date(signal.summary, signal.created_at)
 
-                # Store Todo
+                # Store Todo in Supabase Postgres
+                signal_uuid = uuid.uuid5(uuid.NAMESPACE_DNS, f"signal-{signal.id}")
+                SupabaseRepo.save_signal(
+                    signal_id=signal_uuid,
+                    source=signal.source,
+                    sender="",
+                    message=signal.summary,
+                    signal_timestamp=signal.created_at,
+                    created_at=signal.created_at,
+                    raw_signal_id=str(signal.id),
+                    metadata=details
+                )
+                
+                due_date_dt = None
+                if due_date:
+                    try:
+                        due_date_dt = datetime.strptime(due_date, "%Y-%m-%d")
+                    except Exception:
+                        due_date_dt = signal.created_at
+
+                todo_uuid = uuid.uuid5(uuid.NAMESPACE_DNS, f"todo-{signal.id}")
+                SupabaseRepo.create_todo(
+                    todo_id=todo_uuid,
+                    title=signal.summary,
+                    description=details.get("description", ""),
+                    priority=signal.importance,
+                    status="OPEN",
+                    due_date=due_date_dt,
+                    source_signal_id=signal_uuid
+                )
+
+                # Store Todo in SQLite
                 todo_obj = Todo(
                     title=signal.summary,
                     due_date=due_date,
@@ -414,6 +468,32 @@ class SignalProcessor:
                 from services.rules_engine import RulesEngine
                 spend_category = RulesEngine.categorize_transaction(merchant, vpa, signal.summary or "")
 
+                # Store FinancialEvent in Supabase Postgres
+                signal_uuid = uuid.uuid5(uuid.NAMESPACE_DNS, f"signal-{signal.id}")
+                SupabaseRepo.save_signal(
+                    signal_id=signal_uuid,
+                    source=signal.source,
+                    sender=details.get("paid_from") or "",
+                    message=signal.summary,
+                    signal_timestamp=signal.created_at,
+                    created_at=signal.created_at,
+                    raw_signal_id=str(signal.id),
+                    metadata=details
+                )
+
+                event_uuid = uuid.uuid5(uuid.NAMESPACE_DNS, f"financial-{signal.id}")
+                SupabaseRepo.create_financial_event(
+                    event_id=event_uuid,
+                    merchant=merchant,
+                    amount=amount if amount is not None else 0.0,
+                    currency=currency,
+                    category=spend_category,
+                    status="OPEN",
+                    event_timestamp=event_date,
+                    source_signal_id=signal_uuid
+                )
+
+                # Store FinancialEvent in SQLite
                 event_obj = FinancialEvent(
                     title=signal.summary,
                     amount=amount,
@@ -512,7 +592,30 @@ class SignalProcessor:
                 # Extract content
                 content = details.get("message_content") or details.get("summary") or signal.summary
 
-                # Store FyiEvent
+                # Store FyiEvent in Supabase Postgres
+                signal_uuid = uuid.uuid5(uuid.NAMESPACE_DNS, f"signal-{signal.id}")
+                SupabaseRepo.save_signal(
+                    signal_id=signal_uuid,
+                    source=signal.source,
+                    sender="",
+                    message=signal.summary,
+                    signal_timestamp=signal.created_at,
+                    created_at=signal.created_at,
+                    raw_signal_id=str(signal.id),
+                    metadata=details
+                )
+
+                event_uuid = uuid.uuid5(uuid.NAMESPACE_DNS, f"fyi-{signal.id}")
+                SupabaseRepo.create_fyi_event(
+                    event_id=event_uuid,
+                    title=signal.summary,
+                    summary=content,
+                    category=fyi_type,
+                    read_flag=False,
+                    source_signal_id=signal_uuid
+                )
+
+                # Store FyiEvent in SQLite
                 fyi_obj = FyiEvent(
                     title=signal.summary,
                     fyi_type=fyi_type,

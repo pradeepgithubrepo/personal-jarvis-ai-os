@@ -1,0 +1,51 @@
+{
+  "upcoming_bills": [
+    {
+      "title": "Broadband Internet",
+      "amount": 1200,
+      "due_date": "2026-06-22",
+      "status": "pending"
+    },
+    {
+      "title": "HDFC Credit Card",
+      "amount": 12450,
+      "due_date": "2026-06-25",
+      "status": "pending"
+    },
+    {
+      "title": "Electricity Bill",
+      "amount": 3400,
+      "due_date": "2026-06-28",
+      "status": "pending"
+    }
+  ],
+  "salary_credits": [
+    {
+      "title": "Monthly Consulting Fee",
+      "amount": 150000,
+      "date": "2026-06-01"
+    },
+    {
+      "title": "AdSense Revenue",
+      "amount": 8500,
+      "date": "2026-06-15"
+    }
+  ],
+  "spend_categories": {
+    "Groceries & Food": 18500,
+    "Utilities & Bills": 8200,
+    "Fuel & Transport": 6000,
+    "Dining & Entertainment": 9500,
+    "Healthcare": 3000
+  },
+  "monthly_summary": {
+    "income": 158500,
+    "expenses": 45200,
+    "savings": 113300
+  },
+  "alerts": [
+    "High dining spend detected this week (+15% vs last week).",
+    "Utility bills are 5% lower than the previous month."
+  ],
+  "last_updated": "2026-06-22T04:00:00Z"
+}

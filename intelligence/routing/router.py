@@ -25,6 +25,10 @@ class IntelligenceRouter:
             f"Routing task: {task_type}"
         )
 
+        from services.context_provider import ContextProvider
+        context_prompt = ContextProvider.get_context_prompt()
+        full_prompt = context_prompt + prompt
+
         local_tasks = [
             TaskType.EXPENSE,
             TaskType.EMAIL,
@@ -44,7 +48,7 @@ class IntelligenceRouter:
             )
 
             return self.local_llm.ask(
-                prompt
+                full_prompt
             )
 
         if task_type in cloud_tasks:
@@ -53,7 +57,7 @@ class IntelligenceRouter:
             )
 
             return self.cloud_llm.ask(
-                prompt
+                full_prompt
             )
 
         logger.warning(
@@ -62,5 +66,5 @@ class IntelligenceRouter:
         )
 
         return self.local_llm.ask(
-            prompt
+            full_prompt
         )

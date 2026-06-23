@@ -1,0 +1,149 @@
+/* ui/styles.css */
+
+/* Custom Font Import */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap');
+
+/* Global overrides using CSS classes that Streamlit injects */
+.stApp {
+    background-color: #0b0c10;
+    color: #e4e6eb;
+    font-family: 'Inter', sans-serif;
+}
+
+/* Linear/Notion inspired cards */
+.custom-card {
+    background-color: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.custom-card:hover {
+    border-color: #58a6ff;
+    transform: translateY(-2px);
+}
+
+/* Landing Page Summary Card styling */
+.summary-container {
+    background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
+    border: 1px solid #374151;
+    border-radius: 16px;
+    padding: 24px;
+    margin-bottom: 30px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+}
+
+.summary-title {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #9ca3af;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 16px;
+}
+
+.summary-value {
+    font-family: 'Outfit', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 8px;
+}
+
+/* Tile Grid Styles */
+.agent-tile {
+    background-color: #161b22;
+    border: 1px solid #21262d;
+    border-radius: 12px;
+    padding: 20px;
+    height: 100%;
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.agent-tile:hover {
+    background-color: #1f242c;
+    border-color: #58a6ff;
+    transform: translateY(-4px);
+    box-shadow: 0 6px 20px rgba(88, 166, 255, 0.1);
+}
+
+.tile-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.tile-title {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+.tile-badge {
+    background-color: #21262d;
+    color: #58a6ff;
+    padding: 2px 8px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.tile-status {
+    font-size: 0.9rem;
+    color: #8b949e;
+    margin-bottom: 16px;
+}
+
+.tile-footer {
+    font-size: 0.75rem;
+    color: #484f58;
+    border-top: 1px solid #21262d;
+    padding-top: 8px;
+    margin-top: auto;
+}
+
+/* Priority Indicators */
+.priority-high {
+    color: #ff7b72;
+    font-weight: 600;
+}
+.priority-medium {
+    color: #d29922;
+    font-weight: 600;
+}
+.priority-low {
+    color: #58a6ff;
+    font-weight: 600;
+}
+
+/* Metric / Stat display styling */
+.metric-box {
+    text-align: center;
+    padding: 12px;
+    border-radius: 8px;
+    background-color: #0d1117;
+    border: 1px solid #21262d;
+}
+
+.metric-label {
+    font-size: 0.85rem;
+    color: #8b949e;
+    margin-bottom: 4px;
+}
+
+.metric-num {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #ffffff;
+}

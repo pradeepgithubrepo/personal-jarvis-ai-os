@@ -1,0 +1,1 @@
+{"generatedAt": 1782141893054, "signals": [{"deviceId": "test_device_1", "source": "whatsapp", "sender": "John Doe", "message": "Hello Jarvis 1782141893054", "timestamp": 1782141893054}, {"deviceId": "test_device_1", "source": "sms", "sender": "BankAlert", "message": "Your OTP is 123456", "timestamp": 1782141894054}]}

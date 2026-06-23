@@ -16,12 +16,18 @@ from intelligence.routing.router import (
     IntelligenceRouter,
 )
 
+from services.context_provider import (
+    ContextProvider,
+)
+
 from configs.constants import (
     TaskType,
 )
 
 
 def initialize_system():
+    # Load user context during startup
+    ContextProvider.load_context()
 
     logger.info(
         f"App Name: "

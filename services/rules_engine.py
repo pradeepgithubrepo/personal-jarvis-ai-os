@@ -65,39 +65,47 @@ class RulesEngine:
 
         summary_lower = (summary or "").lower()
         
-        # 1. Check ignore_topics (Section 1)
+        # Assemble all searchable text from summary and raw json
+        all_text = summary_lower
+        if raw_json_str:
+            try:
+                details = json.loads(raw_json_str) if isinstance(raw_json_str, str) else raw_json_str
+                if isinstance(details, dict):
+                    for val in details.values():
+                        if isinstance(val, str):
+                            all_text += " " + val.lower()
+            except Exception:
+                pass
+
+        # 1. Check unconditional ignore_topics
         ignore_topics = cls._rules.get("ignore_topics", [])
         for topic in ignore_topics:
             if topic.lower() in summary_lower:
                 logger.debug(f"Signal ignored due to topic match: '{topic}' in summary '{summary}'")
                 return True
 
-        # 2. Check financial exclusions (Section 6)
+        # 2. Check conditional_ignore_topics
+        conditional_ignore_topics = cls._rules.get("conditional_ignore_topics", {})
+        for topic, exceptions in conditional_ignore_topics.items():
+            if topic.lower() in summary_lower or (raw_json_str and topic.lower() in all_text):
+                # Check if any exception keyword is present
+                has_exception = False
+                for exc in exceptions:
+                    if exc.lower() in all_text:
+                        has_exception = True
+                        break
+                
+                if not has_exception:
+                    logger.debug(f"Signal ignored due to conditional topic match: '{topic}' without exceptions in '{summary}'")
+                    return True
+
+        # 3. Check financial exclusions
         financial_ignore = cls._rules.get("financial_ignore", [])
         for term in financial_ignore:
             term_lower = term.lower()
-            if term_lower in summary_lower:
-                logger.debug(f"Signal ignored due to financial exclusion match: '{term}' in summary '{summary}'")
+            if term_lower in all_text:
+                logger.debug(f"Signal ignored due to financial exclusion match: '{term}' in summary/details '{summary}'")
                 return True
-
-        # 3. Parse raw_json if provided
-        if raw_json_str:
-            try:
-                details = json.loads(raw_json_str) or {}
-                # Check raw_json values for any ignore keywords
-                for val in details.values():
-                    if isinstance(val, str):
-                        val_lower = val.lower()
-                        for topic in ignore_topics:
-                            if topic.lower() in val_lower:
-                                logger.debug(f"Signal ignored due to topic match in json: '{topic}'")
-                                return True
-                        for term in financial_ignore:
-                            if term.lower() in val_lower:
-                                logger.debug(f"Signal ignored due to financial exclusion match in json: '{term}'")
-                                return True
-            except Exception:
-                pass
 
         return False
 

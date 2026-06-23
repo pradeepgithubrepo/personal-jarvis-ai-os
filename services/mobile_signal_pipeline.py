@@ -55,6 +55,12 @@ class MobileSignalPipeline:
                     summary = extracted.get("summary") or msg.message[:200]
                     details = extracted.get("details", {})
 
+                    # If badminton-related, importance is always low
+                    msg_text_lower = (msg.message or "").lower()
+                    summary_lower = (summary or "").lower()
+                    if "badminton" in msg_text_lower or "badminton" in summary_lower:
+                        importance = "low"
+
                     # 2.3 OTP/Ignore check - discard right away
                     if signal_type == "otp" or importance == "ignore":
                         MobileSignalRepository.mark_signals_processed([msg.id])

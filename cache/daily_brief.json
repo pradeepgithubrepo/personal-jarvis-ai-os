@@ -1,0 +1,25 @@
+{
+  "greeting": "Good Morning Pradeep",
+  "priorities": [
+    "Finalize school admission documents for child",
+    "Pay outstanding HDFC credit card bill",
+    "Prepare travel packing list for next week's Mumbai trip"
+  ],
+  "financial_alerts": [
+    "Credit card bill of 12,450 INR is due in 3 days.",
+    "Salary credit expected from Client A on June 30."
+  ],
+  "family_updates": [
+    "Ravi has football practice today at 5:00 PM.",
+    "Dinner reservations confirmed for Saturday at 7:30 PM."
+  ],
+  "school_circulars": [
+    "Grade 5: Science project instructions uploaded.",
+    "Fee payment reminder for Term 2."
+  ],
+  "important_reminders": [
+    "Annual health checkup appointment tomorrow at 10:00 AM.",
+    "Car service due by end of this week."
+  ],
+  "last_updated": "2026-06-22T04:00:00Z"
+}

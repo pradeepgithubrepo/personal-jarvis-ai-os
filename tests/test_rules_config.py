@@ -66,6 +66,35 @@ def run_rules_config_tests():
         assert class_badminton.category == "IGNORE", f"Expected IGNORE, got {class_badminton.category}"
         logger.success("Test Case 1: Ignore Topics verified successfully.")
 
+        # Test Case 1b: Badminton exceptions should NOT be ignored and priority set to low
+        logger.info("Test Case 1b: Verifying badminton ignore exceptions...")
+        sig_badminton_exc = Signal(
+            source="whatsapp",
+            signal_type="personal_chat",
+            category="personal",
+            importance="high",  # Start with high importance to test override
+            summary="[TEST_RULE] Sorry guys, I am not coming for badminton tomorrow",
+            raw_json=json.dumps({"classification": "chat"}),
+        )
+        db.add(sig_badminton_exc)
+        db.commit()
+
+        # Reset classification table and run again to process the new signal
+        db.query(SignalClassification).delete()
+        db.commit()
+        SignalProcessor.process_all_signals()
+
+        class_badminton_exc = db.query(SignalClassification).filter(
+            SignalClassification.signal_id == sig_badminton_exc.id
+        ).first()
+        assert class_badminton_exc is not None
+        assert class_badminton_exc.category != "IGNORE", f"Expected not IGNORE, got {class_badminton_exc.category}"
+        
+        # Reload signal to verify importance override
+        db.refresh(sig_badminton_exc)
+        assert sig_badminton_exc.importance == "low", f"Expected importance low, got {sig_badminton_exc.importance}"
+        logger.success("Test Case 1b: Badminton Ignore Exceptions verified successfully.")
+
         # 3. Test Financial Exclusions Config Rules
         logger.info("Test Case 2: Verifying financial exclusions ignore rules...")
         sig_cashback = Signal(

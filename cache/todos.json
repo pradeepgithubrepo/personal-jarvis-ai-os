@@ -1,0 +1,53 @@
+{
+  "todos": [
+    {
+      "id": "todo-1",
+      "title": "Review school circular on Term 2 exams",
+      "status": "pending",
+      "due_date": "2026-06-22",
+      "priority": "high",
+      "category": "School"
+    },
+    {
+      "id": "todo-2",
+      "title": "Pay broadband internet bill",
+      "status": "pending",
+      "due_date": "2026-06-22",
+      "priority": "high",
+      "category": "Financial"
+    },
+    {
+      "id": "todo-3",
+      "title": "Renew car insurance policy",
+      "status": "pending",
+      "due_date": "2026-06-23",
+      "priority": "medium",
+      "category": "Financial"
+    },
+    {
+      "id": "todo-4",
+      "title": "Pack bags for business trip to Mumbai",
+      "status": "pending",
+      "due_date": "2026-06-23",
+      "priority": "medium",
+      "category": "Travel"
+    },
+    {
+      "id": "todo-5",
+      "title": "Schedule dentist appointment",
+      "status": "pending",
+      "due_date": "2026-06-25",
+      "priority": "low",
+      "category": "Health"
+    },
+    {
+      "id": "todo-6",
+      "title": "Submit project proposal to client",
+      "status": "completed",
+      "due_date": "2026-06-21",
+      "priority": "high",
+      "category": "Work"
+    }
+  ],
+  "last_updated": "2026-06-22T04:00:00Z"
+}

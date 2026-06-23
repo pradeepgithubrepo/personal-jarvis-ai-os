@@ -1,0 +1,26 @@
+{
+  "medical_reminders": [
+    {
+      "medicine_name": "Multivitamin",
+      "dosage": "1 tablet",
+      "time": "After breakfast"
+    },
+    {
+      "medicine_name": "Omega-3",
+      "dosage": "1 capsule",
+      "time": "With dinner"
+    }
+  ],
+  "health_alerts": [
+    "Annual dental cleanup is due this month.",
+    "Drinking water intake is below target today."
+  ],
+  "appointments": [
+    {
+      "doctor": "Dr. Ramesh (Dentist)",
+      "time": "2026-06-25T11:00:00Z",
+      "clinic": "Smile Dental Care"
+    }
+  ],
+  "last_updated": "2026-06-22T04:00:00Z"
+}

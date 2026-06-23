@@ -1,0 +1,50 @@
+{
+  "circulars": [
+    {
+      "title": "Grade 5 Term 2 Syllabus Out",
+      "child": "Ravi",
+      "date": "2026-06-22",
+      "description": "The detailed syllabus for Term 2 examinations has been posted."
+    },
+    {
+      "title": "School Picnic Announcement",
+      "child": "Ravi",
+      "date": "2026-06-20",
+      "description": "Annual picnic scheduled for July 5th. Sign permission slips."
+    }
+  ],
+  "activities": [
+    {
+      "title": "Football Team Practice",
+      "child": "Ravi",
+      "date": "2026-06-22"
+    },
+    {
+      "title": "Science Lab Session",
+      "child": "Ravi",
+      "date": "2026-06-24"
+    }
+  ],
+  "homework": [
+    {
+      "title": "Maths Exercises 4 & 5",
+      "child": "Ravi",
+      "due_date": "2026-06-23",
+      "subject": "Mathematics"
+    },
+    {
+      "title": "Draw solar system diagram",
+      "child": "Ravi",
+      "due_date": "2026-06-24",
+      "subject": "Science"
+    }
+  ],
+  "events": [
+    {
+      "title": "Parent Teacher Association Meeting",
+      "child": "Ravi",
+      "date": "2026-06-29"
+    }
+  ],
+  "last_updated": "2026-06-22T04:00:00Z"
+}

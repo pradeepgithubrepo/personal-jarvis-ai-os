@@ -1,0 +1,26 @@
+{
+  "tickets": [
+    {
+      "from": "Bangalore (BLR)",
+      "to": "Mumbai (BOM)",
+      "date": "2026-06-29",
+      "booking_ref": "6E-2401",
+      "departure_time": "08:15 AM",
+      "passenger": "Pradeep"
+    }
+  ],
+  "bookings": [
+    {
+      "name": "Taj Lands End, Mumbai",
+      "type": "Hotel",
+      "check_in": "2026-06-29",
+      "check_out": "2026-07-02",
+      "status": "confirmed"
+    }
+  ],
+  "alerts": [
+    "Web check-in opens on June 28 at 08:15 AM.",
+    "Mumbai weather forecast: Heavy rain expected next week."
+  ],
+  "last_updated": "2026-06-22T04:00:00Z"
+}

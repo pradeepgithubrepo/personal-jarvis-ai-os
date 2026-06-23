@@ -1,10 +1,22 @@
 {
   "ignore_topics": [
-    "badminton",
     "shuttle",
-    "racket",
-    "tournament"
+    "racket"
   ],
+  "conditional_ignore_topics": {
+    "badminton": [
+      "not coming",
+      "not available",
+      "cannot make",
+      "cant come",
+      "unable to attend",
+      "unavailable",
+      "not attending",
+      "skip",
+      "absent",
+      "miss"
+    ]
+  },
   "merchant_categories": {
     "flipkart": "SHOPPING",
     "amazon": "SHOPPING",

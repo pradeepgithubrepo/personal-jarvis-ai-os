@@ -32,6 +32,9 @@ class Settings(BaseSettings):
     supabase_key: str
     supabase_bucket: str = "jarvis-signals"
     supabase_insights_bucket: str = "jarvis-insights"
+    supabase_db_url: str = None
+    supabase_publishable_key: str = None
+    supabase_secret_key: str = None
     consumer_poll_interval_minutes: int = 10
 
     class Config:

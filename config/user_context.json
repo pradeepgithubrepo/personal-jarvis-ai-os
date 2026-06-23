@@ -1,0 +1,30 @@
+{
+  "user": {
+    "name": "Pradeep"
+  },
+
+  "family": {
+    "spouse": "Shobana",
+    "children": [
+      "Charan",
+      "Chinicka"
+    ]
+  },
+
+  "priorities": {
+    "family": "HIGH",
+    "school": "HIGH",
+    "finance": "HIGH",
+    "health": "HIGH"
+  },
+
+  "ignore_topics": [
+    "badminton"
+  ],
+
+  "preferences": {
+    "school_messages_are_actionable": true,
+    "family_messages_are_important": true,
+    "financial_alerts_are_important": true
+  }
+}

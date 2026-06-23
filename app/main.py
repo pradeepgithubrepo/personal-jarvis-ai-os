@@ -13,6 +13,10 @@ from api.routes.mobile_sync import (
     router as mobile_sync_router
 )
 
+from api.routes.financial_intelligence import (
+    router as financial_router
+)
+
 from app.shutdown import shutdown
 from app.startup import startup
 
@@ -27,6 +31,10 @@ app.include_router(
 
 app.include_router(
     mobile_sync_router
+)
+
+app.include_router(
+    financial_router
 )
 
 
