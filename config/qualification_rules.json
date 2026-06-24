@@ -1,0 +1,14 @@
+{
+  "thresholds": {
+    "rejected": 20,
+    "review": 59,
+    "qualified": 90
+  },
+  "boosts": {
+    "family_context": 30,
+    "high_value_domain": 30
+  },
+  "preservation": {
+    "financial_topics": ["credited", "debited", "spent", "spent on", "card ending", "upi", "emi", "salary", "payment", "bank", "insurance", "renewal", "policy", "bill", "invoice"]
+  }
+}

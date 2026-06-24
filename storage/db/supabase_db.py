@@ -150,6 +150,73 @@ DDL_STATEMENTS = {
         change_percentage NUMERIC,
         created_at TIMESTAMP
     );
+    """,
+
+    "pipeline_runs": """
+    CREATE TABLE IF NOT EXISTS jarvis_insights_schema.pipeline_runs (
+        run_id UUID PRIMARY KEY,
+        run_type VARCHAR(50) NOT NULL,
+        started_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+        completed_at TIMESTAMP WITH TIME ZONE,
+        status VARCHAR(20) NOT NULL,
+        files_processed INT DEFAULT 0,
+        signals_processed INT DEFAULT 0,
+        todos_generated INT DEFAULT 0,
+        financial_events_generated INT DEFAULT 0,
+        fyi_generated INT DEFAULT 0,
+        facts_generated INT DEFAULT 0,
+        llm_calls INT DEFAULT 0,
+        duration_seconds NUMERIC(10, 2),
+        error_message TEXT,
+        error_type VARCHAR(50)
+    );
+    """,
+
+    "system_status": """
+    CREATE TABLE IF NOT EXISTS jarvis_insights_schema.system_status (
+        system_name VARCHAR(100) PRIMARY KEY DEFAULT 'jarvis_system',
+        current_status VARCHAR(50) NOT NULL,
+        last_successful_refresh TIMESTAMP WITH TIME ZONE,
+        current_run_id UUID,
+        signals_processed INT DEFAULT 0,
+        todos_generated INT DEFAULT 0,
+        financial_events_generated INT DEFAULT 0,
+        fyi_generated INT DEFAULT 0,
+        updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+    );
+    """,
+
+    "qualified_signals": """
+    CREATE TABLE IF NOT EXISTS jarvis_insights_schema.qualified_signals (
+        id SERIAL PRIMARY KEY,
+        signal_id VARCHAR(100) NOT NULL,
+        source VARCHAR(50) NOT NULL,
+        sender VARCHAR(500) NOT NULL,
+        message TEXT NOT NULL,
+        timestamp TIMESTAMP NOT NULL,
+        qualification_score INT NOT NULL,
+        qualification_status VARCHAR(50) NOT NULL,
+        qualification_reason VARCHAR(100),
+        created_at TIMESTAMP DEFAULT NOW()
+    );
+    """,
+
+    "understood_signals": """
+    CREATE TABLE IF NOT EXISTS jarvis_insights_schema.understood_signals (
+        id UUID PRIMARY KEY,
+        qualified_signal_id INT NOT NULL,
+        raw_signal_id VARCHAR(100) NOT NULL,
+        signal_type VARCHAR(50) NOT NULL,
+        importance VARCHAR(20) NOT NULL,
+        confidence NUMERIC NOT NULL,
+        summary TEXT NOT NULL,
+        reason TEXT,
+        processing_path VARCHAR(20) NOT NULL CHECK (processing_path IN ('RULE_ENGINE', 'LLM')),
+        llm_model_used VARCHAR(50) NOT NULL,
+        contract_json JSONB NOT NULL,
+        is_verified BOOLEAN DEFAULT FALSE,
+        created_at TIMESTAMP DEFAULT NOW()
+    );
     """
 }
 

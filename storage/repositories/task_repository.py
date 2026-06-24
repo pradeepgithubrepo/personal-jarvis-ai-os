@@ -1,3 +1,4 @@
+from datetime import datetime
 from loguru import logger
 
 from storage.db.database import (
@@ -18,6 +19,7 @@ class TaskRepository:
         priority,
         source,
         due_date=None,
+        created_at=None,
     ):
 
         session = (
@@ -32,6 +34,7 @@ class TaskRepository:
                 priority=priority,
                 source=source,
                 due_date=due_date,
+                created_at=created_at or datetime.utcnow(),
             )
 
             session.add(task)

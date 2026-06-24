@@ -276,6 +276,10 @@ class SignalProcessor:
 
             extracted_count = 0
             for signal in todo_signals:
+                # Todo Age Check - skip Supabase creation if older than 90 days
+                cutoff_todo = datetime.utcnow() - timedelta(days=90)
+                is_stale = signal.created_at < cutoff_todo
+
                 # Safely parse raw_json details
                 details = {}
                 if signal.raw_json:
@@ -304,19 +308,6 @@ class SignalProcessor:
                 if not due_date:
                     due_date = cls.parse_and_normalize_due_date(signal.summary, signal.created_at)
 
-                # Store Todo in Supabase Postgres
-                signal_uuid = uuid.uuid5(uuid.NAMESPACE_DNS, f"signal-{signal.id}")
-                SupabaseRepo.save_signal(
-                    signal_id=signal_uuid,
-                    source=signal.source,
-                    sender="",
-                    message=signal.summary,
-                    signal_timestamp=signal.created_at,
-                    created_at=signal.created_at,
-                    raw_signal_id=str(signal.id),
-                    metadata=details
-                )
-                
                 due_date_dt = None
                 if due_date:
                     try:
@@ -324,16 +315,33 @@ class SignalProcessor:
                     except Exception:
                         due_date_dt = signal.created_at
 
-                todo_uuid = uuid.uuid5(uuid.NAMESPACE_DNS, f"todo-{signal.id}")
-                SupabaseRepo.create_todo(
-                    todo_id=todo_uuid,
-                    title=signal.summary,
-                    description=details.get("description", ""),
-                    priority=signal.importance,
-                    status="OPEN",
-                    due_date=due_date_dt,
-                    source_signal_id=signal_uuid
-                )
+                if not is_stale:
+                    # Store Todo in Supabase Postgres
+                    signal_uuid = uuid.uuid5(uuid.NAMESPACE_DNS, f"signal-{signal.id}")
+                    SupabaseRepo.save_signal(
+                        signal_id=signal_uuid,
+                        source=signal.source,
+                        sender="",
+                        message=signal.summary,
+                        signal_timestamp=signal.created_at,
+                        created_at=signal.created_at,
+                        raw_signal_id=str(signal.id),
+                        metadata=details
+                    )
+                    
+                    todo_uuid = uuid.uuid5(uuid.NAMESPACE_DNS, f"todo-{signal.id}")
+                    SupabaseRepo.create_todo(
+                        todo_id=todo_uuid,
+                        title=signal.summary,
+                        description=details.get("description", ""),
+                        priority=signal.importance,
+                        status="OPEN",
+                        due_date=due_date_dt,
+                        source_signal_id=signal_uuid,
+                        created_at=signal.created_at
+                    )
+                else:
+                    logger.info(f"Skipping stale Supabase TODO extraction for signal ID {signal.id} (Date: {signal.created_at})")
 
                 # Store Todo in SQLite
                 todo_obj = Todo(
@@ -344,7 +352,8 @@ class SignalProcessor:
                     created_at=signal.created_at
                 )
                 db.add(todo_obj)
-                extracted_count += 1
+                if not is_stale:
+                    extracted_count += 1
                 
                 logger.debug(
                     f"Extracted Todo: '{todo_obj.title}' "
@@ -408,6 +417,10 @@ class SignalProcessor:
 
             extracted_count = 0
             for signal in financial_signals:
+                # Financial Age Check - skip Supabase creation if older than 90 days
+                cutoff_fin = datetime.utcnow() - timedelta(days=90)
+                is_stale = signal.created_at < cutoff_fin
+
                 # Safely parse raw_json details
                 details = {}
                 if signal.raw_json:
@@ -468,30 +481,34 @@ class SignalProcessor:
                 from services.rules_engine import RulesEngine
                 spend_category = RulesEngine.categorize_transaction(merchant, vpa, signal.summary or "")
 
-                # Store FinancialEvent in Supabase Postgres
-                signal_uuid = uuid.uuid5(uuid.NAMESPACE_DNS, f"signal-{signal.id}")
-                SupabaseRepo.save_signal(
-                    signal_id=signal_uuid,
-                    source=signal.source,
-                    sender=details.get("paid_from") or "",
-                    message=signal.summary,
-                    signal_timestamp=signal.created_at,
-                    created_at=signal.created_at,
-                    raw_signal_id=str(signal.id),
-                    metadata=details
-                )
+                if not is_stale:
+                    # Store FinancialEvent in Supabase Postgres
+                    signal_uuid = uuid.uuid5(uuid.NAMESPACE_DNS, f"signal-{signal.id}")
+                    SupabaseRepo.save_signal(
+                        signal_id=signal_uuid,
+                        source=signal.source,
+                        sender=details.get("paid_from") or "",
+                        message=signal.summary,
+                        signal_timestamp=signal.created_at,
+                        created_at=signal.created_at,
+                        raw_signal_id=str(signal.id),
+                        metadata=details
+                    )
 
-                event_uuid = uuid.uuid5(uuid.NAMESPACE_DNS, f"financial-{signal.id}")
-                SupabaseRepo.create_financial_event(
-                    event_id=event_uuid,
-                    merchant=merchant,
-                    amount=amount if amount is not None else 0.0,
-                    currency=currency,
-                    category=spend_category,
-                    status="OPEN",
-                    event_timestamp=event_date,
-                    source_signal_id=signal_uuid
-                )
+                    event_uuid = uuid.uuid5(uuid.NAMESPACE_DNS, f"financial-{signal.id}")
+                    SupabaseRepo.create_financial_event(
+                        event_id=event_uuid,
+                        merchant=merchant,
+                        amount=amount if amount is not None else 0.0,
+                        currency=currency,
+                        category=spend_category,
+                        status="OPEN",
+                        event_timestamp=event_date,
+                        source_signal_id=signal_uuid,
+                        created_at=signal.created_at
+                    )
+                else:
+                    logger.info(f"Skipping stale Supabase financial event extraction for signal ID {signal.id} (Date: {signal.created_at})")
 
                 # Store FinancialEvent in SQLite
                 event_obj = FinancialEvent(
@@ -509,7 +526,8 @@ class SignalProcessor:
                     category=spend_category
                 )
                 db.add(event_obj)
-                extracted_count += 1
+                if not is_stale:
+                    extracted_count += 1
                 
                 logger.debug(
                     f"Extracted Financial Event: '{event_obj.title}' "
@@ -555,6 +573,10 @@ class SignalProcessor:
 
             extracted_count = 0
             for signal in fyi_signals:
+                # FYI Age Check - skip Supabase creation if older than 7 days
+                cutoff_fyi = datetime.utcnow() - timedelta(days=7)
+                is_stale = signal.created_at < cutoff_fyi
+
                 # Safely parse raw_json details
                 details = {}
                 if signal.raw_json:
@@ -592,28 +614,32 @@ class SignalProcessor:
                 # Extract content
                 content = details.get("message_content") or details.get("summary") or signal.summary
 
-                # Store FyiEvent in Supabase Postgres
-                signal_uuid = uuid.uuid5(uuid.NAMESPACE_DNS, f"signal-{signal.id}")
-                SupabaseRepo.save_signal(
-                    signal_id=signal_uuid,
-                    source=signal.source,
-                    sender="",
-                    message=signal.summary,
-                    signal_timestamp=signal.created_at,
-                    created_at=signal.created_at,
-                    raw_signal_id=str(signal.id),
-                    metadata=details
-                )
+                if not is_stale:
+                    # Store FyiEvent in Supabase Postgres
+                    signal_uuid = uuid.uuid5(uuid.NAMESPACE_DNS, f"signal-{signal.id}")
+                    SupabaseRepo.save_signal(
+                        signal_id=signal_uuid,
+                        source=signal.source,
+                        sender="",
+                        message=signal.summary,
+                        signal_timestamp=signal.created_at,
+                        created_at=signal.created_at,
+                        raw_signal_id=str(signal.id),
+                        metadata=details
+                    )
 
-                event_uuid = uuid.uuid5(uuid.NAMESPACE_DNS, f"fyi-{signal.id}")
-                SupabaseRepo.create_fyi_event(
-                    event_id=event_uuid,
-                    title=signal.summary,
-                    summary=content,
-                    category=fyi_type,
-                    read_flag=False,
-                    source_signal_id=signal_uuid
-                )
+                    event_uuid = uuid.uuid5(uuid.NAMESPACE_DNS, f"fyi-{signal.id}")
+                    SupabaseRepo.create_fyi_event(
+                        event_id=event_uuid,
+                        title=signal.summary,
+                        summary=content,
+                        category=fyi_type,
+                        read_flag=False,
+                        source_signal_id=signal_uuid,
+                        created_at=signal.created_at
+                    )
+                else:
+                    logger.info(f"Skipping stale Supabase FYI event extraction for signal ID {signal.id} (Date: {signal.created_at})")
 
                 # Store FyiEvent in SQLite
                 fyi_obj = FyiEvent(
@@ -624,7 +650,8 @@ class SignalProcessor:
                     created_at=signal.created_at
                 )
                 db.add(fyi_obj)
-                extracted_count += 1
+                if not is_stale:
+                    extracted_count += 1
                 
                 logger.debug(
                     f"Extracted FYI Event: '{fyi_obj.title}' "

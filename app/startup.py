@@ -29,23 +29,17 @@ def startup():
 
     initialize_system()
 
-    # 1. Sync mobile signals from Supabase Storage
-    try:
-        ConsumerService().run_sync()
-    except Exception as e:
-        logger.error(f"Failed to sync mobile signals from Supabase at startup: {e}")
+    # Spawn background thread for delayed pipeline run and automatic shutdown
+    import threading
+    from services.pipeline_orchestrator import run_delayed_pipeline_and_shutdown
 
-    # 2. Process unprocessed mobile signals using local LLM
-    try:
-        MobileSignalPipeline().run()
-    except Exception as e:
-        logger.error(f"Failed to process mobile signals at startup: {e}")
-
-    # 3. Process unread emails
-    try:
-        EmailPipeline().run()
-    except Exception as e:
-        logger.error(f"Failed to process emails at startup: {e}")
+    delayed_thread = threading.Thread(
+        target=run_delayed_pipeline_and_shutdown,
+        daemon=True,
+        name="delayed_pipeline_worker"
+    )
+    delayed_thread.start()
+    logger.success("Delayed pipeline worker thread launched successfully.")
 
     scheduler = (
         JarvisScheduler()

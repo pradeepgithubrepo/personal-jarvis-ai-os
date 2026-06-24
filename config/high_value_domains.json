@@ -1,0 +1,76 @@
+{
+  "education": [
+    "school",
+    "class",
+    "homework",
+    "circular",
+    "teacher",
+    "curriculum",
+    "exam",
+    "report card"
+  ],
+  "medical": [
+    "doctor",
+    "dentist",
+    "appointment",
+    "clinic",
+    "hospital",
+    "prescription",
+    "health",
+    "medicine"
+  ],
+  "insurance": [
+    "insurance",
+    "renewal",
+    "policy",
+    "premium",
+    "lic",
+    "ergo"
+  ],
+  "finance": [
+    "credited",
+    "debited",
+    "spent",
+    "spent on",
+    "card ending",
+    "account ending",
+    "upi",
+    "emi",
+    "salary",
+    "payment of",
+    "bank",
+    "cashback"
+  ],
+  "travel": [
+    "flight",
+    "booking",
+    "ticket",
+    "boarding",
+    "train",
+    "hotel",
+    "travel",
+    "irctc"
+  ],
+  "utilities": [
+    "electricity",
+    "bill",
+    "invoice",
+    "power",
+    "water",
+    "gas",
+    "internet",
+    "broadband",
+    "wifi",
+    "telecom"
+  ],
+  "employment": [
+    "salary",
+    "work",
+    "office",
+    "meeting",
+    "manager",
+    "employment",
+    "bonus",
+    "payslip"
+  ]
+}

@@ -1,9 +1,11 @@
 # skills/mobile/mobile_intent_extractor.py
 
 import json
+import hashlib
 from loguru import logger
 from configs.constants import TaskType
 from intelligence.routing.router import IntelligenceRouter
+from storage.repositories.classification_cache_repository import ClassificationCacheRepository
 
 
 class MobileIntentExtractor:
@@ -11,7 +13,132 @@ class MobileIntentExtractor:
     def __init__(self):
         self.router = IntelligenceRouter()
 
+    def _rule_based_pre_classify(self, signal: dict) -> dict | None:
+        sender = (signal.get("sender") or "").strip()
+        message = (signal.get("message") or "").strip()
+        source = (signal.get("source") or "").strip()
+        
+        msg_lower = message.lower()
+        
+        # 1. Telecom / Data Usage Alerts (Ignore)
+        telecom_keywords = [
+            "daily high speed data limit", 
+            "data limit usage exceeded", 
+            "90% data alert", 
+            "data balance", 
+            "recharge successful for",
+            "pack validity",
+            "validity of your plan",
+            "90% alert: daily high speed",
+            "pack valid till",
+            "recharge today",
+            "recharge pending",
+            "recharge now",
+            "callcost:",
+            "டேட்டா",
+            "கட்டணமின்றி"
+        ]
+        if any(kw in msg_lower for kw in telecom_keywords):
+            return {
+                "intent": "ignore",
+                "category": "general",
+                "priority": "ignore",
+                "action_required": False,
+                "due_date": None,
+                "summary": "Telecom plan or data usage alert",
+                "details": {}
+            }
+            
+        # 2. System / App notifications (Ignore)
+        system_keywords = [
+            "connected to pradeep",
+            "backup of truecaller",
+            "truecaller is running",
+            "whatsapp backup",
+            "syncing completed"
+        ]
+        if any(kw in msg_lower for kw in system_keywords):
+            return {
+                "intent": "ignore",
+                "category": "general",
+                "priority": "ignore",
+                "action_required": False,
+                "due_date": None,
+                "summary": "System notification",
+                "details": {}
+            }
+            
+        # 3. OTPs (Ensure ignored and labeled correctly)
+        otp_keywords = ["otp", "verification code", "one-time password", "one time password", "verification password"]
+        if any(kw in msg_lower for kw in otp_keywords):
+            return {
+                "intent": "otp",
+                "category": "security",
+                "priority": "ignore",
+                "action_required": False,
+                "due_date": None,
+                "summary": f"OTP verification code from {sender}",
+                "details": {
+                    "otp_code": None,
+                    "service": sender
+                }
+            }
+            
+        # 4. Pure Promotional Spam (ignore only if no transaction keyword is present)
+        is_txn = any(kw in msg_lower for kw in ["debited", "credited", "spent", "card ending", "received rs", "transacted"])
+        if not is_txn:
+            promo_keywords = [
+                "pre-approved loan",
+                "apply now for credit card",
+                "instant personal loan",
+                "click to apply",
+                "limited time offer",
+                "exclusive discount",
+                "congratulations! you win",
+                "spin the wheel",
+                "use code to get discount",
+                "flat off on order",
+                "airtel xstream",
+                "free airtel",
+                "enjoy movies, shows"
+            ]
+            if any(kw in msg_lower for kw in promo_keywords):
+                return {
+                    "intent": "ignore",
+                    "category": "general",
+                    "priority": "ignore",
+                    "action_required": False,
+                    "due_date": None,
+                    "summary": "Promotional spam notification",
+                    "details": {}
+                }
+                
+        return None
+
     def extract_intent(self, signal: dict) -> dict:
+        """
+        Uses local LLM to classify and structure mobile notifications with caching and pre-classification rules.
+        """
+        sender = (signal.get("sender") or "").strip()
+        message = (signal.get("message") or "").strip()
+        source = (signal.get("source") or "").strip()
+
+        # Compute cache key
+        raw_str = f"{source}{sender}{message}"
+        cache_key = hashlib.sha256(raw_str.encode("utf-8")).hexdigest()
+
+        # 1. Check classification cache
+        cached_result = ClassificationCacheRepository.get(cache_key)
+        if cached_result:
+            logger.info(f"Classification Cache HIT for signal from '{sender}'")
+            return cached_result
+
+        # 2. Check rule-based Pre-Classification Layer
+        pre_classified = self._rule_based_pre_classify(signal)
+        if pre_classified:
+            logger.info(f"Pre-Classification Layer matched for signal from '{sender}': {pre_classified['intent']}")
+            ClassificationCacheRepository.set(cache_key, pre_classified)
+            return pre_classified
         """
         Uses local LLM to classify and structure mobile notifications.
         Returns a dict with intent, category, priority, summary, and details.
@@ -162,11 +289,14 @@ JSON Output:
                 else:
                     result["action_required"] = False
                 
+            ClassificationCacheRepository.set(cache_key, result)
             return result
 
         except Exception as e:
             logger.warning(f"Failed to parse mobile intent JSON: {e}. Falling back to default extraction.")
-            return self._fallback_extraction(signal)
+            fallback_res = self._fallback_extraction(signal)
+            ClassificationCacheRepository.set(cache_key, fallback_res)
+            return fallback_res
 
     def _fallback_extraction(self, signal: dict) -> dict:
         """

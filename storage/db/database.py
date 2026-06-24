@@ -38,6 +38,11 @@ def initialize_database():
     from storage.models.processed_file import ProcessedFile
     from storage.models.financial_transaction_classification import FinancialTransactionClassification
     from storage.models.monthly_spending_summary import MonthlySpendingSummary
+    from storage.models.classification_cache import ClassificationCache
+    from storage.models.pipeline_run import PipelineRun
+    from storage.models.system_status import SystemStatus
+    from storage.models.qualified_signal import QualifiedSignal
+    from storage.models.understood_signal import UnderstoodSignal
 
     # Drop legacy tables to recreate with updated schemas cleanly
     from sqlalchemy import text

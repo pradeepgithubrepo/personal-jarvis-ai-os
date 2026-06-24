@@ -1,0 +1,1123 @@
+[
+  {
+    "message": "Dear Customer, Your a/c no. XXXXXXXX3724 is debited for Rs.2000.00 on 20-06-26 and a/c XXXXXXX221 credited (IMPS Ref no 617106629082). -SBI",
+    "legacy": "FINANCIAL",
+    "new_classes": [
+      "FINANCIAL"
+    ],
+    "new_domains": [
+      "FINANCE"
+    ],
+    "path": "RULE_ENGINE"
+  },
+  {
+    "message": "Received!\nINR 2,000.00 in HDFC Bank A/c xx3221\nOn 20-06-26\nFor IMPS -PRADEEP P- 617106629082\nAvl bal INR 2,269.27",
+    "legacy": "FINANCIAL",
+    "new_classes": [
+      "FINANCIAL"
+    ],
+    "new_domains": [
+      "FINANCE"
+    ],
+    "path": "LLM"
+  },
+  {
+    "message": "Rs.293.00 spent on your SBI Credit Card ending 8707 at FLIPKARTINTERNETPvt on 19/06/26. Trxn. not done by you? Report at https://sbicard.com/Dispute",
+    "legacy": "FINANCIAL",
+    "new_classes": [
+      "FINANCIAL"
+    ],
+    "new_domains": [
+      "FINANCE"
+    ],
+    "path": "RULE_ENGINE"
+  },
+  {
+    "message": "Alert! Rs. 7791 refunded by FLIPKART INTERNET PR on 15/JUN/2026 & adjusted against HDFC Bank Credit Card 7074 View updated balance here: https://1.hdfc.bank.in/HDFCBK/s/PW4mOdvR",
+    "legacy": "FINANCIAL",
+    "new_classes": [
+      "INFORMATION"
+    ],
+    "new_domains": [
+      "FINANCE"
+    ],
+    "path": "LLM"
+  },
+  {
+    "message": "Hi pradeep, the previous insurance policy of your bike expires tomorrow. Log on to www.coverfox.com now and download your new policy papers from your My Account. Ensure safe travels at all times! - Team Coverfox",
+    "legacy": "INSURANCE",
+    "new_classes": [
+      "ACTION",
+      "FINANCIAL"
+    ],
+    "new_domains": [
+      "INSURANCE"
+    ],
+    "path": "RULE_ENGINE"
+  },
+  {
+    "message": "Your Ac x3724 debited Rs.1,500.00 for transfer to Pradee Ac x3221 dt 14.06.26 Ref 616518986128. If not done by you, call 1800111109. YONO SBI",
+    "legacy": "FINANCIAL",
+    "new_classes": [
+      "FINANCIAL"
+    ],
+    "new_domains": [
+      "FINANCE"
+    ],
+    "path": "RULE_ENGINE"
+  },
+  {
+    "message": "Received!\nINR 1,500.00 in HDFC Bank A/c xx3221\nOn 14-06-26\nFor IMPS -PRADEEP P- 616518986128\nAvl bal INR 1,720.03",
+    "legacy": "FINANCIAL",
+    "new_classes": [
+      "FINANCIAL"
+    ],
+    "new_domains": [
+      "FINANCE"
+    ],
+    "path": "LLM"
+  },
+  {
+    "message": "Dear Customer, Your a/c no. XXXXXXXX3724 is debited for Rs.1500.00 on 14-06-26 and a/c XXXXXXX221 credited (IMPS Ref no 616518986128). -SBI",
+    "legacy": "FINANCIAL",
+    "new_classes": [
+      "FINANCIAL"
+    ],
+    "new_domains": [
+      "FINANCE"
+    ],
+    "path": "RULE_ENGINE"
+  },
+  {
+    "message": "We have received payment of Rs. 3141 via YONO by SBI and same has been credited to your SBI CARD ending with 69 on 12-JUN-26",
+    "legacy": "FINANCIAL",
+    "new_classes": [
+      "FINANCIAL"
+    ],
+    "new_domains": [
+      "FINANCE"
+    ],
+    "path": "RULE_ENGINE"
+  },
+  {
+    "message": "Rs.573.00 spent on your SBI Credit Card ending 8707 at Flipkart on 14/06/26. Trxn. not done by you? Report at https://sbicard.com/Dispute",
+    "legacy": "FINANCIAL",
+    "new_classes": [
+      "FINANCIAL"
+    ],
+    "new_domains": [
+      "FINANCE"
+    ],
+    "path": "RULE_ENGINE"
+  },
+  {
+    "message": "Rs.314.00 spent on your SBI Credit Card ending 8707 at FLIPKARTINTERNETPRIV on 14/06/26. Trxn. not done by you? Report at https://sbicard.com/Dispute",
+    "legacy": "FINANCIAL",
+    "new_classes": [
+      "FINANCIAL"
+    ],
+    "new_domains": [
+      "FINANCE"
+    ],
+    "path": "RULE_ENGINE"
+  },
+  {
+    "message": "Rs.185.00 spent on your SBI Credit Card ending 8707 at Flipkart on 14/06/26. Trxn. not done by you? Report at https://sbicard.com/Dispute",
+    "legacy": "FINANCIAL",
+    "new_classes": [
+      "FINANCIAL"
+    ],
+    "new_domains": [
+      "FINANCE"
+    ],
+    "path": "RULE_ENGINE"
+  },
+  {
+    "message": "Spent Rs.7791 On HDFC Bank Card 7074 At FLIPKART INTERNET PRIV On 2026-06-14:08:58:17.Not You? To Block+Reissue Call 18002586161/SMS BLOCK CC 7074 to 7308080808",
+    "legacy": "FINANCIAL",
+    "new_classes": [
+      "FINANCIAL"
+    ],
+    "new_domains": [
+      "FINANCE"
+    ],
+    "path": "RULE_ENGINE"
+  },
+  {
+    "message": "E-statement of SBI Credit Card ending XX07 dated 11/06/2026 has been mailed. If not received, SMS ENRS to 5676791. Total Amt Due Rs 3141; Min Amt Due Rs 200; Payable by 01/07/2026. Click https://sbicard.com/quickpaynet to pay your bill  \n",
+    "legacy": "INSURANCE",
+    "new_classes": [
+      "FINANCIAL"
+    ],
+    "new_domains": [
+      "FINANCE"
+    ],
+    "path": "RULE_ENGINE"
+  },
+  {
+    "message": "New Bill Alert:\nYour SBI Card Bill 8707 of Rs.3141.02 is due on 01-Jul-2026. To pay, login to HDFC Bank Net/Mobile Banking>BillPay\nT&C. Ignore if paid",
+    "legacy": "FINANCIAL",
+    "new_classes": [
+      "INFORMATION",
+      "ALERT"
+    ],
+    "new_domains": [
+      "FINANCE"
+    ],
+    "path": "LLM"
+  },
+  {
+    "message": "Payment of INR 56056.18 has been received towards your Axis Bank Credit Card XX6540 on 12-06-26 - Axis Bank",
+    "legacy": "FINANCIAL",
+    "new_classes": [
+      "FINANCIAL"
+    ],
+    "new_domains": [
+      "FINANCE"
+    ],
+    "path": "LLM"
+  },
+  {
+    "message": "Your Ac x3724 debited Rs.58,000.00 for transfer to Pradee Ac x3221 dt 12.06.26 Ref 616308556455. If not done by you, call 1800111109. YONO SBI",
+    "legacy": "FINANCIAL",
+    "new_classes": [
+      "FINANCIAL"
+    ],
+    "new_domains": [
+      "FINANCE"
+    ],
+    "path": "RULE_ENGINE"
+  },
+  {
+    "message": "Received!\nINR 58,000.00 in HDFC Bank A/c xx3221\nOn 12-06-26\nFor IMPS -PRADEEP P- 616308556455\nAvl bal INR 59,226.21",
+    "legacy": "FINANCIAL",
+    "new_classes": [
+      "INFORMATION",
+      "FINANCIAL"
+    ],
+    "new_domains": [
+      "FINANCE"
+    ],
+    "path": "LLM"
+  },
+  {
+    "message": "Dear Customer, Your a/c no. XXXXXXXX3724 is debited for Rs.58000.00 on 12-06-26 and a/c XXXXXXX221 credited (IMPS Ref no 616308556455). -SBI",
+    "legacy": "FINANCIAL",
+    "new_classes": [
+      "FINANCIAL"
+    ],
+    "new_domains": [
+      "FINANCE"
+    ],
+    "path": "RULE_ENGINE"
+  },
+  {
+    "message": "Your A/C XXXXX253724 Credited INR 52,044.00 on 12/06/26 -Deposit by transfer from Mr. PRADEEPP. Avl Bal INR 70,685.82-SBI",
+    "legacy": "FINANCIAL",
+    "new_classes": [
+      "FINANCIAL"
+    ],
+    "new_domains": [
+      "FINANCE"
+    ],
+    "path": "RULE_ENGINE"
+  },
+  {
+    "message": "HDFC Bank Cardmember, Payment of Rs 14413 was credited to your card ending 7074 on 09/JUN/2026.",
+    "legacy": "FINANCIAL",
+    "new_classes": [
+      "FINANCIAL"
+    ],
+    "new_domains": [
+      "FINANCE"
+    ],
+    "path": "RULE_ENGINE"
+  },
+  {
+    "message": "DEAR HDFCBANK CARDMEMBER, PAYMENT OF Rs. 14413.00 RECEIVED TOWARDS YOUR CREDIT CARD ENDING WITH 7074 ON 9-6-2026.YOUR AVAILABLE LIMIT IS RS. 500000.00",
+    "legacy": "FINANCIAL",
+    "new_classes": [
+      "FINANCIAL"
+    ],
+    "new_domains": [
+      "FINANCE"
+    ],
+    "path": "RULE_ENGINE"
+  },
+  {
+    "message": "Received!\nINR 15,000.00 in HDFC Bank A/c xx3221\nOn 09-06-26\nFor IMPS -PRADEEP P- 616013775053\nAvl bal INR 16,514.21",
+    "legacy": "FINANCIAL",
+    "new_classes": [
+      "FINANCIAL"
+    ],
+    "new_domains": [
+      "FINANCE"
+    ],
+    "path": "LLM"
+  },
+  {
+    "message": "Dear Customer, Your a/c no. XXXXXXXX3724 is debited for Rs.15000.00 on 09-06-26 and a/c XXXXXXX221 credited (IMPS Ref no 616013775053). -SBI",
+    "legacy": "FINANCIAL",
+    "new_classes": [
+      "FINANCIAL"
+    ],
+    "new_domains": [
+      "FINANCE"
+    ],
+    "path": "RULE_ENGINE"
+  },
+  {
+    "message": "HDFC Bank Cardmember, Payment of Rs 50000 was credited to your card ending 7074 on 08/JUN/2026.",
+    "legacy": "FINANCIAL",
+    "new_classes": [
+      "FINANCIAL"
+    ],
+    "new_domains": [
+      "FINANCE"
+    ],
+    "path": "RULE_ENGINE"
+  },
+  {
+    "message": "Received!\nINR 2,000.00 in HDFC Bank A/c xx3221\nOn 08-06-26\nFor IMPS -PRADEEP P- 615920884455\nAvl bal INR 2,014.21",
+    "legacy": "FINANCIAL",
+    "new_classes": [
+      "FINANCIAL"
+    ],
+    "new_domains": [
+      "FINANCE"
+    ],
+    "path": "LLM"
+  },
+  {
+    "message": "Your Ac x3724 debited Rs.2,000.00 for transfer to Pradee Ac x3221 dt 08.06.26 Ref 615920884455. If not done by you, call 1800111109. YONO SBI",
+    "legacy": "FINANCIAL",
+    "new_classes": [
+      "FINANCIAL"
+    ],
+    "new_domains": [
+      "FINANCE"
+    ],
+    "path": "RULE_ENGINE"
+  },
+  {
+    "message": "Dear Customer, Your a/c no. XXXXXXXX3724 is debited for Rs.2000.00 on 08-06-26 and a/c XXXXXXX221 credited (IMPS Ref no 615920884455). -SBI",
+    "legacy": "FINANCIAL",
+    "new_classes": [
+      "FINANCIAL"
+    ],
+    "new_domains": [
+      "FINANCE"
+    ],
+    "path": "RULE_ENGINE"
+  },
+  {
+    "message": "DEAR HDFCBANK CARDMEMBER, PAYMENT OF Rs. 50000.00 RECEIVED TOWARDS YOUR CREDIT CARD ENDING WITH 7074 ON 7-6-2026.YOUR AVAILABLE LIMIT IS RS. 485587.00",
+    "legacy": "FINANCIAL",
+    "new_classes": [
+      "FINANCIAL"
+    ],
+    "new_domains": [
+      "FINANCE"
+    ],
+    "path": "RULE_ENGINE"
+  },
+  {
+    "message": "Received!\nINR 50,000.00 in HDFC Bank A/c xx3221\nOn 07-06-26\nFor IMPS -PRADEEP P- 615821786270\nAvl bal INR 50,014.21",
+    "legacy": "FINANCIAL",
+    "new_classes": [
+      "INFORMATION",
+      "ACTION"
+    ],
+    "new_domains": [
+      "FINANCE"
+    ],
+    "path": "LLM"
+  },
+  {
+    "message": "Dear Customer, Your a/c no. XXXXXXXX3724 is debited for Rs.50000.00 on 07-06-26 and a/c XXXXXXX221 credited (IMPS Ref no 615821786270). -SBI",
+    "legacy": "FINANCIAL",
+    "new_classes": [
+      "FINANCIAL"
+    ],
+    "new_domains": [
+      "FINANCE"
+    ],
+    "path": "RULE_ENGINE"
+  },
+  {
+    "message": "Your A/C XXXXX253724 Credited INR 60,050.00 on 07/06/26 -Deposit by transfer from Mr. PRADEEPP. Avl Bal INR 60,406.82-SBI",
+    "legacy": "FINANCIAL",
+    "new_classes": [
+      "FINANCIAL"
+    ],
+    "new_domains": [
+      "FINANCE"
+    ],
+    "path": "RULE_ENGINE"
+  },
+  {
+    "message": "Dear Customer, Your a/c no. XXXXXXXX3724 is debited for Rs.1500.00 on 07-06-26 and a/c XXXXXXX221 credited (IMPS Ref no 615808893405). -SBI",
+    "legacy": "FINANCIAL",
+    "new_classes": [
+      "FINANCIAL"
+    ],
+    "new_domains": [
+      "FINANCE"
+    ],
+    "path": "RULE_ENGINE"
+  },
+  {
+    "message": "Your order is delivered with invoice no. 5-106327107379. Next available booking date is 02-JUL-2026.\nINDANE",
+    "legacy": "FYI",
+    "new_classes": [
+      "INFORMATION"
+    ],
+    "new_domains": [
+      "TRAVEL"
+    ],
+    "path": "RULE_ENGINE"
+  },
+  {
+    "message": "Payment of INR 352.82 has been received towards your Axis Bank Credit Card XX6540 on 06-06-26 - Axis Bank",
+    "legacy": "FINANCIAL",
+    "new_classes": [
+      "FINANCIAL"
+    ],
+    "new_domains": [
+      "FINANCE"
+    ],
+    "path": "LLM"
+  },
+  {
+    "message": "We have received confirmation on the settlement of your claim 50597764 for a policy issued by The New India Assurance Co. Ltd for INR 675 vide reference number AXISCN1363603887 on 02 Jun 2026 from your insurer. Current balance is INR 998495 for Policy Period 01 Apr 2026 to 31 Mar 2027. Click https://massist.in/MASIST/trgmzq6 for details or log into MAven app https://onelink.to/maven to view details. Please provide feedback on https://massist.in/MASIST/ms79303 This would help in servicing you better. Team Medi Assist",
+    "legacy": "INSURANCE",
+    "new_classes": [
+      "FINANCIAL"
+    ],
+    "new_domains": [
+      "INSURANCE",
+      "MEDICAL"
+    ],
+    "path": "LLM"
+  },
+  {
+    "message": "Received!\nINR 21,000.00 in HDFC Bank A/c xx3221\nOn 06-06-26\nFor IMPS -PRADEEP P- 615710800790\nAvl bal INR 21,741.01",
+    "legacy": "FINANCIAL",
+    "new_classes": [
+      "FINANCIAL"
+    ],
+    "new_domains": [
+      "FINANCE",
+      "WORK"
+    ],
+    "path": "LLM"
+  },
+  {
+    "message": "Your Ac x3724 debited Rs.21,000.00 for transfer to Pradee Ac x3221 dt 06.06.26 Ref 615710800790. If not done by you, call 1800111109. YONO SBI",
+    "legacy": "FINANCIAL",
+    "new_classes": [
+      "FINANCIAL"
+    ],
+    "new_domains": [
+      "FINANCE"
+    ],
+    "path": "RULE_ENGINE"
+  },
+  {
+    "message": "Dear Customer, Your a/c no. XXXXXXXX3724 is debited for Rs.21000.00 on 06-06-26 and a/c XXXXXXX221 credited (IMPS Ref no 615710800790). -SBI",
+    "legacy": "FINANCIAL",
+    "new_classes": [
+      "FINANCIAL"
+    ],
+    "new_domains": [
+      "FINANCE"
+    ],
+    "path": "RULE_ENGINE"
+  },
+  {
+    "message": "Received!\nINR 52,000.00 in HDFC Bank A/c xx3221\nOn 04-06-26\nFor IMPS -PRADEEP P- 615510905366\nAvl bal INR 52,241.01",
+    "legacy": "FINANCIAL",
+    "new_classes": [
+      "FINANCIAL"
+    ],
+    "new_domains": [
+      "FINANCE"
+    ],
+    "path": "LLM"
+  },
+  {
+    "message": "Dear Customer, Your a/c no. XXXXXXXX3724 is debited for Rs.52000.00 on 04-06-26 and a/c XXXXXXX221 credited (IMPS Ref no 615510905366). -SBI",
+    "legacy": "FINANCIAL",
+    "new_classes": [
+      "FINANCIAL"
+    ],
+    "new_domains": [
+      "FINANCE"
+    ],
+    "path": "RULE_ENGINE"
+  },
+  {
+    "message": "HDFC Bank Cardmember, Payment of Rs 10000 was credited to your card ending 7074 on 02/JUN/2026.",
+    "legacy": "FINANCIAL",
+    "new_classes": [
+      "FINANCIAL"
+    ],
+    "new_domains": [
+      "FINANCE"
+    ],
+    "path": "RULE_ENGINE"
+  },
+  {
+    "message": "Dear Customer, your TDR/STDR No XXXXX988518 dated 30/03/26 maturing on 08/06/26 will be credited to A/c No XXXXX253724 as per your instructions.-SBI",
+    "legacy": "FINANCIAL",
+    "new_classes": [
+      "FINANCIAL"
+    ],
+    "new_domains": [
+      "FINANCE"
+    ],
+    "path": "RULE_ENGINE"
+  },
+  {
+    "message": "Spent INR 56409\nAxis Bank Card no. XX6540\n02-06-26 19:55:55 IST\nFlipkart In\nAvl Limit: INR 98591\nNot you? SMS BLOCK 6540 to 919951860002",
+    "legacy": "FINANCIAL",
+    "new_classes": [
+      "FINANCIAL"
+    ],
+    "new_domains": [
+      "FINANCE"
+    ],
+    "path": "RULE_ENGINE"
+  },
+  {
+    "message": "Dear Customer, your TDR/STDR No XXXXX941970 dated 28/05/26 maturing on 07/06/26 will be credited to A/c No XXXXX253724 as per your instructions.-SBI",
+    "legacy": "FINANCIAL",
+    "new_classes": [
+      "FINANCIAL"
+    ],
+    "new_domains": [
+      "FINANCE"
+    ],
+    "path": "RULE_ENGINE"
+  },
+  {
+    "message": "DEAR HDFCBANK CARDMEMBER, PAYMENT OF Rs. 10000.00 RECEIVED TOWARDS YOUR CREDIT CARD ENDING WITH 7074 ON 2-6-2026.YOUR AVAILABLE LIMIT IS RS. 385587.00",
+    "legacy": "FINANCIAL",
+    "new_classes": [
+      "FINANCIAL"
+    ],
+    "new_domains": [
+      "FINANCE"
+    ],
+    "path": "RULE_ENGINE"
+  },
+  {
+    "message": "Credit Alert!\nRs.10000.00 credited to HDFC Bank A/c XX3221 on 02-06-26 from VPA shobanakumari1992@oksbi (UPI 615325390849)\n",
+    "legacy": "FINANCIAL",
+    "new_classes": [
+      "FINANCIAL"
+    ],
+    "new_domains": [
+      "FINANCE"
+    ],
+    "path": "RULE_ENGINE"
+  },
+  {
+    "message": "Dear Customer, Plz note that Third Party Insurance is a must. Renew TN149509 insurance policy 0206003125P103503491 before expiry 16/06/2026-Team United India",
+    "legacy": "INSURANCE",
+    "new_classes": [
+      "ACTION",
+      "FINANCIAL"
+    ],
+    "new_domains": [
+      "INSURANCE"
+    ],
+    "path": "RULE_ENGINE"
+  },
+  {
+    "message": "Rs.188.00 spent on your SBI Credit Card ending 8707 at FLIPKARTINTERNETPRIV on 01/06/26. Trxn. not done by you? Report at https://sbicard.com/Dispute",
+    "legacy": "FINANCIAL",
+    "new_classes": [
+      "FINANCIAL"
+    ],
+    "new_domains": [
+      "FINANCE"
+    ],
+    "path": "RULE_ENGINE"
+  },
+  {
+    "message": "Spent Rs.124085 On HDFC Bank Card 7074 At FLIPKART INTERNET PRIV On 2026-05-31:17:07:15.Not You? To Block+Reissue Call 18002586161/SMS BLOCK CC 7074 to 7308080808",
+    "legacy": "FINANCIAL",
+    "new_classes": [
+      "FINANCIAL"
+    ],
+    "new_domains": [
+      "FINANCE"
+    ],
+    "path": "RULE_ENGINE"
+  },
+  {
+    "message": "Modification Success! Card usage settings for Credit Card ending with XX7074 modified on 31-05-2026 via Online Banking. -HDFC Bank",
+    "legacy": "FINANCIAL",
+    "new_classes": [
+      "FINANCIAL"
+    ],
+    "new_domains": [
+      "FINANCE"
+    ],
+    "path": "RULE_ENGINE"
+  },
+  {
+    "message": "Spent Rs.328 On HDFC Bank Card 7074 At FlipkartInternetPrivat On 2026-05-31:13:43:46.Not You? To Block+Reissue Call 18002586161/SMS BLOCK CC 7074 to 7308080808",
+    "legacy": "FINANCIAL",
+    "new_classes": [
+      "FINANCIAL"
+    ],
+    "new_domains": [
+      "FINANCE"
+    ],
+    "path": "RULE_ENGINE"
+  },
+  {
+    "message": "Rs.1,380.00 spent on your SBI Credit Card ending 8707 at Flipkart on 31/05/26. Trxn. not done by you? Report at https://sbicard.com/Dispute",
+    "legacy": "FINANCIAL",
+    "new_classes": [
+      "FINANCIAL"
+    ],
+    "new_domains": [
+      "FINANCE"
+    ],
+    "path": "RULE_ENGINE"
+  },
+  {
+    "message": "Sent Rs.930.00\nFrom HDFC Bank A/C *3221\nTo Amazon Pay\nOn 30/05/26\nRef 615061323381\nNot You?\nCall 18002586161/SMS BLOCK UPI to 7308080808\n",
+    "legacy": "FINANCIAL",
+    "new_classes": [
+      "INFORMATION"
+    ],
+    "new_domains": [
+      "FINANCE"
+    ],
+    "path": "LLM"
+  },
+  {
+    "message": "We have received confirmation on the settlement of your claim 50485973 for a policy issued by The New India Assurance Co. Ltd for INR 275 vide reference number AXISCN1356798563 on 27 May 2026 from your insurer. Current balance is INR 999170 for Policy Period 01 Apr 2026 to 31 Mar 2027. Click https://massist.in/MASIST/nwj3tus for details or log into MAven app https://onelink.to/maven to view details. Please provide feedback on https://massist.in/MASIST/ml10vpj This would help in servicing you better. Team Medi Assist",
+    "legacy": "INSURANCE",
+    "new_classes": [
+      "FINANCIAL"
+    ],
+    "new_domains": [
+      "INSURANCE",
+      "MEDICAL"
+    ],
+    "path": "LLM"
+  },
+  {
+    "message": "Dear Customer, Your a/c no. XXXXXXXX3724 is credited by Rs.75000.00 on 29-05-26 by a/c linked to mobile 9XXXXXX584-PRADEEP PA (IMPS Ref# 614963389324)-SBI",
+    "legacy": "FINANCIAL",
+    "new_classes": [
+      "FINANCIAL"
+    ],
+    "new_domains": [
+      "FINANCE"
+    ],
+    "path": "RULE_ENGINE"
+  },
+  {
+    "message": "We have received payment of Rs. 1300 via YONO by SBI and same has been credited to your SBI CARD ending with 69 on 26-MAY-26",
+    "legacy": "FINANCIAL",
+    "new_classes": [
+      "FINANCIAL"
+    ],
+    "new_domains": [
+      "FINANCE"
+    ],
+    "path": "RULE_ENGINE"
+  },
+  {
+    "message": "Your A/C XXXXX253724 Credited INR 30,853.00 on 28/05/26 -Deposit by transfer from Mr. PRADEEPP. Avl Bal INR 65,161.82-SBI",
+    "legacy": "FINANCIAL",
+    "new_classes": [
+      "FINANCIAL"
+    ],
+    "new_domains": [
+      "FINANCE"
+    ],
+    "path": "RULE_ENGINE"
+  },
+  {
+    "message": "Premium due for Policy No.316712630 is not yet received.Please pay premium online at https://ebiz.licindia.in/spy-LIC",
+    "legacy": "INSURANCE",
+    "new_classes": [
+      "ACTION",
+      "FINANCIAL"
+    ],
+    "new_domains": [
+      "INSURANCE"
+    ],
+    "path": "RULE_ENGINE"
+  },
+  {
+    "message": "LIC Premium due for Policy No <316712630> is not yet received. Please Pay premium online by https://ebiz.licindia.in/D2CPM/#Login. Pl Ignore, if paid.",
+    "legacy": "INSURANCE",
+    "new_classes": [
+      "ACTION",
+      "FINANCIAL"
+    ],
+    "new_domains": [
+      "INSURANCE"
+    ],
+    "path": "RULE_ENGINE"
+  },
+  {
+    "message": "We have received confirmation on the settlement of your claim 50407630 for a policy issued by The New India Assurance Co. Ltd for INR 555 vide reference number AXISCN1354243375 on 22 May 2026 from your insurer. Current balance is INR 999170 for Policy Period 01 Apr 2026 to 31 Mar 2027. Click https://massist.in/MASIST/edb2p90 for details or log into MAven app https://onelink.to/maven to view details. Please provide feedback on https://massist.in/MASIST/zmjn9av This would help in servicing you better. Team Medi Assist",
+    "legacy": "INSURANCE",
+    "new_classes": [
+      "FINANCIAL"
+    ],
+    "new_domains": [
+      "INSURANCE"
+    ],
+    "path": "LLM"
+  },
+  {
+    "message": "We have received payment of Rs.1,300.00 via YONO & the same has been credited to your SBI Credit Card. Your available limit is Rs.84,935.98.",
+    "legacy": "FINANCIAL",
+    "new_classes": [
+      "FINANCIAL"
+    ],
+    "new_domains": [
+      "FINANCE"
+    ],
+    "path": "RULE_ENGINE"
+  },
+  {
+    "message": "Pay Now!\nSBI Card Bill 8707 of Rs.218.02 is due on 31-May-2026. Use HDFC Bank NetBanking or Mobile App > BillPay\nT&C. Ignore if paid",
+    "legacy": "FINANCIAL",
+    "new_classes": [
+      "FINANCIAL"
+    ],
+    "new_domains": [
+      "FINANCE"
+    ],
+    "path": "LLM"
+  },
+  {
+    "message": "Dear Customer, Rs 2,342.00 debited from ICICI Bank Prepaid Card 4204 on 24-May-26. Info- PEARL RESTAUR. The Available Balance is Rs 4,640.25 . Call 022 50405238 for dispute or SMS BLOCK 4204 to 9215676766.",
+    "legacy": "FINANCIAL",
+    "new_classes": [
+      "FINANCIAL"
+    ],
+    "new_domains": [
+      "FINANCE"
+    ],
+    "path": "RULE_ENGINE"
+  },
+  {
+    "message": "Hi pradeep, your bike insurance policy was added to your Coverfox My Account 48 hours ago. We recommend you to download the new policy document to ensure you're travelling safe at all times. - Team Coverfox",
+    "legacy": "INSURANCE",
+    "new_classes": [
+      "INFORMATION"
+    ],
+    "new_domains": [
+      "INSURANCE"
+    ],
+    "path": "LLM"
+  },
+  {
+    "message": "Dear SOBANA , Thank you for your purchase @ Apollo Pharmacy. Click here https://apmails.in/APLPHR/p8d6SJJrm to download your bill for Rs.74.62 APLPHR",
+    "legacy": "INSURANCE",
+    "new_classes": [
+      "INFORMATION",
+      "ACTION"
+    ],
+    "new_domains": [
+      "FINANCE"
+    ],
+    "path": "LLM"
+  },
+  {
+    "message": "Received!\nINR 2,500.00 in HDFC Bank A/c xx3221\nOn 22-05-26\nFor IMPS -PRADEEP P- 614219697613\nAvl bal INR 3,210.01",
+    "legacy": "FINANCIAL",
+    "new_classes": [
+      "FINANCIAL"
+    ],
+    "new_domains": [
+      "FINANCE"
+    ],
+    "path": "LLM"
+  },
+  {
+    "message": "Dear Customer, Your a/c no. XXXXXXXX3724 is debited for Rs.2500.00 on 22-05-26 and a/c XXXXXXX221 credited (IMPS Ref no 614219697613). -SBI",
+    "legacy": "FINANCIAL",
+    "new_classes": [
+      "FINANCIAL"
+    ],
+    "new_domains": [
+      "FINANCE"
+    ],
+    "path": "RULE_ENGINE"
+  },
+  {
+    "message": "Dear Customer, Received INR 909 Receipt No 11302060026156896167 on 22/05/2026. Plz submit Proposal/Document to cover Risk & issue Policy-Team United India",
+    "legacy": "INSURANCE",
+    "new_classes": [
+      "FINANCIAL"
+    ],
+    "new_domains": [
+      "FINANCE"
+    ],
+    "path": "LLM"
+  },
+  {
+    "message": "Hi pradeep, your bike insurance policy document is now available on Coverfox My Account. We recommend you to download the policy as soon as possible. - Team Coverfox",
+    "legacy": "INSURANCE",
+    "new_classes": [
+      "ACTION",
+      "INFORMATION"
+    ],
+    "new_domains": [
+      "INSURANCE"
+    ],
+    "path": "LLM"
+  },
+  {
+    "message": "Sent Rs.909.00\nFrom HDFC Bank A/C *3221\nTo Coverfox Insurance Brokin\nOn 22/05/26\nRef 123524809704\nNot You?\nCall 18002586161/SMS BLOCK UPI to 7308080808\n",
+    "legacy": "INSURANCE",
+    "new_classes": [
+      "INFORMATION",
+      "ACTION"
+    ],
+    "new_domains": [
+      "FINANCE"
+    ],
+    "path": "LLM"
+  },
+  {
+    "message": "Hi, Payment of Rs. 619.0 has failed for your Airtel Mobile 9486562584. Any amount, if debited will be refunded to your source account within a day. Please keep order ID 7461962899373543424 for reference.",
+    "legacy": "FINANCIAL",
+    "new_classes": [
+      "FINANCIAL"
+    ],
+    "new_domains": [
+      "FINANCE"
+    ],
+    "path": "RULE_ENGINE"
+  },
+  {
+    "message": "Credit Alert!\nRs.1500.00 credited to HDFC Bank A/c XX3221 on 16-05-26 from VPA nagarajan21671@oksbi (UPI 613658205104)\n",
+    "legacy": "FINANCIAL",
+    "new_classes": [
+      "FINANCIAL"
+    ],
+    "new_domains": [
+      "FINANCE"
+    ],
+    "path": "RULE_ENGINE"
+  },
+  {
+    "message": "Dear Customer, Your a/c no. XXXXXXXX3724 is debited for Rs.2000.00 on 16-05-26 and a/c XXXXXXX221 credited (IMPS Ref no 613612732656). -SBI",
+    "legacy": "FINANCIAL",
+    "new_classes": [
+      "FINANCIAL"
+    ],
+    "new_domains": [
+      "FINANCE"
+    ],
+    "path": "RULE_ENGINE"
+  },
+  {
+    "message": "We have received payment of Rs. 218 via YONO by SBI and same has been credited to your SBI CARD ending with 69 on 12-MAY-26",
+    "legacy": "FINANCIAL",
+    "new_classes": [
+      "FINANCIAL"
+    ],
+    "new_domains": [
+      "FINANCE"
+    ],
+    "path": "RULE_ENGINE"
+  },
+  {
+    "message": "E-statement of SBI Credit Card ending XX07 dated 11/05/2026 has been mailed. If not received, SMS ENRS to 5676791. Total Amt Due Rs 218; Min Amt Due Rs 200; Payable by 31/05/2026. Click https://sbicard.com/quickpaynet to pay your bill  \n",
+    "legacy": "INSURANCE",
+    "new_classes": [
+      "FINANCIAL"
+    ],
+    "new_domains": [
+      "FINANCE"
+    ],
+    "path": "RULE_ENGINE"
+  },
+  {
+    "message": "New Bill Alert:\nYour SBI Card Bill 8707 of Rs.218.02 is due on 31-May-2026. To pay, login to HDFC Bank Net/Mobile Banking>BillPay\nT&C. Ignore if paid",
+    "legacy": "FINANCIAL",
+    "new_classes": [
+      "INFORMATION",
+      "ALERT"
+    ],
+    "new_domains": [
+      "FINANCE"
+    ],
+    "path": "LLM"
+  },
+  {
+    "message": "Your Ac x3724 debited Rs.20,000.00 for transfer to Pradee Ac x3221 dt 08.05.26 Ref 612809511819. If not done by you, call 1800111109. YONO SBI",
+    "legacy": "FINANCIAL",
+    "new_classes": [
+      "FINANCIAL"
+    ],
+    "new_domains": [
+      "FINANCE"
+    ],
+    "path": "RULE_ENGINE"
+  },
+  {
+    "message": "Received!\nINR 20,000.00 in HDFC Bank A/c xx3221\nOn 08-05-26\nFor IMPS -PRADEEP P- 612809511819\nAvl bal INR 21,844.01",
+    "legacy": "FINANCIAL",
+    "new_classes": [
+      "FINANCIAL"
+    ],
+    "new_domains": [
+      "FINANCE"
+    ],
+    "path": "LLM"
+  },
+  {
+    "message": "Dear Customer, Your a/c no. XXXXXXXX3724 is debited for Rs.20000.00 on 08-05-26 and a/c XXXXXXX221 credited (IMPS Ref no 612809511819). -SBI",
+    "legacy": "FINANCIAL",
+    "new_classes": [
+      "FINANCIAL"
+    ],
+    "new_domains": [
+      "FINANCE"
+    ],
+    "path": "RULE_ENGINE"
+  },
+  {
+    "message": "Received!\nINR 2,000.00 in HDFC Bank A/c xx3221\nOn 07-05-26\nFor IMPS -PRADEEP P- 612720824725\nAvl bal INR 4,371.01",
+    "legacy": "FINANCIAL",
+    "new_classes": [
+      "ACTION",
+      "INFORMATION"
+    ],
+    "new_domains": [
+      "FINANCE"
+    ],
+    "path": "LLM"
+  },
+  {
+    "message": "PNR-4650304006\nTrn:17236\nDt:05-05-26 Dep.Time-19:15 Hrs.\nFrm NCJ to HSRA\nCls:SL\nP1-S6,78\nBoarding allowed from NCJ only\nChart Prepared\nUrl for coach position: https://enquiry.indianrail.gov.in/mntes/C?u=flghkNdqxNejejgkN8k \nDownload RailOne for latest updates https://railone.indianrailways.gov.in \nFor Enquiry/Complaint/Assistance, please dial 139 IR-CRIS",
+    "legacy": "FYI",
+    "new_classes": [
+      "INFORMATION"
+    ],
+    "new_domains": [
+      "TRAVEL"
+    ],
+    "path": "RULE_ENGINE"
+  },
+  {
+    "message": "Rs.39.00 spent on your SBI Credit Card ending 8707 at AIRTELIN on 04/05/26. Trxn. not done by you? Report at https://sbicard.com/Dispute",
+    "legacy": "FINANCIAL",
+    "new_classes": [
+      "FINANCIAL"
+    ],
+    "new_domains": [
+      "FINANCE"
+    ],
+    "path": "RULE_ENGINE"
+  },
+  {
+    "message": "Credit Alert!\nRs.482.00 credited to HDFC Bank A/c XX3221 on 04-05-26 from VPA nagarajan21671@axl (UPI 404987350643)\n",
+    "legacy": "FINANCIAL",
+    "new_classes": [
+      "FINANCIAL"
+    ],
+    "new_domains": [
+      "FINANCE"
+    ],
+    "path": "RULE_ENGINE"
+  },
+  {
+    "message": "PNR-4941680424\nTrn:12634\nDt:04-05-26 Dep.Time-18:23 Hrs.\nFrm NCJ to TBM\nCls:3E\nP1-M1,14\nBoarding allowed from NCJ only\nChart Prepared\nUrl for coach position: https://enquiry.indianrail.gov.in/mntes/C?u=fgkhiNdqxNeiejgkNcf \nDownload RailOne for latest updates https://railone.indianrailways.gov.in \nFor Enquiry/Complaint/Assistance, please dial 139 IR-CRIS",
+    "legacy": "FYI",
+    "new_classes": [
+      "INFORMATION"
+    ],
+    "new_domains": [
+      "TRAVEL"
+    ],
+    "path": "RULE_ENGINE"
+  },
+  {
+    "message": "We have received payment of Rs. 9800 via YONO by SBI and same has been credited to your SBI CARD ending with 69 on 30-APR-26",
+    "legacy": "FINANCIAL",
+    "new_classes": [
+      "FINANCIAL"
+    ],
+    "new_domains": [
+      "FINANCE"
+    ],
+    "path": "RULE_ENGINE"
+  },
+  {
+    "message": "Rs.134.00 spent on your SBI Credit Card ending 8707 at Zepto on 02/05/26. Trxn. not done by you? Report at https://sbicard.com/Dispute",
+    "legacy": "FINANCIAL",
+    "new_classes": [
+      "FINANCIAL"
+    ],
+    "new_domains": [
+      "FINANCE"
+    ],
+    "path": "RULE_ENGINE"
+  },
+  {
+    "message": "Received!\nINR 1,50,000.00 in HDFC Bank A/c xx3221\nOn 02-05-26\nFor IMPS -PRADEEP P- 612209653052\nAvl bal INR 1,53,389.01",
+    "legacy": "FINANCIAL",
+    "new_classes": [
+      "INFORMATION",
+      "ACTION"
+    ],
+    "new_domains": [
+      "FINANCE"
+    ],
+    "path": "LLM"
+  },
+  {
+    "message": "Your Ac x3724 debited Rs.1,50,000.00 for transfer to Pradee Ac x3221 dt 02.05.26 Ref 612209653052. If not done by you, call 1800111109. YONO SBI",
+    "legacy": "FINANCIAL",
+    "new_classes": [
+      "FINANCIAL"
+    ],
+    "new_domains": [
+      "FINANCE"
+    ],
+    "path": "RULE_ENGINE"
+  },
+  {
+    "message": "Dear Customer, Your a/c no. XXXXXXXX3724 is debited for Rs.150000.00 on 02-05-26 and a/c XXXXXXX221 credited (IMPS Ref no 612209653052). -SBI",
+    "legacy": "FINANCIAL",
+    "new_classes": [
+      "FINANCIAL"
+    ],
+    "new_domains": [
+      "FINANCE"
+    ],
+    "path": "RULE_ENGINE"
+  },
+  {
+    "message": "PNR-4854214907\nTrn:12633\nDt:02-05-26 Dep.Time-17:47 Hrs.\nFrm TBM to NCJ\nCls:3E\nP1-M1,25\nP2-M1,28\nBoarding allowed from TBM only\nChart Prepared\nUrl for coach position: https://enquiry.indianrail.gov.in/mntes/C?u=fgkhhN7pcNegejgkNcf \nDownload RailOne for latest updates https://railone.indianrailways.gov.in \nFor Enquiry/Complaint/Assistance, please dial 139 IR-CRIS",
+    "legacy": "FYI",
+    "new_classes": [
+      "INFORMATION"
+    ],
+    "new_domains": [
+      "TRAVEL"
+    ],
+    "path": "RULE_ENGINE"
+  },
+  {
+    "message": "Credit Alert!\nRs.500.00 credited to HDFC Bank A/c XX3221 on 30-04-26 from VPA shobanakumari1992@okaxis (UPI 648650475431)\n",
+    "legacy": "FINANCIAL",
+    "new_classes": [
+      "FINANCIAL"
+    ],
+    "new_domains": [
+      "FINANCE"
+    ],
+    "path": "RULE_ENGINE"
+  },
+  {
+    "message": "Received!\nINR 15,000.00 in HDFC Bank A/c xx3221\nOn 30-04-26\nFor IMPS -PRADEEP P- 612017526031\nAvl bal INR 20,389.01",
+    "legacy": "FINANCIAL",
+    "new_classes": [
+      "INFORMATION",
+      "MEMORY"
+    ],
+    "new_domains": [
+      "FINANCE"
+    ],
+    "path": "LLM"
+  },
+  {
+    "message": "Dear Customer, Your a/c no. XXXXXXXX3724 is debited for Rs.15000.00 on 30-04-26 and a/c XXXXXXX221 credited (IMPS Ref no 612017526031). -SBI",
+    "legacy": "FINANCIAL",
+    "new_classes": [
+      "FINANCIAL"
+    ],
+    "new_domains": [
+      "FINANCE"
+    ],
+    "path": "RULE_ENGINE"
+  },
+  {
+    "message": "Your A/C XXXXX797859 Credited INR 25,000.00 on 30/04/26 -Deposit by transfer from Mr. PRADEEPP. Avl Bal INR 25,000.00-SBI",
+    "legacy": "FINANCIAL",
+    "new_classes": [
+      "FINANCIAL"
+    ],
+    "new_domains": [
+      "FINANCE"
+    ],
+    "path": "RULE_ENGINE"
+  },
+  {
+    "message": "Your A/C XXXXX253724 Debited INR 9,800.00 on 30/04/26 -Transferred to SBI CARDS AND PAYMEN. Avl Balance INR 2,28,615.82-SBI",
+    "legacy": "FINANCIAL",
+    "new_classes": [
+      "FINANCIAL"
+    ],
+    "new_domains": [
+      "FINANCE"
+    ],
+    "path": "RULE_ENGINE"
+  },
+  {
+    "message": "Dear Customer, Your a/c no. XXXXXXXX3724 is credited by Rs.235000.00 on 30-04-26 by a/c linked to mobile 9XXXXXX584-PRADEEP PA (IMPS Ref# 612054920771)-SBI",
+    "legacy": "FINANCIAL",
+    "new_classes": [
+      "FINANCIAL"
+    ],
+    "new_domains": [
+      "FINANCE"
+    ],
+    "path": "RULE_ENGINE"
+  },
+  {
+    "message": "Rs.450 spent on Zomato",
+    "legacy": "FINANCIAL",
+    "new_classes": [
+      "FINANCIAL"
+    ],
+    "new_domains": [
+      "FINANCE"
+    ],
+    "path": "RULE_ENGINE"
+  },
+  {
+    "message": "Dear Customer, Renew your insurance policy before its expiry 16/06/2026.",
+    "legacy": "INSURANCE",
+    "new_classes": [
+      "ACTION",
+      "FINANCIAL"
+    ],
+    "new_domains": [
+      "INSURANCE"
+    ],
+    "path": "RULE_ENGINE"
+  },
+  {
+    "message": "Please pick up the science project folder for Ashi from class today.",
+    "legacy": "FYI",
+    "new_classes": [
+      "INFORMATION",
+      "ACTION",
+      "MEMORY"
+    ],
+    "new_domains": [
+      "EDUCATION",
+      "FAMILY"
+    ],
+    "path": "LLM"
+  }
+]

@@ -1,0 +1,369 @@
+============================================================
+1. OVERALL STATISTICS
+============================================================
+Total Signals Processed: 531
+
+--- Version 2A.1 (Before) ---
+  REVIEW: 376 (70.81%)
+  REJECTED: 155 (29.19%)
+
+--- Version 2A.2 (After) ---
+  REVIEW: 136 (25.61%)
+  REJECTED: 101 (19.02%)
+  QUALIFIED: 294 (55.37%)
+
+============================================================
+2. MOVEMENT ANALYSIS
+============================================================
+  REVIEW -> QUALIFIED: 294
+  REJECTED -> REVIEW: 54
+  REJECTED -> QUALIFIED: 0
+  QUALIFIED -> REVIEW: 0
+  QUALIFIED -> REJECTED: 0
+  NO CHANGE: 183
+
+============================================================
+3. FAMILY CONTEXT IMPACT
+============================================================
+Total signals matching family context: 70
+Examples promoted due to family context:
+  - [sms] JM-HDFCBK-S: 'Received!
+INR 2,000.00 in HDFC Bank A/c xx3221
+On 20-06-26
+For IMPS -PRADEEP P- 617106629082
+Avl bal INR 2,269.27' (REVIEW -> QUALIFIED)
+  - [sms] TX-CVRFOX-S: 'Hi pradeep, the previous insurance policy of your bike expires tomorrow. Log on to www.coverfox.com now and download your new policy papers from your My Account. Ensure safe travels at all times! - Team Coverfox' (REVIEW -> QUALIFIED)
+  - [sms] JM-HDFCBK-S: 'Received!
+INR 1,500.00 in HDFC Bank A/c xx3221
+On 14-06-26
+For IMPS -PRADEEP P- 616518986128
+Avl bal INR 1,720.03' (REVIEW -> QUALIFIED)
+  - [sms] JM-HDFCBK-S: 'Received!
+INR 58,000.00 in HDFC Bank A/c xx3221
+On 12-06-26
+For IMPS -PRADEEP P- 616308556455
+Avl bal INR 59,226.21' (REVIEW -> QUALIFIED)
+  - [sms] AD-CBSSBI-S: 'Your A/C XXXXX253724 Credited INR 52,044.00 on 12/06/26 -Deposit by transfer from Mr. PRADEEPP. Avl Bal INR 70,685.82-SBI' (REVIEW -> QUALIFIED)
+  - [sms] JM-HDFCBK-S: 'Received!
+INR 15,000.00 in HDFC Bank A/c xx3221
+On 09-06-26
+For IMPS -PRADEEP P- 616013775053
+Avl bal INR 16,514.21' (REVIEW -> QUALIFIED)
+  - [sms] VM-HDFCBK-S: 'Received!
+INR 2,000.00 in HDFC Bank A/c xx3221
+On 08-06-26
+For IMPS -PRADEEP P- 615920884455
+Avl bal INR 2,014.21' (REVIEW -> QUALIFIED)
+  - [sms] JM-HDFCBK-S: 'Received!
+INR 50,000.00 in HDFC Bank A/c xx3221
+On 07-06-26
+For IMPS -PRADEEP P- 615821786270
+Avl bal INR 50,014.21' (REVIEW -> QUALIFIED)
+  - [sms] AD-HDFCBK-S: 'Sent Rs.1300.00
+From HDFC Bank A/C *3221
+To SUNDAR SONNIA RAMAMURTHY
+On 07/06/26
+Ref 652424055954
+Not You?
+Call 18002586161/SMS BLOCK UPI to 7308080808
+' (REVIEW -> QUALIFIED)
+  - [sms] AD-CBSSBI-S: 'Your A/C XXXXX253724 Credited INR 60,050.00 on 07/06/26 -Deposit by transfer from Mr. PRADEEPP. Avl Bal INR 60,406.82-SBI' (REVIEW -> QUALIFIED)
+
+============================================================
+4. HIGH VALUE DOMAIN IMPACT
+============================================================
+Domain: EDUCATION       | Found: 1   | Qualified: 0   | Reviewed: 0   | Rejected: 1  
+Domain: MEDICAL         | Found: 2   | Qualified: 2   | Reviewed: 0   | Rejected: 0  
+Domain: INSURANCE       | Found: 56  | Qualified: 26  | Reviewed: 12  | Rejected: 18 
+Domain: FINANCE         | Found: 318 | Qualified: 272 | Reviewed: 41  | Rejected: 5  
+Domain: TRAVEL          | Found: 22  | Qualified: 11  | Reviewed: 3   | Rejected: 8  
+Domain: UTILITIES       | Found: 38  | Qualified: 22  | Reviewed: 16  | Rejected: 0  
+Domain: EMPLOYMENT      | Found: 4   | Qualified: 3   | Reviewed: 0   | Rejected: 1  
+Domain: GOVERNMENT      | Found: 8   | Qualified: 0   | Reviewed: 5   | Rejected: 3  
+Domain: SUBSCRIPTIONS   | Found: 0   | Qualified: 0   | Reviewed: 0   | Rejected: 0  
+Domain: APPOINTMENTS    | Found: 20  | Qualified: 9   | Reviewed: 4   | Rejected: 7  
+
+============================================================
+5. FINANCIAL PRESERVATION VALIDATION
+============================================================
+Total Financial Signals Found: 318
+  REVIEW: 61
+  QUALIFIED: 251
+  REJECTED: 6
+Rejected Financial Signals (6):
+  - [sms] AD-SBICRD-T: '053470 is the OTP for Trxn. of INR 185.00 at Flipkart with your credit card ending 8707. OTP is valid for 10 mins. Do not share it with anyone - SBI Card' (Reason: DUPLICATE_SIGNAL)
+  - [sms] AD-HDFCBK-S: 'OTP is 964963 for txn of INR 7791.00 at FLIPKART IN on HDFC Bank card ending 7074. Valid till  12:31. Do not share OTP for security reasons' (Reason: DUPLICATE_SIGNAL)
+  - [sms] AD-AIRTEL-S: 'Never respond to emails/embedded links in messages/calls asking you to update or verify KYC documents/User ID/Password/Debit Card Number/PIN/CVV/OTP etc. Immediately change your passwords/CVV/PIN if you have accidentally revealed your credentials.' (Reason: OTP)
+  - [sms] AX-SBICRD-S: 'Dear Cardholder, with the Balance Transfer on EMI facility on your credit card, you can avoid high interest rates! Simply transfer your other bank credit card's outstanding to your SBI Credit Card and pay in easy EMIs. Visit https://app.sbicard.com/SBICRD/BTEMI - SBI Card' (Reason: DUPLICATE_SIGNAL)
+  - [sms] AD-AIRTEL-S: 'Never respond to emails/embedded links in messages/calls asking you to update or verify KYC documents/User ID/Password/Debit Card Number/PIN/CVV/OTP etc. Immediately change your passwords/CVV/PIN if you have accidentally revealed your credentials.' (Reason: DUPLICATE_SIGNAL)
+  - [sms] AD-AIRTEL-S: 'Never respond to emails/embedded links in messages/calls asking you to update or verify KYC documents/User ID/Password/Debit Card Number/PIN/CVV/OTP etc. Immediately change your passwords/CVV/PIN if you have accidentally revealed your credentials.' (Reason: DUPLICATE_SIGNAL)
+
+============================================================
+6. REVIEW QUEUE ANALYSIS
+============================================================
+Top 10 Senders in REVIEW:
+  VK-SBICRD-T: 17
+  VM-MASIST-S: 7
+  AD-SBYONO-T: 6
+  Daily Badminton Update: 5
+  AT-AIRINF: 5
+  AD-SBICRD-T: 5
+  AD-CBSSBI-S: 5
+  VM-SBICRD-T: 5
+  AX-SBYONO-T: 5
+  Daily Badminton Update: ~ Ganesh Pandian 🫰🏾: 4
+
+Top 15 Keywords in REVIEW:
+  card: 82
+  otp: 82
+  sbi: 68
+  not: 49
+  share: 48
+  credit: 42
+  inr: 40
+  anyone: 40
+  valid: 35
+  ending: 34
+  airtel: 33
+  please: 33
+  dear: 31
+  https: 30
+  mins: 30
+
+Group Breakdown in REVIEW:
+  Other Review: 135
+  Apartment/Community Group: 1
+
+============================================================
+7. QUALIFIED SIGNALS PREVIEW (First 20 for manual categorization)
+============================================================
+[1] Sender: AD-HDFCBK-S | Msg: UPI LITE Top-up amounting to Rs.1000.00 has been successful.
+Ref No 653717778799 | Score: 70
+[2] Sender: JM-HDFCBK-T | Msg: Sent Rs.650.00
+From HDFC Bank A/C *3221
+To HAJNOOL AKBAR S
+On 20/06/26
+Ref 12501 | Score: 70
+[3] Sender: VA-SBIPSG-T | Msg: Dear Customer, Your a/c no. XXXXXXXX3724 is debited for Rs.2000.00 on 20-06-26 a | Score: 70
+[4] Sender: JM-HDFCBK-S | Msg: Received!
+INR 2,000.00 in HDFC Bank A/c xx3221
+On 20-06-26
+For IMPS -PRADEEP P-  | Score: 70
+[5] Sender: VM-SBICRD-S | Msg: Rs.293.00 spent on your SBI Credit Card ending 8707 at FLIPKARTINTERNETPvt on 19 | Score: 70
+[6] Sender: JM-HDFCBK-S | Msg: UPI LITE Top-up amounting to Rs.500.00 has been successful.
+Ref No 616984678032
+ | Score: 70
+[7] Sender: AX-ICICIT-S | Msg: ICICI Bank Prepaid Card services will be unavailable from 10:30 P.M. to 11:30 P. | Score: 70
+[8] Sender: JD-HDFCBK-S | Msg: Alert! Rs. 7791 refunded by FLIPKART INTERNET PR on 15/JUN/2026 & adjusted again | Score: 70
+[9] Sender: VM-SBICRD-S | Msg: Dear Cardholder, with the Balance Transfer on EMI facility on your credit card,  | Score: 70
+[10] Sender: TX-CVRFOX-S | Msg: Hi pradeep, the previous insurance policy of your bike expires tomorrow. Log on  | Score: 70
+[11] Sender: AD-HDFCBK-S | Msg: Sent Rs.450.76
+From HDFC Bank A/C *3221
+To APOLLO PHARMACIES LIMITED
+On 14/06/26 | Score: 70
+[12] Sender: AD-HDFCBK-S | Msg: UPI LITE Top-up amounting to Rs.500.00 has been successful.
+Ref No 653155887057
+ | Score: 70
+[13] Sender: VK-SBYONO-S | Msg: Your Ac x3724 debited Rs.1,500.00 for transfer to Pradee Ac x3221 dt 14.06.26 Re | Score: 70
+[14] Sender: JM-HDFCBK-S | Msg: Received!
+INR 1,500.00 in HDFC Bank A/c xx3221
+On 14-06-26
+For IMPS -PRADEEP P-  | Score: 70
+[15] Sender: VA-SBIPSG-T | Msg: Dear Customer, Your a/c no. XXXXXXXX3724 is debited for Rs.1500.00 on 14-06-26 a | Score: 70
+[16] Sender: VM-SBICRD-S | Msg: We have received payment of Rs. 3141 via YONO by SBI and same has been credited  | Score: 70
+[17] Sender: JM-HDFCBK-S | Msg: UPI LITE Top-up amounting to Rs.500.00 has been successful.
+Ref No 653197354739
+ | Score: 70
+[18] Sender: VM-SBICRD-S | Msg: Rs.573.00 spent on your SBI Credit Card ending 8707 at Flipkart on 14/06/26. Trx | Score: 70
+[19] Sender: VM-HDFCBK-T | Msg: Sent Rs.150.00
+From HDFC Bank A/C *3221
+To Vijayalakshmi Annamalai
+On 14/06/26
+R | Score: 70
+[20] Sender: VM-SBICRD-S | Msg: Rs.314.00 spent on your SBI Credit Card ending 8707 at FLIPKARTINTERNETPRIV on 1 | Score: 70
+
+============================================================
+8. REJECTED SIGNALS PREVIEW (First 20 for manual categorization)
+============================================================
+[1] Sender: Your devices are connected. | Msg: Connected to Pradeep. | Reason: DUPLICATE_SIGNAL
+[2] Sender: Jewellery  | Msg: At Rs. 105! | Reason: DUPLICATE_SIGNAL
+[3] Sender: ‪+919489917406‬  | Msg: Incoming call | Reason: DUPLICATE_SIGNAL
+[4] Sender: Ashi | Msg: Incoming call | Reason: DUPLICATE_SIGNAL
+[5] Sender: Ashi | Msg: Incoming call | Reason: DUPLICATE_SIGNAL
+[6] Sender: Ashi | Msg: Incoming call | Reason: DUPLICATE_SIGNAL
+[7] Sender: Ashi | Msg: Incoming call | Reason: DUPLICATE_SIGNAL
+[8] Sender: Ashi | Msg: Incoming call | Reason: DUPLICATE_SIGNAL
+[9] Sender: Ashi | Msg: Incoming call | Reason: DUPLICATE_SIGNAL
+[10] Sender: Ashi | Msg: Ongoing call | Reason: DUPLICATE_SIGNAL
+[11] Sender: Your devices are connected. | Msg: Connected to Pradeep. | Reason: DUPLICATE_SIGNAL
+[12] Sender: Your devices are connected. | Msg: Connected to Pradeep. | Reason: DUPLICATE_SIGNAL
+[13] Sender: Ashi | Msg: Ongoing call | Reason: DUPLICATE_SIGNAL
+[14] Sender: Ashi | Msg: Ongoing call | Reason: DUPLICATE_SIGNAL
+[15] Sender: Trunks  | Msg: At Rs. 314! | Reason: DUPLICATE_SIGNAL
+[16] Sender: Tshirts  | Msg: At Rs. 170! | Reason: DUPLICATE_SIGNAL
+[17] Sender: Nag Sittapa Alt | Msg: 📷 Photo | Reason: SYSTEM_NOTIFICATION
+[18] Sender: Nag Sittapa Alt | Msg: 📷 Photo | Reason: DUPLICATE_SIGNAL
+[19] Sender: AD-TFACTR-S | Msg: 2467 is your OTP for phone verification.
+
+SOLV | Reason: OTP
+[20] Sender: AX-TFACTR-S | Msg: 9200 is your OTP for phone verification.
+
+SOLV | Reason: OTP
+
+============================================================
+9. TOP QUALIFICATION REASONS
+============================================================
+  Domain Boost: finance: 191
+  Family + Domain Boost: 48
+  Domain Boost: finance, utilities: 14
+  Domain Boost: insurance, finance: 14
+  Domain Boost: insurance: 6
+  Domain Boost: travel: 5
+  Domain Boost: finance, appointments: 4
+  Domain Boost: finance, employment: 3
+  Domain Boost: utilities: 2
+  Domain Boost: insurance, utilities: 2
+  Domain Boost: travel, utilities: 1
+  Domain Boost: medical, appointments: 1
+  Domain Boost: medical, finance: 1
+  Domain Boost: finance, travel: 1
+  Domain Boost: travel, appointments: 1
+
+============================================================
+10. BEFORE VS AFTER EXAMPLES
+============================================================
+Example 1:
+  Signal:  [sms] AT-AIRWBK-S: 'Your Airtel number may be blocked soon due to no recharge. 
+Visit your nearest Airtel store or retailer and recharge now to keep your number active for bank messages, OTPs & important calls.'
+  2A.1:    Score 10 (REJECTED)
+  2A.2:    Score 25 (REVIEW)
+  Reason:  Domain Boost / Financial Preservation
+Example 2:
+  Signal:  [sms] VM-HDFCBK-S: 'Statement Generated:
+For HDFC Bank Credit Card XX7074.
+View: https://1.hdfc.bank.in/HDFCBK/v/FaSbeb
+Pay: https://1.hdfc.bank.in/HDFCBK/v/FaSbec'
+  2A.1:    Score 15 (REJECTED)
+  2A.2:    Score 25 (REVIEW)
+  Reason:  Domain Boost / Financial Preservation
+Example 3:
+  Signal:  [sms] AD-HDFCBK-S: 'UPI LITE Top-up amounting to Rs.1000.00 has been successful.
+Ref No 653717778799
+- HDFC Bank
+'
+  2A.1:    Score 40 (REVIEW)
+  2A.2:    Score 70 (QUALIFIED)
+  Reason:  Domain Boost / Financial Preservation
+Example 4:
+  Signal:  [sms] JM-HDFCBK-T: 'Sent Rs.650.00
+From HDFC Bank A/C *3221
+To HAJNOOL AKBAR S
+On 20/06/26
+Ref 125011130633
+Not You?
+Call 18002586161/SMS BLOCK UPI to 7308080808
+'
+  2A.1:    Score 40 (REVIEW)
+  2A.2:    Score 70 (QUALIFIED)
+  Reason:  Domain Boost / Financial Preservation
+Example 5:
+  Signal:  [sms] VA-SBIPSG-T: 'Dear Customer, Your a/c no. XXXXXXXX3724 is debited for Rs.2000.00 on 20-06-26 and a/c XXXXXXX221 credited (IMPS Ref no 617106629082). -SBI'
+  2A.1:    Score 40 (REVIEW)
+  2A.2:    Score 70 (QUALIFIED)
+  Reason:  Domain Boost / Financial Preservation
+Example 6:
+  Signal:  [sms] JM-HDFCBK-S: 'Received!
+INR 2,000.00 in HDFC Bank A/c xx3221
+On 20-06-26
+For IMPS -PRADEEP P- 617106629082
+Avl bal INR 2,269.27'
+  2A.1:    Score 40 (REVIEW)
+  2A.2:    Score 70 (QUALIFIED)
+  Reason:  Family Context
+Example 7:
+  Signal:  [sms] VA-AMEXIN-S: 'Stay safe! You may receive fake traffic e-challan messages asking for quick payment. Avoid clicking links or sharing OTPs. Always verify details on official government websites. Learn more with Amex: https://go.amex/online-safety'
+  2A.1:    Score 10 (REJECTED)
+  2A.2:    Score 25 (REVIEW)
+  Reason:  Domain Boost / Financial Preservation
+Example 8:
+  Signal:  [sms] VM-SBICRD-S: 'Rs.293.00 spent on your SBI Credit Card ending 8707 at FLIPKARTINTERNETPvt on 19/06/26. Trxn. not done by you? Report at https://sbicard.com/Dispute'
+  2A.1:    Score 40 (REVIEW)
+  2A.2:    Score 70 (QUALIFIED)
+  Reason:  Domain Boost / Financial Preservation
+Example 9:
+  Signal:  [sms] VK-SBICRD-T: '137059 is the OTP for Trxn. of INR 293.00 at FLIPKART I with your credit card ending 8707. OTP is valid for 10 mins. Do not share it with anyone - SBI Card'
+  2A.1:    Score 10 (REJECTED)
+  2A.2:    Score 25 (REVIEW)
+  Reason:  Domain Boost / Financial Preservation
+Example 10:
+  Signal:  [sms] JM-HDFCBK-S: 'UPI LITE Top-up amounting to Rs.500.00 has been successful.
+Ref No 616984678032
+- HDFC Bank
+'
+  2A.1:    Score 40 (REVIEW)
+  2A.2:    Score 70 (QUALIFIED)
+  Reason:  Domain Boost / Financial Preservation
+Example 11:
+  Signal:  [sms] AX-ICICIT-S: 'ICICI Bank Prepaid Card services will be unavailable from 10:30 P.M. to 11:30 P.M. on 16-Jun-26 due to scheduled maintenance activity. Please plan your transactions accordingly. We apologise for the inconvenience.'
+  2A.1:    Score 40 (REVIEW)
+  2A.2:    Score 70 (QUALIFIED)
+  Reason:  Domain Boost / Financial Preservation
+Example 12:
+  Signal:  [sms] JD-HDFCBK-S: 'Alert! Rs. 7791 refunded by FLIPKART INTERNET PR on 15/JUN/2026 & adjusted against HDFC Bank Credit Card 7074 View updated balance here: https://1.hdfc.bank.in/HDFCBK/s/PW4mOdvR'
+  2A.1:    Score 40 (REVIEW)
+  2A.2:    Score 70 (QUALIFIED)
+  Reason:  Domain Boost / Financial Preservation
+Example 13:
+  Signal:  [sms] VM-SBICRD-S: 'Dear Cardholder, with the Balance Transfer on EMI facility on your credit card, you can avoid high interest rates! Simply transfer your other bank credit card's outstanding to your SBI Credit Card and pay in easy EMIs. Visit https://app.sbicard.com/SBICRD/BTEMI - SBI Card'
+  2A.1:    Score 40 (REVIEW)
+  2A.2:    Score 70 (QUALIFIED)
+  Reason:  Domain Boost / Financial Preservation
+Example 14:
+  Signal:  [sms] VK-SBICRD-T: '222604 is the OTP for Trxn. of INR 199.00 at BHARTI AIR with your credit card ending 8707. OTP is valid for 10 mins. Do not share it with anyone - SBI Card'
+  2A.1:    Score 10 (REJECTED)
+  2A.2:    Score 25 (REVIEW)
+  Reason:  Domain Boost / Financial Preservation
+Example 15:
+  Signal:  [sms] TX-CVRFOX-S: 'Hi pradeep, the previous insurance policy of your bike expires tomorrow. Log on to www.coverfox.com now and download your new policy papers from your My Account. Ensure safe travels at all times! - Team Coverfox'
+  2A.1:    Score 40 (REVIEW)
+  2A.2:    Score 70 (QUALIFIED)
+  Reason:  Family Context
+Example 16:
+  Signal:  [sms] AD-HDFCBK-S: 'Sent Rs.450.76
+From HDFC Bank A/C *3221
+To APOLLO PHARMACIES LIMITED
+On 14/06/26
+Ref 308039514890
+Not You?
+Call 18002586161/SMS BLOCK UPI to 7308080808
+'
+  2A.1:    Score 40 (REVIEW)
+  2A.2:    Score 70 (QUALIFIED)
+  Reason:  Domain Boost / Financial Preservation
+Example 17:
+  Signal:  [sms] AD-HDFCBK-S: 'UPI LITE Top-up amounting to Rs.500.00 has been successful.
+Ref No 653155887057
+- HDFC Bank
+'
+  2A.1:    Score 40 (REVIEW)
+  2A.2:    Score 70 (QUALIFIED)
+  Reason:  Domain Boost / Financial Preservation
+Example 18:
+  Signal:  [sms] VK-SBYONO-S: 'Your Ac x3724 debited Rs.1,500.00 for transfer to Pradee Ac x3221 dt 14.06.26 Ref 616518986128. If not done by you, call 1800111109. YONO SBI'
+  2A.1:    Score 40 (REVIEW)
+  2A.2:    Score 70 (QUALIFIED)
+  Reason:  Domain Boost / Financial Preservation
+Example 19:
+  Signal:  [sms] JM-HDFCBK-S: 'Received!
+INR 1,500.00 in HDFC Bank A/c xx3221
+On 14-06-26
+For IMPS -PRADEEP P- 616518986128
+Avl bal INR 1,720.03'
+  2A.1:    Score 40 (REVIEW)
+  2A.2:    Score 70 (QUALIFIED)
+  Reason:  Family Context
+Example 20:
+  Signal:  [sms] VA-SBIPSG-T: 'Dear Customer, Your a/c no. XXXXXXXX3724 is debited for Rs.1500.00 on 14-06-26 and a/c XXXXXXX221 credited (IMPS Ref no 616518986128). -SBI'
+  2A.1:    Score 40 (REVIEW)
+  2A.2:    Score 70 (QUALIFIED)
+  Reason:  Domain Boost / Financial Preservation

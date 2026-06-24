@@ -232,15 +232,18 @@ st.sidebar.title("☀️ Jarvis Companion")
 st.sidebar.markdown(f"**Last Sync (Postgres Live):** {last_refresh_time}")
 st.sidebar.markdown(f"**Last Storage Sync:** {last_storage_sync}")
 
-# Manual Refresh Button
-if st.sidebar.button("🔄 Refresh Insights", use_container_width=True):
-    with st.spinner("Syncing latest insights and clearing cache..."):
-        sync_success = CacheManager.download_all_insights()
+# Trigger Orchestrated Ingestion/LLM Pipeline
+if st.sidebar.button("🔄 Trigger Refresh Pipeline", use_container_width=True):
+    with st.spinner("Executing sequential pipeline run..."):
+        from services.pipeline_orchestrator import PipelineOrchestrator
+        res = PipelineOrchestrator.run_pipeline(run_type="ADHOC")
         st.cache_data.clear()
-        if sync_success:
-            st.sidebar.success("Insights synced and cache cleared!")
+        if res.get("status") == "SUCCESS":
+            st.sidebar.success("Pipeline executed successfully!")
+        elif res.get("status") == "SKIPPED_LOCKED":
+            st.sidebar.warning("Pipeline is already running!")
         else:
-            st.sidebar.warning("Cache cleared, but failed to sync all insights from storage.")
+            st.sidebar.error(f"Pipeline failed: {res.get('message')}")
         st.rerun()
 
 st.sidebar.markdown("---")
@@ -263,6 +266,32 @@ if selected_page != st.session_state.current_page:
     st.session_state.current_page = selected_page
     st.rerun()
 
+def fetch_system_status_from_db():
+    from services.supabase_repo import SupabaseRepo
+    from loguru import logger
+    try:
+        class DictObject:
+            def __init__(self, d):
+                self._d = d or {}
+            def __getattr__(self, name):
+                val = self._d.get(name)
+                if name in ('last_successful_refresh', 'started_at', 'completed_at', 'updated_at') and isinstance(val, str):
+                    try:
+                        return datetime.fromisoformat(val.replace("Z", "+00:00")).replace(tzinfo=None)
+                    except Exception:
+                        pass
+                return val
+
+        status_list = SupabaseRepo.fetch_system_status()
+        status_rec = DictObject(status_list[0]) if status_list else None
+        
+        runs_list = SupabaseRepo.fetch_pipeline_runs(limit=5)
+        runs_rec = [DictObject(r) for r in runs_list]
+        return status_rec, runs_rec
+    except Exception as e:
+        logger.error(f"Failed to fetch system status from Supabase: {e}")
+        return None, []
+
 # RENDER PAGES
 if st.session_state.current_page == "Landing Page":
     # Header
@@ -270,6 +299,24 @@ if st.session_state.current_page == "Landing Page":
     st.title(greeting)
     st.markdown("Here is your desktop summary of Jarvis insights.")
     st.markdown("---")
+
+    # Render Operational Health Status View
+    status_rec, runs_rec = fetch_system_status_from_db()
+    if status_rec:
+        st.markdown(f"### ⚙️ System Status: **{status_rec.current_status}**")
+        col_s1, col_s2, col_s3 = st.columns(3)
+        with col_s1:
+            st.metric("Last Successful Refresh", status_rec.last_successful_refresh.strftime("%Y-%m-%d %H:%M:%S") if status_rec.last_successful_refresh else "N/A")
+        with col_s2:
+            st.metric("Signals Processed (Last Run)", status_rec.signals_processed)
+        with col_s3:
+            st.metric("Todos / Fin Events / FYIs", f"{status_rec.todos_generated} / {status_rec.financial_events_generated} / {status_rec.fyi_generated}")
+        
+        if runs_rec:
+            with st.expander("Recent Pipeline Execution History"):
+                for r in runs_rec:
+                    st.write(f"⏱️ **{r.started_at.strftime('%Y-%m-%d %H:%M')}** | Type: `{r.run_type}` | Status: `{r.status}` | Duration: `{r.duration_seconds:.1f}s` | LLM Calls: `{r.llm_calls}`" + (f" | Error: `{r.error_message}`" if r.status == "FAILED" else ""))
+        st.markdown("---")
     
     # Summary Card
     st.markdown(

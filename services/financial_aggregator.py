@@ -34,14 +34,14 @@ class FinancialAggregator:
             logger.error(f"Failed to fetch signals from Supabase: {e}")
             signal_messages = {}
 
-        # 1. Detect and flag Internal Transfers
+        # 1. Clear existing summary tables
+        SupabaseRepo.clear_summary_tables()
+
+        # 2. Detect and flag Internal Transfers
         internal_transfer_leg_ids = cls.detect_internal_transfers(events, signal_messages)
 
-        # 2. Classify debit transactions and save classifications
+        # 3. Classify debit transactions and save classifications
         cls.classify_transactions(events, signal_messages, internal_transfer_leg_ids)
-
-        # 3. Clear existing summary tables
-        SupabaseRepo.clear_summary_tables()
 
         # 4. Filter out internal transfers and credit events for spending rollups
         spending_events = []

@@ -25,13 +25,6 @@ class JarvisScheduler:
             id="runtime_heartbeat",
         )
 
-        self.scheduler.add_job(
-            self.run_consumer_sync,
-            "interval",
-            minutes=settings.consumer_poll_interval_minutes,
-            id="consumer_sync",
-        )
-
         self.scheduler.start()
 
         logger.success(

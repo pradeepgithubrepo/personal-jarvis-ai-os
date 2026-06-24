@@ -63,15 +63,29 @@ class FinancialClassifier:
             return "VEGETABLES", 1.0
 
         # Level 2: LLM Classification Fallback
+        import hashlib
+        from storage.repositories.classification_cache_repository import ClassificationCacheRepository
+
+        raw_str = f"tx_class:{t_title}:{m_name}:{v_handle}:{paid_from or ''}"
+        cache_key = hashlib.sha256(raw_str.encode("utf-8")).hexdigest()
+
+        cached = ClassificationCacheRepository.get(cache_key)
+        if cached and "category" in cached and "confidence" in cached:
+            logger.info(f"Financial Classifier Cache HIT: '{t_title}' mapped to '{cached['category']}'")
+            return cached["category"], cached["confidence"]
+
         logger.info(f"Fallback to LLM for transaction: '{t_title}' (merchant: '{m_name}', VPA: '{v_handle}')")
         try:
             llm_cat = cls._llm_classify(t_title, m_name, v_handle, paid_from)
             if llm_cat in cls.ALLOWED_CATEGORIES:
                 logger.info(f"LLM successfully classified transaction to '{llm_cat}'")
+                ClassificationCacheRepository.set(cache_key, {"category": llm_cat, "confidence": 0.9})
                 return llm_cat, 0.9
         except Exception as e:
             logger.error(f"LLM classification failed for transaction '{t_title}': {e}")
 
+        # Cache the fallback "OTHER" result as well to prevent repeatedly calling LLM for failures
+        ClassificationCacheRepository.set(cache_key, {"category": "OTHER", "confidence": 0.5})
         return "OTHER", 0.5
 
     @classmethod

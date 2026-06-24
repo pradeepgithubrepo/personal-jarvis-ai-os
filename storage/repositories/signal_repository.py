@@ -1,3 +1,4 @@
+from datetime import datetime
 import json
 
 from loguru import logger
@@ -90,6 +91,7 @@ class SignalRepository:
         summary,
         raw_data=None,
         message_id=None,
+        created_at=None,
     ):
 
         session = SessionLocal()
@@ -108,6 +110,7 @@ class SignalRepository:
                     if raw_data
                     else None
                 ),
+                created_at=created_at or datetime.utcnow()
             )
 
             session.add(signal)

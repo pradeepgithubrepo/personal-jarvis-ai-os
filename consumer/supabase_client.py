@@ -9,7 +9,7 @@ class SupabaseClient:
 
     def __init__(self, bucket: str = None):
         self.url = settings.supabase_url
-        self.key = settings.supabase_key
+        self.key = settings.supabase_secret_key or settings.supabase_key
         self.bucket = bucket or settings.supabase_bucket
         self.headers = {
             "apikey": self.key,
