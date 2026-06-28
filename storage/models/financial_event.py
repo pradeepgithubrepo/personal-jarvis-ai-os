@@ -1,7 +1,7 @@
 # storage/models/financial_event.py
 
 from datetime import datetime
-from sqlalchemy import Integer, String, Float, DateTime, ForeignKey
+from sqlalchemy import Integer, String, Float, DateTime
 from sqlalchemy.orm import Mapped, mapped_column
 from storage.models.base import Base
 
@@ -64,9 +64,8 @@ class FinancialEvent(Base):
         nullable=True
     )
     
-    source_signal_id: Mapped[int] = mapped_column(
-        Integer,
-        ForeignKey("signals.id", ondelete="CASCADE"),
+    source_signal_id: Mapped[str] = mapped_column(
+        String(100),
         nullable=False
     )
     

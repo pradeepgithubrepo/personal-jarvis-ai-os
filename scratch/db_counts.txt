@@ -1,0 +1,7 @@
+signals: 100
+mobile_signals: 337
+qualified_signals: 437
+understood_signals: 224
+todo_items: 3
+fyi_events: 67
+daily_briefs: 2

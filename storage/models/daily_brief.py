@@ -1,32 +1,43 @@
 # storage/models/daily_brief.py
 
+import uuid
 from datetime import datetime
-from sqlalchemy import Integer, String, Text, DateTime
+from sqlalchemy import String, DateTime, Text, Integer
 from sqlalchemy.orm import Mapped, mapped_column
 from storage.models.base import Base
 
 
 class DailyBrief(Base):
+    """
+    Stateful database representing Daily Brief summaries.
+    """
     __tablename__ = "daily_briefs"
 
-    id: Mapped[int] = mapped_column(
-        Integer,
-        primary_key=True
+    brief_id: Mapped[str] = mapped_column(
+        String(36), primary_key=True, default=lambda: str(uuid.uuid4())
     )
-    
-    date: Mapped[str] = mapped_column(
-        String(50),
-        unique=True,
-        nullable=False  # YYYY-MM-DD
+
+    brief_type: Mapped[str] = mapped_column(
+        String(50), nullable=False,
+        comment="MORNING | EVENING"
     )
-    
-    content_json: Mapped[str] = mapped_column(
-        Text,
-        nullable=False
+
+    generated_at: Mapped[datetime] = mapped_column(
+        DateTime, default=datetime.utcnow, nullable=False
     )
-    
-    created_at: Mapped[datetime] = mapped_column(
-        DateTime,
-        default=datetime.utcnow,
-        nullable=False
+
+    content: Mapped[str] = mapped_column(
+        Text, nullable=False
+    )
+
+    todo_count: Mapped[int] = mapped_column(
+        Integer, nullable=False, default=0
+    )
+
+    fyi_count: Mapped[int] = mapped_column(
+        Integer, nullable=False, default=0
+    )
+
+    fact_count: Mapped[int] = mapped_column(
+        Integer, nullable=False, default=0
     )

@@ -1,0 +1,1009 @@
+{
+  "monthly_spending_summary": {
+    "required": [
+      "summary_id",
+      "month_key",
+      "total_spend",
+      "transaction_count"
+    ],
+    "properties": {
+      "summary_id": {
+        "default": "gen_random_uuid()",
+        "description": "Note:\nThis is a Primary Key.<pk/>",
+        "format": "uuid",
+        "type": "string"
+      },
+      "month_key": {
+        "format": "character varying",
+        "maxLength": 7,
+        "type": "string"
+      },
+      "total_spend": {
+        "format": "numeric",
+        "type": "number"
+      },
+      "transaction_count": {
+        "format": "integer",
+        "type": "integer"
+      },
+      "created_at": {
+        "default": "CURRENT_TIMESTAMP",
+        "format": "timestamp with time zone",
+        "type": "string"
+      },
+      "updated_at": {
+        "default": "CURRENT_TIMESTAMP",
+        "format": "timestamp with time zone",
+        "type": "string"
+      }
+    },
+    "type": "object"
+  },
+  "pipeline_runs": {
+    "required": [
+      "run_id",
+      "run_type",
+      "status"
+    ],
+    "properties": {
+      "run_id": {
+        "description": "Note:\nThis is a Primary Key.<pk/>",
+        "format": "uuid",
+        "type": "string"
+      },
+      "run_type": {
+        "format": "character varying",
+        "maxLength": 50,
+        "type": "string"
+      },
+      "started_at": {
+        "default": "now()",
+        "format": "timestamp with time zone",
+        "type": "string"
+      },
+      "completed_at": {
+        "format": "timestamp with time zone",
+        "type": "string"
+      },
+      "status": {
+        "format": "character varying",
+        "maxLength": 20,
+        "type": "string"
+      },
+      "files_processed": {
+        "default": 0,
+        "format": "integer",
+        "type": "integer"
+      },
+      "signals_processed": {
+        "default": 0,
+        "format": "integer",
+        "type": "integer"
+      },
+      "todos_generated": {
+        "default": 0,
+        "format": "integer",
+        "type": "integer"
+      },
+      "financial_events_generated": {
+        "default": 0,
+        "format": "integer",
+        "type": "integer"
+      },
+      "fyi_generated": {
+        "default": 0,
+        "format": "integer",
+        "type": "integer"
+      },
+      "facts_generated": {
+        "default": 0,
+        "format": "integer",
+        "type": "integer"
+      },
+      "llm_calls": {
+        "default": 0,
+        "format": "integer",
+        "type": "integer"
+      },
+      "duration_seconds": {
+        "format": "numeric",
+        "type": "number"
+      },
+      "error_message": {
+        "format": "text",
+        "type": "string"
+      },
+      "error_type": {
+        "format": "character varying",
+        "maxLength": 50,
+        "type": "string"
+      }
+    },
+    "type": "object"
+  },
+  "monthly_category_spend": {
+    "required": [
+      "entry_id",
+      "month_key",
+      "category_name",
+      "amount",
+      "transaction_count"
+    ],
+    "properties": {
+      "entry_id": {
+        "default": "gen_random_uuid()",
+        "description": "Note:\nThis is a Primary Key.<pk/>",
+        "format": "uuid",
+        "type": "string"
+      },
+      "month_key": {
+        "format": "character varying",
+        "maxLength": 7,
+        "type": "string"
+      },
+      "category_name": {
+        "format": "character varying",
+        "maxLength": 100,
+        "type": "string"
+      },
+      "amount": {
+        "format": "numeric",
+        "type": "number"
+      },
+      "transaction_count": {
+        "format": "integer",
+        "type": "integer"
+      },
+      "created_at": {
+        "default": "CURRENT_TIMESTAMP",
+        "format": "timestamp with time zone",
+        "type": "string"
+      }
+    },
+    "type": "object"
+  },
+  "facts": {
+    "required": [
+      "fact_id"
+    ],
+    "properties": {
+      "fact_id": {
+        "description": "Note:\nThis is a Primary Key.<pk/>",
+        "format": "uuid",
+        "type": "string"
+      },
+      "confidence": {
+        "format": "numeric",
+        "type": "number"
+      },
+      "created_at": {
+        "format": "timestamp without time zone",
+        "type": "string"
+      },
+      "fact_type": {
+        "format": "character varying",
+        "maxLength": 50,
+        "type": "string"
+      },
+      "fact_value": {
+        "format": "jsonb"
+      },
+      "status": {
+        "default": "UNCONFIRMED",
+        "format": "character varying",
+        "maxLength": 30,
+        "type": "string"
+      },
+      "owner_agent": {
+        "format": "character varying",
+        "maxLength": 50,
+        "type": "string"
+      },
+      "source_agent": {
+        "format": "character varying",
+        "maxLength": 50,
+        "type": "string"
+      },
+      "source_type": {
+        "default": "OBSERVED",
+        "format": "character varying",
+        "maxLength": 30,
+        "type": "string"
+      },
+      "first_seen": {
+        "default": "now()",
+        "format": "timestamp with time zone",
+        "type": "string"
+      },
+      "last_seen": {
+        "default": "now()",
+        "format": "timestamp with time zone",
+        "type": "string"
+      },
+      "evidence": {
+        "format": "jsonb"
+      },
+      "updated_at": {
+        "default": "now()",
+        "format": "timestamp with time zone",
+        "type": "string"
+      }
+    },
+    "type": "object"
+  },
+  "todo_items": {
+    "required": [
+      "todo_id",
+      "title",
+      "category",
+      "priority",
+      "status",
+      "source_agent",
+      "confidence",
+      "created_at",
+      "updated_at"
+    ],
+    "properties": {
+      "todo_id": {
+        "description": "Note:\nThis is a Primary Key.<pk/>",
+        "format": "uuid",
+        "type": "string"
+      },
+      "title": {
+        "format": "character varying",
+        "maxLength": 200,
+        "type": "string"
+      },
+      "description": {
+        "format": "text",
+        "type": "string"
+      },
+      "category": {
+        "format": "character varying",
+        "maxLength": 30,
+        "type": "string"
+      },
+      "priority": {
+        "default": "MEDIUM",
+        "format": "character varying",
+        "maxLength": 20,
+        "type": "string"
+      },
+      "status": {
+        "default": "OPEN",
+        "format": "character varying",
+        "maxLength": 30,
+        "type": "string"
+      },
+      "due_date": {
+        "format": "timestamp with time zone",
+        "type": "string"
+      },
+      "source_agent": {
+        "format": "character varying",
+        "maxLength": 50,
+        "type": "string"
+      },
+      "source_reference": {
+        "format": "jsonb"
+      },
+      "confidence": {
+        "default": 1.0,
+        "format": "numeric",
+        "type": "number"
+      },
+      "created_at": {
+        "default": "now()",
+        "format": "timestamp with time zone",
+        "type": "string"
+      },
+      "updated_at": {
+        "default": "now()",
+        "format": "timestamp with time zone",
+        "type": "string"
+      }
+    },
+    "type": "object"
+  },
+  "todos": {
+    "required": [
+      "todo_id"
+    ],
+    "properties": {
+      "todo_id": {
+        "description": "Note:\nThis is a Primary Key.<pk/>",
+        "format": "uuid",
+        "type": "string"
+      },
+      "title": {
+        "format": "text",
+        "type": "string"
+      },
+      "description": {
+        "format": "text",
+        "type": "string"
+      },
+      "priority": {
+        "format": "text",
+        "type": "string"
+      },
+      "status": {
+        "format": "text",
+        "type": "string"
+      },
+      "due_date": {
+        "format": "timestamp without time zone",
+        "type": "string"
+      },
+      "source_signal_id": {
+        "format": "uuid",
+        "type": "string"
+      },
+      "created_at": {
+        "format": "timestamp without time zone",
+        "type": "string"
+      },
+      "updated_at": {
+        "format": "timestamp without time zone",
+        "type": "string"
+      }
+    },
+    "type": "object"
+  },
+  "user_actions": {
+    "required": [
+      "action_id"
+    ],
+    "properties": {
+      "action_id": {
+        "description": "Note:\nThis is a Primary Key.<pk/>",
+        "format": "uuid",
+        "type": "string"
+      },
+      "entity_type": {
+        "format": "text",
+        "type": "string"
+      },
+      "entity_id": {
+        "format": "text",
+        "type": "string"
+      },
+      "action": {
+        "format": "text",
+        "type": "string"
+      },
+      "action_timestamp": {
+        "format": "timestamp without time zone",
+        "type": "string"
+      },
+      "metadata": {
+        "format": "jsonb"
+      }
+    },
+    "type": "object"
+  },
+  "fact_relationships": {
+    "required": [
+      "id",
+      "subject_id",
+      "predicate",
+      "object_id"
+    ],
+    "properties": {
+      "id": {
+        "description": "Note:\nThis is a Primary Key.<pk/>",
+        "format": "bigint",
+        "type": "integer"
+      },
+      "subject_id": {
+        "description": "Note:\nThis is a Foreign Key to `facts.fact_id`.<fk table='facts' column='fact_id'/>",
+        "format": "uuid",
+        "type": "string"
+      },
+      "predicate": {
+        "format": "character varying",
+        "maxLength": 50,
+        "type": "string"
+      },
+      "object_id": {
+        "description": "Note:\nThis is a Foreign Key to `facts.fact_id`.<fk table='facts' column='fact_id'/>",
+        "format": "uuid",
+        "type": "string"
+      },
+      "confidence": {
+        "default": 0.5,
+        "format": "numeric",
+        "type": "number"
+      },
+      "created_at": {
+        "default": "now()",
+        "format": "timestamp with time zone",
+        "type": "string"
+      },
+      "updated_at": {
+        "default": "now()",
+        "format": "timestamp with time zone",
+        "type": "string"
+      }
+    },
+    "type": "object"
+  },
+  "signals": {
+    "required": [
+      "signal_id"
+    ],
+    "properties": {
+      "signal_id": {
+        "description": "Note:\nThis is a Primary Key.<pk/>",
+        "format": "uuid",
+        "type": "string"
+      },
+      "source": {
+        "format": "text",
+        "type": "string"
+      },
+      "sender": {
+        "format": "text",
+        "type": "string"
+      },
+      "message": {
+        "format": "text",
+        "type": "string"
+      },
+      "signal_timestamp": {
+        "format": "timestamp without time zone",
+        "type": "string"
+      },
+      "created_at": {
+        "format": "timestamp without time zone",
+        "type": "string"
+      },
+      "raw_signal_id": {
+        "format": "text",
+        "type": "string"
+      },
+      "metadata": {
+        "format": "jsonb"
+      }
+    },
+    "type": "object"
+  },
+  "financial_events": {
+    "required": [
+      "financial_event_id"
+    ],
+    "properties": {
+      "financial_event_id": {
+        "description": "Note:\nThis is a Primary Key.<pk/>",
+        "format": "uuid",
+        "type": "string"
+      },
+      "merchant": {
+        "format": "text",
+        "type": "string"
+      },
+      "amount": {
+        "format": "numeric",
+        "type": "number"
+      },
+      "currency": {
+        "format": "text",
+        "type": "string"
+      },
+      "category": {
+        "format": "text",
+        "type": "string"
+      },
+      "status": {
+        "format": "text",
+        "type": "string"
+      },
+      "event_timestamp": {
+        "format": "timestamp without time zone",
+        "type": "string"
+      },
+      "source_signal_id": {
+        "format": "uuid",
+        "type": "string"
+      },
+      "created_at": {
+        "format": "timestamp without time zone",
+        "type": "string"
+      },
+      "updated_at": {
+        "format": "timestamp without time zone",
+        "type": "string"
+      }
+    },
+    "type": "object"
+  },
+  "financial_transaction_classification": {
+    "required": [
+      "transaction_id",
+      "financial_event_id",
+      "classification",
+      "confidence"
+    ],
+    "properties": {
+      "transaction_id": {
+        "default": "gen_random_uuid()",
+        "description": "Note:\nThis is a Primary Key.<pk/>",
+        "format": "uuid",
+        "type": "string"
+      },
+      "financial_event_id": {
+        "description": "Note:\nThis is a Foreign Key to `financial_events.financial_event_id`.<fk table='financial_events' column='financial_event_id'/>",
+        "format": "uuid",
+        "type": "string"
+      },
+      "classification": {
+        "format": "character varying",
+        "maxLength": 50,
+        "type": "string"
+      },
+      "confidence": {
+        "format": "numeric",
+        "type": "number"
+      },
+      "created_at": {
+        "default": "CURRENT_TIMESTAMP",
+        "format": "timestamp with time zone",
+        "type": "string"
+      }
+    },
+    "type": "object"
+  },
+  "understood_signals": {
+    "required": [
+      "id",
+      "qualified_signal_id",
+      "raw_signal_id",
+      "signal_type",
+      "importance",
+      "confidence",
+      "summary",
+      "processing_path",
+      "llm_model_used",
+      "contract_json"
+    ],
+    "properties": {
+      "id": {
+        "description": "Note:\nThis is a Primary Key.<pk/>",
+        "format": "uuid",
+        "type": "string"
+      },
+      "qualified_signal_id": {
+        "format": "integer",
+        "type": "integer"
+      },
+      "raw_signal_id": {
+        "format": "character varying",
+        "maxLength": 100,
+        "type": "string"
+      },
+      "signal_type": {
+        "format": "character varying",
+        "maxLength": 50,
+        "type": "string"
+      },
+      "importance": {
+        "format": "character varying",
+        "maxLength": 20,
+        "type": "string"
+      },
+      "confidence": {
+        "format": "numeric",
+        "type": "number"
+      },
+      "summary": {
+        "format": "text",
+        "type": "string"
+      },
+      "reason": {
+        "format": "text",
+        "type": "string"
+      },
+      "processing_path": {
+        "format": "character varying",
+        "maxLength": 20,
+        "type": "string"
+      },
+      "llm_model_used": {
+        "format": "character varying",
+        "maxLength": 50,
+        "type": "string"
+      },
+      "contract_json": {
+        "format": "jsonb"
+      },
+      "is_verified": {
+        "default": false,
+        "format": "boolean",
+        "type": "boolean"
+      },
+      "created_at": {
+        "default": "now()",
+        "format": "timestamp without time zone",
+        "type": "string"
+      }
+    },
+    "type": "object"
+  },
+  "daily_briefs": {
+    "required": [
+      "brief_id",
+      "brief_type",
+      "generated_at",
+      "content",
+      "todo_count",
+      "fyi_count",
+      "fact_count"
+    ],
+    "properties": {
+      "brief_id": {
+        "description": "Note:\nThis is a Primary Key.<pk/>",
+        "format": "uuid",
+        "type": "string"
+      },
+      "brief_type": {
+        "format": "character varying",
+        "maxLength": 50,
+        "type": "string"
+      },
+      "generated_at": {
+        "default": "now()",
+        "format": "timestamp with time zone",
+        "type": "string"
+      },
+      "content": {
+        "format": "text",
+        "type": "string"
+      },
+      "todo_count": {
+        "default": 0,
+        "format": "integer",
+        "type": "integer"
+      },
+      "fyi_count": {
+        "default": 0,
+        "format": "integer",
+        "type": "integer"
+      },
+      "fact_count": {
+        "default": 0,
+        "format": "integer",
+        "type": "integer"
+      }
+    },
+    "type": "object"
+  },
+  "processed_files": {
+    "required": [
+      "file_id",
+      "file_name",
+      "bucket_name",
+      "file_path",
+      "file_hash",
+      "status"
+    ],
+    "properties": {
+      "file_id": {
+        "default": "gen_random_uuid()",
+        "description": "Note:\nThis is a Primary Key.<pk/>",
+        "format": "uuid",
+        "type": "string"
+      },
+      "file_name": {
+        "format": "character varying",
+        "maxLength": 255,
+        "type": "string"
+      },
+      "bucket_name": {
+        "format": "character varying",
+        "maxLength": 100,
+        "type": "string"
+      },
+      "file_path": {
+        "format": "character varying",
+        "maxLength": 500,
+        "type": "string"
+      },
+      "file_hash": {
+        "format": "character varying",
+        "maxLength": 64,
+        "type": "string"
+      },
+      "status": {
+        "format": "character varying",
+        "maxLength": 50,
+        "type": "string"
+      },
+      "processed_timestamp": {
+        "default": "CURRENT_TIMESTAMP",
+        "format": "timestamp with time zone",
+        "type": "string"
+      }
+    },
+    "type": "object"
+  },
+  "connection_test": {
+    "required": [
+      "id"
+    ],
+    "properties": {
+      "id": {
+        "description": "Note:\nThis is a Primary Key.<pk/>",
+        "format": "integer",
+        "type": "integer"
+      },
+      "created_at": {
+        "default": "now()",
+        "format": "timestamp without time zone",
+        "type": "string"
+      },
+      "test_message": {
+        "format": "text",
+        "type": "string"
+      }
+    },
+    "type": "object"
+  },
+  "user_preferences": {
+    "required": [
+      "preference_key"
+    ],
+    "properties": {
+      "preference_key": {
+        "description": "Note:\nThis is a Primary Key.<pk/>",
+        "format": "text",
+        "type": "string"
+      },
+      "preference_value": {
+        "format": "text",
+        "type": "string"
+      },
+      "updated_at": {
+        "format": "timestamp without time zone",
+        "type": "string"
+      }
+    },
+    "type": "object"
+  },
+  "system_status": {
+    "required": [
+      "system_name",
+      "current_status"
+    ],
+    "properties": {
+      "system_name": {
+        "default": "jarvis_system",
+        "description": "Note:\nThis is a Primary Key.<pk/>",
+        "format": "character varying",
+        "maxLength": 100,
+        "type": "string"
+      },
+      "current_status": {
+        "format": "character varying",
+        "maxLength": 50,
+        "type": "string"
+      },
+      "last_successful_refresh": {
+        "format": "timestamp with time zone",
+        "type": "string"
+      },
+      "current_run_id": {
+        "format": "uuid",
+        "type": "string"
+      },
+      "signals_processed": {
+        "default": 0,
+        "format": "integer",
+        "type": "integer"
+      },
+      "todos_generated": {
+        "default": 0,
+        "format": "integer",
+        "type": "integer"
+      },
+      "financial_events_generated": {
+        "default": 0,
+        "format": "integer",
+        "type": "integer"
+      },
+      "fyi_generated": {
+        "default": 0,
+        "format": "integer",
+        "type": "integer"
+      },
+      "updated_at": {
+        "default": "now()",
+        "format": "timestamp with time zone",
+        "type": "string"
+      }
+    },
+    "type": "object"
+  },
+  "salary_cycles": {
+    "required": [
+      "salary_cycle_id"
+    ],
+    "properties": {
+      "salary_cycle_id": {
+        "description": "Note:\nThis is a Primary Key.<pk/>",
+        "format": "uuid",
+        "type": "string"
+      },
+      "salary_date": {
+        "format": "timestamp without time zone",
+        "type": "string"
+      },
+      "salary_amount": {
+        "format": "numeric",
+        "type": "number"
+      },
+      "cycle_start": {
+        "format": "timestamp without time zone",
+        "type": "string"
+      },
+      "cycle_end": {
+        "format": "timestamp without time zone",
+        "type": "string"
+      },
+      "created_at": {
+        "format": "timestamp without time zone",
+        "type": "string"
+      }
+    },
+    "type": "object"
+  },
+  "monthly_category_trends": {
+    "required": [
+      "trend_id",
+      "month_key",
+      "category_name",
+      "current_amount",
+      "previous_amount",
+      "change_percentage"
+    ],
+    "properties": {
+      "trend_id": {
+        "default": "gen_random_uuid()",
+        "description": "Note:\nThis is a Primary Key.<pk/>",
+        "format": "uuid",
+        "type": "string"
+      },
+      "month_key": {
+        "format": "character varying",
+        "maxLength": 7,
+        "type": "string"
+      },
+      "category_name": {
+        "format": "character varying",
+        "maxLength": 100,
+        "type": "string"
+      },
+      "current_amount": {
+        "format": "numeric",
+        "type": "number"
+      },
+      "previous_amount": {
+        "format": "numeric",
+        "type": "number"
+      },
+      "change_percentage": {
+        "format": "numeric",
+        "type": "number"
+      },
+      "created_at": {
+        "default": "CURRENT_TIMESTAMP",
+        "format": "timestamp with time zone",
+        "type": "string"
+      }
+    },
+    "type": "object"
+  },
+  "fyi_events": {
+    "required": [
+      "event_id",
+      "event_type",
+      "category",
+      "title",
+      "importance",
+      "status",
+      "duplicate_count",
+      "created_at",
+      "updated_at"
+    ],
+    "properties": {
+      "event_id": {
+        "description": "Note:\nThis is a Primary Key.<pk/>",
+        "format": "uuid",
+        "type": "string"
+      },
+      "event_type": {
+        "format": "character varying",
+        "maxLength": 100,
+        "type": "string"
+      },
+      "category": {
+        "format": "character varying",
+        "maxLength": 50,
+        "type": "string"
+      },
+      "title": {
+        "format": "character varying",
+        "maxLength": 200,
+        "type": "string"
+      },
+      "description": {
+        "format": "text",
+        "type": "string"
+      },
+      "importance": {
+        "default": "MEDIUM",
+        "format": "character varying",
+        "maxLength": 20,
+        "type": "string"
+      },
+      "status": {
+        "default": "UNREAD",
+        "format": "character varying",
+        "maxLength": 30,
+        "type": "string"
+      },
+      "source_signal_id": {
+        "format": "uuid",
+        "type": "string"
+      },
+      "duplicate_count": {
+        "default": 1,
+        "format": "integer",
+        "type": "integer"
+      },
+      "created_at": {
+        "default": "now()",
+        "format": "timestamp with time zone",
+        "type": "string"
+      },
+      "updated_at": {
+        "default": "now()",
+        "format": "timestamp with time zone",
+        "type": "string"
+      }
+    },
+    "type": "object"
+  },
+  "merchant_mappings": {
+    "required": [
+      "mapping_id"
+    ],
+    "properties": {
+      "mapping_id": {
+        "description": "Note:\nThis is a Primary Key.<pk/>",
+        "format": "uuid",
+        "type": "string"
+      },
+      "merchant_name": {
+        "format": "text",
+        "type": "string"
+      },
+      "category": {
+        "format": "text",
+        "type": "string"
+      },
+      "confidence": {
+        "format": "numeric",
+        "type": "number"
+      },
+      "created_at": {
+        "format": "timestamp without time zone",
+        "type": "string"
+      },
+      "updated_at": {
+        "format": "timestamp without time zone",
+        "type": "string"
+      }
+    },
+    "type": "object"
+  }
+}

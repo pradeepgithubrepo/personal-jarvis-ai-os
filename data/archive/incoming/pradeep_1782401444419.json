@@ -1,0 +1,53 @@
+{
+    "generatedAt": 1782401444417,
+    "signals": [
+        {
+            "id": 558,
+            "deviceId": "pradeep_phone",
+            "source": "whatsapp",
+            "sender": "RTF 1☺️☺️: Anusha Sampat Times Kids",
+            "message": "Dear Parents \n\nTomorrow (Friday) will be a holiday on account of Muharram.\n\nThank you\nAnusha\nLittle Millennium \nAnakaputhur",
+            "timestamp": 1782379685404
+        },
+        {
+            "id": 559,
+            "deviceId": "pradeep_phone",
+            "source": "whatsapp",
+            "sender": "RTF 1☺️☺️ (2 messages): ~ Little Millennium Anakaputhur",
+            "message": "🎥 Video (1:49)",
+            "timestamp": 1782379989406
+        },
+        {
+            "id": 560,
+            "deviceId": "pradeep_phone",
+            "source": "whatsapp",
+            "sender": "RTF 1☺️☺️: Anusha Sampat Times Kids",
+            "message": "🔗 Little Millennium, Anakaputhur on Instagram (www.instagram.com)",
+            "timestamp": 1782387099028
+        },
+        {
+            "id": 561,
+            "deviceId": "pradeep_phone",
+            "source": "whatsapp",
+            "sender": "WhatsApp: Shraddha Jaiswal",
+            "message": "Let me see Pradeep ,pre prod week is going on I’ll update in sometime",
+            "timestamp": 1782389113585
+        },
+        {
+            "id": 562,
+            "deviceId": "pradeep_phone",
+            "source": "whatsapp",
+            "sender": "Shraddha Jaiswal",
+            "message": "Let me see Pradeep ,pre prod week is going on I’ll update in sometime",
+            "timestamp": 1782389113591
+        },
+        {
+            "id": 563,
+            "deviceId": "pradeep_phone",
+            "source": "sms",
+            "sender": "VM-SBICRD-T",
+            "message": "348959 is the OTP for Trxn. of INR 244.00 at FLIPKART I with your credit card ending 8707. OTP is valid for 10 mins. Do not share it with anyone - SBI Card",
+            "timestamp": 1782395051896
+        }
+    ]
+}

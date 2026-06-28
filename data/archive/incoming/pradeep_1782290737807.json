@@ -1,0 +1,69 @@
+{
+    "generatedAt": 1782290737807,
+    "signals": [
+        {
+            "id": 537,
+            "deviceId": "pradeep_phone",
+            "source": "whatsapp",
+            "sender": "Daily Badminton Update: ~ Imtiaz",
+            "message": "People coming today?",
+            "timestamp": 1782262727858
+        },
+        {
+            "id": 538,
+            "deviceId": "pradeep_phone",
+            "source": "whatsapp",
+            "sender": "Daily Badminton Update (2 messages): Naveen Rao",
+            "message": "Yes",
+            "timestamp": 1782262737148
+        },
+        {
+            "id": 539,
+            "deviceId": "pradeep_phone",
+            "source": "whatsapp",
+            "sender": "Daily Badminton Update (3 messages): Naveen Rao",
+            "message": "Started will reach another 10 min",
+            "timestamp": 1782262747297
+        },
+        {
+            "id": 540,
+            "deviceId": "pradeep_phone",
+            "source": "whatsapp",
+            "sender": "Family 🙂: Aappa",
+            "message": "👍🏽👍🏽😁",
+            "timestamp": 1782266897045
+        },
+        {
+            "id": 541,
+            "deviceId": "pradeep_phone",
+            "source": "whatsapp",
+            "sender": "WhatsApp: Nag Sittapa Alt",
+            "message": "📷 Photo",
+            "timestamp": 1782270254004
+        },
+        {
+            "id": 542,
+            "deviceId": "pradeep_phone",
+            "source": "whatsapp",
+            "sender": "Nag Sittapa Alt",
+            "message": "📷 Photo",
+            "timestamp": 1782270254013
+        },
+        {
+            "id": 543,
+            "deviceId": "pradeep_phone",
+            "source": "sms",
+            "sender": "VM-SBICRD-S",
+            "message": "Dear Cardholder, with the Balance Transfer on EMI facility on your credit card, you can avoid high interest rates! Simply transfer your other bank credit card's outstanding to your SBI Credit Card and pay in easy EMIs. Visit https:\/\/app.sbicard.com\/SBICRD\/BTEMI - SBI Card",
+            "timestamp": 1782284713091
+        },
+        {
+            "id": 544,
+            "deviceId": "pradeep_phone",
+            "source": "sms",
+            "sender": "JM-HDFCBN-S",
+            "message": "Dear Customer,\nA Personal Loan facility has been enabled for you basis your HDFC Bank relationship.\nCheck details: https:\/\/1.hdfc.bank.in\/HDFCBK\/s\/ky3PAlVv\nT&C",
+            "timestamp": 1782275993475
+        }
+    ]
+}

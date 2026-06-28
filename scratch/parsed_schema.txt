@@ -1,0 +1,211 @@
+Table: connection_test
+  Column: created_at | Type: string (timestamp without time zone) | NULLABLE
+  Column: id | Type: integer (integer) | REQUIRED
+  Column: test_message | Type: string (text) | NULLABLE
+
+Table: daily_briefs
+  Column: brief_id | Type: string (uuid) | REQUIRED
+  Column: brief_type | Type: string (character varying) | REQUIRED
+  Column: content | Type: string (text) | REQUIRED
+  Column: fact_count | Type: integer (integer) | REQUIRED
+  Column: fyi_count | Type: integer (integer) | REQUIRED
+  Column: generated_at | Type: string (timestamp with time zone) | REQUIRED
+  Column: todo_count | Type: integer (integer) | REQUIRED
+
+Table: fact_relationships
+  Column: confidence | Type: number (numeric) | NULLABLE
+  Column: created_at | Type: string (timestamp with time zone) | NULLABLE
+  Column: id | Type: integer (bigint) | REQUIRED
+  Column: object_id | Type: string (uuid) | REQUIRED
+  Column: predicate | Type: string (character varying) | REQUIRED
+  Column: subject_id | Type: string (uuid) | REQUIRED
+  Column: updated_at | Type: string (timestamp with time zone) | NULLABLE
+
+Table: facts
+  Column: confidence | Type: number (numeric) | NULLABLE
+  Column: created_at | Type: string (timestamp without time zone) | NULLABLE
+  Column: evidence | Type: None (jsonb) | NULLABLE
+  Column: fact_id | Type: string (uuid) | REQUIRED
+  Column: fact_type | Type: string (character varying) | NULLABLE
+  Column: fact_value | Type: None (jsonb) | NULLABLE
+  Column: first_seen | Type: string (timestamp with time zone) | NULLABLE
+  Column: last_seen | Type: string (timestamp with time zone) | NULLABLE
+  Column: owner_agent | Type: string (character varying) | NULLABLE
+  Column: source_agent | Type: string (character varying) | NULLABLE
+  Column: source_type | Type: string (character varying) | NULLABLE
+  Column: status | Type: string (character varying) | NULLABLE
+  Column: updated_at | Type: string (timestamp with time zone) | NULLABLE
+
+Table: financial_events
+  Column: amount | Type: number (numeric) | NULLABLE
+  Column: category | Type: string (text) | NULLABLE
+  Column: created_at | Type: string (timestamp without time zone) | NULLABLE
+  Column: currency | Type: string (text) | NULLABLE
+  Column: event_timestamp | Type: string (timestamp without time zone) | NULLABLE
+  Column: financial_event_id | Type: string (uuid) | REQUIRED
+  Column: merchant | Type: string (text) | NULLABLE
+  Column: source_signal_id | Type: string (uuid) | NULLABLE
+  Column: status | Type: string (text) | NULLABLE
+  Column: updated_at | Type: string (timestamp without time zone) | NULLABLE
+
+Table: financial_transaction_classification
+  Column: classification | Type: string (character varying) | REQUIRED
+  Column: confidence | Type: number (numeric) | REQUIRED
+  Column: created_at | Type: string (timestamp with time zone) | NULLABLE
+  Column: financial_event_id | Type: string (uuid) | REQUIRED
+  Column: transaction_id | Type: string (uuid) | REQUIRED
+
+Table: fyi_events
+  Column: category | Type: string (character varying) | REQUIRED
+  Column: created_at | Type: string (timestamp with time zone) | REQUIRED
+  Column: description | Type: string (text) | NULLABLE
+  Column: duplicate_count | Type: integer (integer) | REQUIRED
+  Column: event_id | Type: string (uuid) | REQUIRED
+  Column: event_type | Type: string (character varying) | REQUIRED
+  Column: importance | Type: string (character varying) | REQUIRED
+  Column: source_signal_id | Type: string (uuid) | NULLABLE
+  Column: status | Type: string (character varying) | REQUIRED
+  Column: title | Type: string (character varying) | REQUIRED
+  Column: updated_at | Type: string (timestamp with time zone) | REQUIRED
+
+Table: merchant_mappings
+  Column: category | Type: string (text) | NULLABLE
+  Column: confidence | Type: number (numeric) | NULLABLE
+  Column: created_at | Type: string (timestamp without time zone) | NULLABLE
+  Column: mapping_id | Type: string (uuid) | REQUIRED
+  Column: merchant_name | Type: string (text) | NULLABLE
+  Column: updated_at | Type: string (timestamp without time zone) | NULLABLE
+
+Table: monthly_category_spend
+  Column: amount | Type: number (numeric) | REQUIRED
+  Column: category_name | Type: string (character varying) | REQUIRED
+  Column: created_at | Type: string (timestamp with time zone) | NULLABLE
+  Column: entry_id | Type: string (uuid) | REQUIRED
+  Column: month_key | Type: string (character varying) | REQUIRED
+  Column: transaction_count | Type: integer (integer) | REQUIRED
+
+Table: monthly_category_trends
+  Column: category_name | Type: string (character varying) | REQUIRED
+  Column: change_percentage | Type: number (numeric) | REQUIRED
+  Column: created_at | Type: string (timestamp with time zone) | NULLABLE
+  Column: current_amount | Type: number (numeric) | REQUIRED
+  Column: month_key | Type: string (character varying) | REQUIRED
+  Column: previous_amount | Type: number (numeric) | REQUIRED
+  Column: trend_id | Type: string (uuid) | REQUIRED
+
+Table: monthly_spending_summary
+  Column: created_at | Type: string (timestamp with time zone) | NULLABLE
+  Column: month_key | Type: string (character varying) | REQUIRED
+  Column: summary_id | Type: string (uuid) | REQUIRED
+  Column: total_spend | Type: number (numeric) | REQUIRED
+  Column: transaction_count | Type: integer (integer) | REQUIRED
+  Column: updated_at | Type: string (timestamp with time zone) | NULLABLE
+
+Table: pipeline_runs
+  Column: completed_at | Type: string (timestamp with time zone) | NULLABLE
+  Column: duration_seconds | Type: number (numeric) | NULLABLE
+  Column: error_message | Type: string (text) | NULLABLE
+  Column: error_type | Type: string (character varying) | NULLABLE
+  Column: facts_generated | Type: integer (integer) | NULLABLE
+  Column: files_processed | Type: integer (integer) | NULLABLE
+  Column: financial_events_generated | Type: integer (integer) | NULLABLE
+  Column: fyi_generated | Type: integer (integer) | NULLABLE
+  Column: llm_calls | Type: integer (integer) | NULLABLE
+  Column: run_id | Type: string (uuid) | REQUIRED
+  Column: run_type | Type: string (character varying) | REQUIRED
+  Column: signals_processed | Type: integer (integer) | NULLABLE
+  Column: started_at | Type: string (timestamp with time zone) | NULLABLE
+  Column: status | Type: string (character varying) | REQUIRED
+  Column: todos_generated | Type: integer (integer) | NULLABLE
+
+Table: processed_files
+  Column: bucket_name | Type: string (character varying) | REQUIRED
+  Column: file_hash | Type: string (character varying) | REQUIRED
+  Column: file_id | Type: string (uuid) | REQUIRED
+  Column: file_name | Type: string (character varying) | REQUIRED
+  Column: file_path | Type: string (character varying) | REQUIRED
+  Column: processed_timestamp | Type: string (timestamp with time zone) | NULLABLE
+  Column: status | Type: string (character varying) | REQUIRED
+
+Table: salary_cycles
+  Column: created_at | Type: string (timestamp without time zone) | NULLABLE
+  Column: cycle_end | Type: string (timestamp without time zone) | NULLABLE
+  Column: cycle_start | Type: string (timestamp without time zone) | NULLABLE
+  Column: salary_amount | Type: number (numeric) | NULLABLE
+  Column: salary_cycle_id | Type: string (uuid) | REQUIRED
+  Column: salary_date | Type: string (timestamp without time zone) | NULLABLE
+
+Table: signals
+  Column: created_at | Type: string (timestamp without time zone) | NULLABLE
+  Column: message | Type: string (text) | NULLABLE
+  Column: metadata | Type: None (jsonb) | NULLABLE
+  Column: raw_signal_id | Type: string (text) | NULLABLE
+  Column: sender | Type: string (text) | NULLABLE
+  Column: signal_id | Type: string (uuid) | REQUIRED
+  Column: signal_timestamp | Type: string (timestamp without time zone) | NULLABLE
+  Column: source | Type: string (text) | NULLABLE
+
+Table: system_status
+  Column: current_run_id | Type: string (uuid) | NULLABLE
+  Column: current_status | Type: string (character varying) | REQUIRED
+  Column: financial_events_generated | Type: integer (integer) | NULLABLE
+  Column: fyi_generated | Type: integer (integer) | NULLABLE
+  Column: last_successful_refresh | Type: string (timestamp with time zone) | NULLABLE
+  Column: signals_processed | Type: integer (integer) | NULLABLE
+  Column: system_name | Type: string (character varying) | REQUIRED
+  Column: todos_generated | Type: integer (integer) | NULLABLE
+  Column: updated_at | Type: string (timestamp with time zone) | NULLABLE
+
+Table: todo_items
+  Column: category | Type: string (character varying) | REQUIRED
+  Column: confidence | Type: number (numeric) | REQUIRED
+  Column: created_at | Type: string (timestamp with time zone) | REQUIRED
+  Column: description | Type: string (text) | NULLABLE
+  Column: due_date | Type: string (timestamp with time zone) | NULLABLE
+  Column: priority | Type: string (character varying) | REQUIRED
+  Column: source_agent | Type: string (character varying) | REQUIRED
+  Column: source_reference | Type: None (jsonb) | NULLABLE
+  Column: status | Type: string (character varying) | REQUIRED
+  Column: title | Type: string (character varying) | REQUIRED
+  Column: todo_id | Type: string (uuid) | REQUIRED
+  Column: updated_at | Type: string (timestamp with time zone) | REQUIRED
+
+Table: todos
+  Column: created_at | Type: string (timestamp without time zone) | NULLABLE
+  Column: description | Type: string (text) | NULLABLE
+  Column: due_date | Type: string (timestamp without time zone) | NULLABLE
+  Column: priority | Type: string (text) | NULLABLE
+  Column: source_signal_id | Type: string (uuid) | NULLABLE
+  Column: status | Type: string (text) | NULLABLE
+  Column: title | Type: string (text) | NULLABLE
+  Column: todo_id | Type: string (uuid) | REQUIRED
+  Column: updated_at | Type: string (timestamp without time zone) | NULLABLE
+
+Table: understood_signals
+  Column: confidence | Type: number (numeric) | REQUIRED
+  Column: contract_json | Type: None (jsonb) | REQUIRED
+  Column: created_at | Type: string (timestamp without time zone) | NULLABLE
+  Column: id | Type: string (uuid) | REQUIRED
+  Column: importance | Type: string (character varying) | REQUIRED
+  Column: is_verified | Type: boolean (boolean) | NULLABLE
+  Column: llm_model_used | Type: string (character varying) | REQUIRED
+  Column: processing_path | Type: string (character varying) | REQUIRED
+  Column: qualified_signal_id | Type: integer (integer) | REQUIRED
+  Column: raw_signal_id | Type: string (character varying) | REQUIRED
+  Column: reason | Type: string (text) | NULLABLE
+  Column: signal_type | Type: string (character varying) | REQUIRED
+  Column: summary | Type: string (text) | REQUIRED
+
+Table: user_actions
+  Column: action | Type: string (text) | NULLABLE
+  Column: action_id | Type: string (uuid) | REQUIRED
+  Column: action_timestamp | Type: string (timestamp without time zone) | NULLABLE
+  Column: entity_id | Type: string (text) | NULLABLE
+  Column: entity_type | Type: string (text) | NULLABLE
+  Column: metadata | Type: None (jsonb) | NULLABLE
+
+Table: user_preferences
+  Column: preference_key | Type: string (text) | REQUIRED
+  Column: preference_value | Type: string (text) | NULLABLE
+  Column: updated_at | Type: string (timestamp without time zone) | NULLABLE
+

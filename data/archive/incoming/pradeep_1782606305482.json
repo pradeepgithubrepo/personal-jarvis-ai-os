@@ -1,0 +1,125 @@
+{
+    "generatedAt": 1782606305469,
+    "signals": [
+        {
+            "id": 641,
+            "deviceId": "pradeep_phone",
+            "source": "whatsapp",
+            "sender": "Daily Badminton Update: ~ Ganesh Pandian 🫰🏾",
+            "message": "📷 Only this is available",
+            "timestamp": 1782574782184
+        },
+        {
+            "id": 642,
+            "deviceId": "pradeep_phone",
+            "source": "whatsapp",
+            "sender": "Daily Badminton Update (2 messages): ~ Ganesh Pandian 🫰🏾",
+            "message": "350i will get tomorrow only",
+            "timestamp": 1782574840196
+        },
+        {
+            "id": 643,
+            "deviceId": "pradeep_phone",
+            "source": "whatsapp",
+            "sender": "Daily Badminton Update (3 messages): ~ Ganesh Pandian 🫰🏾",
+            "message": "I'm in shop pls tell me if we need single piece of this or we can manage for tomorrow?",
+            "timestamp": 1782574909316
+        },
+        {
+            "id": 644,
+            "deviceId": "pradeep_phone",
+            "source": "whatsapp",
+            "sender": "Daily Badminton Update (4 messages): ~ Ganesh Pandian 🫰🏾",
+            "message": "📷 Photo",
+            "timestamp": 1782575026065
+        },
+        {
+            "id": 645,
+            "deviceId": "pradeep_phone",
+            "source": "whatsapp",
+            "sender": "Daily Badminton Update (5 messages): ~ Ganesh Pandian 🫰🏾",
+            "message": "I ordered I box of 350i for tomorrow it cost ₹1250",
+            "timestamp": 1782575100785
+        },
+        {
+            "id": 646,
+            "deviceId": "pradeep_phone",
+            "source": "whatsapp",
+            "sender": "Daily Badminton Update (6 messages): ~ Ganesh Pandian 🫰🏾",
+            "message": "Will get it by afternoon",
+            "timestamp": 1782575124033
+        },
+        {
+            "id": 647,
+            "deviceId": "pradeep_phone",
+            "source": "whatsapp",
+            "sender": "Daily Badminton Update (7 messages): ~ Ganesh Pandian 🫰🏾",
+            "message": "Out of stock in shop",
+            "timestamp": 1782575130892
+        },
+        {
+            "id": 648,
+            "deviceId": "pradeep_phone",
+            "source": "whatsapp",
+            "sender": "Daily Badminton Update (8 messages): ~ Arun Kumar",
+            "message": "Ok anna",
+            "timestamp": 1782575146380
+        },
+        {
+            "id": 649,
+            "deviceId": "pradeep_phone",
+            "source": "whatsapp",
+            "sender": "Daily Badminton Update (9 messages): Naveen Rao",
+            "message": "For 2mrw get one good shuttle",
+            "timestamp": 1782575224246
+        },
+        {
+            "id": 650,
+            "deviceId": "pradeep_phone",
+            "source": "whatsapp",
+            "sender": "Daily Badminton Update (10 messages): ~ Ganesh Pandian 🫰🏾",
+            "message": "We have this only if you guys okay I'll buy a single piece",
+            "timestamp": 1782575279657
+        },
+        {
+            "id": 651,
+            "deviceId": "pradeep_phone",
+            "source": "whatsapp",
+            "sender": "Daily Badminton Update (11 messages): ~ santhosh rao",
+            "message": "Wait pls",
+            "timestamp": 1782575326706
+        },
+        {
+            "id": 652,
+            "deviceId": "pradeep_phone",
+            "source": "whatsapp",
+            "sender": "Couldn't complete backup",
+            "message": "Tap for more info",
+            "timestamp": 1782598528519
+        },
+        {
+            "id": 653,
+            "deviceId": "pradeep_phone",
+            "source": "whatsapp",
+            "sender": "Couldn't complete backup",
+            "message": "Tap for more info",
+            "timestamp": 1782598847409
+        },
+        {
+            "id": 654,
+            "deviceId": "pradeep_phone",
+            "source": "whatsapp",
+            "sender": "Couldn't complete backup",
+            "message": "Tap for more info",
+            "timestamp": 1782600078659
+        },
+        {
+            "id": 655,
+            "deviceId": "pradeep_phone",
+            "source": "whatsapp",
+            "sender": "Couldn't complete backup",
+            "message": "Tap for more info",
+            "timestamp": 1782603065860
+        }
+    ]
+}

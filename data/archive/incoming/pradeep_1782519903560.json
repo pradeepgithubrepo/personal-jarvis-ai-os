@@ -1,0 +1,53 @@
+{
+    "generatedAt": 1782519903551,
+    "signals": [
+        {
+            "id": 590,
+            "deviceId": "pradeep_phone",
+            "source": "whatsapp",
+            "sender": "RTF 1☺️☺️: Anusha Sampat Times Kids",
+            "message": "📷 Photo",
+            "timestamp": 1782489486127
+        },
+        {
+            "id": 591,
+            "deviceId": "pradeep_phone",
+            "source": "whatsapp",
+            "sender": "RTF 1☺️☺️ (2 messages): Anusha Sampat Times Kids",
+            "message": "https:\/\/www.ArtForAwareness.art",
+            "timestamp": 1782489498412
+        },
+        {
+            "id": 592,
+            "deviceId": "pradeep_phone",
+            "source": "whatsapp",
+            "sender": "Daily Badminton Update: ~ Ganesh Pandian 🫰🏾",
+            "message": "6:30am right?",
+            "timestamp": 1782519478874
+        },
+        {
+            "id": 593,
+            "deviceId": "pradeep_phone",
+            "source": "sms",
+            "sender": "AD-HDFCBK-S",
+            "message": "UPI LITE Top-up amounting to Rs.1500.00 has been successful.\nRef No 617859589993\n- HDFC Bank\n",
+            "timestamp": 1782519902326
+        },
+        {
+            "id": 594,
+            "deviceId": "pradeep_phone",
+            "source": "sms",
+            "sender": "JM-HDFCBK-S",
+            "message": "Received!\nINR 1,000.00 in HDFC Bank A\/c xx3221\nOn 27-06-26\nFor IMPS -PRADEEP P- 617805648112\nAvl bal INR 1,630.27",
+            "timestamp": 1782519875702
+        },
+        {
+            "id": 595,
+            "deviceId": "pradeep_phone",
+            "source": "sms",
+            "sender": "AD-HDFCBK-S",
+            "message": "UPI LITE Top-up amounting to Rs.1000.00 has failed. Please try again.\nRef No 617802585925\n- HDFC Bank\n",
+            "timestamp": 1782519823552
+        }
+    ]
+}

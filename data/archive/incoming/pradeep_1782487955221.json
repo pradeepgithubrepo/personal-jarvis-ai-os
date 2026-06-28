@@ -1,0 +1,53 @@
+{
+    "generatedAt": 1782487955220,
+    "signals": [
+        {
+            "id": 584,
+            "deviceId": "pradeep_phone",
+            "source": "whatsapp",
+            "sender": "WhatsApp: Shobana",
+            "message": "🔗 Your Child Is Watching Far More Than They’re Listening. 🥹💕 (youtube.com)",
+            "timestamp": 1782473277059
+        },
+        {
+            "id": 585,
+            "deviceId": "pradeep_phone",
+            "source": "whatsapp",
+            "sender": "Shobana",
+            "message": "🔗 Your Child Is Watching Far More Than They’re Listening. 🥹💕 (youtube.com)",
+            "timestamp": 1782473277066
+        },
+        {
+            "id": 586,
+            "deviceId": "pradeep_phone",
+            "source": "whatsapp",
+            "sender": "WhatsApp: Maruti Suzuki India Limited",
+            "message": "📷 Most people find out about challans too late. Don’t be one of them.\n\nCheck challans now in just one tap on the Maruti Suzuki App.\n\nFrom challans, PUCC and insurance details to smart locators - your complete mobility hub is here!",
+            "timestamp": 1782478460066
+        },
+        {
+            "id": 587,
+            "deviceId": "pradeep_phone",
+            "source": "whatsapp",
+            "sender": "Maruti Suzuki India Limited",
+            "message": "📷 Most people find out about challans too late. Don’t be one of them.\n\nCheck challans now in just one tap on the Maruti Suzuki App.\n\nFrom challans, PUCC and insurance details to smart locators - your complete mobility hub is here!",
+            "timestamp": 1782478460069
+        },
+        {
+            "id": 588,
+            "deviceId": "pradeep_phone",
+            "source": "whatsapp",
+            "sender": "WhatsApp: Domino’s Pizza India",
+            "message": "📷 SERVICE UPDATE\nDear Customer,\nYour nearest Domino’s store is accepting orders until 3:00 AM .\n\nCheck the Domino's app for the latest menu.",
+            "timestamp": 1782486231422
+        },
+        {
+            "id": 589,
+            "deviceId": "pradeep_phone",
+            "source": "whatsapp",
+            "sender": "Domino’s Pizza India",
+            "message": "📷 SERVICE UPDATE\nDear Customer,\nYour nearest Domino’s store is accepting orders until 3:00 AM .\n\nCheck the Domino's app for the latest menu.",
+            "timestamp": 1782486231428
+        }
+    ]
+}

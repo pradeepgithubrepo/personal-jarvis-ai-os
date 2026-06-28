@@ -1,0 +1,85 @@
+{
+    "generatedAt": 1782434252073,
+    "signals": [
+        {
+            "id": 564,
+            "deviceId": "pradeep_phone",
+            "source": "whatsapp",
+            "sender": "WhatsApp: Senthil RFC",
+            "message": "Yeah looks so",
+            "timestamp": 1782405514815
+        },
+        {
+            "id": 565,
+            "deviceId": "pradeep_phone",
+            "source": "whatsapp",
+            "sender": "Senthil RFC",
+            "message": "Yeah looks so",
+            "timestamp": 1782405514819
+        },
+        {
+            "id": 566,
+            "deviceId": "pradeep_phone",
+            "source": "whatsapp",
+            "sender": "WhatsApp: Senthil RFC",
+            "message": "Wil try the web url",
+            "timestamp": 1782405523861
+        },
+        {
+            "id": 567,
+            "deviceId": "pradeep_phone",
+            "source": "whatsapp",
+            "sender": "WhatsApp: Senthil RFC",
+            "message": "Can you share the mercury one gate url if possible",
+            "timestamp": 1782405535125
+        },
+        {
+            "id": 568,
+            "deviceId": "pradeep_phone",
+            "source": "whatsapp",
+            "sender": "Senthil RFC",
+            "message": "Can you share the mercury one gate url if possible",
+            "timestamp": 1782405535135
+        },
+        {
+            "id": 569,
+            "deviceId": "pradeep_phone",
+            "source": "whatsapp",
+            "sender": "WhatsApp: Senthil RFC",
+            "message": "Got the link",
+            "timestamp": 1782405676265
+        },
+        {
+            "id": 570,
+            "deviceId": "pradeep_phone",
+            "source": "whatsapp",
+            "sender": "WhatsApp: Shraddha Jaiswal",
+            "message": "Done , Pradeep!",
+            "timestamp": 1782407146826
+        },
+        {
+            "id": 571,
+            "deviceId": "pradeep_phone",
+            "source": "whatsapp",
+            "sender": "Shraddha Jaiswal",
+            "message": "Done , Pradeep!",
+            "timestamp": 1782407146835
+        },
+        {
+            "id": 572,
+            "deviceId": "pradeep_phone",
+            "source": "whatsapp",
+            "sender": "Daily Badminton Update: ~ Ganesh Pandian 🫰🏾",
+            "message": "Guys pls come around 6:30am",
+            "timestamp": 1782432993948
+        },
+        {
+            "id": 573,
+            "deviceId": "pradeep_phone",
+            "source": "whatsapp",
+            "sender": "Daily Badminton Update (2 messages): ~ Arun Kumar",
+            "message": "Sure",
+            "timestamp": 1782433537256
+        }
+    ]
+}

@@ -1,0 +1,21 @@
+{
+    "generatedAt": 1782229415136,
+    "signals": [
+        {
+            "id": 534,
+            "deviceId": "pradeep_phone",
+            "source": "whatsapp",
+            "sender": "WhatsApp: Harish",
+            "message": "🔗 NDTV (@ndtv) on X | https:\/\/x.com\/ndtv\/status\/2069376486763905320?s=48",
+            "timestamp": 1782225817333
+        },
+        {
+            "id": 535,
+            "deviceId": "pradeep_phone",
+            "source": "whatsapp",
+            "sender": "Harish",
+            "message": "🔗 NDTV (@ndtv) on X | https:\/\/x.com\/ndtv\/status\/2069376486763905320?s=48",
+            "timestamp": 1782225817337
+        }
+    ]
+}

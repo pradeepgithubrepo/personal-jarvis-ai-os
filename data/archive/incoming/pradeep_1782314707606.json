@@ -1,0 +1,29 @@
+{
+    "generatedAt": 1782314707603,
+    "signals": [
+        {
+            "id": 545,
+            "deviceId": "pradeep_phone",
+            "source": "whatsapp",
+            "sender": "RTF 1☺️☺️: Anusha Sampat Times Kids",
+            "message": "Dear Parents \n\nHomework:\nBook 1 : pg 6\n\nThank you \nAnusha \nLittle Millennium \nAnakaputhur",
+            "timestamp": 1782290875559
+        },
+        {
+            "id": 546,
+            "deviceId": "pradeep_phone",
+            "source": "whatsapp",
+            "sender": "WhatsApp: DoctorC",
+            "message": "Gold Package Offer!\r\n\r\nGet comprehensive checkup of all your vitals to stay healthy.\r\n\r\nGet Gold Health Checkup @ Home → ₹599\/person\r\n\r\n👉  Book Now → https:\/\/dr-c.in\/yWeBg\/\r\n\r\n60 Tests Included:\r\n\r\n✅ Lipid Profile - 8 tests\r\n✅ Liver Function Test - 12\r\n✅ Diabetic Profile - 4\r\n✅ Kidney Profile - 9\r\n✅ Thyroid Profile - 3\r\n✅ Iron Deficiency - 4\r\n✅ CBP - 19\r\n✅ Serum Calcium - 1 Limited Period Offer. Select \"Book Now\" to see appointments",
+            "timestamp": 1782297056472
+        },
+        {
+            "id": 547,
+            "deviceId": "pradeep_phone",
+            "source": "whatsapp",
+            "sender": "DoctorC",
+            "message": "Gold Package Offer!\r\n\r\nGet comprehensive checkup of all your vitals to stay healthy.\r\n\r\nGet Gold Health Checkup @ Home → ₹599\/person\r\n\r\n👉  Book Now → https:\/\/dr-c.in\/yWeBg\/\r\n\r\n60 Tests Included:\r\n\r\n✅ Lipid Profile - 8 tests\r\n✅ Liver Function Test - 12\r\n✅ Diabetic Profile - 4\r\n✅ Kidney Profile - 9\r\n✅ Thyroid Profile - 3\r\n✅ Iron Deficiency - 4\r\n✅ CBP - 19\r\n✅ Serum Calcium - 1 Limited Period Offer. Select \"Book Now\" to see appointments",
+            "timestamp": 1782297056480
+        }
+    ]
+}

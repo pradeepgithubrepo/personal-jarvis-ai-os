@@ -1,0 +1,96 @@
+2026-06-28 06:50:19.148 | INFO     | storage.db.database:initialize_database:22 - Initializing SQLite database...
+2026-06-28 06:50:19.203 | SUCCESS  | storage.db.database:initialize_database:129 - SQLite connected successfully
+2026-06-28 06:50:19.217 | INFO     | storage.db.database:_seed_bank_accounts:153 - Bank accounts seed complete.
+2026-06-28 06:50:19.225 | INFO     | storage.db.database:_seed_merchants:183 - Merchant registry seed complete.
+2026-06-28 06:50:19.229 | INFO     | __main__:main:18 - Loaded 100 understood signals from SQLite.
+2026-06-28 06:50:19.229 | INFO     | services.financial_agent:process_contract:113 - FinancialAgent processing signal 14
+2026-06-28 06:50:19.233 | INFO     | services.financial_agent:process_contract:113 - FinancialAgent processing signal 15
+2026-06-28 06:50:19.234 | INFO     | services.financial_agent:process_contract:113 - FinancialAgent processing signal 18
+2026-06-28 06:50:19.235 | INFO     | services.financial_agent:process_contract:113 - FinancialAgent processing signal 22
+2026-06-28 06:50:19.235 | INFO     | services.financial_agent:process_contract:113 - FinancialAgent processing signal 27
+2026-06-28 06:50:19.236 | INFO     | services.financial_agent:process_contract:113 - FinancialAgent processing signal 28
+2026-06-28 06:50:19.236 | INFO     | services.financial_agent:process_contract:113 - FinancialAgent processing signal 29
+2026-06-28 06:50:19.237 | INFO     | services.financial_agent:process_contract:113 - FinancialAgent processing signal 30
+2026-06-28 06:50:19.237 | INFO     | services.financial_agent:process_contract:113 - FinancialAgent processing signal 31
+2026-06-28 06:50:19.238 | INFO     | services.financial_agent:process_contract:113 - FinancialAgent processing signal 34
+2026-06-28 06:50:19.238 | INFO     | services.financial_agent:process_contract:113 - FinancialAgent processing signal 36
+2026-06-28 06:50:19.239 | INFO     | services.financial_agent:process_contract:113 - FinancialAgent processing signal 41
+2026-06-28 06:50:19.239 | INFO     | services.financial_agent:process_contract:113 - FinancialAgent processing signal 48
+2026-06-28 06:50:19.240 | INFO     | services.financial_agent:process_contract:113 - FinancialAgent processing signal 52
+2026-06-28 06:50:19.240 | WARNING  | services.financial_agent:_get_or_create_financial_event:204 - Skipping financial contract 52: missing monetary amount
+2026-06-28 06:50:19.241 | WARNING  | services.financial_agent:process_contract:118 - Could not create financial_event for signal 52
+2026-06-28 06:50:19.241 | INFO     | services.financial_agent:process_contract:113 - FinancialAgent processing signal 53
+2026-06-28 06:50:19.242 | INFO     | services.financial_agent:process_contract:113 - FinancialAgent processing signal 54
+2026-06-28 06:50:19.243 | INFO     | services.financial_agent:process_contract:113 - FinancialAgent processing signal 55
+2026-06-28 06:50:19.243 | INFO     | services.financial_agent:process_contract:113 - FinancialAgent processing signal 56
+2026-06-28 06:50:19.244 | INFO     | services.financial_agent:process_contract:113 - FinancialAgent processing signal 57
+2026-06-28 06:50:19.244 | INFO     | services.financial_agent:process_contract:113 - FinancialAgent processing signal 59
+2026-06-28 06:50:19.245 | INFO     | services.financial_agent:process_contract:113 - FinancialAgent processing signal 60
+2026-06-28 06:50:19.246 | INFO     | services.financial_agent:process_contract:113 - FinancialAgent processing signal 61
+2026-06-28 06:50:19.246 | INFO     | services.financial_agent:process_contract:113 - FinancialAgent processing signal 62
+2026-06-28 06:50:19.247 | INFO     | services.financial_agent:process_contract:113 - FinancialAgent processing signal 65
+2026-06-28 06:50:19.248 | INFO     | services.financial_agent:process_contract:113 - FinancialAgent processing signal 66
+2026-06-28 06:50:19.248 | INFO     | services.financial_agent:process_contract:113 - FinancialAgent processing signal 67
+2026-06-28 06:50:19.249 | INFO     | services.financial_agent:process_contract:113 - FinancialAgent processing signal 68
+2026-06-28 06:50:19.249 | INFO     | services.financial_agent:process_contract:113 - FinancialAgent processing signal 69
+2026-06-28 06:50:19.250 | INFO     | services.financial_agent:process_contract:113 - FinancialAgent processing signal 70
+2026-06-28 06:50:19.250 | INFO     | services.financial_agent:process_contract:113 - FinancialAgent processing signal 71
+2026-06-28 06:50:19.251 | INFO     | services.financial_agent:process_contract:113 - FinancialAgent processing signal 73
+2026-06-28 06:50:19.251 | INFO     | services.financial_agent:process_contract:113 - FinancialAgent processing signal 75
+2026-06-28 06:50:19.252 | INFO     | services.financial_agent:process_contract:113 - FinancialAgent processing signal 77
+2026-06-28 06:50:19.252 | INFO     | services.financial_agent:process_contract:113 - FinancialAgent processing signal 78
+2026-06-28 06:50:19.253 | INFO     | services.financial_agent:process_contract:113 - FinancialAgent processing signal 79
+2026-06-28 06:50:19.254 | INFO     | services.financial_agent:process_contract:113 - FinancialAgent processing signal 83
+2026-06-28 06:50:19.254 | INFO     | services.financial_agent:process_contract:113 - FinancialAgent processing signal 84
+2026-06-28 06:50:19.255 | INFO     | services.financial_agent:process_contract:113 - FinancialAgent processing signal 86
+2026-06-28 06:50:19.255 | INFO     | services.financial_agent:process_contract:113 - FinancialAgent processing signal 88
+2026-06-28 06:50:19.256 | WARNING  | services.financial_agent:_get_or_create_financial_event:204 - Skipping financial contract 88: missing monetary amount
+2026-06-28 06:50:19.256 | WARNING  | services.financial_agent:process_contract:118 - Could not create financial_event for signal 88
+2026-06-28 06:50:19.256 | INFO     | services.financial_agent:process_contract:113 - FinancialAgent processing signal 89
+2026-06-28 06:50:19.256 | INFO     | services.financial_agent:process_contract:113 - FinancialAgent processing signal 92
+2026-06-28 06:50:19.256 | WARNING  | services.financial_agent:_get_or_create_financial_event:204 - Skipping financial contract 92: missing monetary amount
+2026-06-28 06:50:19.256 | WARNING  | services.financial_agent:process_contract:118 - Could not create financial_event for signal 92
+2026-06-28 06:50:19.257 | INFO     | services.financial_agent:process_contract:113 - FinancialAgent processing signal 93
+2026-06-28 06:50:19.257 | INFO     | services.financial_agent:process_contract:113 - FinancialAgent processing signal 94
+2026-06-28 06:50:19.258 | INFO     | services.financial_agent:process_contract:113 - FinancialAgent processing signal 96
+2026-06-28 06:50:19.259 | INFO     | services.financial_agent:process_contract:113 - FinancialAgent processing signal 99
+2026-06-28 06:50:19.259 | INFO     | services.financial_agent:process_contract:113 - FinancialAgent processing signal 101
+2026-06-28 06:50:19.260 | WARNING  | services.financial_agent:_get_or_create_financial_event:204 - Skipping financial contract 101: missing monetary amount
+2026-06-28 06:50:19.260 | WARNING  | services.financial_agent:process_contract:118 - Could not create financial_event for signal 101
+2026-06-28 06:50:19.260 | INFO     | services.financial_agent:process_contract:113 - FinancialAgent processing signal 102
+2026-06-28 06:50:19.260 | INFO     | services.financial_agent:process_contract:113 - FinancialAgent processing signal 104
+2026-06-28 06:50:19.261 | INFO     | services.financial_agent:process_contract:113 - FinancialAgent processing signal 110
+2026-06-28 06:50:19.262 | INFO     | services.financial_agent:process_contract:113 - FinancialAgent processing signal 113
+2026-06-28 06:50:19.263 | INFO     | services.financial_agent:process_contract:113 - FinancialAgent processing signal 114
+2026-06-28 06:50:19.263 | INFO     | services.financial_agent:process_contract:113 - FinancialAgent processing signal 116
+2026-06-28 06:50:19.264 | INFO     | services.financial_agent:process_contract:113 - FinancialAgent processing signal 121
+2026-06-28 06:50:19.264 | INFO     | services.financial_agent:process_contract:113 - FinancialAgent processing signal 125
+2026-06-28 06:50:19.265 | INFO     | services.financial_agent:process_contract:113 - FinancialAgent processing signal 128
+2026-06-28 06:50:19.265 | INFO     | services.financial_agent:process_contract:113 - FinancialAgent processing signal 129
+2026-06-28 06:50:19.266 | INFO     | services.financial_agent:process_contract:113 - FinancialAgent processing signal 130
+2026-06-28 06:50:19.266 | INFO     | services.financial_agent:process_contract:113 - FinancialAgent processing signal 132
+2026-06-28 06:50:19.267 | INFO     | services.financial_agent:process_contract:113 - FinancialAgent processing signal 140
+2026-06-28 06:50:19.267 | INFO     | services.financial_agent:process_contract:113 - FinancialAgent processing signal 148
+2026-06-28 06:50:19.268 | INFO     | services.financial_agent:process_contract:113 - FinancialAgent processing signal 151
+2026-06-28 06:50:19.268 | INFO     | services.financial_agent:process_contract:113 - FinancialAgent processing signal 152
+2026-06-28 06:50:19.269 | INFO     | services.financial_agent:process_contract:113 - FinancialAgent processing signal 157
+2026-06-28 06:50:19.269 | INFO     | services.financial_agent:process_contract:113 - FinancialAgent processing signal 164
+2026-06-28 06:50:19.270 | INFO     | services.financial_agent:process_contract:113 - FinancialAgent processing signal 165
+2026-06-28 06:50:19.270 | INFO     | services.financial_agent:process_contract:113 - FinancialAgent processing signal 166
+2026-06-28 06:50:19.271 | INFO     | services.financial_agent:process_contract:113 - FinancialAgent processing signal 168
+2026-06-28 06:50:19.271 | INFO     | services.financial_agent:process_contract:113 - FinancialAgent processing signal 175
+2026-06-28 06:50:19.272 | INFO     | services.financial_agent:process_contract:113 - FinancialAgent processing signal 178
+2026-06-28 06:50:19.272 | INFO     | services.financial_agent:process_contract:113 - FinancialAgent processing signal 186
+2026-06-28 06:50:19.273 | INFO     | services.financial_agent:process_contract:113 - FinancialAgent processing signal 187
+2026-06-28 06:50:19.273 | INFO     | services.financial_agent:process_contract:113 - FinancialAgent processing signal 189
+2026-06-28 06:50:19.274 | INFO     | services.financial_agent:process_contract:113 - FinancialAgent processing signal 190
+2026-06-28 06:50:19.275 | INFO     | services.financial_agent:process_contract:113 - FinancialAgent processing signal 191
+2026-06-28 06:50:19.275 | INFO     | services.financial_agent:process_contract:113 - FinancialAgent processing signal 193
+2026-06-28 06:50:19.276 | INFO     | services.financial_agent:process_contract:113 - FinancialAgent processing signal 194
+2026-06-28 06:50:19.276 | INFO     | services.financial_agent:process_contract:113 - FinancialAgent processing signal 195
+2026-06-28 06:50:19.277 | INFO     | services.financial_agent:process_contract:113 - FinancialAgent processing signal 196
+2026-06-28 06:50:19.277 | INFO     | services.financial_agent:process_contract:113 - FinancialAgent processing signal 198
+2026-06-28 06:50:19.278 | INFO     | services.financial_agent:process_contract:113 - FinancialAgent processing signal 200
+2026-06-28 06:50:19.278 | INFO     | services.financial_agent:process_contract:113 - FinancialAgent processing signal 201
+2026-06-28 06:50:19.286 | INFO     | __main__:main:46 - Finalization metrics: {'transfers_finalized': 0, 'refunds_finalized': 0}
+2026-06-28 06:50:19.286 | INFO     | __main__:main:48 - Processed: 77, Skipped: 4, Failed: 0

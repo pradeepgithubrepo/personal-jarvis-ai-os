@@ -337,6 +337,8 @@ class SignalQualificationAgent:
 
                 if res.qualification_status == "QUALIFIED":
                     qualified += 1
+                    msg.processed = True
+                    db.add(msg)
                 elif res.qualification_status == "REVIEW":
                     review += 1
                     msg.processed = True

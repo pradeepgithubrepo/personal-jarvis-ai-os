@@ -1,0 +1,85 @@
+{
+    "generatedAt": 1782462492799,
+    "signals": [
+        {
+            "id": 574,
+            "deviceId": "pradeep_phone",
+            "source": "whatsapp",
+            "sender": "Daily Badminton Update (3 messages): ~ Ganesh Pandian 🫰🏾",
+            "message": "Started will reach in 10mins",
+            "timestamp": 1782435021491
+        },
+        {
+            "id": 575,
+            "deviceId": "pradeep_phone",
+            "source": "whatsapp",
+            "sender": "Daily Badminton Update: ~ Ganesh Pandian 🫰🏾",
+            "message": "We are in",
+            "timestamp": 1782436397667
+        },
+        {
+            "id": 576,
+            "deviceId": "pradeep_phone",
+            "source": "whatsapp",
+            "sender": "Daily Badminton Update: ~ Ganesh Pandian 🫰🏾",
+            "message": "Reacted 👍🏾 to \"5 mins\"",
+            "timestamp": 1782436424733
+        },
+        {
+            "id": 577,
+            "deviceId": "pradeep_phone",
+            "source": "whatsapp",
+            "sender": "Daily Badminton Update: ~ Ganesh Pandian 🫰🏾",
+            "message": "Reacted 👍🏾 to \"5 mins\"",
+            "timestamp": 1782441838346
+        },
+        {
+            "id": 578,
+            "deviceId": "pradeep_phone",
+            "source": "whatsapp",
+            "sender": "WhatsApp: Nag Sittapa Alt",
+            "message": "📷 வணக்கம் வாழ்க வளமுடன்",
+            "timestamp": 1782441838379
+        },
+        {
+            "id": 579,
+            "deviceId": "pradeep_phone",
+            "source": "whatsapp",
+            "sender": "WhatsApp",
+            "message": "Sending…",
+            "timestamp": 1782458195757
+        },
+        {
+            "id": 580,
+            "deviceId": "pradeep_phone",
+            "source": "whatsapp",
+            "sender": "WhatsApp",
+            "message": "Sending file to +91 94865 62584",
+            "timestamp": 1782458195780
+        },
+        {
+            "id": 581,
+            "deviceId": "pradeep_phone",
+            "source": "whatsapp",
+            "sender": "WhatsApp: HDFC Bank Ltd",
+            "message": "Manage your credit card on WhatsApp.\n\nCheck your card summary, current outstanding, or download your latest statement instantly. \n\nNo need to call or search your inbox. Everything is just a tap away",
+            "timestamp": 1782458200899
+        },
+        {
+            "id": 582,
+            "deviceId": "pradeep_phone",
+            "source": "whatsapp",
+            "sender": "HDFC Bank Ltd",
+            "message": "Manage your credit card on WhatsApp.\n\nCheck your card summary, current outstanding, or download your latest statement instantly. \n\nNo need to call or search your inbox. Everything is just a tap away",
+            "timestamp": 1782458200902
+        },
+        {
+            "id": 583,
+            "deviceId": "pradeep_phone",
+            "source": "sms",
+            "sender": "JD-HDFCBK-S",
+            "message": "Pay Now!\nSBI Card Bill 8707 of Rs.3141.02 is due on 01-Jul-2026. Use HDFC Bank NetBanking or Mobile App > BillPay\nT&C. Ignore if paid",
+            "timestamp": 1782441497494
+        }
+    ]
+}

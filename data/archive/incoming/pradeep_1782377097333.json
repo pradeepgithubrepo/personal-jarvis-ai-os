@@ -1,0 +1,85 @@
+{
+    "generatedAt": 1782377097329,
+    "signals": [
+        {
+            "id": 548,
+            "deviceId": "pradeep_phone",
+            "source": "whatsapp",
+            "sender": "Daily Badminton Update: ~ Imtiaz",
+            "message": "Brothers will not be in for today and tomorrow",
+            "timestamp": 1782349099516
+        },
+        {
+            "id": 549,
+            "deviceId": "pradeep_phone",
+            "source": "whatsapp",
+            "sender": "Daily Badminton Update: ~ Arun Kumar",
+            "message": "Tomorrow is a government holiday right? So no school \n@⁨~Ganesh Pandian 🫰🏾⁩ @⁨~santhosh rao⁩ can we play tomorrow mrng 6:30????",
+            "timestamp": 1782351068682
+        },
+        {
+            "id": 550,
+            "deviceId": "pradeep_phone",
+            "source": "whatsapp",
+            "sender": "Nag Sittapa Alt",
+            "message": "📷 Photo",
+            "timestamp": 1782356706985
+        },
+        {
+            "id": 551,
+            "deviceId": "pradeep_phone",
+            "source": "whatsapp",
+            "sender": "WhatsApp: Nag Sittapa Alt",
+            "message": "📷 Photo",
+            "timestamp": 1782356706982
+        },
+        {
+            "id": 552,
+            "deviceId": "pradeep_phone",
+            "source": "whatsapp",
+            "sender": "Daily Badminton Update: ~ Ganesh Pandian 🫰🏾",
+            "message": "Yes I'm ready if school holiday ✋🏾",
+            "timestamp": 1782359239177
+        },
+        {
+            "id": 553,
+            "deviceId": "pradeep_phone",
+            "source": "whatsapp",
+            "sender": "Daily Badminton Update (2 messages): ~ Arun Kumar",
+            "message": "Ok anna",
+            "timestamp": 1782359299167
+        },
+        {
+            "id": 554,
+            "deviceId": "pradeep_phone",
+            "source": "whatsapp",
+            "sender": "Daily Badminton Update: ~ santhosh rao",
+            "message": "Yes I am coming tomorrow morning 6.30",
+            "timestamp": 1782361608270
+        },
+        {
+            "id": 555,
+            "deviceId": "pradeep_phone",
+            "source": "whatsapp",
+            "sender": "Daily Badminton Update (2 messages): ~ Arun Kumar",
+            "message": "Super anna",
+            "timestamp": 1782362790382
+        },
+        {
+            "id": 556,
+            "deviceId": "pradeep_phone",
+            "source": "whatsapp",
+            "sender": "WhatsApp: Acko India",
+            "message": "Monthly reminder: Check traffic challans on your car for the month of June\n\nHey SHOBANA KUMARI P, this is a routine reminder to check if any traffic challans have been issued on your car.\n\nChecking periodically can help avoid issues with traffic police during routine traffic checks.\n\nTap on “Check now” to run a detailed check and find out if your car has challans issued in Parivahan or state RTOs.",
+            "timestamp": 1782366836837
+        },
+        {
+            "id": 557,
+            "deviceId": "pradeep_phone",
+            "source": "whatsapp",
+            "sender": "Acko India: Monthly reminder",
+            "message": "Check traffic challans on your car for the month of June\n\nHey SHOBANA KUMARI P, this is a routine reminder to check if any traffic challans have been issued on your car.\n\nChecking periodically can help avoid issues with traffic police during routine traffic checks.\n\nTap on “Check now” to run a detailed check and find out if your car has challans issued in Parivahan or state RTOs.",
+            "timestamp": 1782366836841
+        }
+    ]
+}

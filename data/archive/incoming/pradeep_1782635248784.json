@@ -1,0 +1,101 @@
+{
+    "generatedAt": 1782635248781,
+    "signals": [
+        {
+            "id": 656,
+            "deviceId": "pradeep_phone",
+            "source": "whatsapp",
+            "sender": "Daily Badminton Update: ~ Ganesh Pandian 🫰🏾",
+            "message": "Yes bro, come around 6:45",
+            "timestamp": 1782607536054
+        },
+        {
+            "id": 657,
+            "deviceId": "pradeep_phone",
+            "source": "whatsapp",
+            "sender": "Daily Badminton Update: ~ Ganesh Pandian 🫰🏾",
+            "message": "Started from home I'll reach in 5mins",
+            "timestamp": 1782608634800
+        },
+        {
+            "id": 658,
+            "deviceId": "pradeep_phone",
+            "source": "whatsapp",
+            "sender": "WhatsApp: Nag Sittapa Alt",
+            "message": "📷 Good morning வாழ்க வளமுடன்",
+            "timestamp": 1782608669803
+        },
+        {
+            "id": 659,
+            "deviceId": "pradeep_phone",
+            "source": "whatsapp",
+            "sender": "Nag Sittapa Alt",
+            "message": "📷 Good morning வாழ்க வளமுடன்",
+            "timestamp": 1782608669809
+        },
+        {
+            "id": 660,
+            "deviceId": "pradeep_phone",
+            "source": "whatsapp",
+            "sender": "Daily Badminton Update (2 messages): ~ Arun Kumar",
+            "message": "Reached",
+            "timestamp": 1782608918711
+        },
+        {
+            "id": 661,
+            "deviceId": "pradeep_phone",
+            "source": "whatsapp",
+            "sender": "Daily Badminton Update (3 messages): ~ Imtiaz",
+            "message": "On the wash",
+            "timestamp": 1782609338311
+        },
+        {
+            "id": 662,
+            "deviceId": "pradeep_phone",
+            "source": "whatsapp",
+            "sender": "Daily Badminton Update (3 messages): ~ Imtiaz",
+            "message": "On the way",
+            "timestamp": 1782609410925
+        },
+        {
+            "id": 663,
+            "deviceId": "pradeep_phone",
+            "source": "whatsapp",
+            "sender": "Daily Badminton Update (5 messages): ~ Ganesh Pandian 🫰🏾",
+            "message": "We r in",
+            "timestamp": 1782609557714
+        },
+        {
+            "id": 664,
+            "deviceId": "pradeep_phone",
+            "source": "whatsapp",
+            "sender": "Daily Badminton Update (5 messages): ~ Ganesh Pandian 🫰🏾",
+            "message": "Pls come soon court is free",
+            "timestamp": 1782609557754
+        },
+        {
+            "id": 665,
+            "deviceId": "pradeep_phone",
+            "source": "whatsapp",
+            "sender": "SRI PATATHUARASI AMMAN FLAT: Sundar T1",
+            "message": "Good morning everyone.\nCar parking area cleaning is scheduled for Today\nKindly plan accordingly.",
+            "timestamp": 1782612884516
+        },
+        {
+            "id": 666,
+            "deviceId": "pradeep_phone",
+            "source": "whatsapp",
+            "sender": "Family 🙂: Aappa",
+            "message": "😁😁👍🏽",
+            "timestamp": 1782620202514
+        },
+        {
+            "id": 667,
+            "deviceId": "pradeep_phone",
+            "source": "sms",
+            "sender": "VK-SBICRD-T",
+            "message": "842401 is the OTP for Trxn. of INR 169.00 at Fashnear T with your credit card ending 8707. OTP is valid for 10 mins. Do not share it with anyone - SBI Card",
+            "timestamp": 1782611255821
+        }
+    ]
+}

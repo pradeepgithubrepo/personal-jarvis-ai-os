@@ -1,0 +1,20 @@
+Paths: ['/']
+First path: {
+  "/": {
+    "get": {
+      "produces": [
+        "application/openapi+json",
+        "application/json"
+      ],
+      "responses": {
+        "200": {
+          "description": "OK"
+        }
+      },
+      "summary": "OpenAPI description (this document)",
+      "tags": [
+        "Introspection"
+      ]
+    }
+  }
+}

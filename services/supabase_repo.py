@@ -112,16 +112,88 @@ class SupabaseRepo:
         return cls._execute(lambda: supabase.table("fyi_events").update(data).eq("fyi_event_id", str(event_id)).execute())
 
     @classmethod
-    def store_fact(cls, fact_id: uuid.UUID, entity: str, fact: str, confidence: float, source_signal_id: uuid.UUID, created_at: datetime = None) -> bool:
+    def store_fact(
+        cls,
+        fact_id,
+        fact_type: str = None,
+        fact_value: dict = None,
+        confidence: float = 0.5,
+        status: str = "UNCONFIRMED",
+        owner_agent: str = None,
+        source_agent: str = None,
+        source_type: str = "OBSERVED",
+        first_seen: datetime = None,
+        last_seen: datetime = None,
+        evidence: dict = None,
+        created_at: datetime = None,
+        updated_at: datetime = None,
+        # Legacy compatibility arguments
+        entity: str = None,
+        fact: str = None,
+        source_signal_id = None
+    ) -> bool:
+        # Backward compatibility layer
+        if fact_type is None:
+            data = {
+                "fact_id": str(fact_id),
+                "entity": entity,
+                "fact": fact,
+                "confidence": float(confidence) if confidence is not None else 1.0,
+                "source_signal_id": str(source_signal_id) if source_signal_id else None,
+                "created_at": created_at.isoformat() if hasattr(created_at, "isoformat") else str(created_at) if created_at else datetime.utcnow().isoformat()
+            }
+        else:
+            data = {
+                "fact_id": str(fact_id),
+                "fact_type": fact_type,
+                "fact_value": fact_value,
+                "confidence": float(confidence),
+                "status": status,
+                "owner_agent": owner_agent,
+                "source_agent": source_agent,
+                "source_type": source_type,
+                "first_seen": first_seen.isoformat() if hasattr(first_seen, "isoformat") else str(first_seen) if first_seen else datetime.utcnow().isoformat(),
+                "last_seen": last_seen.isoformat() if hasattr(last_seen, "isoformat") else str(last_seen) if last_seen else datetime.utcnow().isoformat(),
+                "evidence": evidence,
+                "created_at": created_at.isoformat() if hasattr(created_at, "isoformat") else str(created_at) if created_at else datetime.utcnow().isoformat(),
+                "updated_at": updated_at.isoformat() if hasattr(updated_at, "isoformat") else str(updated_at) if updated_at else datetime.utcnow().isoformat()
+            }
+        return cls._execute(lambda: supabase.table("facts").upsert(data).execute())
+
+    @classmethod
+    def store_fact_relationship(
+        cls,
+        rel_id: int,
+        subject_id: str,
+        predicate: str,
+        object_id: str,
+        confidence: float,
+        created_at: datetime = None,
+        updated_at: datetime = None
+    ) -> bool:
         data = {
-            "fact_id": str(fact_id),
-            "entity": entity,
-            "fact": fact,
-            "confidence": float(confidence) if confidence is not None else 1.0,
-            "source_signal_id": str(source_signal_id) if source_signal_id else None,
-            "created_at": created_at.isoformat() if hasattr(created_at, "isoformat") else str(created_at) if created_at else datetime.utcnow().isoformat()
+            "id": int(rel_id),
+            "subject_id": str(subject_id),
+            "predicate": predicate,
+            "object_id": str(object_id),
+            "confidence": float(confidence),
+            "created_at": created_at.isoformat() if hasattr(created_at, "isoformat") else str(created_at) if created_at else datetime.utcnow().isoformat(),
+            "updated_at": updated_at.isoformat() if hasattr(updated_at, "isoformat") else str(updated_at) if updated_at else datetime.utcnow().isoformat()
         }
-        return cls._execute(lambda: supabase.table("facts").insert(data).execute())
+        return cls._execute(lambda: supabase.table("fact_relationships").upsert(data).execute())
+
+    @classmethod
+    def attempt_fact_tables_creation(cls) -> bool:
+        """
+        Verifies if facts and fact_relationships tables are present and writable on Supabase.
+        """
+        try:
+            supabase.table("facts").select("fact_id").limit(1).execute()
+            supabase.table("fact_relationships").select("id").limit(1).execute()
+            return True
+        except Exception as e:
+            logger.warning(f"Supabase tables check failed: {e}")
+            return False
 
     @classmethod
     def store_preference(cls, key: str, value: str) -> bool:
@@ -188,6 +260,7 @@ class SupabaseRepo:
 
     @classmethod
     def save_monthly_spending_summary(cls, summary_id: uuid.UUID, month_key: str, total_spend: float, transaction_count: int) -> bool:
+        """Legacy single-total save — kept for backward compatibility."""
         data = {
             "summary_id": str(summary_id),
             "month_key": month_key,
@@ -195,6 +268,51 @@ class SupabaseRepo:
             "transaction_count": int(transaction_count),
             "created_at": datetime.utcnow().isoformat(),
             "updated_at": datetime.utcnow().isoformat()
+        }
+        return cls._execute(lambda: supabase.table("monthly_spending_summary").upsert(data).execute())
+
+    @classmethod
+    def save_monthly_spending_summary_v2(
+        cls,
+        summary_id: uuid.UUID,
+        month_key: str,
+        accounting_spend: float,
+        lifestyle_spend: float,
+        total_income: float,
+        net_cash_flow: float,
+        internal_transfers: float,
+        insurance_premiums: float,
+        investments: float,
+        refund_offsets: float,
+        transaction_count: int,
+        total_debits: float | None = None,
+        total_credits: float | None = None,
+    ) -> bool:
+        """
+        Financial Agent V2 — extended monthly summary with split spend views.
+
+        accounting_spend: all debits excl. internal transfers
+        lifestyle_spend:  accounting_spend − investments − insurance − cc_payments
+        net_cash_flow:    total_income − accounting_spend
+        """
+        data = {
+            "summary_id": str(summary_id),
+            "month_key": month_key,
+            # Keep total_spend for backward-compat consumers
+            "total_spend": float(accounting_spend),
+            "total_debits": float(total_debits if total_debits is not None else accounting_spend),
+            "total_credits": float(total_credits if total_credits is not None else total_income),
+            "accounting_spend": float(accounting_spend),
+            "lifestyle_spend": float(lifestyle_spend),
+            "total_income": float(total_income),
+            "net_cash_flow": float(net_cash_flow),
+            "internal_transfers": float(internal_transfers),
+            "insurance_premiums": float(insurance_premiums),
+            "investments": float(investments),
+            "refund_offsets": float(refund_offsets),
+            "transaction_count": int(transaction_count),
+            "created_at": datetime.utcnow().isoformat(),
+            "updated_at": datetime.utcnow().isoformat(),
         }
         return cls._execute(lambda: supabase.table("monthly_spending_summary").upsert(data).execute())
 
@@ -458,5 +576,245 @@ class SupabaseRepo:
         }
         return cls._execute(lambda: supabase.table("understood_signals").insert(data).execute())
 
+    # =========================================================================
+    # Financial Agent V2 — New methods
+    # =========================================================================
 
 
+    @classmethod
+    def save_transfer_pair(
+        cls,
+        pair_id: uuid.UUID,
+        debit_event_id: str,
+        credit_event_id: str,
+        amount: float,
+        currency: str,
+        transfer_type: str,
+        confidence: float,
+        window_used_seconds: int,
+    ) -> bool:
+        """
+        Persists a detected internal transfer pair record.
+        Gracefully no-ops if the transfer_pairs table does not exist in Supabase yet.
+        """
+        data = {
+            "pair_id": str(pair_id),
+            "debit_event_id": str(debit_event_id),
+            "credit_event_id": str(credit_event_id),
+            "amount": float(amount),
+            "currency": currency or "INR",
+            "transfer_type": transfer_type,
+            "confidence": float(confidence),
+            "window_used_seconds": int(window_used_seconds),
+            "detected_at": datetime.utcnow().isoformat(),
+        }
+        return cls._execute(lambda: supabase.table("transfer_pairs").upsert(data).execute())
+
+    @classmethod
+    def fetch_financial_events_by_month(cls, month_key: str) -> list[dict]:
+        """
+        Fetches all financial events for a given month (YYYY-MM).
+        Filters by event_timestamp prefix match.
+        """
+        try:
+            start = f"{month_key}-01T00:00:00"
+            # Compute end: increment month
+            year, month = int(month_key[:4]), int(month_key[5:7])
+            if month == 12:
+                end_year, end_month = year + 1, 1
+            else:
+                end_year, end_month = year, month + 1
+            end = f"{end_year:04d}-{end_month:02d}-01T00:00:00"
+
+            res = (
+                supabase.table("financial_events")
+                .select("*")
+                .gte("event_timestamp", start)
+                .lt("event_timestamp", end)
+                .execute()
+            )
+            return res.data or []
+        except Exception as e:
+            logger.error(f"Failed to fetch financial events for month '{month_key}': {e}")
+            return []
+
+    @classmethod
+    def fetch_financial_events_by_subtype(cls, subtype: str) -> list[dict]:
+        """
+        Fetches financial events filtered by transaction_subtype field.
+        Used for salary event and refund event lookups.
+        Gracefully returns empty list if column does not exist yet.
+        """
+        try:
+            res = (
+                supabase.table("financial_events")
+                .select("*")
+                .eq("transaction_subtype", subtype)
+                .execute()
+            )
+            return res.data or []
+        except Exception as e:
+            logger.warning(f"fetch_financial_events_by_subtype('{subtype}') failed (column may not exist): {e}")
+            return []
+
+    @classmethod
+    def update_monthly_category_spend_with_refund(
+        cls, month_key: str, category_name: str, refund_amount: float
+    ) -> bool:
+        """
+        Reduces a category's monthly spend by refund_amount (refund offset).
+        Fetches current amount and upserts the corrected value.
+        """
+        try:
+            res = (
+                supabase.table("monthly_category_spend")
+                .select("entry_id, amount")
+                .eq("month_key", month_key)
+                .eq("category_name", category_name)
+                .execute()
+            )
+            rows = res.data or []
+            if not rows:
+                logger.warning(
+                    f"No category spend row found for month={month_key} category={category_name}; "
+                    "refund offset not applied."
+                )
+                return False
+
+            row = rows[0]
+            current_amount = float(row.get("amount") or 0.0)
+            adjusted = max(0.0, current_amount - float(refund_amount))
+
+            update_data = {
+                "amount": adjusted,
+                "updated_at": datetime.utcnow().isoformat(),
+            }
+            return cls._execute(
+                lambda: supabase.table("monthly_category_spend")
+                .update(update_data)
+                .eq("entry_id", row["entry_id"])
+                .execute()
+            )
+        except Exception as e:
+            logger.error(f"Failed to apply refund offset to category spend: {e}")
+            return False
+
+    @classmethod
+    def store_todo_item(
+        cls,
+        todo_id,
+        title: str,
+        description: str,
+        category: str,
+        priority: str,
+        status: str,
+        due_date: datetime,
+        source_agent: str,
+        source_reference: dict,
+        confidence: float,
+        created_at: datetime = None,
+        updated_at: datetime = None
+    ) -> bool:
+        data = {
+            "todo_id": str(todo_id),
+            "title": title,
+            "description": description,
+            "category": category,
+            "priority": priority,
+            "status": status,
+            "due_date": due_date.isoformat() if hasattr(due_date, "isoformat") else str(due_date) if due_date else None,
+            "source_agent": source_agent,
+            "source_reference": source_reference,
+            "confidence": float(confidence),
+            "created_at": created_at.isoformat() if hasattr(created_at, "isoformat") else str(created_at) if created_at else datetime.utcnow().isoformat(),
+            "updated_at": updated_at.isoformat() if hasattr(updated_at, "isoformat") else str(updated_at) if updated_at else datetime.utcnow().isoformat()
+        }
+        return cls._execute(lambda: supabase.table("todo_items").upsert(data).execute())
+
+    @classmethod
+    def attempt_todo_tables_creation(cls) -> bool:
+        """
+        Verifies if the todo_items table is present and writable on Supabase.
+        """
+        try:
+            supabase.table("todo_items").select("todo_id").limit(1).execute()
+            return True
+        except Exception as e:
+            logger.warning(f"Supabase todo table check failed: {e}")
+            return False
+
+    @classmethod
+    def store_fyi_event(
+        cls,
+        event_id,
+        event_type: str,
+        category: str,
+        title: str,
+        description: str,
+        importance: str,
+        status: str,
+        source_signal_id,
+        duplicate_count: int,
+        created_at: datetime = None,
+        updated_at: datetime = None
+    ) -> bool:
+        data = {
+            "event_id": str(event_id),
+            "event_type": event_type,
+            "category": category,
+            "title": title,
+            "description": description,
+            "importance": importance,
+            "status": status,
+            "source_signal_id": str(source_signal_id) if source_signal_id else None,
+            "duplicate_count": int(duplicate_count),
+            "created_at": created_at.isoformat() if hasattr(created_at, "isoformat") else str(created_at) if created_at else datetime.utcnow().isoformat(),
+            "updated_at": updated_at.isoformat() if hasattr(updated_at, "isoformat") else str(updated_at) if updated_at else datetime.utcnow().isoformat()
+        }
+        return cls._execute(lambda: supabase.table("fyi_events").upsert(data).execute())
+
+    @classmethod
+    def attempt_fyi_tables_creation(cls) -> bool:
+        """
+        Verifies if the fyi_events table is present and writable on Supabase.
+        """
+        try:
+            supabase.table("fyi_events").select("event_id").limit(1).execute()
+            return True
+        except Exception as e:
+            logger.warning(f"Supabase fyi table check failed: {e}")
+            return False
+
+    @classmethod
+    def store_daily_brief(
+        cls,
+        brief_id,
+        brief_type: str,
+        generated_at: datetime,
+        content: str,
+        todo_count: int,
+        fyi_count: int,
+        fact_count: int
+    ) -> bool:
+        data = {
+            "brief_id": str(brief_id),
+            "brief_type": brief_type,
+            "generated_at": generated_at.isoformat() if hasattr(generated_at, "isoformat") else str(generated_at) if generated_at else datetime.utcnow().isoformat(),
+            "content": content,
+            "todo_count": int(todo_count),
+            "fyi_count": int(fyi_count),
+            "fact_count": int(fact_count)
+        }
+        return cls._execute(lambda: supabase.table("daily_briefs").upsert(data).execute())
+
+    @classmethod
+    def attempt_brief_tables_creation(cls) -> bool:
+        """
+        Verifies if the daily_briefs table is present and writable on Supabase.
+        """
+        try:
+            supabase.table("daily_briefs").select("brief_id").limit(1).execute()
+            return True
+        except Exception as e:
+            logger.warning(f"Supabase daily briefs check failed: {e}")
+            return False
