@@ -4,10 +4,10 @@ import uuid
 from datetime import datetime
 from sqlalchemy import String, Float, DateTime, JSON
 from sqlalchemy.orm import Mapped, mapped_column
-from storage.models.base import Base
+from storage.models.base import Base, LineageMixin
 
 
-class Fact(Base):
+class Fact(LineageMixin, Base):
     """
     The canonical long-term memory ledger for Jarvis AI OS.
     Stores verified, stateful facts about the user's life, family, and assets.

@@ -1,0 +1,4285 @@
+{
+  "sqlite": {
+    "runtime_events": {
+      "count": 71,
+      "columns": [
+        {
+          "name": "id",
+          "type": "INTEGER",
+          "nullable": false,
+          "pk": true
+        },
+        {
+          "name": "event_type",
+          "type": "VARCHAR(100)",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "source",
+          "type": "VARCHAR(100)",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "payload",
+          "type": "TEXT",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "status",
+          "type": "VARCHAR(50)",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "created_at",
+          "type": "DATETIME",
+          "nullable": false,
+          "pk": false
+        }
+      ],
+      "created_range": [
+        "2026-06-15 00:31:06.965162",
+        "2026-06-23 14:39:41.543760"
+      ],
+      "updated_range": [
+        "N/A",
+        "N/A"
+      ]
+    },
+    "tasks": {
+      "count": 0,
+      "columns": [
+        {
+          "name": "id",
+          "type": "INTEGER",
+          "nullable": false,
+          "pk": true
+        },
+        {
+          "name": "title",
+          "type": "VARCHAR(500)",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "category",
+          "type": "VARCHAR(100)",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "priority",
+          "type": "VARCHAR(50)",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "source",
+          "type": "VARCHAR(50)",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "status",
+          "type": "VARCHAR(50)",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "due_date",
+          "type": "VARCHAR(100)",
+          "nullable": true,
+          "pk": false
+        },
+        {
+          "name": "created_at",
+          "type": "DATETIME",
+          "nullable": false,
+          "pk": false
+        }
+      ],
+      "created_range": [
+        "N/A",
+        "N/A"
+      ],
+      "updated_range": [
+        "N/A",
+        "N/A"
+      ]
+    },
+    "signals": {
+      "count": 100,
+      "columns": [
+        {
+          "name": "id",
+          "type": "INTEGER",
+          "nullable": false,
+          "pk": true
+        },
+        {
+          "name": "source",
+          "type": "VARCHAR(50)",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "signal_type",
+          "type": "VARCHAR(100)",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "category",
+          "type": "VARCHAR(100)",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "importance",
+          "type": "VARCHAR(50)",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "summary",
+          "type": "VARCHAR(1000)",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "raw_json",
+          "type": "TEXT",
+          "nullable": true,
+          "pk": false
+        },
+        {
+          "name": "created_at",
+          "type": "DATETIME",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "message_id",
+          "type": "VARCHAR(255)",
+          "nullable": true,
+          "pk": false
+        }
+      ],
+      "created_range": [
+        "2026-04-30 11:33:24.564000",
+        "2026-06-24 16:41:50.473000"
+      ],
+      "updated_range": [
+        "N/A",
+        "N/A"
+      ]
+    },
+    "mobile_signals": {
+      "count": 337,
+      "columns": [
+        {
+          "name": "id",
+          "type": "INTEGER",
+          "nullable": false,
+          "pk": true
+        },
+        {
+          "name": "device_id",
+          "type": "VARCHAR(100)",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "source",
+          "type": "VARCHAR(50)",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "sender",
+          "type": "VARCHAR(500)",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "message",
+          "type": "TEXT",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "mobile_timestamp",
+          "type": "VARCHAR(100)",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "processed",
+          "type": "BOOLEAN",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "created_at",
+          "type": "DATETIME",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "message_hash",
+          "type": "VARCHAR(64)",
+          "nullable": true,
+          "pk": false
+        }
+      ],
+      "created_range": [
+        "2026-06-24 16:41:50.479855",
+        "2026-06-28 10:47:50.187511"
+      ],
+      "updated_range": [
+        "N/A",
+        "N/A"
+      ]
+    },
+    "signal_classification": {
+      "count": 0,
+      "columns": [
+        {
+          "name": "signal_id",
+          "type": "INTEGER",
+          "nullable": false,
+          "pk": true
+        },
+        {
+          "name": "category",
+          "type": "VARCHAR(50)",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "confidence",
+          "type": "FLOAT",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "processed_at",
+          "type": "DATETIME",
+          "nullable": false,
+          "pk": false
+        }
+      ],
+      "created_range": [
+        "N/A",
+        "N/A"
+      ],
+      "updated_range": [
+        "N/A",
+        "N/A"
+      ]
+    },
+    "todos": {
+      "count": 0,
+      "columns": [
+        {
+          "name": "id",
+          "type": "INTEGER",
+          "nullable": false,
+          "pk": true
+        },
+        {
+          "name": "title",
+          "type": "VARCHAR(500)",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "due_date",
+          "type": "VARCHAR(100)",
+          "nullable": true,
+          "pk": false
+        },
+        {
+          "name": "source_signal_id",
+          "type": "INTEGER",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "priority",
+          "type": "VARCHAR(50)",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "created_at",
+          "type": "DATETIME",
+          "nullable": false,
+          "pk": false
+        }
+      ],
+      "created_range": [
+        "N/A",
+        "N/A"
+      ],
+      "updated_range": [
+        "N/A",
+        "N/A"
+      ]
+    },
+    "financial_events": {
+      "count": 80,
+      "columns": [
+        {
+          "name": "id",
+          "type": "INTEGER",
+          "nullable": false,
+          "pk": true
+        },
+        {
+          "name": "title",
+          "type": "VARCHAR(500)",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "amount",
+          "type": "FLOAT",
+          "nullable": true,
+          "pk": false
+        },
+        {
+          "name": "currency",
+          "type": "VARCHAR(10)",
+          "nullable": true,
+          "pk": false
+        },
+        {
+          "name": "transaction_type",
+          "type": "VARCHAR(50)",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "payment_channel",
+          "type": "VARCHAR(50)",
+          "nullable": true,
+          "pk": false
+        },
+        {
+          "name": "paid_to",
+          "type": "VARCHAR(255)",
+          "nullable": true,
+          "pk": false
+        },
+        {
+          "name": "paid_from",
+          "type": "VARCHAR(255)",
+          "nullable": true,
+          "pk": false
+        },
+        {
+          "name": "transaction_id",
+          "type": "VARCHAR(255)",
+          "nullable": true,
+          "pk": false
+        },
+        {
+          "name": "event_date",
+          "type": "DATETIME",
+          "nullable": true,
+          "pk": false
+        },
+        {
+          "name": "source_signal_id",
+          "type": "INTEGER",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "created_at",
+          "type": "DATETIME",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "category",
+          "type": "VARCHAR(100)",
+          "nullable": true,
+          "pk": false
+        }
+      ],
+      "created_range": [
+        "2026-06-28 08:19:55.494553",
+        "2026-06-28 08:19:55.671419"
+      ],
+      "updated_range": [
+        "N/A",
+        "N/A"
+      ]
+    },
+    "category_corrections": {
+      "count": 0,
+      "columns": [
+        {
+          "name": "id",
+          "type": "INTEGER",
+          "nullable": false,
+          "pk": true
+        },
+        {
+          "name": "merchant",
+          "type": "VARCHAR(255)",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "new_category",
+          "type": "VARCHAR(100)",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "correction_count",
+          "type": "INTEGER",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "created_at",
+          "type": "DATETIME",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "updated_at",
+          "type": "DATETIME",
+          "nullable": false,
+          "pk": false
+        }
+      ],
+      "created_range": [
+        "N/A",
+        "N/A"
+      ],
+      "updated_range": [
+        "N/A",
+        "N/A"
+      ]
+    },
+    "spending_categories": {
+      "count": 0,
+      "columns": [
+        {
+          "name": "category_id",
+          "type": "VARCHAR(36)",
+          "nullable": false,
+          "pk": true
+        },
+        {
+          "name": "name",
+          "type": "TEXT",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "parent_category",
+          "type": "TEXT",
+          "nullable": true,
+          "pk": false
+        },
+        {
+          "name": "created_at",
+          "type": "DATETIME",
+          "nullable": false,
+          "pk": false
+        }
+      ],
+      "created_range": [
+        "N/A",
+        "N/A"
+      ],
+      "updated_range": [
+        "N/A",
+        "N/A"
+      ]
+    },
+    "processed_files": {
+      "count": 14,
+      "columns": [
+        {
+          "name": "id",
+          "type": "INTEGER",
+          "nullable": false,
+          "pk": true
+        },
+        {
+          "name": "file_name",
+          "type": "VARCHAR(255)",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "bucket_name",
+          "type": "VARCHAR(100)",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "file_path",
+          "type": "VARCHAR(500)",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "file_hash",
+          "type": "VARCHAR(64)",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "status",
+          "type": "VARCHAR(50)",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "processed_timestamp",
+          "type": "DATETIME",
+          "nullable": false,
+          "pk": false
+        }
+      ],
+      "created_range": [
+        "N/A",
+        "N/A"
+      ],
+      "updated_range": [
+        "N/A",
+        "N/A"
+      ]
+    },
+    "financial_transaction_classification": {
+      "count": 0,
+      "columns": [
+        {
+          "name": "transaction_id",
+          "type": "VARCHAR(36)",
+          "nullable": false,
+          "pk": true
+        },
+        {
+          "name": "financial_event_id",
+          "type": "INTEGER",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "classification",
+          "type": "VARCHAR(50)",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "confidence",
+          "type": "FLOAT",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "created_at",
+          "type": "DATETIME",
+          "nullable": false,
+          "pk": false
+        }
+      ],
+      "created_range": [
+        "N/A",
+        "N/A"
+      ],
+      "updated_range": [
+        "N/A",
+        "N/A"
+      ]
+    },
+    "monthly_spending_summary": {
+      "count": 3,
+      "columns": [
+        {
+          "name": "summary_id",
+          "type": "VARCHAR(36)",
+          "nullable": false,
+          "pk": true
+        },
+        {
+          "name": "month_key",
+          "type": "VARCHAR(7)",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "total_spend",
+          "type": "FLOAT",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "transaction_count",
+          "type": "INTEGER",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "created_at",
+          "type": "DATETIME",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "updated_at",
+          "type": "DATETIME",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "total_debits",
+          "type": "FLOAT",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "total_credits",
+          "type": "FLOAT",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "accounting_spend",
+          "type": "FLOAT",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "lifestyle_spend",
+          "type": "FLOAT",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "total_income",
+          "type": "FLOAT",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "net_cash_flow",
+          "type": "FLOAT",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "internal_transfers",
+          "type": "FLOAT",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "insurance_premiums",
+          "type": "FLOAT",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "investments",
+          "type": "FLOAT",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "refund_offsets",
+          "type": "FLOAT",
+          "nullable": false,
+          "pk": false
+        }
+      ],
+      "created_range": [
+        "2026-06-28 08:19:55.703379",
+        "2026-06-28 08:19:55.707502"
+      ],
+      "updated_range": [
+        "2026-06-28 10:51:16.021788",
+        "2026-06-28 10:51:16.035690"
+      ]
+    },
+    "classification_cache": {
+      "count": 0,
+      "columns": [
+        {
+          "name": "cache_key",
+          "type": "VARCHAR(64)",
+          "nullable": false,
+          "pk": true
+        },
+        {
+          "name": "result_json",
+          "type": "TEXT",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "created_at",
+          "type": "DATETIME",
+          "nullable": false,
+          "pk": false
+        }
+      ],
+      "created_range": [
+        "N/A",
+        "N/A"
+      ],
+      "updated_range": [
+        "N/A",
+        "N/A"
+      ]
+    },
+    "pipeline_runs": {
+      "count": 7,
+      "columns": [
+        {
+          "name": "run_id",
+          "type": "VARCHAR(50)",
+          "nullable": false,
+          "pk": true
+        },
+        {
+          "name": "run_type",
+          "type": "VARCHAR(50)",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "started_at",
+          "type": "DATETIME",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "completed_at",
+          "type": "DATETIME",
+          "nullable": true,
+          "pk": false
+        },
+        {
+          "name": "status",
+          "type": "VARCHAR(50)",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "files_processed",
+          "type": "INTEGER",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "signals_processed",
+          "type": "INTEGER",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "todos_generated",
+          "type": "INTEGER",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "financial_events_generated",
+          "type": "INTEGER",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "fyi_generated",
+          "type": "INTEGER",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "facts_generated",
+          "type": "INTEGER",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "llm_calls",
+          "type": "INTEGER",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "duration_seconds",
+          "type": "FLOAT",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "error_message",
+          "type": "TEXT",
+          "nullable": true,
+          "pk": false
+        },
+        {
+          "name": "error_type",
+          "type": "VARCHAR(100)",
+          "nullable": true,
+          "pk": false
+        }
+      ],
+      "created_range": [
+        "N/A",
+        "N/A"
+      ],
+      "updated_range": [
+        "N/A",
+        "N/A"
+      ]
+    },
+    "system_status": {
+      "count": 1,
+      "columns": [
+        {
+          "name": "system_name",
+          "type": "VARCHAR(100)",
+          "nullable": false,
+          "pk": true
+        },
+        {
+          "name": "current_status",
+          "type": "VARCHAR(50)",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "last_successful_refresh",
+          "type": "DATETIME",
+          "nullable": true,
+          "pk": false
+        },
+        {
+          "name": "current_run_id",
+          "type": "VARCHAR(50)",
+          "nullable": true,
+          "pk": false
+        },
+        {
+          "name": "signals_processed",
+          "type": "INTEGER",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "todos_generated",
+          "type": "INTEGER",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "financial_events_generated",
+          "type": "INTEGER",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "fyi_generated",
+          "type": "INTEGER",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "updated_at",
+          "type": "DATETIME",
+          "nullable": false,
+          "pk": false
+        }
+      ],
+      "created_range": [
+        "N/A",
+        "N/A"
+      ],
+      "updated_range": [
+        "2026-06-28 11:01:01.076411",
+        "2026-06-28 11:01:01.076411"
+      ]
+    },
+    "qualified_signals": {
+      "count": 437,
+      "columns": [
+        {
+          "name": "id",
+          "type": "INTEGER",
+          "nullable": false,
+          "pk": true
+        },
+        {
+          "name": "signal_id",
+          "type": "VARCHAR(100)",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "source",
+          "type": "VARCHAR(50)",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "sender",
+          "type": "VARCHAR(500)",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "message",
+          "type": "TEXT",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "timestamp",
+          "type": "DATETIME",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "qualification_score",
+          "type": "INTEGER",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "qualification_status",
+          "type": "VARCHAR(50)",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "qualification_reason",
+          "type": "VARCHAR(100)",
+          "nullable": true,
+          "pk": false
+        },
+        {
+          "name": "created_at",
+          "type": "DATETIME",
+          "nullable": false,
+          "pk": false
+        }
+      ],
+      "created_range": [
+        "2026-06-24 16:41:50.499663",
+        "2026-06-28 10:47:53.086622"
+      ],
+      "updated_range": [
+        "N/A",
+        "N/A"
+      ]
+    },
+    "understood_signals": {
+      "count": 224,
+      "columns": [
+        {
+          "name": "id",
+          "type": "VARCHAR(100)",
+          "nullable": false,
+          "pk": true
+        },
+        {
+          "name": "qualified_signal_id",
+          "type": "INTEGER",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "raw_signal_id",
+          "type": "VARCHAR(100)",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "signal_type",
+          "type": "VARCHAR(50)",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "importance",
+          "type": "VARCHAR(20)",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "confidence",
+          "type": "FLOAT",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "summary",
+          "type": "TEXT",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "reason",
+          "type": "TEXT",
+          "nullable": true,
+          "pk": false
+        },
+        {
+          "name": "processing_path",
+          "type": "VARCHAR(20)",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "llm_model_used",
+          "type": "VARCHAR(50)",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "contract_json",
+          "type": "TEXT",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "is_verified",
+          "type": "BOOLEAN",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "created_at",
+          "type": "DATETIME",
+          "nullable": false,
+          "pk": false
+        }
+      ],
+      "created_range": [
+        "2026-04-30 11:33:24.564000",
+        "2026-06-28 04:16:42.514000"
+      ],
+      "updated_range": [
+        "N/A",
+        "N/A"
+      ]
+    },
+    "bank_accounts": {
+      "count": 4,
+      "columns": [
+        {
+          "name": "id",
+          "type": "VARCHAR(36)",
+          "nullable": false,
+          "pk": true
+        },
+        {
+          "name": "bank_name",
+          "type": "VARCHAR(100)",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "ifsc_prefix",
+          "type": "VARCHAR(10)",
+          "nullable": true,
+          "pk": false
+        },
+        {
+          "name": "account_number_masked",
+          "type": "VARCHAR(20)",
+          "nullable": true,
+          "pk": false
+        },
+        {
+          "name": "account_type",
+          "type": "VARCHAR(20)",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "sender_aliases",
+          "type": "JSON",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "receiver_aliases",
+          "type": "JSON",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "is_active",
+          "type": "BOOLEAN",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "registered_at",
+          "type": "DATETIME",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "updated_at",
+          "type": "DATETIME",
+          "nullable": false,
+          "pk": false
+        }
+      ],
+      "created_range": [
+        "N/A",
+        "N/A"
+      ],
+      "updated_range": [
+        "2026-06-25 00:58:24.354879",
+        "2026-06-25 00:58:24.354893"
+      ]
+    },
+    "transfer_pairs": {
+      "count": 17,
+      "columns": [
+        {
+          "name": "id",
+          "type": "VARCHAR(36)",
+          "nullable": false,
+          "pk": true
+        },
+        {
+          "name": "debit_event_id",
+          "type": "INTEGER",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "credit_event_id",
+          "type": "INTEGER",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "amount",
+          "type": "FLOAT",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "currency",
+          "type": "VARCHAR(10)",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "transfer_type",
+          "type": "VARCHAR(20)",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "window_seconds",
+          "type": "FLOAT",
+          "nullable": true,
+          "pk": false
+        },
+        {
+          "name": "confidence",
+          "type": "FLOAT",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "detected_at",
+          "type": "DATETIME",
+          "nullable": false,
+          "pk": false
+        }
+      ],
+      "created_range": [
+        "N/A",
+        "N/A"
+      ],
+      "updated_range": [
+        "N/A",
+        "N/A"
+      ]
+    },
+    "salary_sources": {
+      "count": 6,
+      "columns": [
+        {
+          "name": "id",
+          "type": "VARCHAR(36)",
+          "nullable": false,
+          "pk": true
+        },
+        {
+          "name": "canonical_name",
+          "type": "VARCHAR(200)",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "aliases",
+          "type": "JSON",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "employment_type",
+          "type": "VARCHAR(20)",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "expected_day_of_month",
+          "type": "INTEGER",
+          "nullable": true,
+          "pk": false
+        },
+        {
+          "name": "day_tolerance",
+          "type": "INTEGER",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "expected_amount",
+          "type": "FLOAT",
+          "nullable": true,
+          "pk": false
+        },
+        {
+          "name": "amount_tolerance_pct",
+          "type": "FLOAT",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "source_bank_aliases",
+          "type": "JSON",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "is_active",
+          "type": "BOOLEAN",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "pending_review",
+          "type": "BOOLEAN",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "first_detected",
+          "type": "DATE",
+          "nullable": true,
+          "pk": false
+        },
+        {
+          "name": "last_seen",
+          "type": "DATE",
+          "nullable": true,
+          "pk": false
+        },
+        {
+          "name": "detection_history",
+          "type": "JSON",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "created_at",
+          "type": "DATETIME",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "updated_at",
+          "type": "DATETIME",
+          "nullable": false,
+          "pk": false
+        }
+      ],
+      "created_range": [
+        "2026-06-28 06:50:13.974747",
+        "2026-06-28 08:19:55.566645"
+      ],
+      "updated_range": [
+        "2026-06-28 06:50:13.974749",
+        "2026-06-28 08:19:55.566647"
+      ]
+    },
+    "merchants": {
+      "count": 30,
+      "columns": [
+        {
+          "name": "id",
+          "type": "VARCHAR(36)",
+          "nullable": false,
+          "pk": true
+        },
+        {
+          "name": "canonical_name",
+          "type": "VARCHAR(200)",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "category",
+          "type": "VARCHAR(50)",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "aliases",
+          "type": "JSON",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "logo_url",
+          "type": "VARCHAR(500)",
+          "nullable": true,
+          "pk": false
+        },
+        {
+          "name": "is_trusted",
+          "type": "BOOLEAN",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "is_seed",
+          "type": "BOOLEAN",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "created_at",
+          "type": "DATETIME",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "updated_at",
+          "type": "DATETIME",
+          "nullable": false,
+          "pk": false
+        }
+      ],
+      "created_range": [
+        "2026-06-25 00:58:24.366110",
+        "2026-06-25 00:58:24.366192"
+      ],
+      "updated_range": [
+        "2026-06-25 00:58:24.366113",
+        "2026-06-25 00:58:24.366193"
+      ]
+    },
+    "salary_events": {
+      "count": 6,
+      "columns": [
+        {
+          "name": "id",
+          "type": "VARCHAR(36)",
+          "nullable": false,
+          "pk": true
+        },
+        {
+          "name": "financial_event_id",
+          "type": "INTEGER",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "salary_source_id",
+          "type": "VARCHAR(36)",
+          "nullable": true,
+          "pk": false
+        },
+        {
+          "name": "detected_employer",
+          "type": "VARCHAR(200)",
+          "nullable": true,
+          "pk": false
+        },
+        {
+          "name": "gross_amount",
+          "type": "FLOAT",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "currency",
+          "type": "VARCHAR(10)",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "salary_month",
+          "type": "DATE",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "detection_method",
+          "type": "VARCHAR(30)",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "confidence",
+          "type": "FLOAT",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "detected_at",
+          "type": "DATETIME",
+          "nullable": false,
+          "pk": false
+        }
+      ],
+      "created_range": [
+        "N/A",
+        "N/A"
+      ],
+      "updated_range": [
+        "N/A",
+        "N/A"
+      ]
+    },
+    "merchant_profiles": {
+      "count": 3,
+      "columns": [
+        {
+          "name": "id",
+          "type": "VARCHAR(36)",
+          "nullable": false,
+          "pk": true
+        },
+        {
+          "name": "merchant_id",
+          "type": "VARCHAR(36)",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "lifetime_spend",
+          "type": "FLOAT",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "avg_transaction_value",
+          "type": "FLOAT",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "total_transaction_count",
+          "type": "INTEGER",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "visit_count_last_30d",
+          "type": "INTEGER",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "visit_count_last_90d",
+          "type": "INTEGER",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "last_transaction_date",
+          "type": "DATE",
+          "nullable": true,
+          "pk": false
+        },
+        {
+          "name": "last_transaction_amount",
+          "type": "FLOAT",
+          "nullable": true,
+          "pk": false
+        },
+        {
+          "name": "updated_at",
+          "type": "DATETIME",
+          "nullable": false,
+          "pk": false
+        }
+      ],
+      "created_range": [
+        "N/A",
+        "N/A"
+      ],
+      "updated_range": [
+        "2026-06-28 06:50:14.205130",
+        "2026-06-28 10:50:22.039282"
+      ]
+    },
+    "financial_facts": {
+      "count": 61,
+      "columns": [
+        {
+          "name": "id",
+          "type": "VARCHAR(36)",
+          "nullable": false,
+          "pk": true
+        },
+        {
+          "name": "fact_type",
+          "type": "VARCHAR(30)",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "financial_event_id",
+          "type": "INTEGER",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "understood_signal_id",
+          "type": "VARCHAR(36)",
+          "nullable": true,
+          "pk": false
+        },
+        {
+          "name": "qualified_signal_id",
+          "type": "INTEGER",
+          "nullable": true,
+          "pk": false
+        },
+        {
+          "name": "amount",
+          "type": "FLOAT",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "currency",
+          "type": "VARCHAR(10)",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "merchant_raw",
+          "type": "VARCHAR(255)",
+          "nullable": true,
+          "pk": false
+        },
+        {
+          "name": "merchant_canonical",
+          "type": "VARCHAR(200)",
+          "nullable": true,
+          "pk": false
+        },
+        {
+          "name": "merchant_id",
+          "type": "VARCHAR(36)",
+          "nullable": true,
+          "pk": false
+        },
+        {
+          "name": "category",
+          "type": "VARCHAR(50)",
+          "nullable": true,
+          "pk": false
+        },
+        {
+          "name": "classification_confidence",
+          "type": "FLOAT",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "classification_method",
+          "type": "VARCHAR(30)",
+          "nullable": true,
+          "pk": false
+        },
+        {
+          "name": "event_date",
+          "type": "DATE",
+          "nullable": true,
+          "pk": false
+        },
+        {
+          "name": "month",
+          "type": "DATE",
+          "nullable": true,
+          "pk": false
+        },
+        {
+          "name": "is_excluded_from_accounting_spend",
+          "type": "BOOLEAN",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "is_excluded_from_lifestyle_spend",
+          "type": "BOOLEAN",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "exclusion_reason",
+          "type": "VARCHAR(100)",
+          "nullable": true,
+          "pk": false
+        },
+        {
+          "name": "refund_of_fact_id",
+          "type": "VARCHAR(36)",
+          "nullable": true,
+          "pk": false
+        },
+        {
+          "name": "is_refunded",
+          "type": "BOOLEAN",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "refund_applied_to_month",
+          "type": "DATE",
+          "nullable": true,
+          "pk": false
+        },
+        {
+          "name": "salary_source_id",
+          "type": "VARCHAR(36)",
+          "nullable": true,
+          "pk": false
+        },
+        {
+          "name": "transfer_pair_id",
+          "type": "VARCHAR(36)",
+          "nullable": true,
+          "pk": false
+        },
+        {
+          "name": "created_at",
+          "type": "DATETIME",
+          "nullable": false,
+          "pk": false
+        }
+      ],
+      "created_range": [
+        "2026-06-28 10:50:20.742182",
+        "2026-06-28 10:50:22.037990"
+      ],
+      "updated_range": [
+        "N/A",
+        "N/A"
+      ]
+    },
+    "facts": {
+      "count": 8,
+      "columns": [
+        {
+          "name": "fact_id",
+          "type": "VARCHAR(36)",
+          "nullable": false,
+          "pk": true
+        },
+        {
+          "name": "fact_type",
+          "type": "VARCHAR(50)",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "fact_value",
+          "type": "JSON",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "confidence",
+          "type": "FLOAT",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "status",
+          "type": "VARCHAR(30)",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "owner_agent",
+          "type": "VARCHAR(50)",
+          "nullable": true,
+          "pk": false
+        },
+        {
+          "name": "source_agent",
+          "type": "VARCHAR(50)",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "source_type",
+          "type": "VARCHAR(30)",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "first_seen",
+          "type": "DATETIME",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "last_seen",
+          "type": "DATETIME",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "evidence",
+          "type": "JSON",
+          "nullable": true,
+          "pk": false
+        },
+        {
+          "name": "created_at",
+          "type": "DATETIME",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "updated_at",
+          "type": "DATETIME",
+          "nullable": false,
+          "pk": false
+        }
+      ],
+      "created_range": [
+        "2026-06-28 10:50:22.333326",
+        "2026-06-28 10:50:37.831449"
+      ],
+      "updated_range": [
+        "2026-06-28 11:00:02.183016",
+        "2026-06-28 11:00:08.908448"
+      ]
+    },
+    "fact_relationships": {
+      "count": 0,
+      "columns": [
+        {
+          "name": "id",
+          "type": "INTEGER",
+          "nullable": false,
+          "pk": true
+        },
+        {
+          "name": "subject_id",
+          "type": "VARCHAR(36)",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "predicate",
+          "type": "VARCHAR(50)",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "object_id",
+          "type": "VARCHAR(36)",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "confidence",
+          "type": "FLOAT",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "created_at",
+          "type": "DATETIME",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "updated_at",
+          "type": "DATETIME",
+          "nullable": false,
+          "pk": false
+        }
+      ],
+      "created_range": [
+        "N/A",
+        "N/A"
+      ],
+      "updated_range": [
+        "N/A",
+        "N/A"
+      ]
+    },
+    "todo_items": {
+      "count": 4,
+      "columns": [
+        {
+          "name": "todo_id",
+          "type": "VARCHAR(36)",
+          "nullable": false,
+          "pk": true
+        },
+        {
+          "name": "title",
+          "type": "VARCHAR(200)",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "description",
+          "type": "TEXT",
+          "nullable": true,
+          "pk": false
+        },
+        {
+          "name": "category",
+          "type": "VARCHAR(30)",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "priority",
+          "type": "VARCHAR(20)",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "status",
+          "type": "VARCHAR(30)",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "due_date",
+          "type": "DATETIME",
+          "nullable": true,
+          "pk": false
+        },
+        {
+          "name": "source_agent",
+          "type": "VARCHAR(50)",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "source_reference",
+          "type": "JSON",
+          "nullable": true,
+          "pk": false
+        },
+        {
+          "name": "confidence",
+          "type": "FLOAT",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "created_at",
+          "type": "DATETIME",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "updated_at",
+          "type": "DATETIME",
+          "nullable": false,
+          "pk": false
+        }
+      ],
+      "created_range": [
+        "2026-06-28 10:50:38.159621",
+        "2026-06-28 11:00:09.208057"
+      ],
+      "updated_range": [
+        "2026-06-28 10:50:41.496180",
+        "2026-06-28 11:00:12.296934"
+      ]
+    },
+    "fyi_events": {
+      "count": 67,
+      "columns": [
+        {
+          "name": "event_id",
+          "type": "VARCHAR(36)",
+          "nullable": false,
+          "pk": true
+        },
+        {
+          "name": "event_type",
+          "type": "VARCHAR(100)",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "category",
+          "type": "VARCHAR(50)",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "title",
+          "type": "VARCHAR(200)",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "description",
+          "type": "TEXT",
+          "nullable": true,
+          "pk": false
+        },
+        {
+          "name": "importance",
+          "type": "VARCHAR(20)",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "status",
+          "type": "VARCHAR(30)",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "source_signal_id",
+          "type": "VARCHAR(36)",
+          "nullable": true,
+          "pk": false
+        },
+        {
+          "name": "duplicate_count",
+          "type": "INTEGER",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "created_at",
+          "type": "DATETIME",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "updated_at",
+          "type": "DATETIME",
+          "nullable": false,
+          "pk": false
+        }
+      ],
+      "created_range": [
+        "2026-06-28 10:50:41.675536",
+        "2026-06-28 10:50:56.373705"
+      ],
+      "updated_range": [
+        "2026-06-28 11:00:35.947904",
+        "2026-06-28 11:01:00.387534"
+      ]
+    },
+    "daily_briefs": {
+      "count": 4,
+      "columns": [
+        {
+          "name": "brief_id",
+          "type": "VARCHAR(36)",
+          "nullable": false,
+          "pk": true
+        },
+        {
+          "name": "brief_type",
+          "type": "VARCHAR(50)",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "generated_at",
+          "type": "DATETIME",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "content",
+          "type": "TEXT",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "todo_count",
+          "type": "INTEGER",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "fyi_count",
+          "type": "INTEGER",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "fact_count",
+          "type": "INTEGER",
+          "nullable": false,
+          "pk": false
+        }
+      ],
+      "created_range": [
+        "N/A",
+        "N/A"
+      ],
+      "updated_range": [
+        "N/A",
+        "N/A"
+      ]
+    },
+    "monthly_category_spend": {
+      "count": 9,
+      "columns": [
+        {
+          "name": "entry_id",
+          "type": "VARCHAR(36)",
+          "nullable": false,
+          "pk": true
+        },
+        {
+          "name": "month_key",
+          "type": "VARCHAR(7)",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "category_name",
+          "type": "VARCHAR(100)",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "amount",
+          "type": "FLOAT",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "transaction_count",
+          "type": "INTEGER",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "created_at",
+          "type": "DATETIME",
+          "nullable": false,
+          "pk": false
+        }
+      ],
+      "created_range": [
+        "2026-06-28 11:01:01.066667",
+        "2026-06-28 11:01:01.069473"
+      ],
+      "updated_range": [
+        "N/A",
+        "N/A"
+      ]
+    },
+    "monthly_category_trends": {
+      "count": 9,
+      "columns": [
+        {
+          "name": "trend_id",
+          "type": "VARCHAR(36)",
+          "nullable": false,
+          "pk": true
+        },
+        {
+          "name": "month_key",
+          "type": "VARCHAR(7)",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "category_name",
+          "type": "VARCHAR(100)",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "current_amount",
+          "type": "FLOAT",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "previous_amount",
+          "type": "FLOAT",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "change_percentage",
+          "type": "FLOAT",
+          "nullable": false,
+          "pk": false
+        },
+        {
+          "name": "created_at",
+          "type": "DATETIME",
+          "nullable": false,
+          "pk": false
+        }
+      ],
+      "created_range": [
+        "2026-06-28 11:01:01.071581",
+        "2026-06-28 11:01:01.071605"
+      ],
+      "updated_range": [
+        "N/A",
+        "N/A"
+      ]
+    }
+  },
+  "supabase": {
+    "bank_accounts": {
+      "count": 4,
+      "columns": [
+        {
+          "name": "id",
+          "type": "string",
+          "format": "character varying",
+          "nullable": false
+        },
+        {
+          "name": "bank_name",
+          "type": "string",
+          "format": "character varying",
+          "nullable": false
+        },
+        {
+          "name": "ifsc_prefix",
+          "type": "string",
+          "format": "character varying",
+          "nullable": true
+        },
+        {
+          "name": "account_number_masked",
+          "type": "string",
+          "format": "character varying",
+          "nullable": true
+        },
+        {
+          "name": "account_type",
+          "type": "string",
+          "format": "character varying",
+          "nullable": false
+        },
+        {
+          "name": "sender_aliases",
+          "type": null,
+          "format": "jsonb",
+          "nullable": false
+        },
+        {
+          "name": "receiver_aliases",
+          "type": null,
+          "format": "jsonb",
+          "nullable": false
+        },
+        {
+          "name": "is_active",
+          "type": "boolean",
+          "format": "boolean",
+          "nullable": false
+        },
+        {
+          "name": "registered_at",
+          "type": "string",
+          "format": "timestamp with time zone",
+          "nullable": false
+        },
+        {
+          "name": "updated_at",
+          "type": "string",
+          "format": "timestamp with time zone",
+          "nullable": false
+        }
+      ],
+      "created_range": [
+        "N/A",
+        "N/A"
+      ],
+      "updated_range": [
+        "2026-06-25T00:58:24.354879+00:00",
+        "2026-06-25T00:58:24.354893+00:00"
+      ]
+    },
+    "connection_test": {
+      "count": 0,
+      "columns": [
+        {
+          "name": "id",
+          "type": "integer",
+          "format": "integer",
+          "nullable": false
+        },
+        {
+          "name": "created_at",
+          "type": "string",
+          "format": "timestamp without time zone",
+          "nullable": true
+        },
+        {
+          "name": "test_message",
+          "type": "string",
+          "format": "text",
+          "nullable": true
+        }
+      ],
+      "created_range": [
+        "N/A",
+        "N/A"
+      ],
+      "updated_range": [
+        "N/A",
+        "N/A"
+      ]
+    },
+    "daily_briefs": {
+      "count": 4,
+      "columns": [
+        {
+          "name": "brief_id",
+          "type": "string",
+          "format": "character varying",
+          "nullable": false
+        },
+        {
+          "name": "brief_type",
+          "type": "string",
+          "format": "character varying",
+          "nullable": false
+        },
+        {
+          "name": "generated_at",
+          "type": "string",
+          "format": "timestamp with time zone",
+          "nullable": false
+        },
+        {
+          "name": "content",
+          "type": "string",
+          "format": "text",
+          "nullable": false
+        },
+        {
+          "name": "todo_count",
+          "type": "integer",
+          "format": "integer",
+          "nullable": false
+        },
+        {
+          "name": "fyi_count",
+          "type": "integer",
+          "format": "integer",
+          "nullable": false
+        },
+        {
+          "name": "fact_count",
+          "type": "integer",
+          "format": "integer",
+          "nullable": false
+        }
+      ],
+      "created_range": [
+        "N/A",
+        "N/A"
+      ],
+      "updated_range": [
+        "N/A",
+        "N/A"
+      ]
+    },
+    "fact_relationships": {
+      "count": 0,
+      "columns": [
+        {
+          "name": "id",
+          "type": "integer",
+          "format": "bigint",
+          "nullable": false
+        },
+        {
+          "name": "subject_id",
+          "type": "string",
+          "format": "character varying",
+          "nullable": false
+        },
+        {
+          "name": "predicate",
+          "type": "string",
+          "format": "character varying",
+          "nullable": false
+        },
+        {
+          "name": "object_id",
+          "type": "string",
+          "format": "character varying",
+          "nullable": false
+        },
+        {
+          "name": "confidence",
+          "type": "number",
+          "format": "numeric",
+          "nullable": false
+        },
+        {
+          "name": "created_at",
+          "type": "string",
+          "format": "timestamp with time zone",
+          "nullable": false
+        },
+        {
+          "name": "updated_at",
+          "type": "string",
+          "format": "timestamp with time zone",
+          "nullable": false
+        }
+      ],
+      "created_range": [
+        "N/A",
+        "N/A"
+      ],
+      "updated_range": [
+        "N/A",
+        "N/A"
+      ]
+    },
+    "facts": {
+      "count": 8,
+      "columns": [
+        {
+          "name": "fact_id",
+          "type": "string",
+          "format": "character varying",
+          "nullable": false
+        },
+        {
+          "name": "fact_type",
+          "type": "string",
+          "format": "character varying",
+          "nullable": false
+        },
+        {
+          "name": "fact_value",
+          "type": null,
+          "format": "jsonb",
+          "nullable": false
+        },
+        {
+          "name": "confidence",
+          "type": "number",
+          "format": "numeric",
+          "nullable": false
+        },
+        {
+          "name": "status",
+          "type": "string",
+          "format": "character varying",
+          "nullable": false
+        },
+        {
+          "name": "owner_agent",
+          "type": "string",
+          "format": "character varying",
+          "nullable": true
+        },
+        {
+          "name": "source_agent",
+          "type": "string",
+          "format": "character varying",
+          "nullable": false
+        },
+        {
+          "name": "source_type",
+          "type": "string",
+          "format": "character varying",
+          "nullable": false
+        },
+        {
+          "name": "first_seen",
+          "type": "string",
+          "format": "timestamp with time zone",
+          "nullable": false
+        },
+        {
+          "name": "last_seen",
+          "type": "string",
+          "format": "timestamp with time zone",
+          "nullable": false
+        },
+        {
+          "name": "evidence",
+          "type": null,
+          "format": "jsonb",
+          "nullable": true
+        },
+        {
+          "name": "created_at",
+          "type": "string",
+          "format": "timestamp with time zone",
+          "nullable": false
+        },
+        {
+          "name": "updated_at",
+          "type": "string",
+          "format": "timestamp with time zone",
+          "nullable": false
+        }
+      ],
+      "created_range": [
+        "2026-06-28T10:50:22.333326+00:00",
+        "2026-06-28T10:50:37.831449+00:00"
+      ],
+      "updated_range": [
+        "2026-06-28T11:00:02.183016+00:00",
+        "2026-06-28T11:00:08.908448+00:00"
+      ]
+    },
+    "financial_events": {
+      "count": 80,
+      "columns": [
+        {
+          "name": "id",
+          "type": "integer",
+          "format": "bigint",
+          "nullable": false
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "format": "character varying",
+          "nullable": false
+        },
+        {
+          "name": "amount",
+          "type": "number",
+          "format": "numeric",
+          "nullable": true
+        },
+        {
+          "name": "currency",
+          "type": "string",
+          "format": "character varying",
+          "nullable": true
+        },
+        {
+          "name": "transaction_type",
+          "type": "string",
+          "format": "character varying",
+          "nullable": false
+        },
+        {
+          "name": "payment_channel",
+          "type": "string",
+          "format": "character varying",
+          "nullable": true
+        },
+        {
+          "name": "paid_to",
+          "type": "string",
+          "format": "character varying",
+          "nullable": true
+        },
+        {
+          "name": "paid_from",
+          "type": "string",
+          "format": "character varying",
+          "nullable": true
+        },
+        {
+          "name": "transaction_id",
+          "type": "string",
+          "format": "character varying",
+          "nullable": true
+        },
+        {
+          "name": "event_date",
+          "type": "string",
+          "format": "timestamp with time zone",
+          "nullable": true
+        },
+        {
+          "name": "source_signal_id",
+          "type": "integer",
+          "format": "integer",
+          "nullable": false
+        },
+        {
+          "name": "created_at",
+          "type": "string",
+          "format": "timestamp with time zone",
+          "nullable": false
+        },
+        {
+          "name": "category",
+          "type": "string",
+          "format": "character varying",
+          "nullable": true
+        }
+      ],
+      "created_range": [
+        "2026-06-28T08:19:55.494553+00:00",
+        "2026-06-28T08:19:55.671419+00:00"
+      ],
+      "updated_range": [
+        "N/A",
+        "N/A"
+      ]
+    },
+    "financial_facts": {
+      "count": 61,
+      "columns": [
+        {
+          "name": "id",
+          "type": "string",
+          "format": "character varying",
+          "nullable": false
+        },
+        {
+          "name": "fact_type",
+          "type": "string",
+          "format": "character varying",
+          "nullable": false
+        },
+        {
+          "name": "financial_event_id",
+          "type": "integer",
+          "format": "bigint",
+          "nullable": false
+        },
+        {
+          "name": "understood_signal_id",
+          "type": "string",
+          "format": "character varying",
+          "nullable": true
+        },
+        {
+          "name": "qualified_signal_id",
+          "type": "integer",
+          "format": "bigint",
+          "nullable": true
+        },
+        {
+          "name": "amount",
+          "type": "number",
+          "format": "numeric",
+          "nullable": false
+        },
+        {
+          "name": "currency",
+          "type": "string",
+          "format": "character varying",
+          "nullable": false
+        },
+        {
+          "name": "merchant_raw",
+          "type": "string",
+          "format": "character varying",
+          "nullable": true
+        },
+        {
+          "name": "merchant_canonical",
+          "type": "string",
+          "format": "character varying",
+          "nullable": true
+        },
+        {
+          "name": "merchant_id",
+          "type": "string",
+          "format": "character varying",
+          "nullable": true
+        },
+        {
+          "name": "category",
+          "type": "string",
+          "format": "character varying",
+          "nullable": true
+        },
+        {
+          "name": "classification_confidence",
+          "type": "number",
+          "format": "numeric",
+          "nullable": false
+        },
+        {
+          "name": "classification_method",
+          "type": "string",
+          "format": "character varying",
+          "nullable": true
+        },
+        {
+          "name": "event_date",
+          "type": "string",
+          "format": "date",
+          "nullable": true
+        },
+        {
+          "name": "month",
+          "type": "string",
+          "format": "date",
+          "nullable": true
+        },
+        {
+          "name": "is_excluded_from_accounting_spend",
+          "type": "boolean",
+          "format": "boolean",
+          "nullable": false
+        },
+        {
+          "name": "is_excluded_from_lifestyle_spend",
+          "type": "boolean",
+          "format": "boolean",
+          "nullable": false
+        },
+        {
+          "name": "exclusion_reason",
+          "type": "string",
+          "format": "character varying",
+          "nullable": true
+        },
+        {
+          "name": "refund_of_fact_id",
+          "type": "string",
+          "format": "character varying",
+          "nullable": true
+        },
+        {
+          "name": "is_refunded",
+          "type": "boolean",
+          "format": "boolean",
+          "nullable": false
+        },
+        {
+          "name": "refund_applied_to_month",
+          "type": "string",
+          "format": "date",
+          "nullable": true
+        },
+        {
+          "name": "salary_source_id",
+          "type": "string",
+          "format": "character varying",
+          "nullable": true
+        },
+        {
+          "name": "transfer_pair_id",
+          "type": "string",
+          "format": "character varying",
+          "nullable": true
+        },
+        {
+          "name": "created_at",
+          "type": "string",
+          "format": "timestamp with time zone",
+          "nullable": false
+        }
+      ],
+      "created_range": [
+        "2026-06-28T10:50:20.742182+00:00",
+        "2026-06-28T10:50:22.03799+00:00"
+      ],
+      "updated_range": [
+        "N/A",
+        "N/A"
+      ]
+    },
+    "financial_transaction_classification": {
+      "count": 0,
+      "columns": [
+        {
+          "name": "transaction_id",
+          "type": "string",
+          "format": "uuid",
+          "nullable": false
+        },
+        {
+          "name": "financial_event_id",
+          "type": "string",
+          "format": "uuid",
+          "nullable": false
+        },
+        {
+          "name": "classification",
+          "type": "string",
+          "format": "character varying",
+          "nullable": false
+        },
+        {
+          "name": "confidence",
+          "type": "number",
+          "format": "numeric",
+          "nullable": false
+        },
+        {
+          "name": "created_at",
+          "type": "string",
+          "format": "timestamp with time zone",
+          "nullable": true
+        }
+      ],
+      "created_range": [
+        "N/A",
+        "N/A"
+      ],
+      "updated_range": [
+        "N/A",
+        "N/A"
+      ]
+    },
+    "fyi_events": {
+      "count": 67,
+      "columns": [
+        {
+          "name": "event_id",
+          "type": "string",
+          "format": "character varying",
+          "nullable": false
+        },
+        {
+          "name": "event_type",
+          "type": "string",
+          "format": "character varying",
+          "nullable": false
+        },
+        {
+          "name": "category",
+          "type": "string",
+          "format": "character varying",
+          "nullable": false
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "format": "character varying",
+          "nullable": false
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "format": "text",
+          "nullable": true
+        },
+        {
+          "name": "importance",
+          "type": "string",
+          "format": "character varying",
+          "nullable": false
+        },
+        {
+          "name": "status",
+          "type": "string",
+          "format": "character varying",
+          "nullable": false
+        },
+        {
+          "name": "source_signal_id",
+          "type": "string",
+          "format": "character varying",
+          "nullable": true
+        },
+        {
+          "name": "duplicate_count",
+          "type": "integer",
+          "format": "integer",
+          "nullable": false
+        },
+        {
+          "name": "created_at",
+          "type": "string",
+          "format": "timestamp with time zone",
+          "nullable": false
+        },
+        {
+          "name": "updated_at",
+          "type": "string",
+          "format": "timestamp with time zone",
+          "nullable": false
+        }
+      ],
+      "created_range": [
+        "2026-06-28T10:50:41.675536+00:00",
+        "2026-06-28T10:50:56.373705+00:00"
+      ],
+      "updated_range": [
+        "2026-06-28T11:00:35.947904+00:00",
+        "2026-06-28T11:01:00.387534+00:00"
+      ]
+    },
+    "merchant_mappings": {
+      "count": 0,
+      "columns": [
+        {
+          "name": "mapping_id",
+          "type": "string",
+          "format": "uuid",
+          "nullable": false
+        },
+        {
+          "name": "merchant_name",
+          "type": "string",
+          "format": "text",
+          "nullable": true
+        },
+        {
+          "name": "category",
+          "type": "string",
+          "format": "text",
+          "nullable": true
+        },
+        {
+          "name": "confidence",
+          "type": "number",
+          "format": "numeric",
+          "nullable": true
+        },
+        {
+          "name": "created_at",
+          "type": "string",
+          "format": "timestamp without time zone",
+          "nullable": true
+        },
+        {
+          "name": "updated_at",
+          "type": "string",
+          "format": "timestamp without time zone",
+          "nullable": true
+        }
+      ],
+      "created_range": [
+        "N/A",
+        "N/A"
+      ],
+      "updated_range": [
+        "N/A",
+        "N/A"
+      ]
+    },
+    "merchant_profiles": {
+      "count": 3,
+      "columns": [
+        {
+          "name": "id",
+          "type": "string",
+          "format": "character varying",
+          "nullable": false
+        },
+        {
+          "name": "merchant_id",
+          "type": "string",
+          "format": "character varying",
+          "nullable": false
+        },
+        {
+          "name": "lifetime_spend",
+          "type": "number",
+          "format": "numeric",
+          "nullable": false
+        },
+        {
+          "name": "avg_transaction_value",
+          "type": "number",
+          "format": "numeric",
+          "nullable": false
+        },
+        {
+          "name": "total_transaction_count",
+          "type": "integer",
+          "format": "integer",
+          "nullable": false
+        },
+        {
+          "name": "visit_count_last_30d",
+          "type": "integer",
+          "format": "integer",
+          "nullable": false
+        },
+        {
+          "name": "visit_count_last_90d",
+          "type": "integer",
+          "format": "integer",
+          "nullable": false
+        },
+        {
+          "name": "last_transaction_date",
+          "type": "string",
+          "format": "date",
+          "nullable": true
+        },
+        {
+          "name": "last_transaction_amount",
+          "type": "number",
+          "format": "numeric",
+          "nullable": true
+        },
+        {
+          "name": "updated_at",
+          "type": "string",
+          "format": "timestamp with time zone",
+          "nullable": false
+        }
+      ],
+      "created_range": [
+        "N/A",
+        "N/A"
+      ],
+      "updated_range": [
+        "2026-06-28T06:50:14.20513+00:00",
+        "2026-06-28T10:50:22.039282+00:00"
+      ]
+    },
+    "merchants": {
+      "count": 30,
+      "columns": [
+        {
+          "name": "id",
+          "type": "string",
+          "format": "character varying",
+          "nullable": false
+        },
+        {
+          "name": "canonical_name",
+          "type": "string",
+          "format": "character varying",
+          "nullable": false
+        },
+        {
+          "name": "category",
+          "type": "string",
+          "format": "character varying",
+          "nullable": false
+        },
+        {
+          "name": "aliases",
+          "type": null,
+          "format": "jsonb",
+          "nullable": false
+        },
+        {
+          "name": "logo_url",
+          "type": "string",
+          "format": "character varying",
+          "nullable": true
+        },
+        {
+          "name": "is_trusted",
+          "type": "boolean",
+          "format": "boolean",
+          "nullable": false
+        },
+        {
+          "name": "is_seed",
+          "type": "boolean",
+          "format": "boolean",
+          "nullable": false
+        },
+        {
+          "name": "created_at",
+          "type": "string",
+          "format": "timestamp with time zone",
+          "nullable": false
+        },
+        {
+          "name": "updated_at",
+          "type": "string",
+          "format": "timestamp with time zone",
+          "nullable": false
+        }
+      ],
+      "created_range": [
+        "2026-06-25T00:58:24.36611+00:00",
+        "2026-06-25T00:58:24.366192+00:00"
+      ],
+      "updated_range": [
+        "2026-06-25T00:58:24.366113+00:00",
+        "2026-06-25T00:58:24.366193+00:00"
+      ]
+    },
+    "mobile_signals": {
+      "count": 337,
+      "columns": [
+        {
+          "name": "id",
+          "type": "integer",
+          "format": "bigint",
+          "nullable": false
+        },
+        {
+          "name": "device_id",
+          "type": "string",
+          "format": "character varying",
+          "nullable": false
+        },
+        {
+          "name": "source",
+          "type": "string",
+          "format": "character varying",
+          "nullable": false
+        },
+        {
+          "name": "sender",
+          "type": "string",
+          "format": "character varying",
+          "nullable": false
+        },
+        {
+          "name": "message",
+          "type": "string",
+          "format": "text",
+          "nullable": false
+        },
+        {
+          "name": "mobile_timestamp",
+          "type": "string",
+          "format": "character varying",
+          "nullable": false
+        },
+        {
+          "name": "processed",
+          "type": "boolean",
+          "format": "boolean",
+          "nullable": false
+        },
+        {
+          "name": "created_at",
+          "type": "string",
+          "format": "timestamp with time zone",
+          "nullable": false
+        },
+        {
+          "name": "message_hash",
+          "type": "string",
+          "format": "character varying",
+          "nullable": true
+        }
+      ],
+      "created_range": [
+        "2026-06-24T16:41:50.479855+00:00",
+        "2026-06-28T10:47:50.187511+00:00"
+      ],
+      "updated_range": [
+        "N/A",
+        "N/A"
+      ]
+    },
+    "monthly_category_spend": {
+      "count": 9,
+      "columns": [
+        {
+          "name": "entry_id",
+          "type": "string",
+          "format": "character varying",
+          "nullable": false
+        },
+        {
+          "name": "month_key",
+          "type": "string",
+          "format": "character varying",
+          "nullable": false
+        },
+        {
+          "name": "category_name",
+          "type": "string",
+          "format": "character varying",
+          "nullable": false
+        },
+        {
+          "name": "amount",
+          "type": "number",
+          "format": "numeric",
+          "nullable": false
+        },
+        {
+          "name": "transaction_count",
+          "type": "integer",
+          "format": "integer",
+          "nullable": false
+        },
+        {
+          "name": "created_at",
+          "type": "string",
+          "format": "timestamp with time zone",
+          "nullable": false
+        }
+      ],
+      "created_range": [
+        "2026-06-28T11:01:01.066667+00:00",
+        "2026-06-28T11:01:01.069473+00:00"
+      ],
+      "updated_range": [
+        "N/A",
+        "N/A"
+      ]
+    },
+    "monthly_category_trends": {
+      "count": 9,
+      "columns": [
+        {
+          "name": "trend_id",
+          "type": "string",
+          "format": "character varying",
+          "nullable": false
+        },
+        {
+          "name": "month_key",
+          "type": "string",
+          "format": "character varying",
+          "nullable": false
+        },
+        {
+          "name": "category_name",
+          "type": "string",
+          "format": "character varying",
+          "nullable": false
+        },
+        {
+          "name": "current_amount",
+          "type": "number",
+          "format": "numeric",
+          "nullable": false
+        },
+        {
+          "name": "previous_amount",
+          "type": "number",
+          "format": "numeric",
+          "nullable": false
+        },
+        {
+          "name": "change_percentage",
+          "type": "number",
+          "format": "numeric",
+          "nullable": false
+        },
+        {
+          "name": "created_at",
+          "type": "string",
+          "format": "timestamp with time zone",
+          "nullable": false
+        }
+      ],
+      "created_range": [
+        "2026-06-28T11:01:01.071581+00:00",
+        "2026-06-28T11:01:01.071605+00:00"
+      ],
+      "updated_range": [
+        "N/A",
+        "N/A"
+      ]
+    },
+    "monthly_spending_summary": {
+      "count": 3,
+      "columns": [
+        {
+          "name": "summary_id",
+          "type": "string",
+          "format": "character varying",
+          "nullable": false
+        },
+        {
+          "name": "month_key",
+          "type": "string",
+          "format": "character varying",
+          "nullable": false
+        },
+        {
+          "name": "total_spend",
+          "type": "number",
+          "format": "numeric",
+          "nullable": false
+        },
+        {
+          "name": "transaction_count",
+          "type": "integer",
+          "format": "integer",
+          "nullable": false
+        },
+        {
+          "name": "created_at",
+          "type": "string",
+          "format": "timestamp with time zone",
+          "nullable": false
+        },
+        {
+          "name": "updated_at",
+          "type": "string",
+          "format": "timestamp with time zone",
+          "nullable": false
+        },
+        {
+          "name": "total_debits",
+          "type": "number",
+          "format": "numeric",
+          "nullable": false
+        },
+        {
+          "name": "total_credits",
+          "type": "number",
+          "format": "numeric",
+          "nullable": false
+        },
+        {
+          "name": "accounting_spend",
+          "type": "number",
+          "format": "numeric",
+          "nullable": false
+        },
+        {
+          "name": "lifestyle_spend",
+          "type": "number",
+          "format": "numeric",
+          "nullable": false
+        },
+        {
+          "name": "total_income",
+          "type": "number",
+          "format": "numeric",
+          "nullable": false
+        },
+        {
+          "name": "net_cash_flow",
+          "type": "number",
+          "format": "numeric",
+          "nullable": false
+        },
+        {
+          "name": "internal_transfers",
+          "type": "number",
+          "format": "numeric",
+          "nullable": false
+        },
+        {
+          "name": "insurance_premiums",
+          "type": "number",
+          "format": "numeric",
+          "nullable": false
+        },
+        {
+          "name": "investments",
+          "type": "number",
+          "format": "numeric",
+          "nullable": false
+        },
+        {
+          "name": "refund_offsets",
+          "type": "number",
+          "format": "numeric",
+          "nullable": false
+        }
+      ],
+      "created_range": [
+        "2026-06-28T08:19:55.703379+00:00",
+        "2026-06-28T08:19:55.707502+00:00"
+      ],
+      "updated_range": [
+        "2026-06-28T10:51:16.021788+00:00",
+        "2026-06-28T10:51:16.03569+00:00"
+      ]
+    },
+    "pipeline_runs": {
+      "count": 7,
+      "columns": [
+        {
+          "name": "run_id",
+          "type": "string",
+          "format": "uuid",
+          "nullable": false
+        },
+        {
+          "name": "run_type",
+          "type": "string",
+          "format": "character varying",
+          "nullable": false
+        },
+        {
+          "name": "started_at",
+          "type": "string",
+          "format": "timestamp with time zone",
+          "nullable": true
+        },
+        {
+          "name": "completed_at",
+          "type": "string",
+          "format": "timestamp with time zone",
+          "nullable": true
+        },
+        {
+          "name": "status",
+          "type": "string",
+          "format": "character varying",
+          "nullable": false
+        },
+        {
+          "name": "files_processed",
+          "type": "integer",
+          "format": "integer",
+          "nullable": true
+        },
+        {
+          "name": "signals_processed",
+          "type": "integer",
+          "format": "integer",
+          "nullable": true
+        },
+        {
+          "name": "todos_generated",
+          "type": "integer",
+          "format": "integer",
+          "nullable": true
+        },
+        {
+          "name": "financial_events_generated",
+          "type": "integer",
+          "format": "integer",
+          "nullable": true
+        },
+        {
+          "name": "fyi_generated",
+          "type": "integer",
+          "format": "integer",
+          "nullable": true
+        },
+        {
+          "name": "facts_generated",
+          "type": "integer",
+          "format": "integer",
+          "nullable": true
+        },
+        {
+          "name": "llm_calls",
+          "type": "integer",
+          "format": "integer",
+          "nullable": true
+        },
+        {
+          "name": "duration_seconds",
+          "type": "number",
+          "format": "numeric",
+          "nullable": true
+        },
+        {
+          "name": "error_message",
+          "type": "string",
+          "format": "text",
+          "nullable": true
+        },
+        {
+          "name": "error_type",
+          "type": "string",
+          "format": "character varying",
+          "nullable": true
+        }
+      ],
+      "created_range": [
+        "N/A",
+        "N/A"
+      ],
+      "updated_range": [
+        "N/A",
+        "N/A"
+      ]
+    },
+    "processed_files": {
+      "count": 14,
+      "columns": [
+        {
+          "name": "file_id",
+          "type": "string",
+          "format": "uuid",
+          "nullable": false
+        },
+        {
+          "name": "file_name",
+          "type": "string",
+          "format": "character varying",
+          "nullable": false
+        },
+        {
+          "name": "bucket_name",
+          "type": "string",
+          "format": "character varying",
+          "nullable": false
+        },
+        {
+          "name": "file_path",
+          "type": "string",
+          "format": "character varying",
+          "nullable": false
+        },
+        {
+          "name": "file_hash",
+          "type": "string",
+          "format": "character varying",
+          "nullable": false
+        },
+        {
+          "name": "status",
+          "type": "string",
+          "format": "character varying",
+          "nullable": false
+        },
+        {
+          "name": "processed_timestamp",
+          "type": "string",
+          "format": "timestamp with time zone",
+          "nullable": true
+        }
+      ],
+      "created_range": [
+        "N/A",
+        "N/A"
+      ],
+      "updated_range": [
+        "N/A",
+        "N/A"
+      ]
+    },
+    "qualified_signals": {
+      "count": 437,
+      "columns": [
+        {
+          "name": "id",
+          "type": "integer",
+          "format": "bigint",
+          "nullable": false
+        },
+        {
+          "name": "signal_id",
+          "type": "string",
+          "format": "character varying",
+          "nullable": false
+        },
+        {
+          "name": "source",
+          "type": "string",
+          "format": "character varying",
+          "nullable": false
+        },
+        {
+          "name": "sender",
+          "type": "string",
+          "format": "character varying",
+          "nullable": false
+        },
+        {
+          "name": "message",
+          "type": "string",
+          "format": "text",
+          "nullable": false
+        },
+        {
+          "name": "timestamp",
+          "type": "string",
+          "format": "timestamp with time zone",
+          "nullable": false
+        },
+        {
+          "name": "qualification_score",
+          "type": "integer",
+          "format": "integer",
+          "nullable": false
+        },
+        {
+          "name": "qualification_status",
+          "type": "string",
+          "format": "character varying",
+          "nullable": false
+        },
+        {
+          "name": "qualification_reason",
+          "type": "string",
+          "format": "character varying",
+          "nullable": true
+        },
+        {
+          "name": "created_at",
+          "type": "string",
+          "format": "timestamp with time zone",
+          "nullable": false
+        }
+      ],
+      "created_range": [
+        "2026-06-24T16:41:50.499663+00:00",
+        "2026-06-28T10:47:53.086622+00:00"
+      ],
+      "updated_range": [
+        "N/A",
+        "N/A"
+      ]
+    },
+    "runtime_events": {
+      "count": 71,
+      "columns": [
+        {
+          "name": "id",
+          "type": "integer",
+          "format": "bigint",
+          "nullable": false
+        },
+        {
+          "name": "event_type",
+          "type": "string",
+          "format": "character varying",
+          "nullable": false
+        },
+        {
+          "name": "source",
+          "type": "string",
+          "format": "character varying",
+          "nullable": false
+        },
+        {
+          "name": "payload",
+          "type": "string",
+          "format": "text",
+          "nullable": false
+        },
+        {
+          "name": "status",
+          "type": "string",
+          "format": "character varying",
+          "nullable": false
+        },
+        {
+          "name": "created_at",
+          "type": "string",
+          "format": "timestamp with time zone",
+          "nullable": false
+        }
+      ],
+      "created_range": [
+        "2026-06-15T00:31:06.965162+00:00",
+        "2026-06-23T14:39:41.54376+00:00"
+      ],
+      "updated_range": [
+        "N/A",
+        "N/A"
+      ]
+    },
+    "salary_cycles": {
+      "count": 1,
+      "columns": [
+        {
+          "name": "salary_cycle_id",
+          "type": "string",
+          "format": "uuid",
+          "nullable": false
+        },
+        {
+          "name": "salary_date",
+          "type": "string",
+          "format": "timestamp without time zone",
+          "nullable": true
+        },
+        {
+          "name": "salary_amount",
+          "type": "number",
+          "format": "numeric",
+          "nullable": true
+        },
+        {
+          "name": "cycle_start",
+          "type": "string",
+          "format": "timestamp without time zone",
+          "nullable": true
+        },
+        {
+          "name": "cycle_end",
+          "type": "string",
+          "format": "timestamp without time zone",
+          "nullable": true
+        },
+        {
+          "name": "created_at",
+          "type": "string",
+          "format": "timestamp without time zone",
+          "nullable": true
+        }
+      ],
+      "created_range": [
+        "2026-06-22T10:59:19.379023",
+        "2026-06-22T10:59:19.379023"
+      ],
+      "updated_range": [
+        "N/A",
+        "N/A"
+      ]
+    },
+    "salary_events": {
+      "count": 6,
+      "columns": [
+        {
+          "name": "id",
+          "type": "string",
+          "format": "character varying",
+          "nullable": false
+        },
+        {
+          "name": "financial_event_id",
+          "type": "integer",
+          "format": "bigint",
+          "nullable": false
+        },
+        {
+          "name": "salary_source_id",
+          "type": "string",
+          "format": "character varying",
+          "nullable": true
+        },
+        {
+          "name": "detected_employer",
+          "type": "string",
+          "format": "character varying",
+          "nullable": true
+        },
+        {
+          "name": "gross_amount",
+          "type": "number",
+          "format": "numeric",
+          "nullable": false
+        },
+        {
+          "name": "currency",
+          "type": "string",
+          "format": "character varying",
+          "nullable": false
+        },
+        {
+          "name": "salary_month",
+          "type": "string",
+          "format": "date",
+          "nullable": false
+        },
+        {
+          "name": "detection_method",
+          "type": "string",
+          "format": "character varying",
+          "nullable": false
+        },
+        {
+          "name": "confidence",
+          "type": "number",
+          "format": "numeric",
+          "nullable": false
+        },
+        {
+          "name": "detected_at",
+          "type": "string",
+          "format": "timestamp with time zone",
+          "nullable": false
+        }
+      ],
+      "created_range": [
+        "N/A",
+        "N/A"
+      ],
+      "updated_range": [
+        "N/A",
+        "N/A"
+      ]
+    },
+    "salary_sources": {
+      "count": 6,
+      "columns": [
+        {
+          "name": "id",
+          "type": "string",
+          "format": "character varying",
+          "nullable": false
+        },
+        {
+          "name": "canonical_name",
+          "type": "string",
+          "format": "character varying",
+          "nullable": false
+        },
+        {
+          "name": "aliases",
+          "type": null,
+          "format": "jsonb",
+          "nullable": false
+        },
+        {
+          "name": "employment_type",
+          "type": "string",
+          "format": "character varying",
+          "nullable": false
+        },
+        {
+          "name": "expected_day_of_month",
+          "type": "integer",
+          "format": "integer",
+          "nullable": true
+        },
+        {
+          "name": "day_tolerance",
+          "type": "integer",
+          "format": "integer",
+          "nullable": false
+        },
+        {
+          "name": "expected_amount",
+          "type": "number",
+          "format": "numeric",
+          "nullable": true
+        },
+        {
+          "name": "amount_tolerance_pct",
+          "type": "number",
+          "format": "numeric",
+          "nullable": false
+        },
+        {
+          "name": "source_bank_aliases",
+          "type": null,
+          "format": "jsonb",
+          "nullable": false
+        },
+        {
+          "name": "is_active",
+          "type": "boolean",
+          "format": "boolean",
+          "nullable": false
+        },
+        {
+          "name": "pending_review",
+          "type": "boolean",
+          "format": "boolean",
+          "nullable": false
+        },
+        {
+          "name": "first_detected",
+          "type": "string",
+          "format": "date",
+          "nullable": true
+        },
+        {
+          "name": "last_seen",
+          "type": "string",
+          "format": "date",
+          "nullable": true
+        },
+        {
+          "name": "detection_history",
+          "type": null,
+          "format": "jsonb",
+          "nullable": false
+        },
+        {
+          "name": "created_at",
+          "type": "string",
+          "format": "timestamp with time zone",
+          "nullable": false
+        },
+        {
+          "name": "updated_at",
+          "type": "string",
+          "format": "timestamp with time zone",
+          "nullable": false
+        }
+      ],
+      "created_range": [
+        "2026-06-28T06:50:13.974747+00:00",
+        "2026-06-28T08:19:55.566645+00:00"
+      ],
+      "updated_range": [
+        "2026-06-28T06:50:13.974749+00:00",
+        "2026-06-28T08:19:55.566647+00:00"
+      ]
+    },
+    "signals": {
+      "count": 100,
+      "columns": [
+        {
+          "name": "id",
+          "type": "integer",
+          "format": "bigint",
+          "nullable": false
+        },
+        {
+          "name": "source",
+          "type": "string",
+          "format": "character varying",
+          "nullable": false
+        },
+        {
+          "name": "signal_type",
+          "type": "string",
+          "format": "character varying",
+          "nullable": false
+        },
+        {
+          "name": "category",
+          "type": "string",
+          "format": "character varying",
+          "nullable": false
+        },
+        {
+          "name": "importance",
+          "type": "string",
+          "format": "character varying",
+          "nullable": false
+        },
+        {
+          "name": "summary",
+          "type": "string",
+          "format": "character varying",
+          "nullable": false
+        },
+        {
+          "name": "raw_json",
+          "type": "string",
+          "format": "text",
+          "nullable": true
+        },
+        {
+          "name": "created_at",
+          "type": "string",
+          "format": "timestamp with time zone",
+          "nullable": false
+        },
+        {
+          "name": "message_id",
+          "type": "string",
+          "format": "character varying",
+          "nullable": true
+        }
+      ],
+      "created_range": [
+        "2026-04-30T11:33:24.564+00:00",
+        "2026-06-24T16:41:50.473+00:00"
+      ],
+      "updated_range": [
+        "N/A",
+        "N/A"
+      ]
+    },
+    "system_status": {
+      "count": 1,
+      "columns": [
+        {
+          "name": "system_name",
+          "type": "string",
+          "format": "character varying",
+          "nullable": false
+        },
+        {
+          "name": "current_status",
+          "type": "string",
+          "format": "character varying",
+          "nullable": false
+        },
+        {
+          "name": "last_successful_refresh",
+          "type": "string",
+          "format": "timestamp with time zone",
+          "nullable": true
+        },
+        {
+          "name": "current_run_id",
+          "type": "string",
+          "format": "uuid",
+          "nullable": true
+        },
+        {
+          "name": "signals_processed",
+          "type": "integer",
+          "format": "integer",
+          "nullable": true
+        },
+        {
+          "name": "todos_generated",
+          "type": "integer",
+          "format": "integer",
+          "nullable": true
+        },
+        {
+          "name": "financial_events_generated",
+          "type": "integer",
+          "format": "integer",
+          "nullable": true
+        },
+        {
+          "name": "fyi_generated",
+          "type": "integer",
+          "format": "integer",
+          "nullable": true
+        },
+        {
+          "name": "updated_at",
+          "type": "string",
+          "format": "timestamp with time zone",
+          "nullable": true
+        }
+      ],
+      "created_range": [
+        "N/A",
+        "N/A"
+      ],
+      "updated_range": [
+        "2026-06-28T11:01:01.348425+00:00",
+        "2026-06-28T11:01:01.348425+00:00"
+      ]
+    },
+    "todo_items": {
+      "count": 4,
+      "columns": [
+        {
+          "name": "todo_id",
+          "type": "string",
+          "format": "character varying",
+          "nullable": false
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "format": "character varying",
+          "nullable": false
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "format": "text",
+          "nullable": true
+        },
+        {
+          "name": "category",
+          "type": "string",
+          "format": "character varying",
+          "nullable": false
+        },
+        {
+          "name": "priority",
+          "type": "string",
+          "format": "character varying",
+          "nullable": false
+        },
+        {
+          "name": "status",
+          "type": "string",
+          "format": "character varying",
+          "nullable": false
+        },
+        {
+          "name": "due_date",
+          "type": "string",
+          "format": "timestamp with time zone",
+          "nullable": true
+        },
+        {
+          "name": "source_agent",
+          "type": "string",
+          "format": "character varying",
+          "nullable": false
+        },
+        {
+          "name": "source_reference",
+          "type": null,
+          "format": "jsonb",
+          "nullable": true
+        },
+        {
+          "name": "confidence",
+          "type": "number",
+          "format": "numeric",
+          "nullable": false
+        },
+        {
+          "name": "created_at",
+          "type": "string",
+          "format": "timestamp with time zone",
+          "nullable": false
+        },
+        {
+          "name": "updated_at",
+          "type": "string",
+          "format": "timestamp with time zone",
+          "nullable": false
+        }
+      ],
+      "created_range": [
+        "2026-06-28T10:50:38.159621+00:00",
+        "2026-06-28T11:00:09.208057+00:00"
+      ],
+      "updated_range": [
+        "2026-06-28T10:50:41.49618+00:00",
+        "2026-06-28T11:00:12.296934+00:00"
+      ]
+    },
+    "transfer_pairs": {
+      "count": 17,
+      "columns": [
+        {
+          "name": "id",
+          "type": "string",
+          "format": "character varying",
+          "nullable": false
+        },
+        {
+          "name": "debit_event_id",
+          "type": "integer",
+          "format": "integer",
+          "nullable": false
+        },
+        {
+          "name": "credit_event_id",
+          "type": "integer",
+          "format": "integer",
+          "nullable": false
+        },
+        {
+          "name": "amount",
+          "type": "number",
+          "format": "numeric",
+          "nullable": false
+        },
+        {
+          "name": "currency",
+          "type": "string",
+          "format": "character varying",
+          "nullable": false
+        },
+        {
+          "name": "transfer_type",
+          "type": "string",
+          "format": "character varying",
+          "nullable": false
+        },
+        {
+          "name": "window_seconds",
+          "type": "number",
+          "format": "numeric",
+          "nullable": true
+        },
+        {
+          "name": "confidence",
+          "type": "number",
+          "format": "numeric",
+          "nullable": false
+        },
+        {
+          "name": "detected_at",
+          "type": "string",
+          "format": "timestamp with time zone",
+          "nullable": false
+        }
+      ],
+      "created_range": [
+        "N/A",
+        "N/A"
+      ],
+      "updated_range": [
+        "N/A",
+        "N/A"
+      ]
+    },
+    "understood_signals": {
+      "count": 224,
+      "columns": [
+        {
+          "name": "id",
+          "type": "string",
+          "format": "character varying",
+          "nullable": false
+        },
+        {
+          "name": "qualified_signal_id",
+          "type": "integer",
+          "format": "bigint",
+          "nullable": false
+        },
+        {
+          "name": "raw_signal_id",
+          "type": "string",
+          "format": "character varying",
+          "nullable": false
+        },
+        {
+          "name": "signal_type",
+          "type": "string",
+          "format": "character varying",
+          "nullable": false
+        },
+        {
+          "name": "importance",
+          "type": "string",
+          "format": "character varying",
+          "nullable": false
+        },
+        {
+          "name": "confidence",
+          "type": "number",
+          "format": "numeric",
+          "nullable": false
+        },
+        {
+          "name": "summary",
+          "type": "string",
+          "format": "text",
+          "nullable": false
+        },
+        {
+          "name": "reason",
+          "type": "string",
+          "format": "text",
+          "nullable": true
+        },
+        {
+          "name": "processing_path",
+          "type": "string",
+          "format": "character varying",
+          "nullable": false
+        },
+        {
+          "name": "llm_model_used",
+          "type": "string",
+          "format": "character varying",
+          "nullable": false
+        },
+        {
+          "name": "contract_json",
+          "type": "string",
+          "format": "text",
+          "nullable": false
+        },
+        {
+          "name": "is_verified",
+          "type": "boolean",
+          "format": "boolean",
+          "nullable": false
+        },
+        {
+          "name": "created_at",
+          "type": "string",
+          "format": "timestamp with time zone",
+          "nullable": false
+        }
+      ],
+      "created_range": [
+        "2026-04-30T11:33:24.564+00:00",
+        "2026-06-28T04:16:42.514+00:00"
+      ],
+      "updated_range": [
+        "N/A",
+        "N/A"
+      ]
+    },
+    "user_actions": {
+      "count": 11,
+      "columns": [
+        {
+          "name": "action_id",
+          "type": "string",
+          "format": "uuid",
+          "nullable": false
+        },
+        {
+          "name": "entity_type",
+          "type": "string",
+          "format": "text",
+          "nullable": true
+        },
+        {
+          "name": "entity_id",
+          "type": "string",
+          "format": "text",
+          "nullable": true
+        },
+        {
+          "name": "action",
+          "type": "string",
+          "format": "text",
+          "nullable": true
+        },
+        {
+          "name": "action_timestamp",
+          "type": "string",
+          "format": "timestamp without time zone",
+          "nullable": true
+        },
+        {
+          "name": "metadata",
+          "type": null,
+          "format": "jsonb",
+          "nullable": true
+        }
+      ],
+      "created_range": [
+        "N/A",
+        "N/A"
+      ],
+      "updated_range": [
+        "N/A",
+        "N/A"
+      ]
+    },
+    "user_preferences": {
+      "count": 0,
+      "columns": [
+        {
+          "name": "preference_key",
+          "type": "string",
+          "format": "text",
+          "nullable": false
+        },
+        {
+          "name": "preference_value",
+          "type": "string",
+          "format": "text",
+          "nullable": true
+        },
+        {
+          "name": "updated_at",
+          "type": "string",
+          "format": "timestamp without time zone",
+          "nullable": true
+        }
+      ],
+      "created_range": [
+        "N/A",
+        "N/A"
+      ],
+      "updated_range": [
+        "N/A",
+        "N/A"
+      ]
+    }
+  }
+}

@@ -79,21 +79,28 @@ class SignalQualificationAgent:
             if sig.message.strip().lower() == message_clean:
                 return True
 
-        amount_match = re.search(r"(?:rs\.?|inr|\$)\s?([\d,]+(?:\.\d+)?)", message_clean)
+        amount_match = re.search(r"(?:\brs\.?|\binr|\$)\s?([\d,]+(?:\.\d+)?)", message_clean)
         if amount_match:
-            amt = float(amount_match.group(1).replace(",", ""))
-            for sig in recent_matches:
-                if sig.source == source:
-                    sig_amt_match = re.search(r"(?:rs\.?|inr|\$)\s?([\d,]+(?:\.\d+)?)", sig.message.lower())
-                    if sig_amt_match:
-                        sig_amt = float(sig_amt_match.group(1).replace(",", ""))
-                        if abs(amt - sig_amt) < 0.01:
-                            if sig.sender.strip().lower() == sender.strip().lower():
-                                return True
+            amt_str = amount_match.group(1).replace(",", "")
+            if amt_str:
+                try:
+                    amt = float(amt_str)
+                    for sig in recent_matches:
+                        if sig.source == source:
+                            sig_amt_match = re.search(r"(?:\brs\.?|\binr|\$)\s?([\d,]+(?:\.\d+)?)", sig.message.lower())
+                            if sig_amt_match:
+                                sig_amt_str = sig_amt_match.group(1).replace(",", "")
+                                if sig_amt_str:
+                                    sig_amt = float(sig_amt_str)
+                                    if abs(amt - sig_amt) < 0.01:
+                                        if sig.sender.strip().lower() == sender.strip().lower():
+                                            return True
+                except ValueError:
+                    pass
         return False
 
     @classmethod
-    def qualify_signal(cls, db_session, signal_id: str, source: str, sender: str, message: str, raw_ts_str: str) -> QualifiedSignal:
+    def qualify_signal(cls, db_session, signal_id: str, source: str, sender: str, message: str, raw_ts_str: str, batch_id: str = None) -> QualifiedSignal:
         """
         Determines the qualification status (QUALIFIED, REVIEW, REJECTED)
         and scores the signal (0 - 100) using family boosts and high-value domains.
@@ -287,7 +294,8 @@ class SignalQualificationAgent:
             timestamp=timestamp,
             qualification_score=score,
             qualification_status=status,
-            qualification_reason=reason
+            qualification_reason=reason,
+            batch_id=batch_id
         )
         db_session.add(qual_obj)
         db_session.commit()
@@ -301,7 +309,8 @@ class SignalQualificationAgent:
             timestamp=timestamp,
             qualification_score=score,
             qualification_status=status,
-            qualification_reason=reason
+            qualification_reason=reason,
+            batch_id=batch_id
         )
 
         return qual_obj
@@ -332,7 +341,8 @@ class SignalQualificationAgent:
                     source=msg.source,
                     sender=msg.sender,
                     message=msg.message,
-                    raw_ts_str=msg.mobile_timestamp
+                    raw_ts_str=msg.mobile_timestamp,
+                    batch_id=msg.batch_id
                 )
 
                 if res.qualification_status == "QUALIFIED":

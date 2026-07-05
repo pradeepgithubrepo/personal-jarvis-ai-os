@@ -641,11 +641,22 @@ class SignalProcessor:
                 else:
                     logger.info(f"Skipping stale Supabase FYI event extraction for signal ID {signal.id} (Date: {signal.created_at})")
 
+                # Map fyi_type to canonical category
+                if fyi_type == "delivery_notification":
+                    category_val = "FINANCIAL"
+                elif fyi_type in ("school_circular", "family_update"):
+                    category_val = "FAMILY"
+                elif fyi_type == "travel_update":
+                    category_val = "TRAVEL"
+                else:
+                    category_val = "SYSTEM"
+
                 # Store FyiEvent in SQLite
                 fyi_obj = FyiEvent(
                     title=signal.summary,
-                    fyi_type=fyi_type,
-                    content=content,
+                    event_type=fyi_type,
+                    category=category_val,
+                    description=content,
                     source_signal_id=signal.id,
                     created_at=signal.created_at
                 )
@@ -655,7 +666,7 @@ class SignalProcessor:
                 
                 logger.debug(
                     f"Extracted FYI Event: '{fyi_obj.title}' "
-                    f"| Type: {fyi_obj.fyi_type}"
+                    f"| Type: {fyi_obj.event_type}"
                 )
 
             db.commit()

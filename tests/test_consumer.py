@@ -76,7 +76,7 @@ def run_integration_test():
     supabase = MockSupabaseClient()
     
     unique_id = int(time.time() * 1000)
-    filename = f"pradeep/pradeep_test_{unique_id}.json"
+    filename = f"incoming/pradeep_test_{unique_id}.json"
     
     # 1. Define mock signals
     payload = {
@@ -105,12 +105,12 @@ def run_integration_test():
     logger.info(f"Uploading mock signals to Supabase: {filename}")
     assert supabase.upload_file(filename, content), "Upload failed"
     logger.success("Upload succeeded!")
-
+ 
     # Patch SupabaseClient class in consumer_service module
     with patch("consumer.consumer_service.SupabaseClient", return_value=supabase):
         try:
             # 3. Verify files are listed
-            listed_files = supabase.list_files("pradeep")
+            listed_files = supabase.list_files("incoming")
             assert filename in listed_files, f"Expected {filename} in listed files, got {listed_files}"
             logger.success("File listing verified!")
 

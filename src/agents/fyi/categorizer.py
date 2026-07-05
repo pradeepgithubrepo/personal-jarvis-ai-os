@@ -16,7 +16,7 @@ class FyiCategorizer:
         primary_domain = domains[0].upper() if domains else "GENERAL"
 
         # 1. Financial FYI
-        if primary_domain == "FINANCE" or "salary" in summary_lower or "credited" in summary_lower or "refund" in summary_lower or "sip" in summary_lower or "renewed" in summary_lower:
+        if primary_domain == "FINANCE" or "salary" in summary_lower or "credited" in summary_lower or "refund" in summary_lower or "sip" in summary_lower or "renewed" in summary_lower or "successful" in summary_lower:
             category = "FINANCIAL"
             if "salary" in summary_lower:
                 event_type = "SALARY_CREDITED"
@@ -44,19 +44,20 @@ class FyiCategorizer:
             return category, event_type
 
         # 3. Family FYI
-        if primary_domain == "EDUCATION" or "school" in summary_lower or "parent" in summary_lower or "meeting" in summary_lower or "medical" in summary_lower or "doctor" in summary_lower:
+        if "school" in summary_lower or "parent" in summary_lower or "meeting" in summary_lower:
             category = "FAMILY"
-            if "school" in summary_lower or "parent" in summary_lower:
-                event_type = "SCHOOL_NOTICE"
-            elif "medical" in summary_lower or "doctor" in summary_lower or "refill" in summary_lower:
-                event_type = "MEDICAL_UPDATE"
-            else:
-                event_type = "FAMILY_EVENT"
+            event_type = "SCHOOL_NOTICE"
             return category, event_type
 
-        # 4. System FYI
+        # 4. Health FYI
+        if "medical" in summary_lower or "doctor" in summary_lower or "refill" in summary_lower or "health" in summary_lower:
+            category = "HEALTH"
+            event_type = "MEDICAL_UPDATE"
+            return category, event_type
+
+        # 5. Account/System FYI
         if "kyc" in summary_lower or "profile" in summary_lower or "restored" in summary_lower or "outage" in summary_lower:
-            category = "SYSTEM"
+            category = "ACCOUNT"
             if "kyc" in summary_lower:
                 event_type = "KYC_COMPLETED"
             elif "restored" in summary_lower or "up" in summary_lower:
@@ -66,4 +67,4 @@ class FyiCategorizer:
             return category, event_type
 
         # Default fallback
-        return "SYSTEM", "GENERAL_FYI"
+        return "PERSONAL", "GENERAL_FYI"

@@ -1,0 +1,85 @@
+{
+    "generatedAt": 1782660304658,
+    "signals": [
+        {
+            "id": 668,
+            "deviceId": "pradeep_phone",
+            "source": "whatsapp",
+            "sender": "HDFC Bank Ltd",
+            "message": "🔔Weekly Balance Alert! \n\nGet your Account Balance & Recent Transactions in one tap on HDFC WhatsApp ChatBanking.",
+            "timestamp": 1782641368863
+        },
+        {
+            "id": 669,
+            "deviceId": "pradeep_phone",
+            "source": "whatsapp",
+            "sender": "WhatsApp: HDFC Bank Ltd",
+            "message": "🔔Weekly Balance Alert! \n\nGet your Account Balance & Recent Transactions in one tap on HDFC WhatsApp ChatBanking.",
+            "timestamp": 1782641368859
+        },
+        {
+            "id": 670,
+            "deviceId": "pradeep_phone",
+            "source": "whatsapp",
+            "sender": "WhatsApp: Aappa",
+            "message": "Amount credited",
+            "timestamp": 1782649951039
+        },
+        {
+            "id": 671,
+            "deviceId": "pradeep_phone",
+            "source": "whatsapp",
+            "sender": "Aappa",
+            "message": "Amount credited",
+            "timestamp": 1782649951054
+        },
+        {
+            "id": 672,
+            "deviceId": "pradeep_phone",
+            "source": "whatsapp",
+            "sender": "WhatsApp: Paytm Bill Payments",
+            "message": "📷 💳 Credit Card Bill Due in 3 days!\n\nYour SBI - 8707 Credit Card Bill is due.\n\nAmount: ₹3,141\nDue Date: 1st Jul\n\n⚡ Pay instantly on Paytm to avoid late payment charges.",
+            "timestamp": 1782650314463
+        },
+        {
+            "id": 673,
+            "deviceId": "pradeep_phone",
+            "source": "whatsapp",
+            "sender": "Paytm Bill Payments",
+            "message": "📷 💳 Credit Card Bill Due in 3 days!\n\nYour SBI - 8707 Credit Card Bill is due.\n\nAmount: ₹3,141\nDue Date: 1st Jul\n\n⚡ Pay instantly on Paytm to avoid late payment charges.",
+            "timestamp": 1782650314470
+        },
+        {
+            "id": 674,
+            "deviceId": "pradeep_phone",
+            "source": "whatsapp",
+            "sender": "Daily Badminton Update: ~ Ganesh Pandian 🫰🏾",
+            "message": "@⁨~Arun Kumar⁩ @⁨~santhosh rao⁩ anyone available to collect crock today evening before 8pm?",
+            "timestamp": 1782652421447
+        },
+        {
+            "id": 675,
+            "deviceId": "pradeep_phone",
+            "source": "whatsapp",
+            "sender": "Daily Badminton Update (2 messages): ~ Imtiaz",
+            "message": "Sorry",
+            "timestamp": 1782652501553
+        },
+        {
+            "id": 676,
+            "deviceId": "pradeep_phone",
+            "source": "whatsapp",
+            "sender": "Daily Badminton Update: ~ Ganesh Pandian 🫰🏾",
+            "message": "I I'll be able to go only tomorrow after 10am",
+            "timestamp": 1782658322227
+        },
+        {
+            "id": 677,
+            "deviceId": "pradeep_phone",
+            "source": "whatsapp",
+            "sender": "Daily Badminton Update: ~ Ganesh Pandian 🫰🏾",
+            "message": "I hv confirmed that I'll collect tomorrow morning around 11am",
+            "timestamp": 1782659783004
+        }
+    ]
+}

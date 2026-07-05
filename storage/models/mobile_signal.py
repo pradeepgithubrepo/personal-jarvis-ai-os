@@ -12,10 +12,10 @@ from sqlalchemy.orm import (
     mapped_column
 )
 
-from storage.models.base import Base
+from storage.models.base import Base, LineageMixin
 
 
-class MobileSignal(Base):
+class MobileSignal(LineageMixin, Base):
 
     __tablename__ = "mobile_signals"
 

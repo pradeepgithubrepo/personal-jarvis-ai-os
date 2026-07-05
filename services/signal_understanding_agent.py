@@ -79,6 +79,27 @@ class SignalUnderstandingAgent:
         if contract is None:
             contract = self._run_llm_path(signal)
 
+        # Apply normalizations and safety nets
+        contract = self._normalize_taxonomy(contract)
+        contract = self._normalize_financial_entities(signal, contract)
+        contract = self._normalize_merchant_extraction(signal, contract)
+
+        # Re-map routes based on final normalized classes
+        routes = []
+        classes_set = set(contract.get("classes", []))
+        if "FINANCIAL" in classes_set:
+            routes.append("FinancialAgent")
+        if "ACTION" in classes_set:
+            routes.append("TodoAgent")
+        if "INFORMATION" in classes_set:
+            routes.append("FyiAgent")
+        if "MEMORY" in classes_set:
+            routes.append("FactAgent")
+        contract["routes"] = routes
+
+        # Hardening validation
+        self._validate_contract(contract)
+
         # Generate unique UUID for understood_signal
         understood_id = str(uuid.uuid5(uuid.NAMESPACE_DNS, f"understood-{signal.id}"))
         
@@ -106,7 +127,9 @@ class SignalUnderstandingAgent:
             llm_model_used=llm_model_used,
             contract_json=json.dumps(contract),
             is_verified=is_verified,
-            created_at=signal.timestamp
+            created_at=signal.timestamp,
+            batch_id=signal.batch_id,
+            sync_status='PENDING'
         )
         db.add(db_obj)
 
@@ -125,7 +148,8 @@ class SignalUnderstandingAgent:
                 llm_model_used=llm_model_used,
                 contract_json=contract,
                 is_verified=is_verified,
-                created_at=signal.timestamp
+                created_at=signal.timestamp,
+                batch_id=signal.batch_id
             )
         except Exception as e:
             logger.warning(f"Failed to save understood signal to remote Supabase: {e}")
@@ -144,6 +168,45 @@ class SignalUnderstandingAgent:
         # Collapsing all whitespace to a single space makes the match reliable.
         msg_normalised = re.sub(r'\s+', ' ', msg_lower).strip()
         sender_lower = signal.sender.lower()
+
+        # Defect SUA-001: Exclude future-tense indicators and resolve to INFORMATION + ALERT
+        future_kws = [
+            "will be credited", "will be debited", "will receive", "expected credit",
+            "maturity proceeds", "matured on", "maturity date", "credit limit increased",
+            "limit update"
+        ]
+        if any(kw in msg_normalised for kw in future_kws):
+            return {
+                "signal_id": signal.signal_id,
+                "signal_type": "general",
+                "classes": ["INFORMATION", "ALERT"],
+                "domains": ["FINANCE"],
+                "importance": "MEDIUM",
+                "summary": f"Future transaction or maturity alert from {signal.sender}",
+                "confidence": 1.0,
+                "reason": "Deterministic match: future-tense/maturity indicator detected",
+                "entities": {
+                    "people": [],
+                    "organizations": [signal.sender],
+                    "merchants": [],
+                    "monetary_value": {"amount": None, "currency": "INR"},
+                    "deadlines": [],
+                    "appointments": [],
+                    "locations": [],
+                    "travel_bookings": {},
+                    "bills": {},
+                    "insurance_policies": {},
+                    "medical_events": {}
+                },
+                "routes": ["FyiAgent"],
+                "raw_context": {
+                    "source": signal.source,
+                    "sender": signal.sender,
+                    "timestamp": signal.timestamp.isoformat(),
+                    "processing_path": "RULE_ENGINE",
+                    "llm_model_used": "none"
+                }
+            }
 
         # 1. Financial transaction rule
         # Matches confirmed money movements: debits, credits, and received funds.
@@ -542,7 +605,7 @@ class SignalUnderstandingAgent:
                     "insurance_policies": {},
                     "medical_events": {}
                 },
-                "routes": ["TodoAgent"],
+                "routes": ["TodoAgent", "FyiAgent"],
                 "raw_context": {
                     "source": signal.source,
                     "sender": signal.sender,
@@ -759,3 +822,240 @@ JSON Output:
                 base = max(0.0, base - 0.15)
 
         return round(base, 4)
+
+    def _normalize_taxonomy(self, contract: dict) -> dict:
+        allowed_classes = {"FINANCIAL", "INFORMATION", "ACTION", "ALERT", "MEMORY"}
+        allowed_domains = {"FINANCE", "INSURANCE", "FAMILY", "TRAVEL", "MEDICAL", "GENERAL", "WORK", "EDUCATION"}
+        
+        classes = contract.setdefault("classes", [])
+        if not isinstance(classes, list):
+            classes = [classes] if classes else []
+        normalized_classes = []
+        for cl in classes:
+            cl_upper = str(cl).strip().upper()
+            if cl_upper in ("INFO", "INFOMATION"):
+                normalized_classes.append("INFORMATION")
+            elif cl_upper in allowed_classes:
+                normalized_classes.append(cl_upper)
+        if not normalized_classes:
+            normalized_classes = ["INFORMATION"]
+        contract["classes"] = list(set(normalized_classes))
+        
+        domains = contract.setdefault("domains", [])
+        if not isinstance(domains, list):
+            domains = [domains] if domains else []
+        normalized_domains = []
+        for dm in domains:
+            dm_upper = str(dm).strip().upper()
+            if dm_upper == "SCHOOL CIRCULAR":
+                normalized_domains.append("EDUCATION")
+            elif dm_upper in allowed_domains:
+                normalized_domains.append(dm_upper)
+        if not normalized_domains:
+            normalized_domains = ["GENERAL"]
+        contract["domains"] = list(set(normalized_domains))
+        
+        return contract
+
+    def _normalize_financial_entities(self, signal: QualifiedSignal, contract: dict) -> dict:
+        entities = contract.setdefault("entities", {})
+        if not isinstance(entities, dict):
+            entities = {}
+            contract["entities"] = entities
+            
+        monetary = entities.get("monetary_value")
+        if not isinstance(monetary, dict):
+            monetary = {"amount": None, "currency": "INR"}
+            entities["monetary_value"] = monetary
+            
+        amt = monetary.get("amount")
+        
+        # Defect SUA-002: search in other fields
+        if amt is None:
+            possible_amounts = []
+            
+            if "amount" in entities and entities["amount"] is not None:
+                possible_amounts.append(entities["amount"])
+            if "bill_amount" in entities and entities["bill_amount"] is not None:
+                possible_amounts.append(entities["bill_amount"])
+            if "payment_amount" in entities and entities["payment_amount"] is not None:
+                possible_amounts.append(entities["payment_amount"])
+                
+            bills = entities.get("bills", {})
+            if isinstance(bills, dict):
+                if bills.get("amount") is not None:
+                    possible_amounts.append(bills.get("amount"))
+                if bills.get("bill_amount") is not None:
+                    possible_amounts.append(bills.get("bill_amount"))
+                    
+            transaction = entities.get("transaction", {})
+            if isinstance(transaction, dict):
+                if transaction.get("amount") is not None:
+                    possible_amounts.append(transaction.get("amount"))
+                    
+            for p_amt in possible_amounts:
+                try:
+                    if isinstance(p_amt, str):
+                        p_amt = float(p_amt.replace(",", ""))
+                    if p_amt is not None:
+                        monetary["amount"] = float(p_amt)
+                        monetary["currency"] = "INR"
+                        amt = monetary["amount"]
+                        break
+                except ValueError:
+                    pass
+
+        # Defect SUA-003: Regex Fallback Safety Net
+        if "FINANCIAL" in contract.get("classes", []) and (monetary.get("amount") is None):
+            msg = signal.message.replace("\n", " ").lower().strip()
+            pattern = r"(?:\b(?:rs\.?|inr)\b|₹)\s?([\d,]+(?:\.\d+)?)"
+            match = re.search(pattern, msg)
+            if match:
+                try:
+                    amt_str = match.group(1).replace(",", "")
+                    if amt_str:
+                        monetary["amount"] = float(amt_str)
+                        monetary["currency"] = "INR"
+                        monetary["source"] = "REGEX_FALLBACK"
+                except ValueError:
+                    pass
+
+        # Demote non-amount signals from FINANCIAL class (Money Moved = FINANCIAL, Money Not Moved = NOT FINANCIAL)
+        if "FINANCIAL" in contract.get("classes", []) and (monetary.get("amount") is None):
+            classes = contract.setdefault("classes", [])
+            if "FINANCIAL" in classes:
+                classes.remove("FINANCIAL")
+            if "INFORMATION" not in classes:
+                classes.append("INFORMATION")
+            if "ALERT" not in classes:
+                classes.append("ALERT")
+
+        return contract
+
+    def _normalize_merchant_extraction(self, signal: QualifiedSignal, contract: dict) -> dict:
+        entities = contract.setdefault("entities", {})
+        if not isinstance(entities, dict):
+            entities = {}
+            contract["entities"] = entities
+
+        merchants = entities.get("merchants")
+        if not isinstance(merchants, list):
+            merchants = [merchants] if merchants else []
+            entities["merchants"] = merchants
+
+        # Helper functions
+        def is_sender_id(candidate: str) -> bool:
+            return bool(re.match(r"^[A-Za-z]{2}-[A-Za-z0-9]+-[A-Za-z]$", candidate.strip()))
+
+        def is_numeric_artifact(candidate: str) -> bool:
+            clean = candidate.strip()
+            if clean.isdigit():
+                return True
+            digit_count = sum(1 for char in clean if char.isdigit())
+            if len(clean) > 0 and (digit_count / len(clean) > 0.4):
+                return True
+            if re.search(r"\b\d{4,}\b", clean):
+                return True
+            if re.search(r"x{2,}\d+", clean, re.IGNORECASE):
+                return True
+            if re.search(r"\*\d{3,}", clean):
+                return True
+            return False
+
+        def is_stop_word_artifact(candidate: str) -> bool:
+            stop_words = {
+                "rs", "inr", "credit alert", "debit alert", "balance", "upi", "transaction",
+                "account", "reference", "alert", "bank", "payment", "vpa", "mobile", "ref",
+                "dear customer", "yono", "avl bal", "credit", "debit", "statement", "amount",
+                "successful", "yono by sbi", "rs.", "inr.", "your", "the", "a", "an", "to", "from", "at"
+            }
+            clean = candidate.strip().lower()
+            if clean in stop_words:
+                return True
+            for sw in stop_words:
+                if clean == sw or clean.startswith(sw + " ") or clean.endswith(" " + sw):
+                    return True
+            return False
+
+        def canonicalize_merchant(name: str) -> str:
+            n = name.upper().strip()
+            if "AMAZON" in n or "AMZN" in n:
+                return "AMAZON"
+            if "SWIGGY" in n:
+                return "SWIGGY"
+            if "HDFC ERGO" in n or "HDFCERGO" in n:
+                return "HDFC_ERGO"
+            if "SBI CARD" in n or "SBICARD" in n or "SBI CREDIT" in n:
+                return "SBI_CARDS"
+            if "FLIPKART" in n or "FLPKRT" in n:
+                return "FLIPKART"
+            if "PHONEPE" in n:
+                return "PHONEPE"
+            if "GOOGLE PLAY" in n or "GPLAY" in n:
+                return "GOOGLE_PLAY"
+            if "ZOMATO" in n:
+                return "ZOMATO"
+            if "PAYTM" in n:
+                return "PAYTM"
+            if "ICICI" in n:
+                return "ICICI"
+            if "AXIS" in n:
+                return "AXIS"
+            return name
+
+        if "FINANCIAL" in contract.get("classes", []):
+            candidate = merchants[0] if (merchants and merchants[0]) else None
+            source_type = "none"
+            
+            if not candidate:
+                msg_norm = re.sub(r'\s+', ' ', signal.message.lower()).strip()
+                match = re.search(
+                    r"(?:spent on|paid to|at|to|from|merchant|beneficiary)\s+([a-zA-Z0-9\s\.\-_%]+?)(?:\s+from|\s+via|\s+using|\.|\s*$)",
+                    msg_norm
+                )
+                if match:
+                    candidate = match.group(1).strip()
+                    source_type = "regex"
+            else:
+                source_type = "llm"
+
+            if candidate:
+                candidate_clean = re.sub(r'\s+', ' ', candidate).strip()
+                if (is_sender_id(candidate_clean) or 
+                    is_numeric_artifact(candidate_clean) or 
+                    is_stop_word_artifact(candidate_clean) or
+                    len(candidate_clean) < 2):
+                    candidate = None
+                else:
+                    candidate = candidate_clean
+
+            confidence = 0.0
+            if candidate:
+                canonical = canonicalize_merchant(candidate)
+                known_merchants = {"AMAZON", "SWIGGY", "HDFC_ERGO", "SBI_CARDS", "FLIPKART", "PHONEPE", "GOOGLE_PLAY", "ZOMATO", "PAYTM", "ICICI", "AXIS"}
+                if canonical in known_merchants:
+                    confidence = 0.95
+                    candidate = canonical
+                elif source_type == "regex":
+                    confidence = 0.80
+                else:
+                    confidence = 0.75
+                    
+                if canonical not in known_merchants:
+                    candidate = candidate.title()
+
+            if confidence >= 0.70 and candidate:
+                entities["merchants"] = [candidate]
+                entities["merchant_confidence"] = confidence
+            else:
+                entities["merchants"] = []
+                entities["merchant_confidence"] = 0.0
+
+        return contract
+
+    def _validate_contract(self, contract: dict):
+        mandatory_keys = ["signal_id", "classes", "domains", "routes", "confidence", "entities", "summary"]
+        missing = [k for k in mandatory_keys if k not in contract]
+        if missing:
+            logger.error(f"Malformed contract rejected. Missing keys: {missing}. Contract: {contract}")
+            raise ValueError(f"Malformed contract missing: {missing}")

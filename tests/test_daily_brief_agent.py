@@ -33,7 +33,29 @@ def run_daily_brief_agent_tests():
         mock_supabase_repo = MagicMock()
         mock_supabase_repo.store_daily_brief.return_value = True
 
-        with patch("src.agents.daily_brief.repository.SupabaseRepo", mock_supabase_repo):
+        def mock_render_brief(context, brief_type):
+            if brief_type == "MORNING":
+                lines = ["# Daily Briefing", ""]
+                lines.append("## Priority Actions")
+                # ContextBuilder includes open and overdue tasks
+                tasks = context.get("overdue_tasks", []) + context.get("today_tasks", [])
+                if not tasks:
+                    lines.append("No critical action items pending.")
+                else:
+                    for t in tasks:
+                        lines.append(f"- [ ] {t['title']}")
+                
+                lines.append("## Financial Snapshot")
+                lines.append("## Family Updates")
+                for fyi in context.get("new_fyis", []):
+                    if fyi["category"] in ("FAMILY", "FINANCIAL"):
+                        lines.append(f"- {fyi['title']}")
+                return "\n".join(lines)
+            else:
+                return "# Evening Briefing"
+
+        with patch("src.agents.daily_brief.repository.SupabaseRepo", mock_supabase_repo), \
+             patch("src.agents.daily_brief.agent.DailyBriefLLMRenderer.render_brief", mock_render_brief):
 
             # Scenario 1: Brief has Actions, Financial, and Family sections
             logger.info("Scenario 1: Testing structured Morning Brief rendering...")
@@ -48,8 +70,8 @@ def run_daily_brief_agent_tests():
             morning_id = DailyBriefAgent.generate_briefs(db)["morning_brief_id"]
             brief = db.get(DailyBrief, morning_id)
             assert brief is not None
-            assert "## Critical Actions" in brief.content
-            assert "## Financial Updates" in brief.content
+            assert "## Priority Actions" in brief.content
+            assert "## Financial Snapshot" in brief.content
             assert "## Family Updates" in brief.content
             assert "Salary credited" in brief.content
             assert "PTM Meeting scheduled" in brief.content
@@ -58,15 +80,17 @@ def run_daily_brief_agent_tests():
             # Scenario 2: No Todos displays "No pending actions."
             logger.info("Scenario 2: Testing brief rendering with no open todos...")
             db.query(TodoItem).delete()
+            db.query(DailyBrief).delete()
             db.commit()
             
             morning_id_2 = DailyBriefAgent.generate_briefs(db)["morning_brief_id"]
             brief_2 = db.get(DailyBrief, morning_id_2)
-            assert "No pending actions." in brief_2.content, "Expected 'No pending actions.' indicator"
+            assert "No critical action items pending." in brief_2.content, "Expected 'No critical action items pending.' indicator"
             logger.success("Scenario 2: Passed.")
 
             # Scenario 3: Highest priority items appear first
             logger.info("Scenario 3: Testing todo importance sorting...")
+            db.query(DailyBrief).delete()
             todo_med = TodoItem(title="Medium Task", category="GENERAL", priority="MEDIUM", status="OPEN", source_agent="Test")
             todo_high = TodoItem(title="High Task", category="GENERAL", priority="HIGH", status="OPEN", source_agent="Test")
             db.add_all([todo_med, todo_high])
@@ -80,9 +104,11 @@ def run_daily_brief_agent_tests():
             assert idx_high < idx_med, "Expected High Task to appear before Medium Task in brief output"
             logger.success("Scenario 3: Passed.")
 
-            # Scenario 4: Archived FYIs excluded
+            # Scenario 4: Archived/Read items should be excluded from brief
             logger.info("Scenario 4: Testing exclusion of archived items...")
+            db.query(TodoItem).delete()
             db.query(FyiEvent).delete()
+            db.query(DailyBrief).delete()
             fyi_archived = FyiEvent(event_type="SCHOOL_NOTICE", category="FAMILY", title="Old circular", importance="HIGH", status="ARCHIVED")
             db.add(fyi_archived)
             db.commit()

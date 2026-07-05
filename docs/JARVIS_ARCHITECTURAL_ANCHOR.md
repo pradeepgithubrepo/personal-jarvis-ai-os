@@ -226,7 +226,7 @@ The Financial Agent replaced all of this with a structured, typed fact model wit
 - Acquire a run lock before starting (check `system_status.current_status == "RUNNING"` in Supabase)
 - Release the lock on completion or failure
 - Detect stale locks (set more than 30 minutes ago) and override
-- Run agents in strict order: Consumer → Qualification → SUA → FinancialAgent → Aggregation → (future: Todo, FYI, Fact, DailyBrief)
+- Run agents in strict order: Consumer → Qualification → SUA → FinancialAgent → Aggregation → TodoAgent → FyiAgent → FactAgent → DailyBriefAgent
 - Track LLM call count for monitoring
 - Record final stats: signals processed, todos generated, financial events generated, LLM calls, duration
 
@@ -359,15 +359,15 @@ The Financial Agent replaced all of this with a structured, typed fact model wit
 
 ---
 
-### 3.7 Future — Todo Agent (Module 5A)
+### 3.7 Todo Agent (Module 5A)
 
 **Purpose:** Creates actionable todo items from ACTION class contracts.
 
 **Inputs:** Canonical contracts with `"ACTION" in classes`
 
-**Outputs:** `todos` table in Supabase
+**Outputs:** `todo_items` table in SQLite, `todos` table in Supabase
 
-**Database ownership:** Writes to `todos` only
+**Database ownership:** Writes to `todo_items` (local) and `todos` (remote)
 
 **Must do:**
 - Extract due date / deadline from contract entities
@@ -382,13 +382,13 @@ The Financial Agent replaced all of this with a structured, typed fact model wit
 
 ---
 
-### 3.8 Future — FYI Agent (Module 5B)
+### 3.8 FYI Agent (Module 5B)
 
 **Purpose:** Records informational events for user awareness. No action required.
 
 **Inputs:** Canonical contracts with `"INFORMATION" in classes`
 
-**Outputs:** `fyi_events` table in Supabase
+**Outputs:** `fyi_events` table in SQLite + Supabase
 
 **Database ownership:** Writes to `fyi_events` only
 
@@ -399,27 +399,27 @@ The Financial Agent replaced all of this with a structured, typed fact model wit
 
 ---
 
-### 3.9 Future — Fact Agent (Module 5C)
+### 3.9 Fact Agent (Module 5C)
 
 **Purpose:** Extracts and stores long-lived personal facts from MEMORY class signals. Examples: employer name, insurance policy number, doctor name, school name.
 
 **Inputs:** Canonical contracts with `"MEMORY" in classes`
 
-**Outputs:** `facts` table in Supabase
+**Outputs:** `facts` and `fact_relationships` tables in SQLite + Supabase
 
-**Database ownership:** Writes to `facts` only
+**Database ownership:** Writes to `facts` and `fact_relationships` only
 
 **Design note:** Facts are entity-attribute pairs with source signal lineage. A fact can be updated (same entity, new attribute value) but not deleted. The fact history is preserved.
 
 ---
 
-### 3.10 Future — Daily Brief Agent (Module 6)
+### 3.10 Daily Brief Agent (Module 6)
 
 **Purpose:** Synthesises all processed data from the current day into a structured brief for the user.
 
-**Inputs:** Reads from `todos`, `fyi_events`, `facts`, `monthly_spending_summary`, `financial_facts` (read-only across all tables)
+**Inputs:** Reads from `todo_items`, `fyi_events`, `facts`, `monthly_spending_summary`, `financial_facts` (read-only across all tables)
 
-**Outputs:** `daily_briefs` table in Supabase; notification to user
+**Outputs:** `daily_briefs` table in SQLite + Supabase; notification to user
 
 **Database ownership:** Writes to `daily_briefs` only
 
@@ -1185,6 +1185,16 @@ These decisions are permanent. They may not be revisited without explicit approv
 
 ---
 
+### AD-14: Scheduler Heartbeat Monitoring Is Persisted
+
+**Decision:** Periodic scheduler runs and pipeline executions write heartbeats containing task names, timestamps, durations, completion statuses, and host machine names to a local SQLite table (`scheduler_heartbeat`).
+
+**Rationale:** Proving scheduled execution occurred while the machine was unattended requires a lightweight, environment-aware persistence mechanism that runs independently of external API network connections.
+
+**Locked:** Yes.
+
+---
+
 ## 11. Validation History
 
 ### Validation 1 — Qualification Agent
@@ -1272,7 +1282,7 @@ These decisions are permanent. They may not be revisited without explicit approv
 
 ## 12. Remaining Roadmap
 
-### Module 4 — Financial Agent (Current — Partially Complete)
+### Module 4 — Financial Agent (Complete)
 
 **Completed:**
 - [x] Financial event persistence
@@ -1285,79 +1295,57 @@ These decisions are permanent. They may not be revisited without explicit approv
 - [x] Financial fact model with full lineage
 - [x] MoM trend generation
 
-**Remaining:**
-- [ ] Supabase migration: create `transfer_pairs` table (currently graceful no-op)
-- [ ] Supabase migration: create `salary_source` table (currently graceful no-op)
-- [ ] Add `transaction_subtype` column to `financial_events` in Supabase
-- [ ] User-facing flow for confirming Tier 3 salary candidates (INCOME_SALARY_CANDIDATE → INCOME_SALARY)
-- [ ] User-facing flow for confirming auto-promoted merchant entries
-- [ ] `financial_intelligence.py` (SQLAlchemy path) alignment to V2 model — this file still uses old single-spend-total model
-- [ ] Real-time aggregation trigger vs nightly schedule decision (currently nightly)
-- [ ] Merchant registry growth via automatic promotion (appears ≥ 3 times → auto-categorise)
-- [ ] Financial anomaly detection (category spend > 150% prior month → alert)
+### Module 5A — Todo Agent (Complete)
 
-### Module 5A — Todo Agent
+**Completed:**
+- [x] Design Todo Agent contract consumption pattern
+- [x] Implement deadline extraction from contract entities
+- [x] Implement priority mapping from importance field
+- [x] Implement duplicate todo detection (same signal should not create two todos)
+- [x] Supabase schema for `todos` table
+- [x] Validation against real ACTION class contracts
 
-**Not started.**
+### Module 5B — FYI Agent (Complete)
 
-**Required:**
-- [ ] Design Todo Agent contract consumption pattern
-- [ ] Implement deadline extraction from contract entities
-- [ ] Implement priority mapping from importance field
-- [ ] Implement duplicate todo detection (same signal should not create two todos)
-- [ ] Supabase schema for `todos` table (partially exists — needs validation)
-- [ ] Validation against real ACTION class contracts
+**Completed:**
+- [x] Design FYI Agent contract consumption pattern
+- [x] Implement FYI event creation from INFORMATION class contracts
+- [x] `read_flag` management (mark as read from UI)
+- [x] Supabase schema validation for `fyi_events`
 
-### Module 5B — FYI Agent
+### Module 5C — Fact Agent (Complete)
 
-**Not started.**
+**Completed:**
+- [x] Design entity-attribute fact schema
+- [x] Implement fact extraction from MEMORY class contracts
+- [x] Design fact deduplication (same entity, same attribute — update vs. create new)
+- [x] Supabase schema for `facts` table
 
-**Required:**
-- [ ] Design FYI Agent contract consumption pattern
-- [ ] Implement FYI event creation from INFORMATION class contracts
-- [ ] `read_flag` management (mark as read from UI)
-- [ ] Supabase schema validation for `fyi_events`
+### Module 6 — Daily Brief Agent (Complete)
 
-### Module 5C — Fact Agent
+**Completed:**
+- [x] Design brief structure (financial snapshot + todo summary + info highlights + anomalies)
+- [x] Implement prose generation (all computation done before output)
+- [x] Streamlit UI integration for brief display
 
-**Not started.**
+### Scheduler & Reliability (Complete)
 
-**Required:**
-- [ ] Design entity-attribute fact schema
-- [ ] Implement fact extraction from MEMORY class contracts
-- [ ] Design fact deduplication (same entity, same attribute — update vs. create new)
-- [ ] Supabase schema for `facts` table
+**Completed:**
+- [x] Database-backed heartbeat monitoring (`scheduler_heartbeat` table)
+- [x] Automatic hooks for STARTED, COMPLETED, and FAILED execution states
+- [x] Machine context logging (capturing host machine name)
 
-### Module 6 — Daily Brief Agent
+### UI (V2 Complete)
 
-**Not started.**
+**Current:** Streamlit dashboard v2 (`streamlit_app_v2` directory)
 
-**Required:**
-- [ ] Design brief structure (financial snapshot + todo summary + info highlights + anomalies)
-- [ ] Implement LLM-based prose generation (all computation done before LLM is called)
-- [ ] Implement push notification delivery (Android)
-- [ ] Streamlit UI integration for brief display
-
-### Android Integration
-
-**Not started.**
-
-**Required:**
-- [ ] Android app that intercepts SMS at OS level (broadcast receiver)
-- [ ] WhatsApp message forwarding mechanism
-- [ ] Direct API push to Consumer instead of file-based ingestion
-- [ ] Real-time pipeline trigger on signal receipt
-
-### UI Redesign
-
-**Current:** Streamlit dashboard (`ui/` directory)
-
-**Remaining:**
-- [ ] Financial dashboard: accounting_spend vs lifestyle_spend view
-- [ ] Monthly trend charts per category
-- [ ] Salary detection review queue
-- [ ] Merchant registry management
-- [ ] Todo management (complete/snooze/dismiss)
+**Completed:**
+- [x] Financial dashboard: accounting_spend vs lifestyle_spend view
+- [x] Monthly trend charts per category
+- [x] Salary detection review queue
+- [x] Merchant registry management
+- [x] Todo/Task management (complete/snooze/dismiss)
+- [x] FYI/Alerts and Facts/Memory exploration pages
 
 ---
 

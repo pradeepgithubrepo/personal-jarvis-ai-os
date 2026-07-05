@@ -520,7 +520,7 @@ class SupabaseRepo:
             return []
 
     @classmethod
-    def create_qualified_signal(cls, signal_id: str, source: str, sender: str, message: str, timestamp: datetime, qualification_score: int, qualification_status: str, qualification_reason: str = None) -> bool:
+    def create_qualified_signal(cls, signal_id: str, source: str, sender: str, message: str, timestamp: datetime, qualification_score: int, qualification_status: str, qualification_reason: str = None, batch_id: str = None) -> bool:
         data = {
             "signal_id": str(signal_id),
             "source": source,
@@ -529,7 +529,9 @@ class SupabaseRepo:
             "timestamp": timestamp.isoformat() if hasattr(timestamp, "isoformat") else str(timestamp),
             "qualification_score": int(qualification_score),
             "qualification_status": qualification_status,
-            "qualification_reason": qualification_reason
+            "qualification_reason": qualification_reason,
+            "batch_id": batch_id,
+            "created_at": datetime.utcnow().isoformat()
         }
         return cls._execute(lambda: supabase.table("qualified_signals").insert(data).execute())
 
@@ -557,7 +559,8 @@ class SupabaseRepo:
         llm_model_used: str,
         contract_json: dict,
         is_verified: bool,
-        created_at: datetime = None
+        created_at: datetime = None,
+        batch_id: str = None
     ) -> bool:
         data = {
             "id": str(understood_id),
@@ -572,7 +575,8 @@ class SupabaseRepo:
             "llm_model_used": llm_model_used,
             "contract_json": contract_json,
             "is_verified": is_verified,
-            "created_at": created_at.isoformat() if hasattr(created_at, "isoformat") else str(created_at) if created_at else datetime.utcnow().isoformat()
+            "created_at": created_at.isoformat() if hasattr(created_at, "isoformat") else str(created_at) if created_at else datetime.utcnow().isoformat(),
+            "batch_id": batch_id
         }
         return cls._execute(lambda: supabase.table("understood_signals").insert(data).execute())
 
@@ -794,7 +798,8 @@ class SupabaseRepo:
         content: str,
         todo_count: int,
         fyi_count: int,
-        fact_count: int
+        fact_count: int,
+        payload_json: str = None
     ) -> bool:
         data = {
             "brief_id": str(brief_id),
@@ -803,7 +808,8 @@ class SupabaseRepo:
             "content": content,
             "todo_count": int(todo_count),
             "fyi_count": int(fyi_count),
-            "fact_count": int(fact_count)
+            "fact_count": int(fact_count),
+            "payload_json": payload_json
         }
         return cls._execute(lambda: supabase.table("daily_briefs").upsert(data).execute())
 

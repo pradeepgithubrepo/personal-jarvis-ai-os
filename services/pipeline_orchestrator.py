@@ -63,6 +63,18 @@ class PipelineOrchestrator:
 
     @classmethod
     def run_pipeline(cls, run_type: str = "SCHEDULED") -> dict:
+        from storage.repositories.scheduler_heartbeat_repository import scheduler_heartbeat_context
+        with scheduler_heartbeat_context(f"pipeline_run_{run_type.lower()}") as hb_id:
+            res = cls._run_pipeline_internal(run_type)
+            if hb_id:
+                if res.get("status") in ["SKIPPED_LOCKED", "LOCK_FAILED", "REGISTRY_FAILED"]:
+                    hb_id.status = res.get("status")
+                elif res.get("status") == "FAILED":
+                    hb_id.status = f"FAILED: {res.get('message')}"[:50]
+            return res
+
+    @classmethod
+    def _run_pipeline_internal(cls, run_type: str = "SCHEDULED") -> dict:
         """
         Executes the entire Jarvis intelligence pipeline sequentially:
         Ingestion -> Mobile Signal Extraction -> Classification -> Todo/Fin/FYI Extraction -> Financial Aggregation -> Daily Brief.

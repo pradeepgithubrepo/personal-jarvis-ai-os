@@ -148,6 +148,11 @@ class FinancialAgent:
         event_date = fin_event.event_date.date() if fin_event.event_date else None
         month = date(event_date.year, event_date.month, 1) if event_date else None
 
+        # Get parent batch_id
+        from storage.models.understood_signal import UnderstoodSignal
+        under_sig = self.db.query(UnderstoodSignal).filter(UnderstoodSignal.id == signal_id).first()
+        parent_batch_id = under_sig.batch_id if under_sig else None
+
         # 7. Write FinancialFact
         fact = FinancialFact(
             fact_type=fact_type,
@@ -168,6 +173,8 @@ class FinancialAgent:
             exclusion_reason="INTERNAL_TRANSFER" if excl_accounting else None,
             salary_source_id=salary_source_id,
             transfer_pair_id=transfer_pair_id,
+            batch_id=parent_batch_id,
+            sync_status='PENDING'
         )
         self.db.add(fact)
 

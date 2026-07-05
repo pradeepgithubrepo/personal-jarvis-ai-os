@@ -22,6 +22,7 @@ class Settings(BaseSettings):
     # Cloud
     cloud_provider: str
     monthly_budget_inr: int
+    gemini_api_key: str = None
 
     # Scheduler
     email_poll_interval_minutes: int

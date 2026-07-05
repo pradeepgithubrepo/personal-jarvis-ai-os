@@ -39,6 +39,13 @@ class FyiAgent:
             FyiRepository.update(existing, db_session)
             return existing.event_id
 
+        # Get parent batch_id
+        parent_batch_id = None
+        if source_signal_id:
+            under_sig = db_session.query(UnderstoodSignal).filter(UnderstoodSignal.id == str(source_signal_id)).first()
+            if under_sig:
+                parent_batch_id = under_sig.batch_id
+
         # 2. Save new FYI event
         new_event = FyiEvent(
             event_type=event_type,
@@ -50,7 +57,9 @@ class FyiAgent:
             source_signal_id=source_signal_id,
             duplicate_count=1,
             created_at=datetime.utcnow(),
-            updated_at=datetime.utcnow()
+            updated_at=datetime.utcnow(),
+            batch_id=parent_batch_id,
+            sync_status='PENDING'
         )
         FyiRepository.save(new_event, db_session)
         return new_event.event_id

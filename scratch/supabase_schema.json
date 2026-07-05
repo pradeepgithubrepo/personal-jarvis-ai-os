@@ -4,13 +4,25 @@
       "summary_id",
       "month_key",
       "total_spend",
-      "transaction_count"
+      "transaction_count",
+      "created_at",
+      "updated_at",
+      "total_debits",
+      "total_credits",
+      "accounting_spend",
+      "lifestyle_spend",
+      "total_income",
+      "net_cash_flow",
+      "internal_transfers",
+      "insurance_premiums",
+      "investments",
+      "refund_offsets"
     ],
     "properties": {
       "summary_id": {
-        "default": "gen_random_uuid()",
         "description": "Note:\nThis is a Primary Key.<pk/>",
-        "format": "uuid",
+        "format": "character varying",
+        "maxLength": 36,
         "type": "string"
       },
       "month_key": {
@@ -27,14 +39,62 @@
         "type": "integer"
       },
       "created_at": {
-        "default": "CURRENT_TIMESTAMP",
         "format": "timestamp with time zone",
         "type": "string"
       },
       "updated_at": {
-        "default": "CURRENT_TIMESTAMP",
         "format": "timestamp with time zone",
         "type": "string"
+      },
+      "total_debits": {
+        "default": 0.0,
+        "format": "numeric",
+        "type": "number"
+      },
+      "total_credits": {
+        "default": 0.0,
+        "format": "numeric",
+        "type": "number"
+      },
+      "accounting_spend": {
+        "default": 0.0,
+        "format": "numeric",
+        "type": "number"
+      },
+      "lifestyle_spend": {
+        "default": 0.0,
+        "format": "numeric",
+        "type": "number"
+      },
+      "total_income": {
+        "default": 0.0,
+        "format": "numeric",
+        "type": "number"
+      },
+      "net_cash_flow": {
+        "default": 0.0,
+        "format": "numeric",
+        "type": "number"
+      },
+      "internal_transfers": {
+        "default": 0.0,
+        "format": "numeric",
+        "type": "number"
+      },
+      "insurance_premiums": {
+        "default": 0.0,
+        "format": "numeric",
+        "type": "number"
+      },
+      "investments": {
+        "default": 0.0,
+        "format": "numeric",
+        "type": "number"
+      },
+      "refund_offsets": {
+        "default": 0.0,
+        "format": "numeric",
+        "type": "number"
       }
     },
     "type": "object"
@@ -121,19 +181,99 @@
     },
     "type": "object"
   },
+  "ingestion_batches": {
+    "required": [
+      "batch_id",
+      "source_type",
+      "status",
+      "created_at",
+      "updated_at"
+    ],
+    "properties": {
+      "batch_id": {
+        "description": "Note:\nThis is a Primary Key.<pk/>",
+        "format": "text",
+        "type": "string"
+      },
+      "source_type": {
+        "format": "text",
+        "type": "string"
+      },
+      "source_name": {
+        "format": "text",
+        "type": "string"
+      },
+      "file_name": {
+        "format": "text",
+        "type": "string"
+      },
+      "file_hash": {
+        "format": "text",
+        "type": "string"
+      },
+      "status": {
+        "format": "text",
+        "type": "string"
+      },
+      "raw_records": {
+        "default": 0,
+        "format": "integer",
+        "type": "integer"
+      },
+      "accepted_records": {
+        "default": 0,
+        "format": "integer",
+        "type": "integer"
+      },
+      "duplicate_records": {
+        "default": 0,
+        "format": "integer",
+        "type": "integer"
+      },
+      "rejected_records": {
+        "default": 0,
+        "format": "integer",
+        "type": "integer"
+      },
+      "started_at": {
+        "format": "timestamp with time zone",
+        "type": "string"
+      },
+      "completed_at": {
+        "format": "timestamp with time zone",
+        "type": "string"
+      },
+      "error_message": {
+        "format": "text",
+        "type": "string"
+      },
+      "created_at": {
+        "default": "now()",
+        "format": "timestamp with time zone",
+        "type": "string"
+      },
+      "updated_at": {
+        "default": "now()",
+        "format": "timestamp with time zone",
+        "type": "string"
+      }
+    },
+    "type": "object"
+  },
   "monthly_category_spend": {
     "required": [
       "entry_id",
       "month_key",
       "category_name",
       "amount",
-      "transaction_count"
+      "transaction_count",
+      "created_at"
     ],
     "properties": {
       "entry_id": {
-        "default": "gen_random_uuid()",
         "description": "Note:\nThis is a Primary Key.<pk/>",
-        "format": "uuid",
+        "format": "character varying",
+        "maxLength": 36,
         "type": "string"
       },
       "month_key": {
@@ -155,7 +295,6 @@
         "type": "integer"
       },
       "created_at": {
-        "default": "CURRENT_TIMESTAMP",
         "format": "timestamp with time zone",
         "type": "string"
       }
@@ -164,20 +303,23 @@
   },
   "facts": {
     "required": [
-      "fact_id"
+      "fact_id",
+      "fact_type",
+      "fact_value",
+      "confidence",
+      "status",
+      "source_agent",
+      "source_type",
+      "first_seen",
+      "last_seen",
+      "created_at",
+      "updated_at"
     ],
     "properties": {
       "fact_id": {
         "description": "Note:\nThis is a Primary Key.<pk/>",
-        "format": "uuid",
-        "type": "string"
-      },
-      "confidence": {
-        "format": "numeric",
-        "type": "number"
-      },
-      "created_at": {
-        "format": "timestamp without time zone",
+        "format": "character varying",
+        "maxLength": 36,
         "type": "string"
       },
       "fact_type": {
@@ -188,8 +330,11 @@
       "fact_value": {
         "format": "jsonb"
       },
+      "confidence": {
+        "format": "numeric",
+        "type": "number"
+      },
       "status": {
-        "default": "UNCONFIRMED",
         "format": "character varying",
         "maxLength": 30,
         "type": "string"
@@ -205,26 +350,45 @@
         "type": "string"
       },
       "source_type": {
-        "default": "OBSERVED",
         "format": "character varying",
         "maxLength": 30,
         "type": "string"
       },
       "first_seen": {
-        "default": "now()",
         "format": "timestamp with time zone",
         "type": "string"
       },
       "last_seen": {
-        "default": "now()",
         "format": "timestamp with time zone",
         "type": "string"
       },
       "evidence": {
         "format": "jsonb"
       },
+      "created_at": {
+        "format": "timestamp with time zone",
+        "type": "string"
+      },
       "updated_at": {
-        "default": "now()",
+        "format": "timestamp with time zone",
+        "type": "string"
+      },
+      "batch_id": {
+        "format": "text",
+        "type": "string"
+      },
+      "sync_status": {
+        "default": "SYNCED",
+        "format": "character varying",
+        "maxLength": 50,
+        "type": "string"
+      },
+      "is_deleted": {
+        "default": false,
+        "format": "boolean",
+        "type": "boolean"
+      },
+      "deleted_at": {
         "format": "timestamp with time zone",
         "type": "string"
       }
@@ -246,7 +410,8 @@
     "properties": {
       "todo_id": {
         "description": "Note:\nThis is a Primary Key.<pk/>",
-        "format": "uuid",
+        "format": "character varying",
+        "maxLength": 36,
         "type": "string"
       },
       "title": {
@@ -264,13 +429,11 @@
         "type": "string"
       },
       "priority": {
-        "default": "MEDIUM",
         "format": "character varying",
         "maxLength": 20,
         "type": "string"
       },
       "status": {
-        "default": "OPEN",
         "format": "character varying",
         "maxLength": 30,
         "type": "string"
@@ -288,42 +451,66 @@
         "format": "jsonb"
       },
       "confidence": {
-        "default": 1.0,
         "format": "numeric",
         "type": "number"
       },
       "created_at": {
-        "default": "now()",
         "format": "timestamp with time zone",
         "type": "string"
       },
       "updated_at": {
-        "default": "now()",
+        "format": "timestamp with time zone",
+        "type": "string"
+      },
+      "batch_id": {
+        "format": "text",
+        "type": "string"
+      },
+      "sync_status": {
+        "default": "SYNCED",
+        "format": "character varying",
+        "maxLength": 50,
+        "type": "string"
+      },
+      "is_deleted": {
+        "default": false,
+        "format": "boolean",
+        "type": "boolean"
+      },
+      "deleted_at": {
         "format": "timestamp with time zone",
         "type": "string"
       }
     },
     "type": "object"
   },
-  "todos": {
+  "sync_audit_log": {
     "required": [
-      "todo_id"
+      "id",
+      "entity_name",
+      "operation",
+      "status",
+      "created_at"
     ],
     "properties": {
-      "todo_id": {
+      "id": {
         "description": "Note:\nThis is a Primary Key.<pk/>",
-        "format": "uuid",
-        "type": "string"
+        "format": "bigint",
+        "type": "integer"
       },
-      "title": {
+      "entity_name": {
         "format": "text",
         "type": "string"
       },
-      "description": {
+      "record_id": {
         "format": "text",
         "type": "string"
       },
-      "priority": {
+      "batch_id": {
+        "format": "text",
+        "type": "string"
+      },
+      "operation": {
         "format": "text",
         "type": "string"
       },
@@ -331,20 +518,68 @@
         "format": "text",
         "type": "string"
       },
-      "due_date": {
-        "format": "timestamp without time zone",
-        "type": "string"
-      },
-      "source_signal_id": {
-        "format": "uuid",
+      "message": {
+        "format": "text",
         "type": "string"
       },
       "created_at": {
-        "format": "timestamp without time zone",
+        "default": "now()",
+        "format": "timestamp with time zone",
+        "type": "string"
+      }
+    },
+    "type": "object"
+  },
+  "transfer_pairs": {
+    "required": [
+      "id",
+      "debit_event_id",
+      "credit_event_id",
+      "amount",
+      "currency",
+      "transfer_type",
+      "confidence",
+      "detected_at"
+    ],
+    "properties": {
+      "id": {
+        "description": "Note:\nThis is a Primary Key.<pk/>",
+        "format": "character varying",
+        "maxLength": 36,
         "type": "string"
       },
-      "updated_at": {
-        "format": "timestamp without time zone",
+      "debit_event_id": {
+        "format": "integer",
+        "type": "integer"
+      },
+      "credit_event_id": {
+        "format": "integer",
+        "type": "integer"
+      },
+      "amount": {
+        "format": "numeric",
+        "type": "number"
+      },
+      "currency": {
+        "format": "character varying",
+        "maxLength": 10,
+        "type": "string"
+      },
+      "transfer_type": {
+        "format": "character varying",
+        "maxLength": 20,
+        "type": "string"
+      },
+      "window_seconds": {
+        "format": "numeric",
+        "type": "number"
+      },
+      "confidence": {
+        "format": "numeric",
+        "type": "number"
+      },
+      "detected_at": {
+        "format": "timestamp with time zone",
         "type": "string"
       }
     },
@@ -382,12 +617,70 @@
     },
     "type": "object"
   },
+  "merchants": {
+    "required": [
+      "id",
+      "canonical_name",
+      "category",
+      "aliases",
+      "is_trusted",
+      "is_seed",
+      "created_at",
+      "updated_at"
+    ],
+    "properties": {
+      "id": {
+        "description": "Note:\nThis is a Primary Key.<pk/>",
+        "format": "character varying",
+        "maxLength": 36,
+        "type": "string"
+      },
+      "canonical_name": {
+        "format": "character varying",
+        "maxLength": 200,
+        "type": "string"
+      },
+      "category": {
+        "format": "character varying",
+        "maxLength": 50,
+        "type": "string"
+      },
+      "aliases": {
+        "format": "jsonb"
+      },
+      "logo_url": {
+        "format": "character varying",
+        "maxLength": 500,
+        "type": "string"
+      },
+      "is_trusted": {
+        "format": "boolean",
+        "type": "boolean"
+      },
+      "is_seed": {
+        "format": "boolean",
+        "type": "boolean"
+      },
+      "created_at": {
+        "format": "timestamp with time zone",
+        "type": "string"
+      },
+      "updated_at": {
+        "format": "timestamp with time zone",
+        "type": "string"
+      }
+    },
+    "type": "object"
+  },
   "fact_relationships": {
     "required": [
       "id",
       "subject_id",
       "predicate",
-      "object_id"
+      "object_id",
+      "confidence",
+      "created_at",
+      "updated_at"
     ],
     "properties": {
       "id": {
@@ -396,8 +689,8 @@
         "type": "integer"
       },
       "subject_id": {
-        "description": "Note:\nThis is a Foreign Key to `facts.fact_id`.<fk table='facts' column='fact_id'/>",
-        "format": "uuid",
+        "format": "character varying",
+        "maxLength": 36,
         "type": "string"
       },
       "predicate": {
@@ -406,22 +699,165 @@
         "type": "string"
       },
       "object_id": {
-        "description": "Note:\nThis is a Foreign Key to `facts.fact_id`.<fk table='facts' column='fact_id'/>",
-        "format": "uuid",
+        "format": "character varying",
+        "maxLength": 36,
         "type": "string"
       },
       "confidence": {
-        "default": 0.5,
         "format": "numeric",
         "type": "number"
       },
       "created_at": {
-        "default": "now()",
         "format": "timestamp with time zone",
         "type": "string"
       },
       "updated_at": {
-        "default": "now()",
+        "format": "timestamp with time zone",
+        "type": "string"
+      }
+    },
+    "type": "object"
+  },
+  "financial_facts": {
+    "required": [
+      "id",
+      "fact_type",
+      "financial_event_id",
+      "amount",
+      "currency",
+      "classification_confidence",
+      "is_excluded_from_accounting_spend",
+      "is_excluded_from_lifestyle_spend",
+      "is_refunded",
+      "created_at"
+    ],
+    "properties": {
+      "id": {
+        "description": "Note:\nThis is a Primary Key.<pk/>",
+        "format": "character varying",
+        "maxLength": 36,
+        "type": "string"
+      },
+      "fact_type": {
+        "format": "character varying",
+        "maxLength": 30,
+        "type": "string"
+      },
+      "financial_event_id": {
+        "format": "bigint",
+        "type": "integer"
+      },
+      "understood_signal_id": {
+        "format": "character varying",
+        "maxLength": 36,
+        "type": "string"
+      },
+      "qualified_signal_id": {
+        "format": "bigint",
+        "type": "integer"
+      },
+      "amount": {
+        "format": "numeric",
+        "type": "number"
+      },
+      "currency": {
+        "format": "character varying",
+        "maxLength": 10,
+        "type": "string"
+      },
+      "merchant_raw": {
+        "format": "character varying",
+        "maxLength": 255,
+        "type": "string"
+      },
+      "merchant_canonical": {
+        "format": "character varying",
+        "maxLength": 200,
+        "type": "string"
+      },
+      "merchant_id": {
+        "format": "character varying",
+        "maxLength": 36,
+        "type": "string"
+      },
+      "category": {
+        "format": "character varying",
+        "maxLength": 50,
+        "type": "string"
+      },
+      "classification_confidence": {
+        "format": "numeric",
+        "type": "number"
+      },
+      "classification_method": {
+        "format": "character varying",
+        "maxLength": 30,
+        "type": "string"
+      },
+      "event_date": {
+        "format": "date",
+        "type": "string"
+      },
+      "month": {
+        "format": "date",
+        "type": "string"
+      },
+      "is_excluded_from_accounting_spend": {
+        "format": "boolean",
+        "type": "boolean"
+      },
+      "is_excluded_from_lifestyle_spend": {
+        "format": "boolean",
+        "type": "boolean"
+      },
+      "exclusion_reason": {
+        "format": "character varying",
+        "maxLength": 100,
+        "type": "string"
+      },
+      "refund_of_fact_id": {
+        "format": "character varying",
+        "maxLength": 36,
+        "type": "string"
+      },
+      "is_refunded": {
+        "format": "boolean",
+        "type": "boolean"
+      },
+      "refund_applied_to_month": {
+        "format": "date",
+        "type": "string"
+      },
+      "salary_source_id": {
+        "format": "character varying",
+        "maxLength": 36,
+        "type": "string"
+      },
+      "transfer_pair_id": {
+        "format": "character varying",
+        "maxLength": 36,
+        "type": "string"
+      },
+      "created_at": {
+        "format": "timestamp with time zone",
+        "type": "string"
+      },
+      "batch_id": {
+        "format": "text",
+        "type": "string"
+      },
+      "sync_status": {
+        "default": "SYNCED",
+        "format": "character varying",
+        "maxLength": 50,
+        "type": "string"
+      },
+      "is_deleted": {
+        "default": false,
+        "format": "boolean",
+        "type": "boolean"
+      },
+      "deleted_at": {
         "format": "timestamp with time zone",
         "type": "string"
       }
@@ -430,56 +866,78 @@
   },
   "signals": {
     "required": [
-      "signal_id"
+      "id",
+      "source",
+      "signal_type",
+      "category",
+      "importance",
+      "summary",
+      "created_at"
     ],
     "properties": {
-      "signal_id": {
+      "id": {
         "description": "Note:\nThis is a Primary Key.<pk/>",
-        "format": "uuid",
-        "type": "string"
+        "format": "bigint",
+        "type": "integer"
       },
       "source": {
-        "format": "text",
+        "format": "character varying",
+        "maxLength": 50,
         "type": "string"
       },
-      "sender": {
-        "format": "text",
+      "signal_type": {
+        "format": "character varying",
+        "maxLength": 100,
         "type": "string"
       },
-      "message": {
-        "format": "text",
+      "category": {
+        "format": "character varying",
+        "maxLength": 100,
         "type": "string"
       },
-      "signal_timestamp": {
-        "format": "timestamp without time zone",
+      "importance": {
+        "format": "character varying",
+        "maxLength": 50,
+        "type": "string"
+      },
+      "summary": {
+        "format": "character varying",
+        "maxLength": 1000,
+        "type": "string"
+      },
+      "raw_json": {
+        "format": "text",
         "type": "string"
       },
       "created_at": {
-        "format": "timestamp without time zone",
+        "format": "timestamp with time zone",
         "type": "string"
       },
-      "raw_signal_id": {
-        "format": "text",
+      "message_id": {
+        "format": "character varying",
+        "maxLength": 255,
         "type": "string"
-      },
-      "metadata": {
-        "format": "jsonb"
       }
     },
     "type": "object"
   },
   "financial_events": {
     "required": [
-      "financial_event_id"
+      "id",
+      "title",
+      "transaction_type",
+      "source_signal_id",
+      "created_at"
     ],
     "properties": {
-      "financial_event_id": {
+      "id": {
         "description": "Note:\nThis is a Primary Key.<pk/>",
-        "format": "uuid",
-        "type": "string"
+        "format": "bigint",
+        "type": "integer"
       },
-      "merchant": {
-        "format": "text",
+      "title": {
+        "format": "character varying",
+        "maxLength": 500,
         "type": "string"
       },
       "amount": {
@@ -487,31 +945,50 @@
         "type": "number"
       },
       "currency": {
-        "format": "text",
+        "format": "character varying",
+        "maxLength": 10,
         "type": "string"
       },
-      "category": {
-        "format": "text",
+      "transaction_type": {
+        "format": "character varying",
+        "maxLength": 50,
         "type": "string"
       },
-      "status": {
-        "format": "text",
+      "payment_channel": {
+        "format": "character varying",
+        "maxLength": 50,
         "type": "string"
       },
-      "event_timestamp": {
-        "format": "timestamp without time zone",
+      "paid_to": {
+        "format": "character varying",
+        "maxLength": 255,
+        "type": "string"
+      },
+      "paid_from": {
+        "format": "character varying",
+        "maxLength": 255,
+        "type": "string"
+      },
+      "transaction_id": {
+        "format": "character varying",
+        "maxLength": 255,
+        "type": "string"
+      },
+      "event_date": {
+        "format": "timestamp with time zone",
         "type": "string"
       },
       "source_signal_id": {
-        "format": "uuid",
-        "type": "string"
+        "format": "integer",
+        "type": "integer"
       },
       "created_at": {
-        "format": "timestamp without time zone",
+        "format": "timestamp with time zone",
         "type": "string"
       },
-      "updated_at": {
-        "format": "timestamp without time zone",
+      "category": {
+        "format": "character varying",
+        "maxLength": 100,
         "type": "string"
       }
     },
@@ -532,7 +1009,6 @@
         "type": "string"
       },
       "financial_event_id": {
-        "description": "Note:\nThis is a Foreign Key to `financial_events.financial_event_id`.<fk table='financial_events' column='financial_event_id'/>",
         "format": "uuid",
         "type": "string"
       },
@@ -564,16 +1040,19 @@
       "summary",
       "processing_path",
       "llm_model_used",
-      "contract_json"
+      "contract_json",
+      "is_verified",
+      "created_at"
     ],
     "properties": {
       "id": {
         "description": "Note:\nThis is a Primary Key.<pk/>",
-        "format": "uuid",
+        "format": "character varying",
+        "maxLength": 100,
         "type": "string"
       },
       "qualified_signal_id": {
-        "format": "integer",
+        "format": "bigint",
         "type": "integer"
       },
       "raw_signal_id": {
@@ -614,16 +1093,34 @@
         "type": "string"
       },
       "contract_json": {
-        "format": "jsonb"
+        "format": "text",
+        "type": "string"
       },
       "is_verified": {
-        "default": false,
         "format": "boolean",
         "type": "boolean"
       },
       "created_at": {
-        "default": "now()",
-        "format": "timestamp without time zone",
+        "format": "timestamp with time zone",
+        "type": "string"
+      },
+      "batch_id": {
+        "format": "text",
+        "type": "string"
+      },
+      "sync_status": {
+        "default": "SYNCED",
+        "format": "character varying",
+        "maxLength": 50,
+        "type": "string"
+      },
+      "is_deleted": {
+        "default": false,
+        "format": "boolean",
+        "type": "boolean"
+      },
+      "deleted_at": {
+        "format": "timestamp with time zone",
         "type": "string"
       }
     },
@@ -642,7 +1139,8 @@
     "properties": {
       "brief_id": {
         "description": "Note:\nThis is a Primary Key.<pk/>",
-        "format": "uuid",
+        "format": "character varying",
+        "maxLength": 36,
         "type": "string"
       },
       "brief_type": {
@@ -651,7 +1149,6 @@
         "type": "string"
       },
       "generated_at": {
-        "default": "now()",
         "format": "timestamp with time zone",
         "type": "string"
       },
@@ -660,19 +1157,35 @@
         "type": "string"
       },
       "todo_count": {
-        "default": 0,
         "format": "integer",
         "type": "integer"
       },
       "fyi_count": {
-        "default": 0,
         "format": "integer",
         "type": "integer"
       },
       "fact_count": {
-        "default": 0,
         "format": "integer",
         "type": "integer"
+      },
+      "batch_id": {
+        "format": "text",
+        "type": "string"
+      },
+      "sync_status": {
+        "default": "SYNCED",
+        "format": "character varying",
+        "maxLength": 50,
+        "type": "string"
+      },
+      "is_deleted": {
+        "default": false,
+        "format": "boolean",
+        "type": "boolean"
+      },
+      "deleted_at": {
+        "format": "timestamp with time zone",
+        "type": "string"
       }
     },
     "type": "object"
@@ -726,6 +1239,47 @@
     },
     "type": "object"
   },
+  "runtime_events": {
+    "required": [
+      "id",
+      "event_type",
+      "source",
+      "payload",
+      "status",
+      "created_at"
+    ],
+    "properties": {
+      "id": {
+        "description": "Note:\nThis is a Primary Key.<pk/>",
+        "format": "bigint",
+        "type": "integer"
+      },
+      "event_type": {
+        "format": "character varying",
+        "maxLength": 100,
+        "type": "string"
+      },
+      "source": {
+        "format": "character varying",
+        "maxLength": 100,
+        "type": "string"
+      },
+      "payload": {
+        "format": "text",
+        "type": "string"
+      },
+      "status": {
+        "format": "character varying",
+        "maxLength": 50,
+        "type": "string"
+      },
+      "created_at": {
+        "format": "timestamp with time zone",
+        "type": "string"
+      }
+    },
+    "type": "object"
+  },
   "connection_test": {
     "required": [
       "id"
@@ -748,6 +1302,204 @@
     },
     "type": "object"
   },
+  "merchant_profiles": {
+    "required": [
+      "id",
+      "merchant_id",
+      "lifetime_spend",
+      "avg_transaction_value",
+      "total_transaction_count",
+      "visit_count_last_30d",
+      "visit_count_last_90d",
+      "updated_at"
+    ],
+    "properties": {
+      "id": {
+        "description": "Note:\nThis is a Primary Key.<pk/>",
+        "format": "character varying",
+        "maxLength": 36,
+        "type": "string"
+      },
+      "merchant_id": {
+        "format": "character varying",
+        "maxLength": 36,
+        "type": "string"
+      },
+      "lifetime_spend": {
+        "format": "numeric",
+        "type": "number"
+      },
+      "avg_transaction_value": {
+        "format": "numeric",
+        "type": "number"
+      },
+      "total_transaction_count": {
+        "format": "integer",
+        "type": "integer"
+      },
+      "visit_count_last_30d": {
+        "format": "integer",
+        "type": "integer"
+      },
+      "visit_count_last_90d": {
+        "format": "integer",
+        "type": "integer"
+      },
+      "last_transaction_date": {
+        "format": "date",
+        "type": "string"
+      },
+      "last_transaction_amount": {
+        "format": "numeric",
+        "type": "number"
+      },
+      "updated_at": {
+        "format": "timestamp with time zone",
+        "type": "string"
+      }
+    },
+    "type": "object"
+  },
+  "bank_accounts": {
+    "required": [
+      "id",
+      "bank_name",
+      "account_type",
+      "sender_aliases",
+      "receiver_aliases",
+      "is_active",
+      "registered_at",
+      "updated_at"
+    ],
+    "properties": {
+      "id": {
+        "description": "Note:\nThis is a Primary Key.<pk/>",
+        "format": "character varying",
+        "maxLength": 36,
+        "type": "string"
+      },
+      "bank_name": {
+        "format": "character varying",
+        "maxLength": 100,
+        "type": "string"
+      },
+      "ifsc_prefix": {
+        "format": "character varying",
+        "maxLength": 10,
+        "type": "string"
+      },
+      "account_number_masked": {
+        "format": "character varying",
+        "maxLength": 20,
+        "type": "string"
+      },
+      "account_type": {
+        "format": "character varying",
+        "maxLength": 20,
+        "type": "string"
+      },
+      "sender_aliases": {
+        "format": "jsonb"
+      },
+      "receiver_aliases": {
+        "format": "jsonb"
+      },
+      "is_active": {
+        "format": "boolean",
+        "type": "boolean"
+      },
+      "registered_at": {
+        "format": "timestamp with time zone",
+        "type": "string"
+      },
+      "updated_at": {
+        "format": "timestamp with time zone",
+        "type": "string"
+      }
+    },
+    "type": "object"
+  },
+  "qualified_signals": {
+    "required": [
+      "id",
+      "signal_id",
+      "source",
+      "sender",
+      "message",
+      "timestamp",
+      "qualification_score",
+      "qualification_status",
+      "created_at"
+    ],
+    "properties": {
+      "id": {
+        "description": "Note:\nThis is a Primary Key.<pk/>",
+        "format": "bigint",
+        "type": "integer"
+      },
+      "signal_id": {
+        "format": "character varying",
+        "maxLength": 100,
+        "type": "string"
+      },
+      "source": {
+        "format": "character varying",
+        "maxLength": 50,
+        "type": "string"
+      },
+      "sender": {
+        "format": "character varying",
+        "maxLength": 500,
+        "type": "string"
+      },
+      "message": {
+        "format": "text",
+        "type": "string"
+      },
+      "timestamp": {
+        "format": "timestamp with time zone",
+        "type": "string"
+      },
+      "qualification_score": {
+        "format": "integer",
+        "type": "integer"
+      },
+      "qualification_status": {
+        "format": "character varying",
+        "maxLength": 50,
+        "type": "string"
+      },
+      "qualification_reason": {
+        "format": "character varying",
+        "maxLength": 100,
+        "type": "string"
+      },
+      "created_at": {
+        "format": "timestamp with time zone",
+        "type": "string"
+      },
+      "batch_id": {
+        "format": "text",
+        "type": "string"
+      },
+      "sync_status": {
+        "default": "SYNCED",
+        "format": "character varying",
+        "maxLength": 50,
+        "type": "string"
+      },
+      "is_deleted": {
+        "default": false,
+        "format": "boolean",
+        "type": "boolean"
+      },
+      "deleted_at": {
+        "format": "timestamp with time zone",
+        "type": "string"
+      }
+    },
+    "type": "object"
+  },
   "user_preferences": {
     "required": [
       "preference_key"
@@ -764,6 +1516,82 @@
       },
       "updated_at": {
         "format": "timestamp without time zone",
+        "type": "string"
+      }
+    },
+    "type": "object"
+  },
+  "mobile_signals": {
+    "required": [
+      "id",
+      "device_id",
+      "source",
+      "sender",
+      "message",
+      "mobile_timestamp",
+      "processed",
+      "created_at"
+    ],
+    "properties": {
+      "id": {
+        "description": "Note:\nThis is a Primary Key.<pk/>",
+        "format": "bigint",
+        "type": "integer"
+      },
+      "device_id": {
+        "format": "character varying",
+        "maxLength": 100,
+        "type": "string"
+      },
+      "source": {
+        "format": "character varying",
+        "maxLength": 50,
+        "type": "string"
+      },
+      "sender": {
+        "format": "character varying",
+        "maxLength": 500,
+        "type": "string"
+      },
+      "message": {
+        "format": "text",
+        "type": "string"
+      },
+      "mobile_timestamp": {
+        "format": "character varying",
+        "maxLength": 100,
+        "type": "string"
+      },
+      "processed": {
+        "format": "boolean",
+        "type": "boolean"
+      },
+      "created_at": {
+        "format": "timestamp with time zone",
+        "type": "string"
+      },
+      "message_hash": {
+        "format": "character varying",
+        "maxLength": 64,
+        "type": "string"
+      },
+      "batch_id": {
+        "format": "text",
+        "type": "string"
+      },
+      "sync_status": {
+        "default": "SYNCED",
+        "format": "character varying",
+        "maxLength": 50,
+        "type": "string"
+      },
+      "is_deleted": {
+        "default": false,
+        "format": "boolean",
+        "type": "boolean"
+      },
+      "deleted_at": {
+        "format": "timestamp with time zone",
         "type": "string"
       }
     },
@@ -863,13 +1691,14 @@
       "category_name",
       "current_amount",
       "previous_amount",
-      "change_percentage"
+      "change_percentage",
+      "created_at"
     ],
     "properties": {
       "trend_id": {
-        "default": "gen_random_uuid()",
         "description": "Note:\nThis is a Primary Key.<pk/>",
-        "format": "uuid",
+        "format": "character varying",
+        "maxLength": 36,
         "type": "string"
       },
       "month_key": {
@@ -895,7 +1724,6 @@
         "type": "number"
       },
       "created_at": {
-        "default": "CURRENT_TIMESTAMP",
         "format": "timestamp with time zone",
         "type": "string"
       }
@@ -917,7 +1745,8 @@
     "properties": {
       "event_id": {
         "description": "Note:\nThis is a Primary Key.<pk/>",
-        "format": "uuid",
+        "format": "character varying",
+        "maxLength": 36,
         "type": "string"
       },
       "event_type": {
@@ -940,33 +1769,193 @@
         "type": "string"
       },
       "importance": {
-        "default": "MEDIUM",
         "format": "character varying",
         "maxLength": 20,
         "type": "string"
       },
       "status": {
-        "default": "UNREAD",
         "format": "character varying",
         "maxLength": 30,
         "type": "string"
       },
       "source_signal_id": {
-        "format": "uuid",
+        "format": "character varying",
+        "maxLength": 36,
         "type": "string"
       },
       "duplicate_count": {
-        "default": 1,
         "format": "integer",
         "type": "integer"
       },
       "created_at": {
-        "default": "now()",
         "format": "timestamp with time zone",
         "type": "string"
       },
       "updated_at": {
-        "default": "now()",
+        "format": "timestamp with time zone",
+        "type": "string"
+      },
+      "batch_id": {
+        "format": "text",
+        "type": "string"
+      },
+      "sync_status": {
+        "default": "SYNCED",
+        "format": "character varying",
+        "maxLength": 50,
+        "type": "string"
+      },
+      "is_deleted": {
+        "default": false,
+        "format": "boolean",
+        "type": "boolean"
+      },
+      "deleted_at": {
+        "format": "timestamp with time zone",
+        "type": "string"
+      }
+    },
+    "type": "object"
+  },
+  "salary_sources": {
+    "required": [
+      "id",
+      "canonical_name",
+      "aliases",
+      "employment_type",
+      "day_tolerance",
+      "amount_tolerance_pct",
+      "source_bank_aliases",
+      "is_active",
+      "pending_review",
+      "detection_history",
+      "created_at",
+      "updated_at"
+    ],
+    "properties": {
+      "id": {
+        "description": "Note:\nThis is a Primary Key.<pk/>",
+        "format": "character varying",
+        "maxLength": 36,
+        "type": "string"
+      },
+      "canonical_name": {
+        "format": "character varying",
+        "maxLength": 200,
+        "type": "string"
+      },
+      "aliases": {
+        "format": "jsonb"
+      },
+      "employment_type": {
+        "format": "character varying",
+        "maxLength": 20,
+        "type": "string"
+      },
+      "expected_day_of_month": {
+        "format": "integer",
+        "type": "integer"
+      },
+      "day_tolerance": {
+        "format": "integer",
+        "type": "integer"
+      },
+      "expected_amount": {
+        "format": "numeric",
+        "type": "number"
+      },
+      "amount_tolerance_pct": {
+        "format": "numeric",
+        "type": "number"
+      },
+      "source_bank_aliases": {
+        "format": "jsonb"
+      },
+      "is_active": {
+        "format": "boolean",
+        "type": "boolean"
+      },
+      "pending_review": {
+        "format": "boolean",
+        "type": "boolean"
+      },
+      "first_detected": {
+        "format": "date",
+        "type": "string"
+      },
+      "last_seen": {
+        "format": "date",
+        "type": "string"
+      },
+      "detection_history": {
+        "format": "jsonb"
+      },
+      "created_at": {
+        "format": "timestamp with time zone",
+        "type": "string"
+      },
+      "updated_at": {
+        "format": "timestamp with time zone",
+        "type": "string"
+      }
+    },
+    "type": "object"
+  },
+  "salary_events": {
+    "required": [
+      "id",
+      "financial_event_id",
+      "gross_amount",
+      "currency",
+      "salary_month",
+      "detection_method",
+      "confidence",
+      "detected_at"
+    ],
+    "properties": {
+      "id": {
+        "description": "Note:\nThis is a Primary Key.<pk/>",
+        "format": "character varying",
+        "maxLength": 36,
+        "type": "string"
+      },
+      "financial_event_id": {
+        "format": "bigint",
+        "type": "integer"
+      },
+      "salary_source_id": {
+        "format": "character varying",
+        "maxLength": 36,
+        "type": "string"
+      },
+      "detected_employer": {
+        "format": "character varying",
+        "maxLength": 200,
+        "type": "string"
+      },
+      "gross_amount": {
+        "format": "numeric",
+        "type": "number"
+      },
+      "currency": {
+        "format": "character varying",
+        "maxLength": 10,
+        "type": "string"
+      },
+      "salary_month": {
+        "format": "date",
+        "type": "string"
+      },
+      "detection_method": {
+        "format": "character varying",
+        "maxLength": 30,
+        "type": "string"
+      },
+      "confidence": {
+        "format": "numeric",
+        "type": "number"
+      },
+      "detected_at": {
         "format": "timestamp with time zone",
         "type": "string"
       }

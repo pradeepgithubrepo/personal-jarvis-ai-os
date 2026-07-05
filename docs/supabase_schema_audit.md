@@ -18,7 +18,7 @@ This audit maps and compares all local SQLAlchemy models in the SQLite database 
 | **`signals`** | `Signal` (`signals`) | `signals` | **DRIFT** | SQLite: integer `id` key. Supabase: UUID `signal_id` key, matches `save_signal` contract. |
 | **`mobile_signals`** | `MobileSignal` | *None* | **MISSING** | Missing entirely on Supabase. |
 | **`processed_files`** | `ProcessedFile` | `processed_files` | **MATCH** | Identical structure. |
-| **`qualified_signals`** | `QualifiedSignal` | `qualified_signals` | **MATCH** | Identical structure. |
+| **`qualified_signals`** | `QualifiedSignal` | *None* | **MISSING** | Missing entirely on Supabase. |
 | **`understood_signals`** | `UnderstoodSignal` | `understood_signals` | **MATCH** | Identical structure. |
 | **`financial_facts`** | `FinancialFact` | *None* | **MISSING** | Missing entirely on Supabase. |
 | **`financial_events`** | `FinancialEvent` | `financial_events` | **MATCH** | Identical structure. |

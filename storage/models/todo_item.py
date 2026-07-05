@@ -4,10 +4,10 @@ import uuid
 from datetime import datetime
 from sqlalchemy import String, Float, DateTime, JSON, Text
 from sqlalchemy.orm import Mapped, mapped_column
-from storage.models.base import Base
+from storage.models.base import Base, LineageMixin
 
 
-class TodoItem(Base):
+class TodoItem(LineageMixin, Base):
     """
     Stateful action database representing user tasks and obligations.
     """
@@ -51,6 +51,14 @@ class TodoItem(Base):
     source_reference: Mapped[dict | None] = mapped_column(
         JSON, nullable=True,
         comment="Metadata details: {'signal_id': '...', 'fact_id': '...'}"
+    )
+
+    why_action_needed: Mapped[str | None] = mapped_column(
+        Text, nullable=True
+    )
+
+    consequence_if_ignored: Mapped[str | None] = mapped_column(
+        Text, nullable=True
     )
 
     confidence: Mapped[float] = mapped_column(

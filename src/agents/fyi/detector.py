@@ -11,11 +11,6 @@ class FyiDetector:
 
     @staticmethod
     def should_process(signal) -> bool:
-        """
-        Filters out:
-        1. Actionable items (owned by Todo Agent)
-        2. Canonical memory facts (owned by Fact Agent)
-        """
         contract = {}
         if signal.contract_json:
             try:
@@ -23,17 +18,17 @@ class FyiDetector:
             except Exception:
                 contract = signal.contract_json if isinstance(signal.contract_json, dict) else {}
 
-        classes = contract.get("classes", [])
-        
-        # 1. Actionable tasks: if ACTION class exists, Todo Agent owns it.
-        if "ACTION" in classes:
-            logger.info(f"FyiDetector: Ignoring signal {signal.id} - actionable task owned by Todo Agent.")
+        # 1. Reject list (Promotions, OTP, Marketing, etc.)
+        text = f"{signal.summary} {signal.reason}".lower()
+        reject_words = ["otp", "promotion", "advertisement", "spam", "marketing", "discount alert", "offer coupon", "win cash", "flat 50%"]
+        if any(rw in text for rw in reject_words):
             return False
 
-        # 2. Memory facts: if it is pure profile context extraction (e.g. spouse, child discovered)
-        summary_lower = signal.summary.lower()
-        if "discovered spouse" in summary_lower or "discovered child" in summary_lower or "user profile update" in summary_lower:
-            logger.info(f"FyiDetector: Ignoring signal {signal.id} - canonical memory owned by Fact Agent.")
+        # 2. Actionable tasks: if TodoAgent evaluate_actionability says it requires action, Todo Agent owns it.
+        from services.todo_agent import TodoAgent
+        act = TodoAgent.evaluate_actionability(signal.summary or "", signal.reason or "", contract)
+        if act["requires_user_action"]:
+            logger.info(f"FyiDetector: Ignoring signal {signal.id} - actionable task owned by Todo Agent.")
             return False
 
         return True

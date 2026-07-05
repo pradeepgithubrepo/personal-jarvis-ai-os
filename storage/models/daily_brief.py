@@ -4,10 +4,10 @@ import uuid
 from datetime import datetime
 from sqlalchemy import String, DateTime, Text, Integer
 from sqlalchemy.orm import Mapped, mapped_column
-from storage.models.base import Base
+from storage.models.base import Base, LineageMixin
 
 
-class DailyBrief(Base):
+class DailyBrief(LineageMixin, Base):
     """
     Stateful database representing Daily Brief summaries.
     """
@@ -40,4 +40,8 @@ class DailyBrief(Base):
 
     fact_count: Mapped[int] = mapped_column(
         Integer, nullable=False, default=0
+    )
+
+    payload_json: Mapped[str | None] = mapped_column(
+        Text, nullable=True
     )

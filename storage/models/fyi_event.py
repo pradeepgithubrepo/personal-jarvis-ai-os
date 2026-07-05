@@ -4,10 +4,10 @@ import uuid
 from datetime import datetime
 from sqlalchemy import String, DateTime, Text, Integer
 from sqlalchemy.orm import Mapped, mapped_column
-from storage.models.base import Base
+from storage.models.base import Base, LineageMixin
 
 
-class FyiEvent(Base):
+class FyiEvent(LineageMixin, Base):
     """
     Stateful database representing user FYI (awareness) events.
     """

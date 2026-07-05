@@ -1,0 +1,45 @@
+{
+    "generatedAt": 1782746704049,
+    "signals": [
+        {
+            "id": 1,
+            "deviceId": "pradeep_phone",
+            "source": "whatsapp",
+            "sender": "WhatsApp: Murugadoss CG",
+            "message": "Reacted ❤️ to \"going to office tommorow - if you are plannign to come book in 198 series - come directly to office\"",
+            "timestamp": 1782745526644
+        },
+        {
+            "id": 2,
+            "deviceId": "pradeep_phone",
+            "source": "whatsapp",
+            "sender": "Murugadoss CG: Murugadoss CG",
+            "message": "Reacted ❤️ to \"going to office tommorow - if you are plannign to come book in 198 series - come directly to office\"",
+            "timestamp": 1782745526648
+        },
+        {
+            "id": 3,
+            "deviceId": "pradeep_phone",
+            "source": "whatsapp",
+            "sender": "WhatsApp: Murugadoss CG",
+            "message": "Sure Pradeep",
+            "timestamp": 1782745545288
+        },
+        {
+            "id": 4,
+            "deviceId": "pradeep_phone",
+            "source": "whatsapp",
+            "sender": "Murugadoss CG",
+            "message": "Sure Pradeep",
+            "timestamp": 1782745545301
+        },
+        {
+            "id": 5,
+            "deviceId": "pradeep_phone",
+            "source": "whatsapp",
+            "sender": "WhatsApp: IndiGo",
+            "message": "📷 One card. A whole lot of perks. \n\nGet the IndiGo Kotak Credit Card with a first-year fee waiver and enjoy the following benefits:\n\n🏷️  Get vouchers worth 7,500 IndiGo BluChips\n💙 Enjoy up to 19 IndiGo BluChips on flight spends\n💌  Use this card and earn IndiGo BluChips on ecommerce, grocery , dining , entertainment, lifestyle, & electronics",
+            "timestamp": 1782746043683
+        }
+    ]
+}

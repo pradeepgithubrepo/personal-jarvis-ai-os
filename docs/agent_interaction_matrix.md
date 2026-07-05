@@ -120,6 +120,43 @@ To maintain integrity and prevent concurrency conflicts, each table follows the 
   * *Read Consumers:* Streamlit UI, Android Client
 
 ---
+## Agent Write Boundaries
+
+An agent may only write to tables it owns.
+
+Agents may read downstream and upstream data as required.
+
+Cross-agent writes are prohibited.
+
+Examples:
+
+Financial Agent
+    READ:
+        understood_signals
+
+    WRITE:
+        financial_facts
+        transfer_pairs
+        salary_events
+
+Fact Agent
+    READ:
+        understood_signals
+        financial_facts
+
+    WRITE:
+        facts
+        fact_relationships
+
+Architectural Rule
+
+Agents communicate through contracts.
+
+Agents never directly manipulate another agent's tables.
+
+Agent outputs are immutable contracts.
+
+Downstream agents enrich but do not mutate upstream results.
 
 ## 6. Future Module Readiness
 

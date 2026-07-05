@@ -21,6 +21,7 @@ class DailyBriefRepository:
             content=brief.content,
             todo_count=brief.todo_count,
             fyi_count=brief.fyi_count,
-            fact_count=brief.fact_count
+            fact_count=brief.fact_count,
+            payload_json=brief.payload_json
         )
         return brief.brief_id

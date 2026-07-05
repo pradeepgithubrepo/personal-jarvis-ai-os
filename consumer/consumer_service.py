@@ -7,6 +7,7 @@ from consumer.file_processor import FileProcessor
 from consumer.archive_manager import ArchiveManager
 from storage.repositories.mobile_signal_repository import MobileSignalRepository
 from storage.repositories.processed_file_repository import ProcessedFileRepository
+from services.ingestion_service import IngestionService
 
 
 class ConsumerService:
@@ -111,11 +112,21 @@ class ConsumerService:
                 stats["status"] = "DUPLICATE"
                 return stats
 
+            # Create Ingestion Batch
+            source_type = "whatsapp" if "whatsapp" in filename.lower() else "sms"
+            batch_id = IngestionService.create_batch(
+                source_type=source_type,
+                source_name=f"File Ingestion: {filename}",
+                file_name=filename,
+                file_hash=content_hash
+            )
+
             # 2. Parse signals
             try:
                 signals = FileProcessor.parse_signals(content)
             except Exception as parse_err:
                 logger.error(f"Failed to parse signals in file: {file_path}: {parse_err}")
+                IngestionService.fail_batch(batch_id, str(parse_err))
                 return stats
 
             # If empty signals list, proceed to archive & register as SKIPPED
@@ -125,6 +136,7 @@ class ConsumerService:
                 # Try local archival
                 archived = self.archive_manager.archive_file(file_path, content)
                 if not archived:
+                    IngestionService.fail_batch(batch_id, "Local archiving failed.")
                     return stats
 
                 # Try database registration
@@ -136,13 +148,17 @@ class ConsumerService:
                     status="SKIPPED"
                 )
                 if not registered:
+                    IngestionService.fail_batch(batch_id, "Database registration failed.")
                     return stats
 
                 # Try moving to remote archive
                 moved = self.supabase_client.move_file(file_path, f"archive/{filename}")
                 if not moved:
+                    IngestionService.fail_batch(batch_id, "Moving to remote archive failed.")
                     return stats
 
+                IngestionService.update_batch_metrics(batch_id, 0, 0, 0, 0)
+                IngestionService.complete_batch(batch_id)
                 stats["status"] = "SKIPPED"
                 return stats
                 
@@ -165,7 +181,8 @@ class ConsumerService:
                     sender=signal["sender"],
                     message=signal["message"],
                     timestamp=signal["timestamp"],
-                    message_hash=msg_hash
+                    message_hash=msg_hash,
+                    batch_id=batch_id
                 )
                 inserted_count += 1
 
@@ -178,6 +195,7 @@ class ConsumerService:
             archived = self.archive_manager.archive_file(file_path, content)
             if not archived:
                 logger.error(f"Failed to archive file '{file_path}' locally. Skipping registration and Supabase archiving.")
+                IngestionService.fail_batch(batch_id, "Local archiving failed.")
                 return stats
 
             # 5. Register file as successfully processed in SQLite + Supabase
@@ -190,6 +208,7 @@ class ConsumerService:
             )
             if not registered:
                 logger.error(f"Failed to register processed file '{file_path}' in DB registry. Skipping Supabase archiving.")
+                IngestionService.fail_batch(batch_id, "Database registration failed.")
                 return stats
 
             # 6. Move file to Supabase remote archive folder
@@ -197,9 +216,18 @@ class ConsumerService:
             moved = self.supabase_client.move_file(file_path, dest_path)
             if not moved:
                 logger.error(f"Failed to move file '{file_path}' to remote archive in Supabase Storage.")
-                # We return success if DB registration succeeded because the file metadata is stored,
-                # but log the failure of final physical relocation.
+                IngestionService.fail_batch(batch_id, "Remote storage relocation failed.")
                 return stats
+
+            # Complete batch metrics
+            IngestionService.update_batch_metrics(
+                batch_id=batch_id,
+                raw=len(signals),
+                accepted=inserted_count,
+                duplicates=skipped_count,
+                rejected=0
+            )
+            IngestionService.complete_batch(batch_id)
 
             stats.update({
                 "status": "PROCESSED",
@@ -211,5 +239,10 @@ class ConsumerService:
 
         except Exception as e:
             logger.error(f"Failed to process file '{file_path}': {e}")
+            if 'batch_id' in locals() and batch_id:
+                try:
+                    IngestionService.fail_batch(batch_id, str(e))
+                except Exception as fe:
+                    logger.error(f"Failed to mark batch failed for {batch_id}: {fe}")
             return stats
 

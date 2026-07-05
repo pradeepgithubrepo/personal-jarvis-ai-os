@@ -19,10 +19,10 @@ class DailyBriefGenerator:
     @classmethod
     def generate_brief_for_date(cls, date_str: str) -> dict:
         """
-        Compiles all structured data for a given date_str (YYYY-MM-DD),
-        saves the compiled JSON into the daily_briefs table, and returns the dict.
+        DEPRECATED: Use DailyBriefAgent instead.
         """
-        logger.info(f"Generating Daily Brief for date: {date_str}")
+        logger.warning(f"DailyBriefGenerator is DEPRECATED and legacy. Redirecting request for {date_str} to DailyBriefAgent.")
+        raise RuntimeError("DailyBriefGenerator is deprecated. Use src.agents.daily_brief.agent.DailyBriefAgent instead.")
         
         try:
             # Parse target date range
@@ -166,7 +166,8 @@ class DailyBriefGenerator:
             # Persist to database (upsert/merge brief by date)
             brief_obj = DailyBrief(
                 date=date_str,
-                content_json=json.dumps(brief_data)
+                content_json=json.dumps(brief_data),
+                sync_status='PENDING'
             )
             
             # Look for existing brief by date to override
@@ -174,6 +175,7 @@ class DailyBriefGenerator:
             if existing_brief:
                 existing_brief.content_json = brief_obj.content_json
                 existing_brief.created_at = datetime.utcnow()
+                existing_brief.sync_status = 'PENDING'
             else:
                 db.add(brief_obj)
                 

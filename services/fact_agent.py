@@ -210,6 +210,14 @@ class FactAgent:
             )
             return merged.fact_id
 
+        # Get parent batch_id
+        parent_batch_id = None
+        if source_signal_id:
+            from storage.models.understood_signal import UnderstoodSignal
+            under_sig = db_session.query(UnderstoodSignal).filter(UnderstoodSignal.id == str(source_signal_id)).first()
+            if under_sig:
+                parent_batch_id = under_sig.batch_id
+
         # 2. Check for conflicts (for single-value facts)
         is_conflict, existing_verified = FactAgent.check_conflicts(candidate_type, value, db_session)
         if is_conflict:
@@ -226,6 +234,8 @@ class FactAgent:
                 first_seen=datetime.utcnow(),
                 last_seen=datetime.utcnow(),
                 evidence={"signal_ids": [source_signal_id] if source_signal_id else [], "conflict_with": [existing_verified.fact_id], "manual_review_required": True},
+                batch_id=parent_batch_id,
+                sync_status='PENDING'
             )
             db_session.add(new_fact)
             db_session.commit()
@@ -262,6 +272,8 @@ class FactAgent:
             first_seen=datetime.utcnow(),
             last_seen=datetime.utcnow(),
             evidence={"signal_ids": [source_signal_id] if source_signal_id else []},
+            batch_id=parent_batch_id,
+            sync_status='PENDING'
         )
         db_session.add(new_fact)
         db_session.commit()

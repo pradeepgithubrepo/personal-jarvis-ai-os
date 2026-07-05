@@ -11,10 +11,10 @@ from sqlalchemy.orm import (
     Mapped,
     mapped_column
 )
-from storage.models.base import Base
+from storage.models.base import Base, LineageMixin
 
 
-class QualifiedSignal(Base):
+class QualifiedSignal(LineageMixin, Base):
     __tablename__ = "qualified_signals"
 
     id: Mapped[int] = mapped_column(

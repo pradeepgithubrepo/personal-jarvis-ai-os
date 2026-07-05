@@ -4,10 +4,10 @@ import uuid
 from datetime import datetime, date
 from sqlalchemy import String, Float, Boolean, DateTime, Date, ForeignKey, Text
 from sqlalchemy.orm import Mapped, mapped_column
-from storage.models.base import Base
+from storage.models.base import Base, LineageMixin
 
 
-class FinancialFact(Base):
+class FinancialFact(LineageMixin, Base):
     """
     The Financial Agent's typed fact ledger.
 

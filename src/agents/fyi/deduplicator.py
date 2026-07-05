@@ -12,7 +12,6 @@ class FyiDeduplicator:
 
     @staticmethod
     def find_duplicate(event_type: str, title: str, db_session) -> FyiEvent | None:
-        # Match within a 24-hour window
         limit_time = datetime.utcnow() - timedelta(hours=24)
         
         stmt = select(FyiEvent).where(
@@ -23,10 +22,16 @@ class FyiDeduplicator:
         )
         candidates = db_session.scalars(stmt).all()
 
-        norm_title = "".join(title.lower().split())
+        title_words = set(title.lower().replace(",", " ").replace(".", " ").split())
+        stop_words = {"a", "an", "the", "and", "or", "but", "in", "on", "at", "to", "for", "of", "from", "with", "by", "is", "was", "are", "were"}
+        title_words = title_words - stop_words
+
         for event in candidates:
-            norm_event_title = "".join(event.title.lower().split())
-            if norm_title == norm_event_title:
-                return event
+            event_words = set(event.title.lower().replace(",", " ").replace(".", " ").split()) - stop_words
+            common_words = title_words.intersection(event_words)
+            if common_words:
+                overlap = len(common_words) / max(1, min(len(title_words), len(event_words)))
+                if overlap >= 0.3:
+                    return event
 
         return None

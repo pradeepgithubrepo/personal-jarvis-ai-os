@@ -13,10 +13,10 @@ from sqlalchemy.orm import (
     Mapped,
     mapped_column
 )
-from storage.models.base import Base
+from storage.models.base import Base, LineageMixin
 
 
-class UnderstoodSignal(Base):
+class UnderstoodSignal(LineageMixin, Base):
     __tablename__ = "understood_signals"
 
     id: Mapped[str] = mapped_column(

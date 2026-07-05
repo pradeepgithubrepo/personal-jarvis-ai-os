@@ -13,7 +13,7 @@ from consumer.consumer_service import ConsumerService
 from services.mobile_signal_pipeline import MobileSignalPipeline
 from services.email_pipeline import EmailPipeline
 from services.signal_processor import SignalProcessor
-from services.daily_brief_generator import DailyBriefGenerator
+from services.daily_brief_agent import DailyBriefAgent
 
 
 def run_pipeline():
@@ -88,14 +88,14 @@ def run_pipeline():
     except Exception as e:
         logger.error(f"Financial Outflow Analysis Pipeline failed: {e}")
 
-    # 7. Generate Daily Brief and Sync back to Supabase
     try:
-        today_str = datetime.utcnow().strftime("%Y-%m-%d")
-        logger.info(f"Generating Daily Brief for date: {today_str}...")
-        DailyBriefGenerator.generate_brief_for_date(today_str)
-        logger.success("Daily Brief generated and synchronized to Supabase successfully!")
+        from storage.db.database import SessionLocal
+        with SessionLocal() as db_session:
+            logger.info("Generating Morning and Evening Briefs using DailyBriefAgent...")
+            DailyBriefAgent.generate_briefs(db_session)
+        logger.success("Daily Brief generated successfully!")
     except Exception as e:
-        logger.error(f"Failed to generate or sync Daily Brief: {e}")
+        logger.error(f"Failed to generate Daily Brief: {e}")
 
     logger.info("==================================================")
     logger.info("JARVIS PIPELINE EXECUTION COMPLETE")

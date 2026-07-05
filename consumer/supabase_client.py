@@ -123,6 +123,9 @@ class SupabaseClient:
         """
         Copies a file from src_path to dest_path within the bucket.
         """
+        # Delete destination first if it exists to avoid duplicate/conflict errors
+        self.delete_file(dest_path)
+        
         copy_url = f"{self.url}/storage/v1/object/copy"
         payload = {
             "bucketId": self.bucket,
@@ -153,6 +156,9 @@ class SupabaseClient:
         """
         Uploads a file to the bucket by its full path.
         """
+        # Delete destination first if it exists to avoid duplicate/conflict errors
+        self.delete_file(full_path)
+        
         upload_url = f"{self.url}/storage/v1/object/{self.bucket}/{full_path}"
         try:
             logger.info(f"Uploading file '{full_path}' to Supabase...")

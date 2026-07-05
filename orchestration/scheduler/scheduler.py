@@ -25,6 +25,24 @@ class JarvisScheduler:
             id="runtime_heartbeat",
         )
 
+        self.scheduler.add_job(
+            self.run_morning_brief_job,
+            "cron",
+            hour=6,
+            minute=0,
+            id="morning_brief_job",
+            replace_existing=True,
+        )
+
+        self.scheduler.add_job(
+            self.run_evening_brief_job,
+            "cron",
+            hour=20,
+            minute=0,
+            id="evening_brief_job",
+            replace_existing=True,
+        )
+
         self.scheduler.start()
 
         logger.success(
@@ -44,9 +62,11 @@ class JarvisScheduler:
 
     @staticmethod
     def runtime_heartbeat():
-        logger.info(
-            "Jarvis Runtime Active..."
-        )
+        from storage.repositories.scheduler_heartbeat_repository import scheduler_heartbeat_context
+        with scheduler_heartbeat_context("runtime_heartbeat"):
+            logger.info(
+                "Jarvis Runtime Active..."
+            )
 
     @staticmethod
     def run_consumer_sync():
@@ -55,3 +75,27 @@ class JarvisScheduler:
             ConsumerService().run_sync()
         except Exception as e:
             logger.error(f"Error in consumer sync job: {e}")
+
+    @staticmethod
+    def run_morning_brief_job():
+        from storage.db.database import SessionLocal
+        from src.agents.daily_brief.agent import DailyBriefAgent
+        logger.info("Executing scheduled Morning Brief job...")
+        with SessionLocal() as db_session:
+            try:
+                DailyBriefAgent.generate_morning_brief(db_session)
+                logger.success("Scheduled Morning Brief completed.")
+            except Exception as e:
+                logger.error(f"Failed to generate scheduled Morning Brief: {e}")
+
+    @staticmethod
+    def run_evening_brief_job():
+        from storage.db.database import SessionLocal
+        from src.agents.daily_brief.agent import DailyBriefAgent
+        logger.info("Executing scheduled Evening Brief job...")
+        with SessionLocal() as db_session:
+            try:
+                DailyBriefAgent.generate_evening_brief(db_session)
+                logger.success("Scheduled Evening Brief completed.")
+            except Exception as e:
+                logger.error(f"Failed to generate scheduled Evening Brief: {e}")

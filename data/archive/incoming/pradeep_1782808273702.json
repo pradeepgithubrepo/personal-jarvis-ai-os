@@ -1,0 +1,117 @@
+{
+    "generatedAt": 1782808273699,
+    "signals": [
+        {
+            "id": 1,
+            "deviceId": "pradeep_phone",
+            "source": "whatsapp",
+            "sender": "Nag Sittapa Alt",
+            "message": "📷 Photo",
+            "timestamp": 1782788774587
+        },
+        {
+            "id": 2,
+            "deviceId": "pradeep_phone",
+            "source": "whatsapp",
+            "sender": "WhatsApp: Nag Sittapa Alt",
+            "message": "📷 Photo",
+            "timestamp": 1782788774582
+        },
+        {
+            "id": 3,
+            "deviceId": "pradeep_phone",
+            "source": "whatsapp",
+            "sender": "WhatsApp: Nag Sittapa Alt",
+            "message": "📷 Photo",
+            "timestamp": 1782793823533
+        },
+        {
+            "id": 4,
+            "deviceId": "pradeep_phone",
+            "source": "whatsapp",
+            "sender": "WhatsApp: Shobana",
+            "message": "📷 Drainage water connection ku Pammal office la veetu vari receipt kondu poi 1500Rs. Pay pannanumam remaining pay pannura amount katumpothu solluvagalam 2thavanaya pay pannanu mam online payment kidaiyatham only direct payment",
+            "timestamp": 1782793823565
+        },
+        {
+            "id": 5,
+            "deviceId": "pradeep_phone",
+            "source": "whatsapp",
+            "sender": "WhatsApp: HDFC Bank Ltd",
+            "message": "Important Update from HDFC Bank! \n \nWe attempted to contact you from our official service number 1600318064. \n\nAll essential HDFC Bank calls start with 1600, so you can safely answer them. \n \nYour Relationship Manager RAKSHANA BALASUBRAMANIAM is available on +914226681921 for any assistance. \n \nReminder: HDFC Bank will never ask for your OTP, PIN, password, CVV, or full card details.",
+            "timestamp": 1782805904814
+        },
+        {
+            "id": 6,
+            "deviceId": "pradeep_phone",
+            "source": "whatsapp",
+            "sender": "HDFC Bank Ltd",
+            "message": "Important Update from HDFC Bank! \n \nWe attempted to contact you from our official service number 1600318064. \n\nAll essential HDFC Bank calls start with 1600, so you can safely answer them. \n \nYour Relationship Manager RAKSHANA BALASUBRAMANIAM is available on +914226681921 for any assistance. \n \nReminder: HDFC Bank will never ask for your OTP, PIN, password, CVV, or full card details.",
+            "timestamp": 1782805904820
+        },
+        {
+            "id": 7,
+            "deviceId": "pradeep_phone",
+            "source": "whatsapp",
+            "sender": "WhatsApp: Shobana",
+            "message": "150rs eppo tharuviga",
+            "timestamp": 1782808063025
+        },
+        {
+            "id": 8,
+            "deviceId": "pradeep_phone",
+            "source": "whatsapp",
+            "sender": "Shobana",
+            "message": "150rs eppo tharuviga",
+            "timestamp": 1782808063031
+        },
+        {
+            "id": 9,
+            "deviceId": "pradeep_phone",
+            "source": "sms",
+            "sender": "AX-SBYONO-T",
+            "message": "Dear Customer, 495761 is your OTP for Credit Card bill payment through YONO SBI. Please do not share this with anyone -YONO SBI.",
+            "timestamp": 1782806852278
+        },
+        {
+            "id": 10,
+            "deviceId": "pradeep_phone",
+            "source": "sms",
+            "sender": "VM-HDFCBK-S",
+            "message": "IMPS INR 1,72,000.00\nsent from HDFC Bank A\/c XX3221 on 30-06-26\nTo A\/c xxxxxxxxxx3724\nRef-618139475776\nNot you?Call 18002586161\/SMS BLOCK OB to 7308080808",
+            "timestamp": 1782806691480
+        },
+        {
+            "id": 11,
+            "deviceId": "pradeep_phone",
+            "source": "sms",
+            "sender": "AD-HDFCBK-S",
+            "message": "DEAR HDFCBANK CARDMEMBER, PAYMENT OF Rs. 7791.00 RECEIVED TOWARDS YOUR CREDIT CARD ENDING WITH 7074 ON 30-6-2026.YOUR AVAILABLE LIMIT IS RS. 500000.00",
+            "timestamp": 1782806625096
+        },
+        {
+            "id": 12,
+            "deviceId": "pradeep_phone",
+            "source": "sms",
+            "sender": "VM-HDFCBK-S",
+            "message": "Amt Deducted! Rs.40000 from your HDFC Bank A\/c XX3221 for Money Transfer via HDFC Bank Online Banking. Not you?Call 18002586161\/SMS BLOCK OB to 7308080808",
+            "timestamp": 1782806549381
+        },
+        {
+            "id": 13,
+            "deviceId": "pradeep_phone",
+            "source": "sms",
+            "sender": "VM-HDFCBK-S",
+            "message": "IMPS INR 10,000.00\nsent from HDFC Bank A\/c XX3221 on 30-06-26\nTo A\/c xxxxxxxxxx4264\nRef-618139472752\nNot you?Call 18002586161\/SMS BLOCK OB to 7308080808",
+            "timestamp": 1782806454780
+        },
+        {
+            "id": 14,
+            "deviceId": "pradeep_phone",
+            "source": "sms",
+            "sender": "VD-HDFCBK-S",
+            "message": "Update! INR 2,34,859.00 deposited in HDFC Bank A\/c XX3221 on 30-JUN-26 for ACH C- SAL-EYGLODELSERINDLL-SALARYJUNE26.Avl bal INR 2,34,989.27. Cheque deposits in A\/C are subject to clearing",
+            "timestamp": 1782806252985
+        }
+    ]
+}

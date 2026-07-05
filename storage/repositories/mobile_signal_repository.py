@@ -26,7 +26,8 @@ class MobileSignalRepository:
         sender,
         message,
         timestamp,
-        message_hash=None
+        message_hash=None,
+        batch_id=None
     ):
 
         db = SessionLocal()
@@ -46,7 +47,9 @@ class MobileSignalRepository:
                 mobile_timestamp=
                     str(timestamp),
 
-                message_hash=message_hash
+                message_hash=message_hash,
+                batch_id=batch_id,
+                sync_status='PENDING'
             )
 
             db.add(signal)

@@ -23,6 +23,7 @@ def initialize_database():
 
     from storage.models.base import Base
     from storage.models.runtime_event import RuntimeEvent
+    from storage.models.scheduler_heartbeat import SchedulerHeartbeat
     from storage.models.signal import Signal
     from storage.models.mobile_signal import MobileSignal
     from storage.models.task import Task
@@ -124,6 +125,68 @@ def initialize_database():
                         f"ADD COLUMN {column_name} {column_type}"
                     )
                 )
+        conn.commit()
+
+        # Ingestion Lineage & Sync Remediation Tables
+        conn.execute(text("""
+        CREATE TABLE IF NOT EXISTS ingestion_batches (
+            batch_id TEXT PRIMARY KEY,
+            source_type TEXT,
+            source_name TEXT,
+            file_name TEXT,
+            file_hash TEXT,
+            status TEXT,
+            raw_records INTEGER,
+            accepted_records INTEGER,
+            duplicate_records INTEGER,
+            rejected_records INTEGER,
+            started_at DATETIME,
+            completed_at DATETIME,
+            error_message TEXT,
+            created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+            updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
+        );
+        """))
+        
+        conn.execute(text("""
+        CREATE TABLE IF NOT EXISTS sync_metadata (
+            entity_name TEXT PRIMARY KEY,
+            last_pull_time DATETIME,
+            last_push_time DATETIME,
+            last_success_time DATETIME,
+            sync_status TEXT,
+            updated_at DATETIME
+        );
+        """))
+        
+        conn.execute(text("""
+        CREATE TABLE IF NOT EXISTS sync_audit_log (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            entity_name TEXT,
+            record_id TEXT,
+            batch_id TEXT,
+            operation TEXT,
+            status TEXT,
+            message TEXT,
+            created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+        );
+        """))
+
+        lineage_tables = [
+            "mobile_signals", "qualified_signals", "understood_signals", 
+            "financial_facts", "facts", "todo_items", "fyi_events", "daily_briefs"
+        ]
+        for t in lineage_tables:
+            result_t = conn.execute(text(f"PRAGMA table_info({t})"))
+            cols = [r[1] for r in result_t.fetchall()]
+            if "batch_id" not in cols:
+                conn.execute(text(f"ALTER TABLE {t} ADD COLUMN batch_id TEXT"))
+            if "sync_status" not in cols:
+                conn.execute(text(f"ALTER TABLE {t} ADD COLUMN sync_status VARCHAR(50) DEFAULT 'SYNCED'"))
+            if "is_deleted" not in cols:
+                conn.execute(text(f"ALTER TABLE {t} ADD COLUMN is_deleted BOOLEAN DEFAULT 0"))
+            if "deleted_at" not in cols:
+                conn.execute(text(f"ALTER TABLE {t} ADD COLUMN deleted_at DATETIME"))
         conn.commit()
 
         # Clear old entries from signals table to ensure clean slate as per user feedback (Moved to onetime_load.py)
