@@ -33,7 +33,7 @@ from src.agents.stubs.base_agent_stub import AgentResult
 class AgentDispatchRecord:
     """Outcome of dispatching to a single agent."""
     agent_name: str
-    status: str           # DISPATCHED | COMPLETED | FAILED | SKIPPED
+    status: str           # PENDING | COMPLETED | FAILED | SKIPPED
     started_at: str = ""
     completed_at: str = ""
     error_message: str = ""
@@ -49,6 +49,7 @@ class DispatchResult:
     completed: int = 0
     failed: int = 0
     skipped: int = 0
+    pending: int = 0
     records: list[AgentDispatchRecord] = field(default_factory=list)
     validation_errors: list[str] = field(default_factory=list)
 
@@ -58,11 +59,7 @@ class DispatchResult:
             return "VALIDATION_FAILED"
         if self.total_routes == 0:
             return "NO_ROUTE"  # NOISE signal
-        if self.failed == 0:
-            return "SUCCESS"
-        if self.completed > 0:
-            return "PARTIAL_SUCCESS"
-        return "FAILED"
+        return "SUCCESS"
 
 
 class ContractDispatcher:
@@ -70,7 +67,7 @@ class ContractDispatcher:
     Dispatches validated contracts to downstream agents and records the audit trail.
 
     Dispatch flow:
-        RouteDecision → [validate] → [for each agent: invoke stub → write signal_routes row]
+        RouteDecision → [validate] → [for each agent: write signal_routes PENDING row]
     """
 
     def dispatch(
@@ -113,6 +110,8 @@ class ContractDispatcher:
                 started_at=_now(),
                 completed_at=_now(),
                 error_message="; ".join(route_decision.validation_errors),
+                route_reason=route_decision.route_reason,
+                route_confidence=route_decision.route_confidence,
             )
             return result
 
@@ -130,10 +129,14 @@ class ContractDispatcher:
                 contract=route_decision.contract,
                 signal_id=signal_id,
                 supabase_client=supabase_client,
+                route_reason=route_decision.route_reason,
+                route_confidence=route_decision.route_confidence,
             )
             result.records.append(record)
 
-            if record.status == "COMPLETED":
+            if record.status == "PENDING":
+                result.pending += 1
+            elif record.status == "COMPLETED":
                 result.completed += 1
             elif record.status == "FAILED":
                 result.failed += 1
@@ -143,7 +146,7 @@ class ContractDispatcher:
         logger.info(
             f"Dispatcher: signal {signal_id} dispatch complete | "
             f"status={result.overall_status} | "
-            f"completed={result.completed}/{result.total_routes}"
+            f"pending={result.pending}/{result.total_routes}"
         )
 
         return result
@@ -154,93 +157,28 @@ class ContractDispatcher:
         contract: dict,
         signal_id: str,
         supabase_client: Any,
+        route_reason: str = "",
+        route_confidence: float = 1.0,
     ) -> AgentDispatchRecord:
-        """Dispatch contract to a single agent and record the outcome."""
+        """Register the agent route in 'PENDING' status (pull-based model)."""
         started_at = _now()
 
-        agent = get_agent(agent_name)
-
-        if agent is None:
-            completed_at = _now()
-            error = f"Agent '{agent_name}' not found in registry"
-            logger.error(f"Dispatcher: {error} | signal={signal_id}")
-            self._write_route_audit(
-                supabase_client=supabase_client,
-                understood_signal_id=signal_id,
-                agent_name=agent_name,
-                route_status="FAILED",
-                started_at=started_at,
-                completed_at=completed_at,
-                error_message=error,
-            )
-            return AgentDispatchRecord(
-                agent_name=agent_name,
-                status="FAILED",
-                started_at=started_at,
-                completed_at=completed_at,
-                error_message=error,
-            )
-
-        # Write DISPATCHED audit row before invoking
+        # Write or update route record to 'PENDING' state
         self._write_route_audit(
             supabase_client=supabase_client,
             understood_signal_id=signal_id,
             agent_name=agent_name,
-            route_status="DISPATCHED",
+            route_status="PENDING",
             started_at=started_at,
+            route_reason=route_reason,
+            route_confidence=route_confidence,
         )
 
-        try:
-            agent_result = agent.process(contract)
-            completed_at = _now()
-
-            # Update audit row to COMPLETED
-            self._write_route_audit(
-                supabase_client=supabase_client,
-                understood_signal_id=signal_id,
-                agent_name=agent_name,
-                route_status="COMPLETED",
-                started_at=started_at,
-                completed_at=completed_at,
-            )
-
-            logger.info(
-                f"Dispatcher: {agent_name} completed | signal={signal_id} | "
-                f"agent_status={agent_result.status}"
-            )
-
-            return AgentDispatchRecord(
-                agent_name=agent_name,
-                status="COMPLETED",
-                started_at=started_at,
-                completed_at=completed_at,
-                result=agent_result,
-            )
-
-        except Exception as e:
-            completed_at = _now()
-            error = str(e)
-            logger.error(
-                f"Dispatcher: {agent_name} FAILED | signal={signal_id} | error={error}"
-            )
-
-            self._write_route_audit(
-                supabase_client=supabase_client,
-                understood_signal_id=signal_id,
-                agent_name=agent_name,
-                route_status="FAILED",
-                started_at=started_at,
-                completed_at=completed_at,
-                error_message=error,
-            )
-
-            return AgentDispatchRecord(
-                agent_name=agent_name,
-                status="FAILED",
-                started_at=started_at,
-                completed_at=completed_at,
-                error_message=error,
-            )
+        return AgentDispatchRecord(
+            agent_name=agent_name,
+            status="PENDING",
+            started_at=started_at,
+        )
 
     def _write_route_audit(
         self,
@@ -251,20 +189,20 @@ class ContractDispatcher:
         started_at: str,
         completed_at: str = None,
         error_message: str = None,
+        route_reason: str = "",
+        route_confidence: float = 1.0,
     ) -> None:
-        """Write a signal_routes audit row to Supabase."""
+        """Write or update a signal_routes audit row in Supabase."""
         row = {
-            "id": str(uuid.uuid4()),
             "understood_signal_id": understood_signal_id,
             "agent_name": agent_name,
             "route_status": route_status,
             "started_at": started_at,
-            "created_at": started_at,
+            "route_reason": route_reason,
+            "route_confidence": route_confidence,
+            "completed_at": completed_at,
+            "error_message": error_message[:1000] if error_message else None,
         }
-        if completed_at:
-            row["completed_at"] = completed_at
-        if error_message:
-            row["error_message"] = error_message[:1000]  # cap length
 
         if supabase_client is None:
             logger.debug(
@@ -274,11 +212,13 @@ class ContractDispatcher:
             return
 
         try:
-            supabase_client.table("signal_routes").insert(row).execute()
+            supabase_client.table("signal_routes").upsert(
+                row, on_conflict="understood_signal_id,agent_name"
+            ).execute()
         except Exception as e:
             # Audit write failure must not crash the dispatch — log and continue
             logger.error(
-                f"Failed to write signal_routes audit | "
+                f"Failed to write/update signal_routes audit | "
                 f"signal={understood_signal_id} | agent={agent_name} | error={e}"
             )
 

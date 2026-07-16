@@ -75,6 +75,10 @@ class TestSignalUnderstandingAgent(unittest.TestCase):
         # Test fallback with invalid Ollama URL
         agent = SignalUnderstandingAgent(model_name="qwen2.5:1.5b")
         agent.llm_client.ollama_url = "http://127.0.0.1:9999"  # invalid port to force fallback
+        agent.llm_client.gemini_api_key = None
+        agent.llm_client.cerebras_api_key = None
+        agent.llm_client.groq_api_key = None
+        agent.llm_client.mistral_api_key = None
         
         sig = {
             "message": "Alert: Your account xx3221 debited Rs. 500.00.",
@@ -82,6 +86,7 @@ class TestSignalUnderstandingAgent(unittest.TestCase):
             "source": "sms",
             "timestamp": "2026-07-09T11:00:00Z"
         }
+
         res = agent.understand_signal(sig)
         self.assertEqual(res["signal_type"], "FINANCIAL")
         self.assertEqual(res["processing_path"], "fallback")

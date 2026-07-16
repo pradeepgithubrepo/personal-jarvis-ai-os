@@ -12,6 +12,7 @@ def parse_sbi_text(text: str) -> list[dict]:
     for idx, line in enumerate(lines):
         if "Balance" in line and ("STATEMENT OF ACCOUNT" in text or "Statement From" in text):
             start_idx = idx + 1
+            break  # Fix: only use FIRST occurrence; multi-page headers kept overwriting this
             
     if start_idx == -1:
         start_idx = 0
@@ -86,40 +87,146 @@ def parse_sbi_text(text: str) -> list[dict]:
                     
     return transactions
 
+def match_hdfc_line_end(line: str) -> dict | None:
+    # Try three-amount format (Withdrawal, Deposit, Balance)
+    three_match = re.search(
+        r"(?:(\d{12})\s+)?"
+        r"(\d{2}/\d{2}/\d{2,4})\s+"
+        r"([\d,]+\.\d{2})\s+"
+        r"([\d,]+\.\d{2})\s+"
+        r"([\d,]+\.\d{2})(?:\s*CR)?$",
+        line
+    )
+    if three_match:
+        ref_num = three_match.group(1) or ""
+        val_date = three_match.group(2)
+        withdrawal = float(three_match.group(3).replace(",", ""))
+        deposit = float(three_match.group(4).replace(",", ""))
+        balance = float(three_match.group(5).replace(",", ""))
+        
+        tx_type = "DEBIT"
+        amount = withdrawal
+        if deposit > 0.0:
+            tx_type = "CREDIT"
+            amount = deposit
+            
+        return {
+            "ref_number": ref_num,
+            "value_date": val_date,
+            "amount": amount,
+            "balance": balance,
+            "transaction_type": tx_type,
+            "match_start": three_match.start()
+        }
+        
+    # Try two-amount format (Amount, Balance)
+    two_match = re.search(
+        r"(?:(\d{12})\s+)?"
+        r"(\d{2}/\d{2}/\d{2,4})\s+"
+        r"([\d,]+\.\d{2})\s+"
+        r"([\d,]+\.\d{2})(?:\s*CR)?$",
+        line
+    )
+    if two_match:
+        ref_num = two_match.group(1) or ""
+        val_date = two_match.group(2)
+        amount = float(two_match.group(3).replace(",", ""))
+        balance = float(two_match.group(4).replace(",", ""))
+        
+        tx_type = "DEBIT"
+        if "CR" in line or "CREDIT" in line.upper() or "DEP" in line.upper():
+            tx_type = "CREDIT"
+            
+        return {
+            "ref_number": ref_num,
+            "value_date": val_date,
+            "amount": amount,
+            "balance": balance,
+            "transaction_type": tx_type,
+            "match_start": two_match.start()
+        }
+        
+    return None
+
 def parse_hdfc_text(text: str) -> list[dict]:
     lines = [line.strip() for line in text.split('\n') if line.strip()]
     transactions = []
+    current_tx = None
     
     for line in lines:
-        # Match HDFC line: Date, Narration, Value Date, Amount, Balance
-        match = re.search(r'^(\d{2}/\d{2}/\d{2,4})\s+(.+?)\s+(\d{2}/\d{2}/\d{2,4})\s+([\d,]+\.\d{2})\s+([\d,]+\.\d{2})', line)
-        if match:
-            date_str = match.group(1)
-            narration = match.group(2).strip()
-            val_date = match.group(3)
-            amount_str = match.group(4).replace(",", "")
-            balance_str = match.group(5).replace(",", "")
-            
-            ref_num = ""
-            ref_match = re.search(r'\b(\d{12})\b', narration)
-            if ref_match:
-                ref_num = ref_match.group(1)
+        date_match = re.match(r"^(\d{2}/\d{2}/\d{2,4})(?:\s+(.*))?$", line)
+        if date_match:
+            if current_tx:
+                # Flush previous transaction
+                transactions.append(current_tx)
+                current_tx = None
                 
-            tx_type = "DEBIT"
-            if "CR" in line or "CREDIT" in line.upper() or "DEP" in line.upper() or "RECEIVED" in line.upper():
-                tx_type = "CREDIT"
-                
-            transactions.append({
-                "date": date_str,
-                "value_date": val_date,
-                "description": narration,
-                "counterparty": narration,
-                "transaction_type": tx_type,
-                "reference_number": ref_num,
-                "amount": float(amount_str),
-                "balance": float(balance_str)
-            })
+            date_str = date_match.group(1)
+            rest = date_match.group(2) or ""
             
+            # Check if this line also contains the ending amount block (single-line transaction)
+            end_data = match_hdfc_line_end(rest if rest else "")
+            if end_data:
+                narration = rest[:end_data["match_start"]].strip()
+                transactions.append({
+                    "date": date_str,
+                    "value_date": end_data["value_date"],
+                    "description": narration,
+                    "counterparty": narration,
+                    "transaction_type": end_data["transaction_type"],
+                    "reference_number": end_data["ref_number"],
+                    "amount": end_data["amount"],
+                    "balance": end_data["balance"]
+                })
+            else:
+                current_tx = {
+                    "date": date_str,
+                    "description_lines": [rest] if rest else [],
+                    "ref_number": "",
+                    "value_date": date_str,
+                    "amount": 0.0,
+                    "balance": 0.0,
+                    "transaction_type": "DEBIT"
+                }
+        elif current_tx:
+            end_data = match_hdfc_line_end(line)
+            if end_data:
+                prefix = line[:end_data["match_start"]].strip()
+                if prefix:
+                    current_tx["description_lines"].append(prefix)
+                
+                narration = " ".join(current_tx["description_lines"])
+                transactions.append({
+                    "date": current_tx["date"],
+                    "value_date": end_data["value_date"],
+                    "description": narration,
+                    "counterparty": narration,
+                    "transaction_type": end_data["transaction_type"],
+                    "reference_number": end_data["ref_number"],
+                    "amount": end_data["amount"],
+                    "balance": end_data["balance"]
+                })
+                current_tx = None
+            else:
+                if any(x in line for x in ["Statement Summary", "Brought Forward", "Total Credits", "Total Debits", "HDFC BANK LIMITED"]):
+                    current_tx = None
+                else:
+                    current_tx["description_lines"].append(line)
+                    
+    if current_tx:
+        # Fallback flush
+        narration = " ".join(current_tx["description_lines"])
+        transactions.append({
+            "date": current_tx["date"],
+            "value_date": current_tx["value_date"],
+            "description": narration,
+            "counterparty": narration,
+            "transaction_type": current_tx["transaction_type"],
+            "reference_number": current_tx["ref_number"],
+            "amount": current_tx["amount"],
+            "balance": current_tx["balance"]
+        })
+        
     return transactions
 
 def collect_bank_statement(client, run_id: uuid.UUID, bucket_name: str) -> dict:

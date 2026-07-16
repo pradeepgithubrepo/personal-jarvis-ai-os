@@ -1,0 +1,79 @@
+[
+  {
+    "category": "Medical Messages",
+    "message": "Paid to BAWAA MEDICALS",
+    "expected_type": "FINANCIAL",
+    "v1_type": "FINANCIAL",
+    "v1_confidence": 0.5,
+    "v1_contract": {
+      "amount": null,
+      "currency": null,
+      "transaction_type": "DEBIT",
+      "payment_channel": "UNKNOWN",
+      "merchant": null,
+      "transaction_id": null,
+      "event_date": "2026-04-19T21:40:00+00:00"
+    },
+    "v2_type": "FINANCIAL",
+    "v2_confidence": 0.95,
+    "v2_contract": {
+      "amount": null,
+      "currency": null,
+      "transaction_type": "DEBIT",
+      "payment_channel": "UPI",
+      "merchant": "BAWAA MEDICALS"
+    },
+    "v2_path": "CEREBRAS_TO_GROQ",
+    "v2_duration": 1465,
+    "v2_model": "gemma-4-31b",
+    "v2_reason": "The message indicates a payment transaction with a specific merchant name"
+  },
+  {
+    "category": "Insurance Messages",
+    "message": "Paid to Coverfox Insurance Broking Pvt Ltd",
+    "expected_type": "FINANCIAL",
+    "v1_type": "FINANCIAL",
+    "v1_confidence": 0.5,
+    "v1_contract": {
+      "amount": null,
+      "currency": null,
+      "transaction_type": "DEBIT",
+      "payment_channel": "UNKNOWN",
+      "merchant": null,
+      "transaction_id": null,
+      "event_date": "2026-05-22T14:54:00+00:00"
+    },
+    "v2_type": "FINANCIAL",
+    "v2_confidence": 0.95,
+    "v2_contract": {
+      "amount": null,
+      "currency": null,
+      "transaction_type": "DEBIT",
+      "payment_channel": "UPI",
+      "merchant": "Coverfox Insurance Broking Pvt Ltd"
+    },
+    "v2_path": "CEREBRAS_TO_GROQ",
+    "v2_duration": 745,
+    "v2_model": "gemma-4-31b",
+    "v2_reason": "The message indicates a payment transaction with a specific merchant"
+  },
+  {
+    "category": "WhatsApp Messages",
+    "message": "Let me see Pradeep ,pre prod week is going on I\u2019ll update in sometime",
+    "expected_type": "NOISE",
+    "v1_type": "FYI",
+    "v1_confidence": 0.5,
+    "v1_contract": {},
+    "v2_type": "FYI",
+    "v2_confidence": 0.8,
+    "v2_contract": {
+      "event_name": "pre-production week",
+      "event_time": "ongoing",
+      "description": "update in sometime"
+    },
+    "v2_path": "CEREBRAS_TO_GROQ",
+    "v2_duration": 822,
+    "v2_model": "gemma-4-31b",
+    "v2_reason": "The message provides a status update on an ongoing event, which is classified as FYI"
+  }
+]

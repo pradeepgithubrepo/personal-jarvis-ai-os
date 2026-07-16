@@ -34,6 +34,8 @@ class RouteDecision:
     contract: dict = field(default_factory=dict)
     validation_errors: list[str] = field(default_factory=list)
     is_valid: bool = True
+    route_reason: str = ""
+    route_confidence: float = 1.0
 
     @property
     def has_routes(self) -> bool:
@@ -87,13 +89,16 @@ class SignalRouter:
                 contract=enriched_contract,
                 validation_errors=validation_result.errors,
                 is_valid=False,
+                route_reason="Contract validation failed",
+                route_confidence=0.0,
             )
 
         # Resolve routes deterministically
-        route_to = resolve_route(signal_type, enriched_contract)
+        route_to, route_reason = resolve_route(signal_type, enriched_contract)
+        route_confidence = float(enriched_contract.get("confidence", 1.0))
 
         logger.info(
-            f"Routing signal {signal_id} | type={signal_type} | route_to={route_to}"
+            f"Routing signal {signal_id} | type={signal_type} | route_to={route_to} | reason={route_reason}"
         )
 
         return RouteDecision(
@@ -103,6 +108,8 @@ class SignalRouter:
             contract=enriched_contract,
             validation_errors=[],
             is_valid=True,
+            route_reason=route_reason,
+            route_confidence=route_confidence,
         )
 
     def _enrich_contract(self, understood_signal: dict, contract: dict) -> dict:

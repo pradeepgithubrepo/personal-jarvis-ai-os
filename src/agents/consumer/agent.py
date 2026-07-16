@@ -102,10 +102,12 @@ class ConsumerAgent:
             or ""
         )
         
-        if "shobana" in file_name.lower():
-            device_id = "shobana"
-        else:
-            device_id = "pradeep"
+        device_id = signal_dict.get("deviceId") or signal_dict.get("device_id")
+        if not device_id:
+            if "shobana" in file_name.lower():
+                device_id = "shobana"
+            else:
+                device_id = "pradeep"
             
         if "signal_id" in signal_dict:
             original_sender = signal_dict.get("sender", "unknown")
@@ -213,8 +215,18 @@ class ConsumerAgent:
                 unique_rows.append(r)
                 
         try:
-            self.client.table("mobile_signals").upsert(unique_rows, on_conflict="message_hash").execute()
-            return len(unique_rows)
+            # Query existing message hashes in this batch to detect duplicates
+            hashes = [r["message_hash"] for r in unique_rows]
+            res_existing = self.client.table("mobile_signals").select("message_hash").in_("message_hash", hashes).execute()
+            existing_hashes = {x["message_hash"] for x in res_existing.data or []}
+            
+            # Filter to find actual new rows to insert
+            new_rows = [r for r in unique_rows if r["message_hash"] not in existing_hashes]
+            if not new_rows:
+                return 0
+                
+            self.client.table("mobile_signals").upsert(new_rows, on_conflict="message_hash").execute()
+            return len(new_rows)
         except Exception as e:
             # Fall back to safe sequential inserts in case upsert fails
             print(f"Bulk upsert warning (falling back to sequential): {e}")

@@ -10,5 +10,17 @@
   },
   "preservation": {
     "financial_topics": ["credited", "debited", "spent", "spent on", "card ending", "upi", "emi", "salary", "payment", "bank", "insurance", "renewal", "policy", "bill", "invoice"]
-  }
+  },
+  "trusted_senders": [
+    "shobana",
+    "family",
+    "patathuarasi",
+    "aappa",
+    "apppa",
+    "flat",
+    "harish",
+    "gopal s f2",
+    "sriram balakrishnan",
+    "97039 92722"
+  ]
 }

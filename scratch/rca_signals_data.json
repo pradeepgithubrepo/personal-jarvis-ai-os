@@ -1,0 +1,610 @@
+[
+  {
+    "signal_id": 9710,
+    "source": "sms",
+    "sender": "AX-TMBANK-S",
+    "message": "Your Locker No SF02-00097 standing in the name of PANNEERSELVAM ARUMUGAKANU AND SHOBANA KUMARI PAULTHURAI, maintained with ourRAJAKKAMANGALAM branch is being operated on 10-06-202611:46:10 - TMB",
+    "qualification_status": "QUALIFIED",
+    "qualification_reason": "qualified",
+    "predicted_type": "NOISE",
+    "confidence": 0.5,
+    "summary": "Your Locker No SF02-00097 standing in the name of PANNEERSELVAM ARUMUGAKANU AND SHOBANA KUMARI PAULT...",
+    "contract": {
+      "entities": [
+        "Locker",
+        "AND",
+        "TMB",
+        "SHOBANA",
+        "PAULTHURAI",
+        "No",
+        "PANNEERSELVAM",
+        "SF02",
+        "KUMARI",
+        "ARUMUGAKANU"
+      ],
+      "fyi_candidate": false,
+      "fact_candidate": false,
+      "noise_candidate": true,
+      "requires_action": false,
+      "memory_candidate": false,
+      "financial_candidate": false
+    },
+    "processing_path": "fallback"
+  },
+  {
+    "signal_id": 9881,
+    "source": "sms",
+    "sender": "AD-PPFAMF-S",
+    "message": "Your purchase trxn in Folio No. 15693680 has been processed. Click Here https://cams.co.in/PPFAMF/5xgbsF6QIg9 for more details on trxn . The password is: The PAN of the first unitholder- PPFAS MF",
+    "qualification_status": "QUALIFIED",
+    "qualification_reason": "qualified",
+    "predicted_type": "NOISE",
+    "confidence": 0.5,
+    "summary": "Your purchase trxn in Folio No. 15693680 has been processed. Click Here https://cams.co.in/PPFAMF/5x...",
+    "contract": {
+      "entities": [
+        "Folio",
+        "Click",
+        "MF",
+        "PPFAMF",
+        "PPFAS",
+        "No",
+        "Here",
+        "PAN"
+      ],
+      "fyi_candidate": false,
+      "fact_candidate": false,
+      "noise_candidate": true,
+      "requires_action": false,
+      "memory_candidate": false,
+      "financial_candidate": false
+    },
+    "processing_path": "fallback"
+  },
+  {
+    "signal_id": 9731,
+    "source": "sms",
+    "sender": "AX-APWELL-S",
+    "message": "Dear Customer, your order 350710757 is currently on hold due to prescription-related concerns. Our team will review it and try to reach out to you to process the order. You can see your order details and reach out to us via https://l.apollo247.com/APWELL/14Jjmm",
+    "qualification_status": "QUALIFIED",
+    "qualification_reason": "qualified",
+    "predicted_type": "NOISE",
+    "confidence": 0.5,
+    "summary": "Dear Customer, your order 350710757 is currently on hold due to prescription-related concerns. Our t...",
+    "contract": {
+      "entities": [
+        "You",
+        "Our",
+        "APWELL"
+      ],
+      "fyi_candidate": false,
+      "fact_candidate": false,
+      "noise_candidate": true,
+      "requires_action": false,
+      "memory_candidate": false,
+      "financial_candidate": false
+    },
+    "processing_path": "fallback"
+  },
+  {
+    "signal_id": 9187,
+    "source": "sms",
+    "sender": "JD-INDANE-S",
+    "message": "Your order is delivered with invoice no. 5-106327107379. Next available booking date is 02-JUL-2026.\nINDANE",
+    "qualification_status": "QUALIFIED",
+    "qualification_reason": "qualified",
+    "predicted_type": "NOISE",
+    "confidence": 0.5,
+    "summary": "Your order is delivered with invoice no. 5-106327107379. Next available booking date is 02-JUL-2026....",
+    "contract": {
+      "entities": [
+        "JUL",
+        "INDANE",
+        "Next"
+      ],
+      "fyi_candidate": false,
+      "fact_candidate": false,
+      "noise_candidate": true,
+      "requires_action": false,
+      "memory_candidate": false,
+      "financial_candidate": false
+    },
+    "processing_path": "fallback"
+  },
+  {
+    "signal_id": 8856,
+    "source": "sms",
+    "sender": "VA-EPFOHO-G",
+    "message": "EPFO is undertaking a planned database consolidation and upgradation of software applications. As part of this transition, member services like claim submission, download passbook etc. will remain temporarily unavailable from 26th June. We expect services to be restored from 1st July 2026. EPFO regrets the temporary inconvenience. Team EPFO.",
+    "qualification_status": "QUALIFIED",
+    "qualification_reason": "qualified",
+    "predicted_type": "NOISE",
+    "confidence": 0.5,
+    "summary": "EPFO is undertaking a planned database consolidation and upgradation of software applications. As pa...",
+    "contract": {
+      "entities": [
+        "June",
+        "EPFO",
+        "July",
+        "Team",
+        "We",
+        "As"
+      ],
+      "fyi_candidate": false,
+      "fact_candidate": false,
+      "noise_candidate": true,
+      "requires_action": false,
+      "memory_candidate": false,
+      "financial_candidate": false
+    },
+    "processing_path": "fallback"
+  },
+  {
+    "signal_id": 9005,
+    "source": "whatsapp",
+    "sender": "RTF 1\u263a\ufe0f\u263a\ufe0f: Anusha Sampat Times Kids",
+    "message": "Dear Parents \n\nHomework:\nBook 1 : pg 9\n\nThank you \nAnusha \nLittle Millennium \nAnakaputhur",
+    "qualification_status": "QUALIFIED",
+    "qualification_reason": "qualified",
+    "predicted_type": "NOISE",
+    "confidence": 0.5,
+    "summary": "Dear Parents \n\nHomework:\nBook 1 : pg 9\n\nThank you \nAnusha \nLittle Millennium \nAnakaputhur",
+    "contract": {
+      "entities": [
+        "Anusha",
+        "Anakaputhur",
+        "Little",
+        "Book",
+        "Thank",
+        "Parents",
+        "Homework",
+        "Millennium"
+      ],
+      "fyi_candidate": false,
+      "fact_candidate": false,
+      "noise_candidate": true,
+      "requires_action": false,
+      "memory_candidate": false,
+      "financial_candidate": false
+    },
+    "processing_path": "fallback"
+  },
+  {
+    "signal_id": 9013,
+    "source": "whatsapp",
+    "sender": "SRI PATATHUARASI AMMAN FLAT: Gokul F1",
+    "message": "I think other than centre gate everything need to lock it",
+    "qualification_status": "QUALIFIED",
+    "qualification_reason": "trusted_sender_qualification",
+    "predicted_type": "NOISE",
+    "confidence": 0.5,
+    "summary": "I think other than centre gate everything need to lock it",
+    "contract": {
+      "entities": [],
+      "fyi_candidate": false,
+      "fact_candidate": false,
+      "noise_candidate": true,
+      "requires_action": false,
+      "memory_candidate": false,
+      "financial_candidate": false
+    },
+    "processing_path": "fallback"
+  },
+  {
+    "signal_id": 8904,
+    "source": "whatsapp",
+    "sender": "Harish",
+    "message": "Doctor told endoscopy is not required",
+    "qualification_status": "QUALIFIED",
+    "qualification_reason": "trusted_sender_qualification",
+    "predicted_type": "NOISE",
+    "confidence": 0.5,
+    "summary": "Doctor told endoscopy is not required",
+    "contract": {
+      "entities": [
+        "Doctor"
+      ],
+      "fyi_candidate": false,
+      "fact_candidate": false,
+      "noise_candidate": true,
+      "requires_action": false,
+      "memory_candidate": false,
+      "financial_candidate": false
+    },
+    "processing_path": "fallback"
+  },
+  {
+    "signal_id": 8989,
+    "source": "whatsapp",
+    "sender": "Aappa",
+    "message": "Boarded the train",
+    "qualification_status": "QUALIFIED",
+    "qualification_reason": "trusted_sender_qualification",
+    "predicted_type": "NOISE",
+    "confidence": 0.5,
+    "summary": "Boarded the train",
+    "contract": {
+      "entities": [
+        "Boarded"
+      ],
+      "fyi_candidate": false,
+      "fact_candidate": false,
+      "noise_candidate": true,
+      "requires_action": false,
+      "memory_candidate": false,
+      "financial_candidate": false
+    },
+    "processing_path": "fallback"
+  },
+  {
+    "signal_id": 9642,
+    "source": "sms",
+    "sender": "VM-SRCHKT-S",
+    "message": "Hi Shobana , Your order from Tru Hair & Skin with order number #391307 is confirmed. Powered by Shiprocket!",
+    "qualification_status": "QUALIFIED",
+    "qualification_reason": "qualified",
+    "predicted_type": "NOISE",
+    "confidence": 0.5,
+    "summary": "Hi Shobana , Your order from Tru Hair & Skin with order number #391307 is confirmed. Powered by Ship...",
+    "contract": {
+      "entities": [
+        "Hair",
+        "Shiprocket",
+        "Skin",
+        "Powered",
+        "Tru",
+        "Shobana",
+        "Hi"
+      ],
+      "fyi_candidate": false,
+      "fact_candidate": false,
+      "noise_candidate": true,
+      "requires_action": false,
+      "memory_candidate": false,
+      "financial_candidate": false
+    },
+    "processing_path": "fallback"
+  },
+  {
+    "signal_id": 9641,
+    "source": "sms",
+    "sender": "VM-CDSLEV-S",
+    "message": "Dear Investor, e-Voting for ADANI POWER-EQ2/- begins from 21-06-2026 09:00 and ends at 24-06-2026 17:00. Meeting on 25-06-2026 14:30-CDSL",
+    "qualification_status": "QUALIFIED",
+    "qualification_reason": "qualified",
+    "predicted_type": "NOISE",
+    "confidence": 0.5,
+    "summary": "Dear Investor, e-Voting for ADANI POWER-EQ2/- begins from 21-06-2026 09:00 and ends at 24-06-2026 17...",
+    "contract": {
+      "entities": [
+        "CDSL",
+        "EQ2",
+        "Meeting",
+        "ADANI",
+        "POWER",
+        "Investor",
+        "Voting"
+      ],
+      "fyi_candidate": false,
+      "fact_candidate": false,
+      "noise_candidate": true,
+      "requires_action": false,
+      "memory_candidate": false,
+      "financial_candidate": false
+    },
+    "processing_path": "fallback"
+  },
+  {
+    "signal_id": 8879,
+    "source": "whatsapp",
+    "sender": "WhatsApp: Harish",
+    "message": "Have you used Genie code coworker",
+    "qualification_status": "QUALIFIED",
+    "qualification_reason": "trusted_sender_qualification",
+    "predicted_type": "NOISE",
+    "confidence": 0.5,
+    "summary": "Have you used Genie code coworker",
+    "contract": {
+      "entities": [
+        "Genie"
+      ],
+      "fyi_candidate": false,
+      "fact_candidate": false,
+      "noise_candidate": true,
+      "requires_action": false,
+      "memory_candidate": false,
+      "financial_candidate": false
+    },
+    "processing_path": "fallback"
+  },
+  {
+    "signal_id": 9644,
+    "source": "sms",
+    "sender": "JX-LPUREN-P",
+    "message": "Dear Customer, We hope you are enjoying your purchase from Livpure. We'd love your feedback on how it's going! Your thoughts will help us craft even better experiences, just for you. Click https://lwcx.in/?n=lR14PToJJf1. Warm Regards, Livpure",
+    "qualification_status": "QUALIFIED",
+    "qualification_reason": "qualified",
+    "predicted_type": "NOISE",
+    "confidence": 0.5,
+    "summary": "Dear Customer, We hope you are enjoying your purchase from Livpure. We'd love your feedback on how i...",
+    "contract": {
+      "entities": [
+        "Warm",
+        "Click",
+        "Livpure",
+        "We",
+        "Regards"
+      ],
+      "fyi_candidate": false,
+      "fact_candidate": false,
+      "noise_candidate": true,
+      "requires_action": false,
+      "memory_candidate": false,
+      "financial_candidate": false
+    },
+    "processing_path": "fallback"
+  },
+  {
+    "signal_id": 9046,
+    "source": "whatsapp",
+    "sender": "JD\u2019s Team Chennai: ~\u202fSriram Balakrishnan",
+    "message": "Folks.. I am at 8.187F",
+    "qualification_status": "QUALIFIED",
+    "qualification_reason": "trusted_sender_qualification",
+    "predicted_type": "NOISE",
+    "confidence": 0.5,
+    "summary": "Folks.. I am at 8.187F",
+    "contract": {
+      "entities": [
+        "Folks"
+      ],
+      "fyi_candidate": false,
+      "fact_candidate": false,
+      "noise_candidate": true,
+      "requires_action": false,
+      "memory_candidate": false,
+      "financial_candidate": false
+    },
+    "processing_path": "fallback"
+  },
+  {
+    "signal_id": 9027,
+    "source": "whatsapp",
+    "sender": "Family \ud83d\ude42: Shobana",
+    "message": "Reached home",
+    "qualification_status": "QUALIFIED",
+    "qualification_reason": "trusted_sender_qualification",
+    "predicted_type": "NOISE",
+    "confidence": 0.5,
+    "summary": "Reached home",
+    "contract": {
+      "entities": [
+        "Reached"
+      ],
+      "fyi_candidate": false,
+      "fact_candidate": false,
+      "noise_candidate": true,
+      "requires_action": false,
+      "memory_candidate": false,
+      "financial_candidate": false
+    },
+    "processing_path": "fallback"
+  },
+  {
+    "signal_id": 9683,
+    "source": "sms",
+    "sender": "JM-TVSMOT-P",
+    "message": "Hi , welcome to the TVS iQube family! \nYou've chosen India's Favourite Family EV - and we're excited to have you onboard.\nTrack your booking: https://d.sfmsg.co/TVSMOT/jkMHKc01b",
+    "qualification_status": "QUALIFIED",
+    "qualification_reason": "qualified",
+    "predicted_type": "NOISE",
+    "confidence": 0.5,
+    "summary": "Hi , welcome to the TVS iQube family! \nYou've chosen India's Favourite Family EV - and we're excited...",
+    "contract": {
+      "entities": [
+        "TVS",
+        "EV",
+        "Track",
+        "Family",
+        "TVSMOT",
+        "Favourite",
+        "You",
+        "Hi",
+        "India"
+      ],
+      "fyi_candidate": false,
+      "fact_candidate": false,
+      "noise_candidate": true,
+      "requires_action": false,
+      "memory_candidate": false,
+      "financial_candidate": false
+    },
+    "processing_path": "fallback"
+  },
+  {
+    "signal_id": 9014,
+    "source": "whatsapp",
+    "sender": "SRI PATATHUARASI AMMAN FLAT: Gokul F1",
+    "message": "Now also @\u2068Sundar T1\u2069 parking gate is open.",
+    "qualification_status": "QUALIFIED",
+    "qualification_reason": "trusted_sender_qualification",
+    "predicted_type": "NOISE",
+    "confidence": 0.5,
+    "summary": "Now also @\u2068Sundar T1\u2069 parking gate is open.",
+    "contract": {
+      "entities": [
+        "T1",
+        "Sundar",
+        "Now"
+      ],
+      "fyi_candidate": false,
+      "fact_candidate": false,
+      "noise_candidate": true,
+      "requires_action": false,
+      "memory_candidate": false,
+      "financial_candidate": false
+    },
+    "processing_path": "fallback"
+  },
+  {
+    "signal_id": 9033,
+    "source": "whatsapp",
+    "sender": "+91 97039 92722",
+    "message": "Hi Pradeep, What\u2019s your suggestion. Need a friendly advice. At this point I am really confused what to do.",
+    "qualification_status": "QUALIFIED",
+    "qualification_reason": "trusted_sender_qualification",
+    "predicted_type": "NOISE",
+    "confidence": 0.5,
+    "summary": "Hi Pradeep, What\u2019s your suggestion. Need a friendly advice. At this point I am really confused what ...",
+    "contract": {
+      "entities": [
+        "At",
+        "Pradeep",
+        "What",
+        "Need",
+        "Hi"
+      ],
+      "fyi_candidate": false,
+      "fact_candidate": false,
+      "noise_candidate": true,
+      "requires_action": false,
+      "memory_candidate": false,
+      "financial_candidate": false
+    },
+    "processing_path": "fallback"
+  },
+  {
+    "signal_id": 9380,
+    "source": "sms",
+    "sender": "VM-TANGED-S",
+    "message": "Electricity charges of Rs.2527 for 558 units for SC.No. 09247349949 is due on 27/05/2026. Pay at www.tnebnet.org/qwp/qpay?st=09247349949 -TANGEDCO",
+    "qualification_status": "QUALIFIED",
+    "qualification_reason": "qualified",
+    "predicted_type": "NOISE",
+    "confidence": 0.5,
+    "summary": "Electricity charges of Rs.2527 for 558 units for SC.No. 09247349949 is due on 27/05/2026. Pay at www...",
+    "contract": {
+      "entities": [
+        "SC",
+        "Pay",
+        "Electricity",
+        "No",
+        "TANGEDCO"
+      ],
+      "fyi_candidate": false,
+      "fact_candidate": false,
+      "noise_candidate": true,
+      "requires_action": false,
+      "memory_candidate": false,
+      "financial_candidate": false
+    },
+    "processing_path": "fallback"
+  },
+  {
+    "signal_id": 9102,
+    "source": "sms",
+    "sender": "TX-CVRFOX-S",
+    "message": "Hi pradeep, the previous insurance policy of your bike expires tomorrow. Log on to www.coverfox.com now and download your new policy papers from your My Account. Ensure safe travels at all times! - Team Coverfox",
+    "qualification_status": "QUALIFIED",
+    "qualification_reason": "qualified",
+    "predicted_type": "NOISE",
+    "confidence": 0.5,
+    "summary": "Hi pradeep, the previous insurance policy of your bike expires tomorrow. Log on to www.coverfox.com ...",
+    "contract": {
+      "entities": [
+        "My",
+        "Coverfox",
+        "Team",
+        "Account",
+        "Log",
+        "Ensure",
+        "Hi"
+      ],
+      "fyi_candidate": false,
+      "fact_candidate": false,
+      "noise_candidate": true,
+      "requires_action": false,
+      "memory_candidate": false,
+      "financial_candidate": false
+    },
+    "processing_path": "fallback"
+  },
+  {
+    "signal_id": 8906,
+    "source": "whatsapp",
+    "sender": "Aappa",
+    "message": "Train started",
+    "qualification_status": "QUALIFIED",
+    "qualification_reason": "trusted_sender_qualification",
+    "predicted_type": "NOISE",
+    "confidence": 0.5,
+    "summary": "Train started",
+    "contract": {
+      "entities": [
+        "Train"
+      ],
+      "fyi_candidate": false,
+      "fact_candidate": false,
+      "noise_candidate": true,
+      "requires_action": false,
+      "memory_candidate": false,
+      "financial_candidate": false
+    },
+    "processing_path": "fallback"
+  },
+  {
+    "signal_id": 9219,
+    "source": "sms",
+    "sender": "AD-UIICHO-S",
+    "message": "Dear Customer, Plz note that Third Party Insurance is a must. Renew TN149509 insurance policy 0206003125P103503491 before expiry 16/06/2026-Team United India",
+    "qualification_status": "QUALIFIED",
+    "qualification_reason": "qualified",
+    "predicted_type": "NOISE",
+    "confidence": 0.5,
+    "summary": "Dear Customer, Plz note that Third Party Insurance is a must. Renew TN149509 insurance policy 020600...",
+    "contract": {
+      "entities": [
+        "United",
+        "Team",
+        "Third",
+        "TN149509",
+        "Plz",
+        "Party",
+        "Insurance",
+        "Renew",
+        "India"
+      ],
+      "fyi_candidate": false,
+      "fact_candidate": false,
+      "noise_candidate": true,
+      "requires_action": false,
+      "memory_candidate": false,
+      "financial_candidate": false
+    },
+    "processing_path": "fallback"
+  },
+  {
+    "signal_id": 8874,
+    "source": "whatsapp",
+    "sender": "SRI PATATHUARASI AMMAN FLAT (4 messages): Karthick Munna T2",
+    "message": "The tenant's name is Abdul Rahman.",
+    "qualification_status": "QUALIFIED",
+    "qualification_reason": "trusted_sender_qualification",
+    "predicted_type": "NOISE",
+    "confidence": 0.5,
+    "summary": "The tenant's name is Abdul Rahman.",
+    "contract": {
+      "entities": [
+        "Abdul",
+        "Rahman"
+      ],
+      "fyi_candidate": false,
+      "fact_candidate": false,
+      "noise_candidate": true,
+      "requires_action": false,
+      "memory_candidate": false,
+      "financial_candidate": false
+    },
+    "processing_path": "fallback"
+  }
+]

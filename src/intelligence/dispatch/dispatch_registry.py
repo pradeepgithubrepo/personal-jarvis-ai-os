@@ -17,9 +17,10 @@ from loguru import logger
 
 from src.agents.stubs.base_agent_stub import BaseAgentStub
 from src.agents.stubs.financial_agent_stub import FinancialAgentStub
-from src.agents.stubs.todo_agent_stub import TodoAgentStub
+from src.agents.todo.todo_agent import TodoAgent
 from src.agents.stubs.fyi_agent_stub import FyiAgentStub
-from src.agents.stubs.fact_agent_stub import FactAgentStub
+from src.agents.todo.todo_agent import TodoAgent
+from src.agents.stubs.fyi_agent_stub import FyiAgentStub
 
 
 # ---------------------------------------------------------------------------
@@ -30,9 +31,8 @@ from src.agents.stubs.fact_agent_stub import FactAgentStub
 # ---------------------------------------------------------------------------
 _REGISTRY: dict[str, BaseAgentStub] = {
     "financial_agent": FinancialAgentStub(),
-    "todo_agent":      TodoAgentStub(),
+    "todo_agent":      TodoAgent(),
     "fyi_agent":       FyiAgentStub(),
-    "fact_agent":      FactAgentStub(),
 }
 
 

@@ -7,9 +7,9 @@ Tests:
   1. FINANCIAL → financial_agent
   2. ACTION    → todo_agent
   3. FYI       → fyi_agent
-  4. FACT      → fact_agent
+  4. FACT      → fyi_agent
   5. NOISE     → no dispatch
-  6. FINANCIAL + memory_candidate=True → financial_agent + fact_agent
+  6. FINANCIAL + memory_candidate=True → financial_agent + fyi_agent
   7. Invalid contract → ContractValidationError, no dispatch
 
 All tests are pure unit tests — no DB connection required.
@@ -20,7 +20,7 @@ from src.intelligence.contracts.contract_schema import SignalType, ContractValid
 from src.intelligence.contracts.contract_validator import ContractValidator
 from src.intelligence.routing.routing_rules import resolve_route
 from src.intelligence.routing.router import SignalRouter
-from src.intelligence.dispatch.dispatcher import ContractDispatcher
+from src.intelligence.dispatch.dispatcher import ContractDispatcher, DispatchResult
 
 
 # ---------------------------------------------------------------------------
@@ -163,53 +163,48 @@ class TestRoutingRules(unittest.TestCase):
     def test_1_financial_routes_to_financial_agent(self):
         """Test 1 — FINANCIAL signal dispatches to financial_agent."""
         contract = {"memory_candidate": False}
-        routes = resolve_route("FINANCIAL", contract)
+        routes, _ = resolve_route("FINANCIAL", contract)
         self.assertEqual(routes, ["financial_agent"])
 
     def test_2_action_routes_to_todo_agent(self):
         """Test 2 — ACTION signal dispatches to todo_agent."""
         contract = {"memory_candidate": False}
-        routes = resolve_route("ACTION", contract)
+        routes, _ = resolve_route("ACTION", contract)
         self.assertEqual(routes, ["todo_agent"])
 
     def test_3_fyi_routes_to_fyi_agent(self):
         """Test 3 — FYI signal dispatches to fyi_agent."""
         contract = {"memory_candidate": True}  # memory_candidate has no conditional for FYI
-        routes = resolve_route("FYI", contract)
+        routes, _ = resolve_route("FYI", contract)
         self.assertEqual(routes, ["fyi_agent"])
 
-    def test_4_fact_routes_to_fact_agent(self):
-        """Test 4 — FACT signal dispatches to fact_agent."""
-        contract = {"memory_candidate": True}
-        routes = resolve_route("FACT", contract)
-        self.assertEqual(routes, ["fact_agent"])
 
     def test_5_noise_routes_to_nobody(self):
         """Test 5 — NOISE signal has no dispatch (pipeline terminates)."""
         contract = {"memory_candidate": False}
-        routes = resolve_route("NOISE", contract)
+        routes, _ = resolve_route("NOISE", contract)
         self.assertEqual(routes, [])
 
     def test_6_financial_memory_candidate_routes_to_both(self):
-        """Test 6 — FINANCIAL + memory_candidate=True dispatches to financial_agent AND fact_agent."""
+        """Test 6 — FINANCIAL + memory_candidate=True dispatches to financial_agent AND fyi_agent."""
         contract = {"memory_candidate": True}
-        routes = resolve_route("FINANCIAL", contract)
+        routes, _ = resolve_route("FINANCIAL", contract)
         self.assertIn("financial_agent", routes)
-        self.assertIn("fact_agent", routes)
+        self.assertIn("fyi_agent", routes)
         self.assertEqual(len(routes), 2)
 
     def test_action_memory_candidate_routes_to_both(self):
-        """ACTION + memory_candidate=True dispatches to todo_agent AND fact_agent."""
+        """ACTION + memory_candidate=True dispatches to todo_agent AND fyi_agent."""
         contract = {"memory_candidate": True}
-        routes = resolve_route("ACTION", contract)
+        routes, _ = resolve_route("ACTION", contract)
         self.assertIn("todo_agent", routes)
-        self.assertIn("fact_agent", routes)
+        self.assertIn("fyi_agent", routes)
         self.assertEqual(len(routes), 2)
 
     def test_financial_no_memory_candidate_routes_to_one(self):
         """FINANCIAL without memory_candidate dispatches to financial_agent only."""
         contract = {"memory_candidate": False}
-        routes = resolve_route("FINANCIAL", contract)
+        routes, _ = resolve_route("FINANCIAL", contract)
         self.assertEqual(routes, ["financial_agent"])
 
 
@@ -244,7 +239,7 @@ class TestSignalRouter(unittest.TestCase):
         self.assertFalse(decision.has_routes)
 
     def test_router_financial_memory_candidate_multi_route(self):
-        """Router dispatches to financial_agent + fact_agent for FINANCIAL + memory_candidate."""
+        """Router dispatches to financial_agent + fyi_agent for FINANCIAL + memory_candidate."""
         signal = _make_understood_signal(
             "FINANCIAL",
             financial_candidate=True,
@@ -255,7 +250,7 @@ class TestSignalRouter(unittest.TestCase):
         decision = self.router.route(signal)
         self.assertTrue(decision.is_valid)
         self.assertIn("financial_agent", decision.route_to)
-        self.assertIn("fact_agent", decision.route_to)
+        self.assertIn("fyi_agent", decision.route_to)
 
     def test_router_invalid_contract_no_dispatch(self):
         """Test 7 — Router marks invalid contract, no routes produced."""
@@ -288,7 +283,8 @@ class TestDispatcher(unittest.TestCase):
     def test_financial_dispatch_completes(self):
         result = self._dispatch_signal("FINANCIAL", financial_candidate=True)
         self.assertEqual(result.overall_status, "SUCCESS")
-        self.assertEqual(result.completed, 1)
+        self.assertEqual(result.pending, 1)
+        self.assertEqual(result.records[0].status, "PENDING")
 
     def test_noise_dispatch_no_route(self):
         result = self._dispatch_signal("NOISE", noise_candidate=True)
@@ -301,10 +297,12 @@ class TestDispatcher(unittest.TestCase):
         decision = self.router.route(signal)
         result = self.dispatcher.dispatch(decision, supabase_client=None)
         self.assertEqual(result.total_routes, 2)
-        self.assertEqual(result.completed, 2)
+        self.assertEqual(result.pending, 2)
         agent_names = [r.agent_name for r in result.records]
         self.assertIn("financial_agent", agent_names)
-        self.assertIn("fact_agent", agent_names)
+        self.assertIn("fyi_agent", agent_names)
+        for r in result.records:
+            self.assertEqual(r.status, "PENDING")
 
     def test_invalid_contract_dispatch_validation_failed(self):
         """Invalid contract → VALIDATION_FAILED status, no agents dispatched."""
@@ -316,7 +314,7 @@ class TestDispatcher(unittest.TestCase):
         decision = self.router.route(bad_signal)
         result = self.dispatcher.dispatch(decision, supabase_client=None)
         self.assertEqual(result.overall_status, "VALIDATION_FAILED")
-        self.assertEqual(result.completed, 0)
+        self.assertEqual(result.pending, 0)
 
 
 if __name__ == "__main__":

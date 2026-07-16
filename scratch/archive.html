@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Supabase Storage Archiver</title>
+    <style>
+        body { font-family: monospace; padding: 20px; background: #121212; color: #00ff00; }
+        h1 { border-bottom: 1px solid #00ff00; padding-bottom: 10px; }
+        .log-entry { margin: 5px 0; }
+        .success { color: #00ff00; }
+        .info { color: #00aaff; }
+        .error { color: #ff0055; }
+        #status { font-weight: bold; font-size: 1.2em; margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <h1>Supabase Storage Archiver</h1>
+    <div id="logs"></div>
+    <div id="status">Starting...</div>
+
+    <script>
+        const SUPABASE_URL = "https://tbwnyuampjoamgarwwoo.supabase.co";
+        const SERVICE_ROLE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRid255dWFtcGpvYW1nYXJ3d29vIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc4MTkzNTA5NiwiZXhwIjoyMDk3NTExMDk2fQ.QMxAdN9mJE4H0LXAPuMQ27aKFMRFmQMJy_KrYuUtb1c";
+        const BUCKET = "jarvis-signals";
+        const FROM_DIR = "incoming";
+
+        function log(msg, type = "info") {
+            const logsDiv = document.getElementById("logs");
+            const entry = document.createElement("div");
+            entry.className = `log-entry ${type}`;
+            entry.innerText = `[${new Date().toISOString()}] ${msg}`;
+            logsDiv.appendChild(entry);
+            console.log(msg);
+        }
+
+        function setStatus(status, type = "info") {
+            const statusDiv = document.getElementById("status");
+            statusDiv.className = type;
+            statusDiv.innerText = status;
+        }
+
+        async function run() {
+            try {
+                log("Listing files in storage bucket...", "info");
+                
+                const listUrl = `${SUPABASE_URL}/storage/v1/object/list/${BUCKET}`;
+                const headers = {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${SERVICE_ROLE_KEY}`,
+                    "apikey": SERVICE_ROLE_KEY
+                };
+                
+                const listResponse = await fetch(listUrl, {
+                    method: "POST",
+                    headers: headers,
+                    body: JSON.stringify({
+                        prefix: FROM_DIR,
+                        limit: 100,
+                        sort_by: { column: "name", order: "asc" }
+                    })
+                });
+
+                if (!listResponse.ok) {
+                    throw new Error(`Failed to list files: ${await listResponse.text()}`);
+                }
+
+                const files = await listResponse.json();
+                const fileNames = files
+                    .map(f => f.name)
+                    .filter(name => name !== ".emptyFolderPlaceholder");
+
+                log(`Discovered ${fileNames.length} file(s) in folder '${FROM_DIR}'`, "success");
+
+                let processed = 0;
+                let removed = 0;
+                let failed = 0;
+
+                for (const name of fileNames) {
+                    // Skip folders
+                    if (["whatsapp", "sms", "gpay", "statements", "failed", "archive", "daily_briefs"].includes(name)) {
+                        continue;
+                    }
+
+                    const fromPath = `${FROM_DIR}/${name}`;
+                    const toPath = name.toLowerCase().endsWith(".pdf") 
+                        ? `archive/statements/${name}` 
+                        : `archive/${name}`;
+
+                    log(`Archiving ${fromPath} to ${toPath}...`, "info");
+
+                    const moveUrl = `${SUPABASE_URL}/storage/v1/object/move`;
+                    const moveResponse = await fetch(moveUrl, {
+                        method: "POST",
+                        headers: headers,
+                        body: JSON.stringify({
+                            bucketId: BUCKET,
+                            fromKey: fromPath,
+                            toKey: toPath
+                        })
+                    });
+
+                    if (moveResponse.ok) {
+                        log(`Successfully moved: ${name}`, "success");
+                        processed++;
+                    } else {
+                        const errText = await moveResponse.text();
+                        if (errText.includes("already exists") || moveResponse.status === 409) {
+                            log(`File already archived, removing from incoming: ${name}`, "success");
+                            
+                            // Delete from incoming
+                            const deleteUrl = `${SUPABASE_URL}/storage/v1/object/${BUCKET}`;
+                            const deleteResponse = await fetch(deleteUrl, {
+                                method: "DELETE",
+                                headers: headers,
+                                body: JSON.stringify({
+                                    prefixes: [fromPath]
+                                })
+                            });
+
+                            if (deleteResponse.ok) {
+                                log(`Successfully deleted: ${name}`, "success");
+                                removed++;
+                            } else {
+                                log(`Failed to delete duplicate ${name}: ${await deleteResponse.text()}`, "error");
+                                failed++;
+                            }
+                        } else {
+                            log(`Failed to move ${name}: ${errText}`, "error");
+                            failed++;
+                        }
+                    }
+                }
+
+                setStatus(`Archived: ${processed}, Cleared Duplicates: ${removed}, Failed: ${failed}`, "success");
+                log("Processing complete!", "success");
+                
+                // Add a completion marker element for browser_subagent detection
+                const marker = document.createElement("div");
+                marker.id = "completion-marker";
+                marker.innerText = "DONE";
+                document.body.appendChild(marker);
+
+            } catch (e) {
+                log(`Error: ${e.message}`, "error");
+                setStatus("FAILED", "error");
+            }
+        }
+
+        window.onload = run;
+    </script>
+</body>
+</html>

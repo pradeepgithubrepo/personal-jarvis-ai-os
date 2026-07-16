@@ -84,6 +84,8 @@ def run_pipeline(client: Client, trigger_type: str = "MANUAL", model_name: str =
         
         qualified_signals = []
         for row in res.data:
+            if row.get("qualification_status") != "QUALIFIED":
+                continue
             # If understood_signals is empty list/dict/None, it needs processing
             us = row.get("understood_signals")
             if not us:
@@ -105,6 +107,9 @@ def run_pipeline(client: Client, trigger_type: str = "MANUAL", model_name: str =
                     "id": str(uuid.uuid4()),
                     "qualified_signal_id": sig["id"],
                     "raw_signal_id": sig["signal_id"],
+                    "device_id": sig.get("device_id"),
+                    "message_hash": sig.get("message_hash"),
+                    "metadata": {**(sig.get("metadata") or {}), **(understood.get("metadata") or {})},
                     "signal_type": understood["signal_type"],
                     "importance": understood["importance"],
                     "confidence": understood["confidence"],

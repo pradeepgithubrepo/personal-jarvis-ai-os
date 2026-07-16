@@ -25,8 +25,8 @@ class SignalType(str, Enum):
     FINANCIAL = "FINANCIAL"
     ACTION = "ACTION"
     FYI = "FYI"
-    FACT = "FACT"
     NOISE = "NOISE"
+
 
     @classmethod
     def values(cls) -> list[str]:

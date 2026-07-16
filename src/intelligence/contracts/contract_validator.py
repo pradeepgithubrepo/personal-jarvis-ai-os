@@ -173,18 +173,18 @@ class ContractValidator:
 
         Rules:
           financial_candidate == (signal_type == "FINANCIAL")
-          fact_candidate      == (signal_type == "FACT")
+          fact_candidate      == False
           fyi_candidate       == (signal_type == "FYI")
           noise_candidate     == (signal_type == "NOISE")
           requires_action     == (signal_type == "ACTION")
-          memory_candidate    == (signal_type in {FACT, ACTION, FYI})
+          memory_candidate    == (signal_type in {ACTION, FYI})
         """
         errors = []
 
         # Strict flags: exactly one classification flag must match signal_type
         strict_flags = {
             "financial_candidate": (signal_type == SignalType.FINANCIAL),
-            "fact_candidate": (signal_type == SignalType.FACT),
+            "fact_candidate": False,
             "fyi_candidate": (signal_type == SignalType.FYI),
             "noise_candidate": (signal_type == SignalType.NOISE),
             "requires_action": (signal_type == SignalType.ACTION),
@@ -200,12 +200,12 @@ class ContractValidator:
                     f"requires it to be {expected_value}."
                 )
 
-        # memory_candidate: must be True when signal_type is FACT/ACTION/FYI.
-        # FINANCIAL and NOISE signals MAY have memory_candidate=True (triggers fact_agent routing).
+        # memory_candidate: must be True when signal_type is ACTION/FYI.
+        # FINANCIAL and NOISE signals MAY have memory_candidate=True (triggers fyi_agent routing).
         memory_candidate = contract.get("memory_candidate")
         if not isinstance(memory_candidate, bool):
             errors.append(f"'memory_candidate' must be a boolean, got {type(memory_candidate).__name__}")
-        elif signal_type in {SignalType.FACT, SignalType.ACTION, SignalType.FYI}:
+        elif signal_type in {SignalType.ACTION, SignalType.FYI}:
             if not memory_candidate:
                 errors.append(
                     f"Flag mismatch: 'memory_candidate' must be True for signal_type={signal_type!r}."
