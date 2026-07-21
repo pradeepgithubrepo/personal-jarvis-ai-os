@@ -137,7 +137,7 @@ class FinancialAgent(BaseAgentStub):
     # Main Pull Worker
     # ─────────────────────────────────────────────────────────────────────────
 
-    def process_pending_routes(self, supabase_client: Any) -> None:
+    def process_pending_routes(self, supabase_client: Any, routes_to_process: list[dict] = None) -> None:
         """
         Query PENDING routes for financial_agent, run the full 5-stage pipeline,
         and write results to financial_transactions + transaction_evidence.
@@ -146,21 +146,25 @@ class FinancialAgent(BaseAgentStub):
             logger.error("financial_agent: Supabase client required.")
             return
 
-        logger.info("financial_agent: Fetching pending signal routes...")
-        try:
-            routes_res = (
-                supabase_client
-                .table("signal_routes")
-                .select("id, understood_signal_id, route_reason, route_confidence")
-                .eq("agent_name", "financial_agent")
-                .eq("route_status", "PENDING")
-                .execute()
-            )
-            pending_routes = routes_res.data or []
-            logger.info(f"financial_agent: Found {len(pending_routes)} pending route(s).")
-        except Exception as e:
-            logger.error(f"financial_agent: Failed to fetch pending routes: {e}")
-            return
+        if routes_to_process is not None:
+            pending_routes = routes_to_process
+            logger.info(f"financial_agent: Processing {len(pending_routes)} override route(s)...")
+        else:
+            logger.info("financial_agent: Fetching pending signal routes...")
+            try:
+                routes_res = (
+                    supabase_client
+                    .table("signal_routes")
+                    .select("id, understood_signal_id, route_reason, route_confidence")
+                    .eq("agent_name", "financial_agent")
+                    .eq("route_status", "PENDING")
+                    .execute()
+                )
+                pending_routes = routes_res.data or []
+                logger.info(f"financial_agent: Found {len(pending_routes)} pending route(s).")
+            except Exception as e:
+                logger.error(f"financial_agent: Failed to fetch pending routes: {e}")
+                return
 
         if not pending_routes:
             return
@@ -177,11 +181,11 @@ class FinancialAgent(BaseAgentStub):
             logger.info(f"financial_agent: Processing route {route_id} (signal {us_id})...")
 
             try:
-                # ── Fetch understood_signal + qualified_signal (raw message) ──
+                # ── Fetch understood_signal + qualified_signal (raw message and structured columns) ──
                 us_res = (
                     supabase_client
                     .table("understood_signals")
-                    .select("id, summary, contract_json, qualified_signal_id, qualified_signals(message)")
+                    .select("id, summary, contract_json, qualified_signal_id, qualified_signals(message, source, amount, currency, transaction_type, metadata, timestamp)")
                     .eq("id", us_id)
                     .limit(1)
                     .execute()
@@ -195,61 +199,78 @@ class FinancialAgent(BaseAgentStub):
                 qs_id = us_record.get("qualified_signal_id")
                 raw_message = qs.get("message") or us_record.get("summary") or ""
 
-                # ── Extract canonical fields from contract_json ──
-                # The SUA agent writes contract_json with FLAT keys (no type_specific wrapper):
-                #   LLM path:      amount, currency, transaction_type, payment_channel, merchant
-                #   Fallback path: same + event_date, transaction_id
-                #   PDF normalizer: transaction_date, amount, transaction_type, description,
-                #                   reference_number, counterparty
-                # We probe all known locations to be resilient to schema variations.
+                qs_source = (qs.get("source") or "").lower()
 
-                amount = (
-                    contract.get("amount")
-                    or (contract.get("type_specific") or {}).get("amount")
-                )
-                currency = (
-                    contract.get("currency")
-                    or (contract.get("type_specific") or {}).get("currency", "INR")
-                    or "INR"
-                )
-                transaction_type_raw = (
-                    contract.get("transaction_type")
-                    or (contract.get("type_specific") or {}).get("transaction_type")
-                    or "UNKNOWN"
-                )
-                direction_raw = (
-                    contract.get("direction")
-                    or (contract.get("type_specific") or {}).get("direction")
-                    or _infer_direction(transaction_type_raw)
-                )
-                event_date_raw = (
-                    contract.get("event_date")
-                    or contract.get("transaction_date")   # PDF normalizer key
-                    or (contract.get("type_specific") or {}).get("event_date")
-                )
-                reference_number = (
-                    contract.get("reference_number")
-                    or contract.get("transaction_id")
-                    or (contract.get("type_specific") or {}).get("reference_number")
-                    or (contract.get("type_specific") or {}).get("upi_ref")
-                )
-                source_channel = _infer_source(contract, raw_message)
-                source_account = (
-                    (contract.get("type_specific") or {}).get("source_account")
-                    or _infer_account(raw_message)
-                )
-                raw_narration = (
-                    contract.get("description")           # PDF normalizer key
-                    or (contract.get("type_specific") or {}).get("narration")
-                    or raw_message
-                )
-                counterparty_hint = (
-                    contract.get("counterparty")
-                    or contract.get("merchant")
-                    or (contract.get("type_specific") or {}).get("counterparty")
-                    or (contract.get("type_specific") or {}).get("merchant")
-                    or ""
-                )
+                if qs_source in ("gpay", "bank_statement"):
+                    # Prioritize structured data from qualified_signals
+                    source_channel = "GPAY_PDF" if qs_source == "gpay" else "BANK_STATEMENT_PDF"
+                    amount = qs.get("amount")
+                    currency = qs.get("currency") or "INR"
+                    transaction_type_raw = qs.get("transaction_type") or "UNKNOWN"
+                    direction_raw = transaction_type_raw
+
+                    # Look up structured metadata
+                    source_metadata = (qs.get("metadata") or {}).get("source_metadata") or {}
+                    reference_number = source_metadata.get("reference_number")
+                    event_date_raw = source_metadata.get("transaction_date")
+                    counterparty_hint = source_metadata.get("counterparty") or source_metadata.get("merchant") or ""
+                    raw_narration = source_metadata.get("description") or raw_message
+                    import_source = source_metadata.get("source_file_name") or source_channel
+                    source_account = source_metadata.get("source_account") or _infer_account(raw_message)
+                else:
+                    # Fallback to LLM / contract_json parsing for SMS / WhatsApp
+                    source_channel = "SMS"
+                    amount = (
+                        contract.get("amount")
+                        or (contract.get("type_specific") or {}).get("amount")
+                    )
+                    currency = (
+                        contract.get("currency")
+                        or (contract.get("type_specific") or {}).get("currency", "INR")
+                        or "INR"
+                    )
+                    transaction_type_raw = (
+                        contract.get("transaction_type")
+                        or (contract.get("type_specific") or {}).get("transaction_type")
+                        or "UNKNOWN"
+                    )
+                    direction_raw = (
+                        contract.get("direction")
+                        or (contract.get("type_specific") or {}).get("direction")
+                        or _infer_direction(transaction_type_raw)
+                    )
+                    event_date_raw = (
+                        contract.get("event_date")
+                        or contract.get("transaction_date")   # PDF normalizer key
+                        or (contract.get("type_specific") or {}).get("event_date")
+                    )
+                    reference_number = (
+                        contract.get("reference_number")
+                        or contract.get("transaction_id")
+                        or (contract.get("type_specific") or {}).get("reference_number")
+                        or (contract.get("type_specific") or {}).get("upi_ref")
+                    )
+                    source_account = (
+                        (contract.get("type_specific") or {}).get("source_account")
+                        or _infer_account(raw_message)
+                    )
+                    raw_narration = (
+                        contract.get("description")           # PDF normalizer key
+                        or (contract.get("type_specific") or {}).get("narration")
+                        or raw_message
+                    )
+                    counterparty_hint = (
+                        contract.get("counterparty")
+                        or contract.get("merchant")
+                        or (contract.get("type_specific") or {}).get("counterparty")
+                        or (contract.get("type_specific") or {}).get("merchant")
+                        or ""
+                    )
+                    # For SMS, check metadata or default
+                    source_metadata = (qs.get("metadata") or {}).get("source_metadata") or {}
+                    import_source = source_metadata.get("source_file_name") or "SMS"
+                    if not event_date_raw:
+                        event_date_raw = qs.get("timestamp")
 
                 # ─────────────────────────────────────────────────────────────
                 # STAGE 1: Spam Filter
@@ -316,6 +337,7 @@ class FinancialAgent(BaseAgentStub):
                         confidence = _score_confidence(source_channel, reference_number)
                         supabase_client.table("financial_transactions").update({
                             "source": source_channel,
+                            "import_source": import_source,
                             "confidence_score": confidence,
                             "settlement_status": "SETTLED",
                             "signal_route_id": route_id,
@@ -343,6 +365,9 @@ class FinancialAgent(BaseAgentStub):
                 counterparty = counterparty_hint
                 merchant, category = self._normalize_merchant(supabase_client, counterparty, raw_narration)
 
+                # Infer subcategory and potentially override category
+                subcategory, category = self._infer_subcategory(merchant, category, raw_narration)
+
                 # Classify transaction type
                 tx_type = _classify_transaction_type(
                     direction=direction,
@@ -367,6 +392,7 @@ class FinancialAgent(BaseAgentStub):
                     "direction": direction,
                     "transaction_type": tx_type,
                     "source": source_channel,
+                    "import_source": import_source,
                     "confidence_score": confidence,
                     "settlement_status": settlement,
                     "raw_narration": raw_narration[:500] if raw_narration else None,
@@ -374,6 +400,7 @@ class FinancialAgent(BaseAgentStub):
                     "merchant": merchant,
                     "counterparty": counterparty[:150] if counterparty else None,
                     "category": category,
+                    "subcategory": subcategory,
                     "source_account": source_account,
                     "is_self_transfer": is_self_transfer,
                     "is_override": False,
@@ -381,7 +408,17 @@ class FinancialAgent(BaseAgentStub):
                     "created_at": _now(),
                     "updated_at": _now(),
                 }
-                ins_res = supabase_client.table("financial_transactions").insert(ledger_row).execute()
+                
+                try:
+                    ins_res = supabase_client.table("financial_transactions").insert(ledger_row).execute()
+                except Exception as e:
+                    err_msg = str(e)
+                    if "column" in err_msg.lower() and "subcategory" in err_msg.lower():
+                        logger.warning("financial_agent: subcategory column not found in database. Falling back to insert without subcategory.")
+                        ledger_row.pop("subcategory", None)
+                        ins_res = supabase_client.table("financial_transactions").insert(ledger_row).execute()
+                    else:
+                        raise
 
                 if not ins_res.data:
                     raise ValueError("Insert to financial_transactions returned no data.")
@@ -424,17 +461,22 @@ class FinancialAgent(BaseAgentStub):
         Stage 1: Spam filter.
         Returns True if the signal is a marketing/promotional message (not a real transaction).
         """
+        msg_lower = raw_message.lower()
+        # Ignore UPI Lite amount load/top-up transactions (with hyphens or spaces, e.g. UPI-LITE-...-ADD MONEY)
+        has_upi_lite = "upi lite" in msg_lower or "upi-lite" in msg_lower
+        is_load = "add money" in msg_lower or "top-up" in msg_lower or "top up" in msg_lower or "load" in msg_lower
+        if has_upi_lite and is_load:
+            return True
+
         # Primary gate: contract_json classified it as UNKNOWN
         if transaction_type == "UNKNOWN":
             # Secondary guard: check if ANY real transaction keyword is present
             # (catches cases where SUA misclassified but the message is clearly real)
-            msg_lower = raw_message.lower()
             has_real_signal = any(kw in msg_lower for kw in REAL_TRANSACTION_KEYWORDS)
             if not has_real_signal:
                 return True  # No real transaction signal found → spam
 
         # Spam keyword gate (even if transaction_type is set, block known spam phrases)
-        msg_lower = raw_message.lower()
         if any(kw in msg_lower for kw in SPAM_KEYWORDS):
             return True
 
@@ -652,6 +694,72 @@ Return ONLY a JSON object, no explanation, no markdown:
             logger.info(f"financial_agent: Route {route_id} → {status}")
         except Exception as e:
             logger.error(f"financial_agent: Failed to update route {route_id} to {status}: {e}")
+
+    def _infer_subcategory(self, merchant: str, category: str, raw_narration: str) -> tuple[str | None, str]:
+        """
+        Infers subcategory and potentially overrides category based on rules.
+        Returns a tuple: (subcategory, category).
+        """
+        m_lower = (merchant or "").lower()
+        n_lower = (raw_narration or "").lower()
+        cat_lower = (category or "").lower()
+
+        # Rule 1: JISHA JOHN C - Office Food
+        if "jisha john" in m_lower or "jisha john" in n_lower:
+            return "Office Food", "Food"
+
+        # Rule 2: Ellammal - Fish
+        if "ellammal" in m_lower or "ellammal" in n_lower:
+            return "Fish", "Food"
+
+        # Rule 3: Google - Google
+        if "google" in m_lower:
+            return "Google", "Other"
+
+        # Rule 4: Electricals / Hardware
+        hardware_keywords = ["electrical", "hardware", "plywood", "paint", "cement", "sanitary", "timber", "wood", "tiles"]
+        if any(kw in m_lower or kw in n_lower for kw in hardware_keywords):
+            return "Hardware", "Housing"
+
+        # Other useful subcategories with low cardinality
+        if "tangedco" in m_lower or "electricity" in n_lower or "electric bill" in n_lower:
+            return "Electricity Bill", "Utilities"
+        if "indane" in m_lower or "gas" in n_lower or "lpg" in n_lower:
+            return "Gas Bill", "Utilities"
+        if "airtel" in m_lower or "jio" in m_lower or "recharge" in n_lower or "mobile bill" in n_lower:
+            return "Mobile Recharge", "Utilities"
+        if "netflix" in m_lower or "spotify" in m_lower or "prime video" in m_lower or "hotstar" in m_lower or "jiohotstar" in m_lower or "perplexity" in m_lower:
+            return "Subscription", "Entertainment"
+        if "atm" in m_lower or "atw" in m_lower or "cash withdrawal" in n_lower or "withdrawn" in n_lower:
+            return "ATM Withdrawal", "Other"
+        if "sbi card" in m_lower or "credit card" in n_lower or "sbi card" in n_lower or "axis bank credit card" in n_lower:
+            return "Credit Card Payment", "Other"
+        if "mutual fund" in n_lower or "et money" in m_lower or "nps" in m_lower or "icici mutual" in m_lower or "investment" in n_lower or "gold loan" in n_lower:
+            return "Investment", "Investment"
+        
+        # Check for cab/auto transport (ola, uber, rapido)
+        is_cab_ride = False
+        if "uber" in m_lower or "ola" in m_lower or "rapido" in m_lower:
+            is_cab_ride = True
+        elif "cab" in n_lower:
+            is_cab_ride = True
+        elif re.search(r"\bauto\b", n_lower):
+            # standalone "auto" word check
+            # Exclude auto pay, auto debit, auto sweep
+            if not any(kw in n_lower for kw in ["auto pay", "autopay", "auto-pay", "auto debit", "autodebit", "auto-debit", "auto sweep", "autosweep", "auto-sweep"]):
+                is_cab_ride = True
+        
+        if is_cab_ride:
+            return "Cab / Auto", "Transport"
+
+        if "petrol" in n_lower or "diesel" in n_lower or "shell" in m_lower or "hpcl" in m_lower or "bpcl" in m_lower or "fuel" in n_lower:
+            return "Fuel", "Transport"
+        if "irctc" in m_lower or "flight" in n_lower or "indigo" in m_lower or "redbus" in m_lower:
+            return "Travel Booking", "Travel"
+        if "salary" in n_lower or "salary" in m_lower:
+            return "Salary", "Other"
+
+        return None, category
 
 
 # ─────────────────────────────────────────────────────────────────────────────

@@ -155,11 +155,21 @@ class TodoAgent(BaseAgentStub):
                     res = supabase_client.table("tasks").insert(task_row).execute()
                     logger.info(f"todo_agent: Created task: {task_row['title']!r}")
                     if res.data:
-                        open_tasks.append({
-                            "id": res.data[0]["id"],
-                            "title": res.data[0]["title"],
-                            "description": res.data[0]["description"]
-                        })
+                        reflect_res = self._reflect_on_created_task(supabase_client, res.data[0])
+                        if reflect_res.get("status") == "UPDATED":
+                            open_tasks.append({
+                                "id": res.data[0]["id"],
+                                "title": reflect_res.get("title") or res.data[0]["title"],
+                                "description": reflect_res.get("description") or res.data[0]["description"]
+                            })
+                        elif reflect_res.get("status") == "MERGED":
+                            pass
+                        else:
+                            open_tasks.append({
+                                "id": res.data[0]["id"],
+                                "title": res.data[0]["title"],
+                                "description": res.data[0]["description"]
+                            })
 
                 elif decision == "MERGE_WITH_EXISTING" and open_tasks:
                     matched_id = decision_data.get("matched_task_id")
@@ -191,11 +201,21 @@ class TodoAgent(BaseAgentStub):
                         res = supabase_client.table("tasks").insert(task_row).execute()
                         logger.info(f"todo_agent: Created task (fallback): {task_row['title']!r}")
                         if res.data:
-                            open_tasks.append({
-                                "id": res.data[0]["id"],
-                                "title": res.data[0]["title"],
-                                "description": res.data[0]["description"]
-                            })
+                            reflect_res = self._reflect_on_created_task(supabase_client, res.data[0])
+                            if reflect_res.get("status") == "UPDATED":
+                                open_tasks.append({
+                                    "id": res.data[0]["id"],
+                                    "title": reflect_res.get("title") or res.data[0]["title"],
+                                    "description": reflect_res.get("description") or res.data[0]["description"]
+                                })
+                            elif reflect_res.get("status") == "MERGED":
+                                pass
+                            else:
+                                open_tasks.append({
+                                    "id": res.data[0]["id"],
+                                    "title": res.data[0]["title"],
+                                    "description": res.data[0]["description"]
+                                })
 
                 else:
                     logger.info(f"todo_agent: Signal route {route_id} classified as IGNORE.")
@@ -206,6 +226,117 @@ class TodoAgent(BaseAgentStub):
             except Exception as e:
                 logger.error(f"todo_agent: Failed to execute decision for route {route_id}: {e}")
                 self._update_route_status(supabase_client, route_id, "FAILED", error_message=str(e))
+
+    def _reflect_on_created_task(self, supabase_client: Any, task: dict) -> dict:
+        """
+        Runs a reflection prompt using Gemini/Mistral over a newly created task
+        to sense check the title and description, update the title/description if needed,
+        and perform deduplication/merging against other open/in-progress tasks.
+        Returns the final state of the task (or None if it was deleted/merged).
+        """
+        task_id = task["id"]
+        logger.info(f"todo_agent: Running reflection pattern for task {task_id}...")
+
+        try:
+            # Fetch all OTHER open tasks
+            open_res = (
+                supabase_client
+                .table("tasks")
+                .select("id, title, description")
+                .in_("status", ["OPEN", "IN_PROGRESS"])
+                .neq("id", task_id)
+                .execute()
+            )
+            other_tasks = open_res.data or []
+        except Exception as e:
+            logger.warning(f"todo_agent: Reflection failed to fetch other open tasks: {e}")
+            other_tasks = []
+
+        prompt = f"""
+You are the Todo Reflection Agent. Your job is to verify, clarify, and deduplicate a newly added task.
+
+Newly Added Task:
+- ID: {task_id}
+- Title: "{task['title']}"
+- Description: "{task['description']}"
+
+Currently Open Tasks:
+{json.dumps(other_tasks, indent=2)}
+
+Instructions:
+1. **Title Sense Check**:
+   Ensure the title is concise, clear, and starts with a strong imperative action verb (e.g., "Pay Electricity Bill" instead of "Electricity charges due", or "Schedule Doctor Appointment" instead of "Doctor checkup"). If the title needs improvement, provide the "updated_title".
+   If the description can be cleaned up or formatted better, provide "updated_description". Otherwise, keep the original description.
+
+2. **Deduplication Check**:
+   Compare the newly added task against the "Currently Open Tasks" list.
+   If the newly added task is a duplicate or a follow-up about the same topic, action, policy renewal, or utility bill that is already covered by an existing open task in the list, you MUST flag it as a duplicate:
+   - Set "is_duplicate" to true.
+   - Set "matched_task_id" to the ID of the existing task from the list.
+   - Provide a short "matched_rationale".
+   If it is not a duplicate, set "is_duplicate" to false and "matched_task_id" to null.
+
+You MUST return a raw JSON object ONLY, conforming EXACTLY to this schema (no surrounding markdown code blocks, no backticks, just raw JSON):
+{{
+  "is_duplicate": boolean,
+  "matched_task_id": "string_or_null",
+  "matched_rationale": "string_or_null",
+  "updated_title": "string",
+  "updated_description": "string"
+}}
+"""
+        try:
+            res_text = ""
+            try:
+                # Primary: Gemini
+                res_text = self.llm_client.ask(prompt, provider="gemini")
+            except Exception as gemini_err:
+                logger.warning(f"todo_agent: Reflection Gemini call failed: {gemini_err}. Trying Mistral...")
+                res_text = self.llm_client.ask(prompt, provider="mistral")
+
+            # Clean JSON markers
+            res_text = res_text.strip()
+            if res_text.startswith("```json"):
+                res_text = res_text[7:]
+            if res_text.endswith("```"):
+                res_text = res_text[:-3]
+            res_text = res_text.strip()
+
+            decision = json.loads(res_text)
+            is_dup = decision.get("is_duplicate") or False
+            matched_id = decision.get("matched_task_id")
+            updated_title = decision.get("updated_title") or task["title"]
+            updated_desc = decision.get("updated_description") or task["description"]
+
+            if is_dup and matched_id and any(t["id"] == matched_id for t in other_tasks):
+                # We found a duplicate! Delete the new task
+                supabase_client.table("tasks").delete().eq("id", task_id).execute()
+                logger.info(f"todo_agent: Reflection deleted duplicate task {task_id} (matched with {matched_id})")
+
+                # Merge description into existing task
+                existing = next(t for t in other_tasks if t["id"] == matched_id)
+                old_desc = existing.get("description") or ""
+                append_txt = f"\n\n[System Update - Reflection Deduplication]: Merged duplicate task. Original Details: {task.get('description')}"
+                new_desc = old_desc + append_txt
+                supabase_client.table("tasks").update({"description": new_desc, "updated_at": _now()}).eq("id", matched_id).execute()
+                logger.info(f"todo_agent: Reflection merged description into task {matched_id}")
+                return {"status": "MERGED", "matched_task_id": matched_id}
+            else:
+                # Update task with clean title/description
+                updates = {}
+                if updated_title != task["title"]:
+                    updates["title"] = updated_title
+                    logger.info(f"todo_agent: Reflection updating title: {task['title']!r} -> {updated_title!r}")
+                if updated_desc != task["description"]:
+                    updates["description"] = updated_desc
+
+                if updates:
+                    updates["updated_at"] = _now()
+                    supabase_client.table("tasks").update(updates).eq("id", task_id).execute()
+                return {"status": "UPDATED", "title": updated_title, "description": updated_desc}
+        except Exception as e:
+            logger.error(f"todo_agent: Reflection pattern failed for task {task_id}: {e}")
+            return {"status": "ERROR", "error": str(e)}
 
     def _reason_over_task(self, raw_message: str, contract: dict, open_tasks: list[dict]) -> dict:
         """
