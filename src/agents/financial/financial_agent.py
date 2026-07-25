@@ -216,7 +216,7 @@ class FinancialAgent(BaseAgentStub):
                     counterparty_hint = source_metadata.get("counterparty") or source_metadata.get("merchant") or ""
                     raw_narration = source_metadata.get("description") or raw_message
                     import_source = source_metadata.get("source_file_name") or source_channel
-                    source_account = source_metadata.get("source_account") or _infer_account(raw_message)
+                    source_account = source_metadata.get("source_account") or _infer_account_from_source(import_source, raw_message)
                 else:
                     # Fallback to LLM / contract_json parsing for SMS / WhatsApp
                     source_channel = "SMS"
@@ -252,7 +252,7 @@ class FinancialAgent(BaseAgentStub):
                     )
                     source_account = (
                         (contract.get("type_specific") or {}).get("source_account")
-                        or _infer_account(raw_message)
+                        or _infer_account_from_source(None, raw_message)
                     )
                     raw_narration = (
                         contract.get("description")           # PDF normalizer key
@@ -834,6 +834,26 @@ def _infer_account(raw_message: str) -> str | None:
         return "ICICI"
     if "AXIS" in msg:
         return "AXIS"
+    return None
+
+
+def _infer_account_from_source(import_source: str | None, raw_message: str) -> str | None:
+    """Infer source bank account from raw message text or import source file name."""
+    acc = _infer_account(raw_message)
+    if acc:
+        return acc
+        
+    if import_source:
+        src_upper = import_source.upper()
+        if "HDFC" in src_upper or "3221" in src_upper:
+            return "HDFC"
+        if "SBI" in src_upper or "3724" in src_upper or "4264" in src_upper:
+            return "SBI"
+        if "ICICI" in src_upper:
+            return "ICICI"
+        if "AXIS" in src_upper:
+            return "AXIS"
+            
     return None
 
 

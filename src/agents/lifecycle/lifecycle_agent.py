@@ -26,6 +26,27 @@ class LifecycleAgent(BaseAgentStub):
             status="COMPLETED",
             message="Lifecycle agent execution complete.",
         )
+    def _determine_assignment(self, title: str, description: str) -> str:
+        text = (title + " " + (description or "")).lower()
+        
+        # School Keywords
+        school_keywords = [
+            "school", "preschool", "daycare", "parent meeting", "homework", 
+            "school fees", "school events", "parent teacher meeting", "parent-teacher meeting"
+        ]
+        if any(k in text for k in school_keywords):
+            return "BOTH"
+            
+        # Children / Kids Keywords
+        kids_keywords = [
+            "charan", "chainicka", "child", "kids", "children", "vaccination", 
+            "medical appointment", "shopping for children", "child activities",
+            "family activity", "family activities", "parent feedback"
+        ]
+        if any(k in text for k in kids_keywords):
+            return "BOTH"
+            
+        return "PRADEEP"
 
     def process_active_items(self, supabase_client: Any, today: Optional[datetime.date] = None) -> dict:
         """
@@ -89,16 +110,17 @@ class LifecycleAgent(BaseAgentStub):
                     tzinfo=datetime.timezone.utc
                 ).isoformat()
 
+                desc = item.get("description") or f"Automatically promoted from {domain} Lifecycle event."
                 task_row = {
                     "title": title,
-                    "description": item.get("description") or f"Automatically promoted from {domain} Lifecycle event.",
+                    "description": desc,
                     "status": "OPEN",
                     "priority": "HIGH",
                     "due_datetime": due_datetime,
                     "notification_profile": "STANDARD",
                     "source_type": "AUTO_GENERATED",
                     "created_by": "JARVIS",
-                    "assigned_to": "Pradeep",
+                    "assigned_to": self._determine_assignment(title, desc),
                     "lifecycle_item_id": item_id,
                 }
 

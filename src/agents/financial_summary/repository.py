@@ -23,25 +23,39 @@ def upsert_spending_summaries(supabase_client: Any, rows: List[Dict[str, Any]]) 
 def upsert_category_spends(supabase_client: Any, rows: List[Dict[str, Any]]) -> None:
     if not rows:
         return
+    months = list(set(r["month_key"] for r in rows if "month_key" in r))
+    for month in months:
+        logger.info(f"repository: Deleting existing category spends for month {month}...")
+        supabase_client.table("monthly_category_spend").delete().eq("month_key", month).execute()
     logger.info(f"repository: Upserting {len(rows)} rows into monthly_category_spend...")
     supabase_client.table("monthly_category_spend").upsert(rows).execute()
 
 def upsert_merchant_spends(supabase_client: Any, rows: List[Dict[str, Any]]) -> None:
     if not rows:
         return
+    months = list(set(r["month_key"] for r in rows if "month_key" in r))
+    for month in months:
+        logger.info(f"repository: Deleting existing merchant spends for month {month}...")
+        supabase_client.table("monthly_merchant_spend").delete().eq("month_key", month).execute()
     logger.info(f"repository: Upserting {len(rows)} rows into monthly_merchant_spend...")
     supabase_client.table("monthly_merchant_spend").upsert(rows).execute()
 
 def upsert_income_sources(supabase_client: Any, rows: List[Dict[str, Any]]) -> None:
     if not rows:
         return
+    months = list(set(r["month_key"] for r in rows if "month_key" in r))
+    for month in months:
+        logger.info(f"repository: Deleting existing income sources for month {month}...")
+        supabase_client.table("monthly_income_sources").delete().eq("month_key", month).execute()
     logger.info(f"repository: Upserting {len(rows)} rows into monthly_income_sources...")
     supabase_client.table("monthly_income_sources").upsert(rows).execute()
 
 def upsert_top_transactions(supabase_client: Any, rows: List[Dict[str, Any]]) -> None:
     if not rows:
         return
+    months = list(set(r["month_key"] for r in rows if "month_key" in r))
+    for month in months:
+        logger.info(f"repository: Deleting existing top transactions for month {month}...")
+        supabase_client.table("monthly_top_transactions").delete().eq("month_key", month).execute()
     logger.info(f"repository: Upserting {len(rows)} rows into monthly_top_transactions...")
-    # First delete any existing top transactions for the months being updated to avoid ranking orphans,
-    # or rely on upsert (rank is the primary key, so upsert for same month_key + rank works perfectly!)
     supabase_client.table("monthly_top_transactions").upsert(rows).execute()

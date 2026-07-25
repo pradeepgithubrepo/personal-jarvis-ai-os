@@ -37,6 +37,8 @@ from src.agents.sua.orchestrator import run_pipeline as run_sua_pipeline
 from src.intelligence.routing.router import SignalRouter
 from src.intelligence.dispatch.dispatcher import ContractDispatcher
 from src.agents.todo.todo_agent import TodoAgent
+from src.agents.fyi.fyi_agent import FyiAgent
+from src.agents.financial.financial_agent import FinancialAgent
 from src.agents.lifecycle.lifecycle_agent import LifecycleAgent
 from src.agents.daily_briefing.daily_briefing_agent import DailyBriefingAgent
 
@@ -85,7 +87,9 @@ def run_master_pipeline(client: Client, trigger_type: str = "SCHEDULED") -> dict
         logger.info(f"Found {len(unprocessed_signals)} unprocessed signals in mobile_signals.")
 
         if unprocessed_signals:
-            qual_agent = SignalQualificationAgent(config_dir="config")
+            project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+            config_path = os.path.join(project_root, "config")
+            qual_agent = SignalQualificationAgent(config_dir=config_path)
             qualified_inserts = []
             mobile_signal_updates = []
 
@@ -141,9 +145,14 @@ def run_master_pipeline(client: Client, trigger_type: str = "SCHEDULED") -> dict
     # Stage 4: Signal Router & Dispatcher
     logger.info("\n--- Stage 4: Signal Router & Dispatcher ---")
     try:
-        res_us = client.table("understood_signals").select("*").execute()
-        understood_signals = res_us.data or []
-        logger.info(f"Routing {len(understood_signals)} understood signals...")
+        # Only query understood signals that have not been routed yet
+        res_us = client.table("understood_signals").select("*, signal_routes(id)").execute()
+        all_signals = res_us.data or []
+        understood_signals = [
+            us for us in all_signals
+            if not us.get("signal_routes")
+        ]
+        logger.info(f"Routing {len(understood_signals)} unprocessed understood signals (out of {len(all_signals)} total)...")
 
         router = SignalRouter()
         dispatcher = ContractDispatcher()
@@ -171,6 +180,28 @@ def run_master_pipeline(client: Client, trigger_type: str = "SCHEDULED") -> dict
         logger.error(f"✗ Stage 5 To-Do Agent Failed: {e}")
         stage_results["stage5_todo"] = {"status": "FAILED", "error": str(e)}
 
+    # Stage 5b: FYI / Information Agent Ingestion Worker
+    logger.info("\n--- Stage 5b: FYI Agent Ingestion Worker ---")
+    try:
+        fyi_agent = FyiAgent()
+        fyi_agent.process_pending_routes(client)
+        stage_results["stage5b_fyi"] = {"status": "SUCCESS"}
+        logger.info("✓ Stage 5b Complete: FYI Agent processed pending routes.")
+    except Exception as e:
+        logger.error(f"✗ Stage 5b FYI Agent Failed: {e}")
+        stage_results["stage5b_fyi"] = {"status": "FAILED", "error": str(e)}
+
+    # Stage 5c: Financial Agent Ingestion Worker
+    logger.info("\n--- Stage 5c: Financial Agent Ingestion Worker ---")
+    try:
+        financial_agent = FinancialAgent()
+        financial_agent.process_pending_routes(client)
+        stage_results["stage5c_financial"] = {"status": "SUCCESS"}
+        logger.info("✓ Stage 5c Complete: Financial Agent processed pending routes.")
+    except Exception as e:
+        logger.error(f"✗ Stage 5c Financial Agent Failed: {e}")
+        stage_results["stage5c_financial"] = {"status": "FAILED", "error": str(e)}
+
     # Stage 6: Lifecycle Agent Engine
     logger.info("\n--- Stage 6: Lifecycle Agent Engine ---")
     try:
@@ -197,7 +228,7 @@ def run_master_pipeline(client: Client, trigger_type: str = "SCHEDULED") -> dict
 
     # Determine overall pipeline status
     failed_stages = [k for k, v in stage_results.items() if isinstance(v, dict) and v.get("status") == "FAILED"]
-    overall_status = "SUCCESS" if not failed_stages else ("PARTIAL_SUCCESS" if len(failed_stages) < 7 else "FAILED")
+    overall_status = "SUCCESS" if not failed_stages else ("PARTIAL_SUCCESS" if len(failed_stages) < len(stage_results) else "FAILED")
 
     master_summary = {
         "run_id": str(run_id),

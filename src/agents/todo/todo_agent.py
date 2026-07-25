@@ -51,6 +51,35 @@ class TodoAgent(BaseAgentStub):
             message="To-Do Agent registered route decision. Awaiting pull processing.",
             output={"summary": summary},
         )
+    def _determine_assignment(self, title: str, description: str, device_id: str | None) -> str:
+        text = (title + " " + (description or "")).lower()
+        
+        # School Keywords
+        school_keywords = [
+            "school", "preschool", "daycare", "parent meeting", "homework", 
+            "school fees", "school events", "parent teacher meeting", "parent-teacher meeting"
+        ]
+        if any(k in text for k in school_keywords):
+            return "BOTH"
+            
+        # Children / Kids Keywords
+        kids_keywords = [
+            "charan", "chainicka", "child", "kids", "children", "vaccination", 
+            "medical appointment", "shopping for children", "child activities",
+            "family activity", "family activities", "parent feedback"
+        ]
+        if any(k in text for k in kids_keywords):
+            return "BOTH"
+            
+        # Device Tracing
+        if device_id:
+            dev_lower = device_id.lower()
+            if "shobana" in dev_lower:
+                return "SHOBANA"
+            elif "pradeep" in dev_lower:
+                return "PRADEEP"
+                
+        return "PRADEEP"
 
     def process_pending_routes(self, supabase_client: Any) -> None:
         """
@@ -108,7 +137,7 @@ class TodoAgent(BaseAgentStub):
                 us_res = (
                     supabase_client
                     .table("understood_signals")
-                    .select("summary, contract_json, qualified_signals(message)")
+                    .select("summary, contract_json, device_id, qualified_signals(message)")
                     .eq("id", us_id)
                     .limit(1)
                     .execute()
@@ -118,6 +147,7 @@ class TodoAgent(BaseAgentStub):
 
                 us_record = us_res.data[0]
                 contract = us_record.get("contract_json") or {}
+                device_id = us_record.get("device_id")
                 
                 # Retrieve raw message from foreign key join to qualified_signals
                 qs = us_record.get("qualified_signals") or {}
@@ -140,9 +170,11 @@ class TodoAgent(BaseAgentStub):
 
                 if decision == "CREATE_TASK":
                     # Create a new clean task in tasks table
+                    title_val = decision_data.get("title") or contract.get("summary") or "New Task"
+                    desc_val = decision_data.get("description") or raw_message
                     task_row = {
-                        "title": decision_data.get("title") or contract.get("summary") or "New Task",
-                        "description": decision_data.get("description") or raw_message,
+                        "title": title_val,
+                        "description": desc_val,
                         "status": "OPEN",
                         "priority": decision_data.get("priority") or "MEDIUM",
                         "due_datetime": decision_data.get("due_datetime") or contract.get("type_specific", {}).get("due_date"),
@@ -150,7 +182,7 @@ class TodoAgent(BaseAgentStub):
                         "source_type": "AUTO_GENERATED",
                         "route_id": route_id,
                         "created_by": "JARVIS",
-                        "assigned_to": "Pradeep",
+                        "assigned_to": self._determine_assignment(title_val, desc_val, device_id),
                     }
                     res = supabase_client.table("tasks").insert(task_row).execute()
                     logger.info(f"todo_agent: Created task: {task_row['title']!r}")
@@ -186,9 +218,11 @@ class TodoAgent(BaseAgentStub):
                     else:
                         # Fallback to create task if matched_id is invalid
                         logger.warning(f"todo_agent: Matched task ID {matched_id} not found in open tasks. Falling back to CREATE_TASK.")
+                        title_val = decision_data.get("title") or contract.get("summary") or "New Task"
+                        desc_val = decision_data.get("description") or raw_message
                         task_row = {
-                            "title": decision_data.get("title") or contract.get("summary") or "New Task",
-                            "description": decision_data.get("description") or raw_message,
+                            "title": title_val,
+                            "description": desc_val,
                             "status": "OPEN",
                             "priority": decision_data.get("priority") or "MEDIUM",
                             "due_datetime": decision_data.get("due_datetime") or contract.get("type_specific", {}).get("due_date"),
@@ -196,7 +230,7 @@ class TodoAgent(BaseAgentStub):
                             "source_type": "AUTO_GENERATED",
                             "route_id": route_id,
                             "created_by": "JARVIS",
-                            "assigned_to": "Pradeep",
+                            "assigned_to": self._determine_assignment(title_val, desc_val, device_id),
                         }
                         res = supabase_client.table("tasks").insert(task_row).execute()
                         logger.info(f"todo_agent: Created task (fallback): {task_row['title']!r}")
