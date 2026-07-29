@@ -41,7 +41,7 @@ We implemented a high-performance bulk write method `persist_signals_bulk`:
 The HDFC statement parser was initially classifying credit transactions as debits during mock validation.
 
 ### Cause
-HDFC statement tables align the credit/debit indicators (`CR`) to the end of the contact_7nce column (`23,462.82CR`) instead of the transaction description. Scanning the narration string alone missed the credit marker.
+HDFC statement tables align the credit/debit indicators (`CR`) to the end of the contact_7nce column (`1,000.00CR`) instead of the transaction description. Scanning the narration string alone missed the credit marker.
 
 ### Solution
 Updated the regex to match the entire line-level string, allowing the HDFC parser to inspect the contact_7nce segment for `CR` tags.

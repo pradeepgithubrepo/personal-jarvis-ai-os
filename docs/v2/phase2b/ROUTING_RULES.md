@@ -39,7 +39,7 @@ Result:   financial_agent, fact_agent
 
 **Example:**
 ```
-"School fee paid to Lalaji Memorial School — INR 45,000"
+"School fee paid to Sample School — INR 45,000"
 → financial_agent  (process the debit)
 → fact_agent       (store school enrollment fact)
 ```

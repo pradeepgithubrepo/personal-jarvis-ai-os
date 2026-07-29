@@ -62,17 +62,17 @@ A single row from `qualified_signals` serves as the input.
 {
   "source": "gpay",
   "sender": "user_alias",
-  "message": "Paid to Radha Radha",
+  "message": "Paid to Sample Merchant",
   "device_id": "user",
   "message_hash": "6f1de9d316d846...",
   "metadata": {
     "source_metadata": {
-      "amount": 1536.0,
+      "amount": 1000.0,
       "currency": "INR",
-      "counterparty": "Radha Radha",
+      "counterparty": "Sample Merchant",
       "transaction_type": "DEBIT",
-      "reference_number": "120940047278",
-      "source_file_name": "gpay_statement.pdf"
+      "reference_number": "000000000000",
+      "source_file_name": "sample_gpay_statement.pdf"
     }
   }
 }
@@ -138,11 +138,11 @@ When written to `understood_signals`, every record must contain a `contract_json
 * **Sample Output**:
 ```json
 {
-  "amount": 1536.0,
+  "amount": 1000.0,
   "currency": "INR",
   "transaction_type": "DEBIT",
   "payment_channel": "UPI",
-  "merchant": "Radha Radha"
+  "merchant": "Sample Merchant"
 }
 ```
 
@@ -165,7 +165,7 @@ When written to `understood_signals`, every record must contain a `contract_json
 * **Sample Output**:
 ```json
 {
-  "summary": "User is heading to Chennai for a meeting",
+  "summary": "User is heading to office for a meeting",
   "topic": "travel",
   "event_date": "2026-07-11T12:00:00Z"
 }
@@ -177,10 +177,10 @@ When written to `understood_signals`, every record must contain a `contract_json
 * **Sample Output**:
 ```json
 {
-  "entity": "Radha Radha",
+  "entity": "Sample Merchant",
   "attribute": "preferred payment method",
   "value": "GPay UPI",
-  "summary": "Preferred payment method for Radha Radha is GPay UPI."
+  "summary": "Preferred payment method for Sample Merchant is GPay UPI."
 }
 ```
 

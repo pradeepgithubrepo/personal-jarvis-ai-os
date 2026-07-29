@@ -63,7 +63,7 @@ The 29 signals that reached `understood_signals` represent **high-intent, action
 A sample of these successfully understood records includes:
 1. **Action Request**: *"Purifier person don't pick up the call so register complaint"* (Classified as `ACTION`, task contract generated).
 2. **Status Update**: *"Boarded the train"* (Classified as `NOISE` fallback, indicating no task/financial ledger insert needed).
-3. **Cashback Alert**: *"HCs cashback credited in Apollo wallet"* (Classified as `FINANCIAL`, CREDIT transaction type contract generated).
+3. **Cashback Alert**: *"Cashback credited in digital wallet"* (Classified as `FINANCIAL`, CREDIT transaction type contract generated).
 
 ---
 

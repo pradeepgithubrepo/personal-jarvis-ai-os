@@ -47,9 +47,9 @@ The `contract_version` field is always present in `contract_json`. When the cont
 
   "confidence": 0.88,
 
-  "summary": "Debit of INR 5000 via UPI to Amazon",
+  "summary": "Debit of INR 1000 via UPI to Sample Merchant",
 
-  "entities": ["Amazon", "HDFC"],
+  "entities": ["Sample Merchant", "Bank"],
 
   "memory_candidate": false,
 
@@ -233,8 +233,8 @@ When a contract fails validation:
   "signal_type": "FINANCIAL",
   "importance": 0.91,
   "confidence": 0.88,
-  "summary": "Debit of INR 5000 via UPI to Amazon",
-  "entities": ["Amazon", "HDFC"],
+  "summary": "Debit of INR 1000 via UPI to Sample Merchant",
+  "entities": ["Sample Merchant", "Bank"],
   "memory_candidate": false,
   "requires_action": false,
   "financial_candidate": true,

@@ -11,8 +11,8 @@ An audit of the `processed_files` and `mobile_signals` tables shows the followin
 
 | Source Type | Source File / Format | Raw Signals Count | Extracted Transactions |
 | :--- | :--- | :---: | :---: |
-| **GPay PDF** | `gpay_statement_20260401_20260630.pdf` | 1 | 278 |
-| **Bank Statement** | `Email_Statement_080720262113519349631.pdf` | 1 | 49 |
+| **GPay PDF** | `sample_gpay_statement.pdf` | 1 | 278 |
+| **Bank Statement** | `sample_bank_statement.pdf` | 1 | 49 |
 | **Financial SMS** | SMS signals in `mobile_signals` / `understood_signals` | 441 | 132 |
 | **WhatsApp SMS** | WhatsApp signals in `mobile_signals` | 2 | 0 |
 
