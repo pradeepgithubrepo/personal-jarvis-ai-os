@@ -1,4 +1,11 @@
+import os
+from dotenv import load_dotenv
 from pydantic_settings import BaseSettings
+
+# Explicitly load .env from the project root directory
+project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+env_path = os.path.join(project_root, ".env")
+load_dotenv(dotenv_path=env_path)
 
 
 class Settings(BaseSettings):
@@ -23,6 +30,8 @@ class Settings(BaseSettings):
     cloud_provider: str
     monthly_budget_inr: int
     gemini_api_key: str = None
+    cerebras_api_key: str = None
+    mistral_api_key: str = None
 
     # Scheduler
     email_poll_interval_minutes: int
@@ -40,6 +49,7 @@ class Settings(BaseSettings):
 
     class Config:
         env_file = ".env"
+        extra = "ignore"
 
 
 settings = Settings()

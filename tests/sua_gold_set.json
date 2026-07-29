@@ -1,0 +1,6221 @@
+[
+  {
+    "id": "d41f81c0-0325-4283-ba01-7416b09ef923",
+    "signal_id": 8324,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to Radha Radha",
+    "timestamp": "2026-04-02T08:39:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "Radha",
+          "Paid"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "b5f7a30b-fdfe-4276-88e0-c8441b447d71",
+    "signal_id": 8325,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to JISHA JOHN C",
+    "timestamp": "2026-04-03T16:15:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "Paid",
+          "JOHN",
+          "JISHA"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "aaa2404a-620a-48aa-9a2c-9f2d316ce725",
+    "signal_id": 8326,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to Anbu Fruits Shop",
+    "timestamp": "2026-04-03T19:16:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "Fruits",
+          "Paid",
+          "Anbu",
+          "Shop"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "0d211687-784e-4305-9fae-f9b022e0de93",
+    "signal_id": 8327,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to Mr HAJNOOL AKBAR S",
+    "timestamp": "2026-04-04T06:52:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "Paid",
+          "AKBAR",
+          "Mr",
+          "HAJNOOL"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "5f669910-048b-4de2-8519-6e4935fcfcb4",
+    "signal_id": 8328,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to IRCTC Web UPI",
+    "timestamp": "2026-04-04T10:02:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UPI",
+        "merchant": null,
+        "entities": [
+          "IRCTC",
+          "UPI",
+          "Paid",
+          "Web"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "daf86fb0-78cb-4561-9c29-bd8f2bb59df7",
+    "signal_id": 8329,
+    "source": "gpay",
+    "sender": "Nagarajan A",
+    "message": "Received from Nagarajan A",
+    "timestamp": "2026-04-04T10:10:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "CREDIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "Nagarajan",
+          "Received"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "788a6dce-db4d-4320-9082-a77f594c6dba",
+    "signal_id": 8330,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to Sumithra K",
+    "timestamp": "2026-04-04T10:36:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "Paid",
+          "Sumithra"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "4f8eea6f-9e26-4b3e-96cf-1c7747c00a33",
+    "signal_id": 8331,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to PAMMAL SARAVANA SHOPPING",
+    "timestamp": "2026-04-04T18:08:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "SHOPPING",
+          "Paid",
+          "PAMMAL",
+          "SARAVANA"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "713efafa-64bf-459e-bf0e-f764e53e15f5",
+    "signal_id": 8332,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to Mrs V Deepa",
+    "timestamp": "2026-04-04T18:27:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "Paid",
+          "Mrs",
+          "Deepa"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "31f02e75-072f-45ab-ac83-42af5601d106",
+    "signal_id": 8333,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to MOHAMMED RIYAS MOHAM",
+    "timestamp": "2026-04-05T08:00:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "Paid",
+          "MOHAM",
+          "MOHAMMED",
+          "RIYAS"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "12501a14-6a75-4fc0-9086-3459df27ba97",
+    "signal_id": 8678,
+    "source": "whatsapp",
+    "sender": "Shraddha Jaiswal",
+    "message": "Let me see Pradeep ,pre prod week is going on I\u2019ll update in sometime",
+    "timestamp": "2026-06-25T12:05:13.591+00:00",
+    "expected": {
+      "signal_type": "NOISE",
+      "importance": 0.1,
+      "contract": {
+        "entities": [
+          "Let",
+          "Pradeep"
+        ],
+        "financial_candidate": false,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": true,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "f89cf4e7-0f4d-4910-86e1-307ed2e57758",
+    "signal_id": 8334,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to BABUN",
+    "timestamp": "2026-04-05T08:10:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "BABUN",
+          "Paid"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "35c14655-5c5e-4ac5-90f3-bf7207665822",
+    "signal_id": 8335,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to VIJAY BALU",
+    "timestamp": "2026-04-05T11:17:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "BALU",
+          "Paid",
+          "VIJAY"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "43f2db54-0a2c-46ff-bef6-587ce077477c",
+    "signal_id": 8336,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to S J PAZHAMUTHIR CHOLAI",
+    "timestamp": "2026-04-05T11:24:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "CHOLAI",
+          "Paid",
+          "PAZHAMUTHIR"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "655fc474-a079-4a5e-a31f-0af4332b3a11",
+    "signal_id": 8337,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to NMD OIL MILL",
+    "timestamp": "2026-04-05T19:09:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "NMD",
+          "Paid",
+          "MILL",
+          "OIL"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "4be0258a-396b-45ec-b3c0-d6cb5e5b98e2",
+    "signal_id": 8338,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to SEENIRAJ S",
+    "timestamp": "2026-04-05T19:16:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "Paid",
+          "SEENIRAJ"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "3ac1e594-ff0a-497c-b687-88917802d6da",
+    "signal_id": 8339,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to GRACE SUPER MARKET",
+    "timestamp": "2026-04-05T19:51:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "MARKET",
+          "Paid",
+          "GRACE",
+          "SUPER"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "f47ea09e-5116-47e9-b822-c360888b2cf0",
+    "signal_id": 8340,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to AAVIN DAIRY HUB",
+    "timestamp": "2026-04-07T07:51:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "HUB",
+          "Paid",
+          "AAVIN",
+          "DAIRY"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "93a2f3de-75c4-4458-8b71-16d736cf464b",
+    "signal_id": 8341,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to Mr VELMURUGAN V",
+    "timestamp": "2026-04-09T07:11:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "VELMURUGAN",
+          "Paid",
+          "Mr"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "fa4c81e6-1eb1-4c20-b5c4-5a8c2b16c7cd",
+    "signal_id": 8342,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to Vijayalakshmi Annamalai",
+    "timestamp": "2026-04-09T21:02:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "Paid",
+          "Annamalai",
+          "Vijayalakshmi"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "9ffc88a1-b996-4ecf-b838-19ce3778309c",
+    "signal_id": 8343,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to Ksss Sea Foods",
+    "timestamp": "2026-04-11T06:52:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "Foods",
+          "Sea",
+          "Paid",
+          "Ksss"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "2c590e68-7b7b-49f1-abd7-1c6f357a157d",
+    "signal_id": 8679,
+    "source": "sms",
+    "sender": "VM-SBICRD-T",
+    "message": "348959 is the OTP for Trxn. of INR 244.00 at FLIPKART I with your credit card ending 8707. OTP is valid for 10 mins. Do not share it with anyone - SBI Card",
+    "timestamp": "2026-06-25T13:44:11.896+00:00",
+    "expected": {
+      "signal_type": "NOISE",
+      "importance": 0.1,
+      "contract": {
+        "entities": [
+          "Do",
+          "FLIPKART",
+          "Card",
+          "Trxn",
+          "OTP",
+          "SBI",
+          "INR"
+        ],
+        "financial_candidate": false,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": true,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "e3062910-5aa5-4254-a540-a99384336c41",
+    "signal_id": 8344,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to VEERAPPAN K",
+    "timestamp": "2026-04-11T08:41:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "VEERAPPAN",
+          "Paid"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "1608bd00-461d-4ee1-8d80-58c4ecb3552c",
+    "signal_id": 8345,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to MS ANU AISHWARYA RAJASIGAMANI",
+    "timestamp": "2026-04-11T09:48:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "RAJASIGAMANI",
+          "MS",
+          "Paid",
+          "AISHWARYA",
+          "ANU"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "06c4a324-44b2-4581-9225-bb6cff17e3a7",
+    "signal_id": 8346,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to Sumithra K",
+    "timestamp": "2026-04-11T11:03:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "Paid",
+          "Sumithra"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "8a9c4441-5baa-4330-a00f-0dc1d5128b48",
+    "signal_id": 8347,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to Jaganathan A",
+    "timestamp": "2026-04-11T11:23:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "Jaganathan",
+          "Paid"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "7a5f2253-62dc-49a5-bf94-238fc9c554e0",
+    "signal_id": 8348,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to Mr SRIDHAR M",
+    "timestamp": "2026-04-11T11:34:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "SRIDHAR",
+          "Paid",
+          "Mr"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "ed47455b-9ddc-4010-b5f6-53d9c7a93a9b",
+    "signal_id": 8349,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to Hari Prasad Sankar",
+    "timestamp": "2026-04-11T18:26:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "Paid",
+          "Prasad",
+          "Sankar",
+          "Hari"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "83c55da6-d824-4b37-bb6e-bcb0e9743de2",
+    "signal_id": 8350,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to APOLLO PHARMACY",
+    "timestamp": "2026-04-11T18:53:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "PHARMACY",
+          "Paid",
+          "APOLLO"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "09e1d18a-72a9-4137-84ea-985db5b3f626",
+    "signal_id": 8351,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to Kavitha Umakanthan",
+    "timestamp": "2026-04-11T18:55:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "Umakanthan",
+          "Paid",
+          "Kavitha"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "27b49c6e-9fe8-402e-87a1-824737e6f032",
+    "signal_id": 8352,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to Anbu Fruits Shop",
+    "timestamp": "2026-04-11T18:58:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "Fruits",
+          "Paid",
+          "Anbu",
+          "Shop"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "1b9627ba-a5a3-433a-adc1-8cdeb8ec6d19",
+    "signal_id": 8353,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to Mr RAMACHANDRAN D",
+    "timestamp": "2026-04-12T07:42:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "Paid",
+          "Mr",
+          "RAMACHANDRAN"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "b3cdc7fd-8583-4e55-92af-210fa7c5d94a",
+    "signal_id": 8680,
+    "source": "whatsapp",
+    "sender": "WhatsApp: Senthil RFC",
+    "message": "Yeah looks so",
+    "timestamp": "2026-06-25T16:38:34.815+00:00",
+    "expected": {
+      "signal_type": "NOISE",
+      "importance": 0.1,
+      "contract": {
+        "entities": [
+          "Yeah"
+        ],
+        "financial_candidate": false,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": true,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "b0fb90ff-d366-456c-9e55-c7ec29f6d694",
+    "signal_id": 8354,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to 17003 Apollo Pharmacy",
+    "timestamp": "2026-04-12T07:58:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "Paid",
+          "Apollo",
+          "Pharmacy"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "83d11af0-5d5e-4185-87cb-90b57296894d",
+    "signal_id": 8355,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to VIJAY BALU",
+    "timestamp": "2026-04-12T11:16:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "BALU",
+          "Paid",
+          "VIJAY"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "fd015e5a-74aa-44ca-916c-884c0cb0a38a",
+    "signal_id": 8356,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to SKM FLOWER SHOP",
+    "timestamp": "2026-04-12T18:26:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "Paid",
+          "SHOP",
+          "FLOWER",
+          "SKM"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "5000da50-f9a5-4b34-93f2-0c542cf5b409",
+    "signal_id": 8357,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to GRACE SUPER MARKET",
+    "timestamp": "2026-04-12T18:53:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "MARKET",
+          "Paid",
+          "GRACE",
+          "SUPER"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "ffb0b66b-847a-44ab-bdf6-5f495efe5cab",
+    "signal_id": 8358,
+    "source": "gpay",
+    "sender": "kalai chelvi",
+    "message": "Received from kalai chelvi",
+    "timestamp": "2026-04-12T19:52:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "CREDIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "Received"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "0f1286e7-fa5a-4567-a0b5-fb02765711d5",
+    "signal_id": 8359,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to EDF Juice Juices P Ltd",
+    "timestamp": "2026-04-13T12:51:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "Juices",
+          "Juice",
+          "Paid",
+          "EDF",
+          "Ltd"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "68142ace-2feb-4fde-bb57-9d1d3ec0585e",
+    "signal_id": 8360,
+    "source": "gpay",
+    "sender": "kalai chelvi",
+    "message": "Received from kalai chelvi",
+    "timestamp": "2026-04-14T05:52:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "CREDIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "Received"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "f6881693-0435-4ccf-9c1f-c493d380c8e4",
+    "signal_id": 8361,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to Shobana Kumari",
+    "timestamp": "2026-04-14T06:05:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "Shobana",
+          "Paid",
+          "Kumari"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "21676071-5115-4da7-808d-6be426cec5f6",
+    "signal_id": 8362,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to SEENIRAJ S",
+    "timestamp": "2026-04-14T20:49:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "Paid",
+          "SEENIRAJ"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "5c22b587-4e81-4808-9d5b-6c8b1a1bcc7b",
+    "signal_id": 8363,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to Vijayalakshmi Annamalai",
+    "timestamp": "2026-04-14T20:53:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "Paid",
+          "Annamalai",
+          "Vijayalakshmi"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "e0038a52-7204-4e60-8922-0825e93721aa",
+    "signal_id": 8681,
+    "source": "whatsapp",
+    "sender": "Senthil RFC",
+    "message": "Yeah looks so",
+    "timestamp": "2026-06-25T16:38:34.819+00:00",
+    "expected": {
+      "signal_type": "NOISE",
+      "importance": 0.1,
+      "contract": {
+        "entities": [
+          "Yeah"
+        ],
+        "financial_candidate": false,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": true,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "923d7a58-5ed0-473c-a675-933d64bd9a17",
+    "signal_id": 8364,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to Sumithra K",
+    "timestamp": "2026-04-14T20:59:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "Paid",
+          "Sumithra"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "dd2dacaa-94da-4191-b001-47498cde3722",
+    "signal_id": 8365,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to sundar sr",
+    "timestamp": "2026-04-14T22:06:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "Paid"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "070a4be7-8c30-4309-970f-84aa69786948",
+    "signal_id": 8366,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to MEDPLUS SIKKANDAR CHAVADI KOVILPAPPAKUDI",
+    "timestamp": "2026-04-16T08:01:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "SIKKANDAR",
+          "MEDPLUS",
+          "CHAVADI",
+          "Paid",
+          "KOVILPAPPAKUDI"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "66552e26-cf77-467e-9d44-f775004ff8d5",
+    "signal_id": 8367,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to AAVIN DAIRY HUB",
+    "timestamp": "2026-04-16T08:08:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "HUB",
+          "Paid",
+          "AAVIN",
+          "DAIRY"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "47324000-c22d-4294-a922-48d53b853060",
+    "signal_id": 8368,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to BROWN TREE RETAIL PRIVATE LIMITED",
+    "timestamp": "2026-04-17T09:45:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "BROWN",
+          "PRIVATE",
+          "RETAIL",
+          "Paid",
+          "LIMITED",
+          "TREE"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "c53aea70-7999-4afd-a0e7-eec48fbb406f",
+    "signal_id": 8369,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to JISHA JOHN C",
+    "timestamp": "2026-04-17T14:24:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "Paid",
+          "JOHN",
+          "JISHA"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "f857e19c-fc23-4634-a7b3-1d6e3880178c",
+    "signal_id": 8370,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to VINOD KUMAR",
+    "timestamp": "2026-04-17T21:21:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "VINOD",
+          "Paid",
+          "KUMAR"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "ace98e98-ad3e-4a7d-a0b9-7b1a7569e6f3",
+    "signal_id": 8371,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to Mr HAJNOOL AKBAR S",
+    "timestamp": "2026-04-18T06:47:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "Paid",
+          "AKBAR",
+          "Mr",
+          "HAJNOOL"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "42767ec9-42db-41f5-8279-9405c911ecd6",
+    "signal_id": 8372,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to Ellammal Duraisamy",
+    "timestamp": "2026-04-18T07:06:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "Duraisamy",
+          "Paid",
+          "Ellammal"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "b635bc8b-78ec-4d00-b5aa-7958bf0e0ceb",
+    "signal_id": 8373,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to KANI VEGITABLES AND FRUITS",
+    "timestamp": "2026-04-18T10:20:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "AND",
+          "KANI",
+          "Paid",
+          "VEGITABLES",
+          "FRUITS"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "ac8b6da1-489c-4e2d-a9cc-d57902220d96",
+    "signal_id": 8682,
+    "source": "whatsapp",
+    "sender": "WhatsApp: Senthil RFC",
+    "message": "Wil try the web url",
+    "timestamp": "2026-06-25T16:38:43.861+00:00",
+    "expected": {
+      "signal_type": "NOISE",
+      "importance": 0.1,
+      "contract": {
+        "entities": [
+          "Wil"
+        ],
+        "financial_candidate": false,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": true,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "5871c144-8a4c-4cd9-85a4-270ae538bd92",
+    "signal_id": 8374,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to KANI VEGITABLES AND FRUITS",
+    "timestamp": "2026-04-18T10:30:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "AND",
+          "KANI",
+          "Paid",
+          "VEGITABLES",
+          "FRUITS"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "09d458c0-37b7-48f9-9813-e5fd19cc9a15",
+    "signal_id": 8375,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to S J PAZHAMUTHIR CHOLAI",
+    "timestamp": "2026-04-18T10:37:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "CHOLAI",
+          "Paid",
+          "PAZHAMUTHIR"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "439fc643-e364-4ea6-b8a2-f241111b6228",
+    "signal_id": 8376,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to Naresh Naresh",
+    "timestamp": "2026-04-18T13:10:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "Paid",
+          "Naresh"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "eddc0321-d068-4251-b742-7675e8b31345",
+    "signal_id": 8377,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to VEERAPPAN K",
+    "timestamp": "2026-04-19T07:55:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "VEERAPPAN",
+          "Paid"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "ed1fba8c-ba0d-472b-baa4-72e8db6984cb",
+    "signal_id": 8378,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to GRACE SUPER MARKET",
+    "timestamp": "2026-04-19T08:03:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "MARKET",
+          "Paid",
+          "GRACE",
+          "SUPER"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "47ff02bf-5be6-472f-a869-42775f479587",
+    "signal_id": 8379,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to Sumithra K",
+    "timestamp": "2026-04-19T11:13:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "Paid",
+          "Sumithra"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "72aef1b4-65f8-468a-a0a7-2299dc739ecf",
+    "signal_id": 8380,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to MANIKANDAN FRUITS SHOP",
+    "timestamp": "2026-04-19T11:27:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "Paid",
+          "SHOP",
+          "MANIKANDAN",
+          "FRUITS"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "77eef600-45d3-4891-a158-fdea004ac69f",
+    "signal_id": 8381,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to Saravana Agencies",
+    "timestamp": "2026-04-19T11:33:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "Saravana",
+          "Paid",
+          "Agencies"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "b92c688f-11be-4b7d-ab3e-235d01256332",
+    "signal_id": 8382,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to Ambika Vegitables",
+    "timestamp": "2026-04-19T19:14:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "Paid",
+          "Vegitables",
+          "Ambika"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "4414c06d-3279-4ec9-859e-2fca2d5fd702",
+    "signal_id": 8383,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to VIJAYA J",
+    "timestamp": "2026-04-19T19:19:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "VIJAYA",
+          "Paid"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "69cf2b06-75de-42af-a8b1-ab25b9f906e6",
+    "signal_id": 8683,
+    "source": "whatsapp",
+    "sender": "WhatsApp: Senthil RFC",
+    "message": "Can you share the mercury one gate url if possible",
+    "timestamp": "2026-06-25T16:38:55.125+00:00",
+    "expected": {
+      "signal_type": "ACTION",
+      "importance": 0.75,
+      "contract": {
+        "task_name": "Can you share the mercury one gate url if possible",
+        "assignee": "unknown",
+        "due_date": null,
+        "entities": [
+          "Can"
+        ],
+        "financial_candidate": false,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": true,
+        "memory_candidate": true
+      }
+    }
+  },
+  {
+    "id": "403bf19d-82b7-4173-84fd-06bfa13e2741",
+    "signal_id": 8384,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to BAWAA MEDICALS",
+    "timestamp": "2026-04-19T21:40:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "MEDICALS",
+          "Paid",
+          "BAWAA"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "a4f261f3-9252-4eb0-ba11-d6cd9dbefe42",
+    "signal_id": 8385,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to EDF Juice Juices P Ltd",
+    "timestamp": "2026-04-20T12:31:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "Juices",
+          "Juice",
+          "Paid",
+          "EDF",
+          "Ltd"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "538efa01-6747-4e18-a484-28f430badca6",
+    "signal_id": 8386,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to BROWN TREE RETAIL PRIVATE LIMITED",
+    "timestamp": "2026-04-20T12:52:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "BROWN",
+          "PRIVATE",
+          "RETAIL",
+          "Paid",
+          "LIMITED",
+          "TREE"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "ba96d85d-c0ff-45e7-8683-bef0a37602c4",
+    "signal_id": 8387,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to JISHA JOHN C",
+    "timestamp": "2026-04-20T16:45:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "Paid",
+          "JOHN",
+          "JISHA"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "e6a2dd66-66ad-40d1-83de-6c0d1390dfde",
+    "signal_id": 8388,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to SEENIRAJ S",
+    "timestamp": "2026-04-23T11:05:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "Paid",
+          "SEENIRAJ"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "f31cef1b-413f-46d4-bf32-c8ddad52062f",
+    "signal_id": 8389,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to AALADIPATTIYAN KUNDRATHUR",
+    "timestamp": "2026-04-23T18:33:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "AALADIPATTIYAN",
+          "Paid",
+          "KUNDRATHUR"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "63472548-5cfc-439b-ac57-a0b163b0e602",
+    "signal_id": 8390,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to Vijayalakshmi Annamalai",
+    "timestamp": "2026-04-23T18:59:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "Paid",
+          "Annamalai",
+          "Vijayalakshmi"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "c90994e6-5a8b-4625-a8b3-ccd81ff9c0b9",
+    "signal_id": 8391,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to JISHA JOHN C",
+    "timestamp": "2026-04-24T10:36:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "Paid",
+          "JOHN",
+          "JISHA"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "95db95c5-2ffa-4d8f-8ba0-e784cf8bcc73",
+    "signal_id": 8392,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to JISHA JOHN C",
+    "timestamp": "2026-04-24T15:42:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "Paid",
+          "JOHN",
+          "JISHA"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "59bf8e22-ab9b-47b6-a10f-db0594930d65",
+    "signal_id": 8393,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to Mr HAJNOOL AKBAR S",
+    "timestamp": "2026-04-25T06:55:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "Paid",
+          "AKBAR",
+          "Mr",
+          "HAJNOOL"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "b8d3a334-143e-4fbf-bc8f-e3d15fc60b7a",
+    "signal_id": 8684,
+    "source": "whatsapp",
+    "sender": "Senthil RFC",
+    "message": "Can you share the mercury one gate url if possible",
+    "timestamp": "2026-06-25T16:38:55.135+00:00",
+    "expected": {
+      "signal_type": "ACTION",
+      "importance": 0.75,
+      "contract": {
+        "task_name": "Can you share the mercury one gate url if possible",
+        "assignee": "unknown",
+        "due_date": null,
+        "entities": [
+          "Can"
+        ],
+        "financial_candidate": false,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": true,
+        "memory_candidate": true
+      }
+    }
+  },
+  {
+    "id": "7e20f6d7-57c8-4b65-8587-f2afe19930f5",
+    "signal_id": 8394,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to PARAMASIVAM UTHARKUMAR",
+    "timestamp": "2026-04-25T10:25:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "Paid",
+          "PARAMASIVAM",
+          "UTHARKUMAR"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "2c0b4c4c-2b64-4ee8-a7f1-28fd66fc815e",
+    "signal_id": 8395,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to Sumithra K",
+    "timestamp": "2026-04-25T10:29:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "Paid",
+          "Sumithra"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "79e5cdf1-bfae-4e95-a4c2-96108d64998d",
+    "signal_id": 8396,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to SKYRAIL ENTERTAINMENT",
+    "timestamp": "2026-04-25T16:58:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "Paid",
+          "SKYRAIL",
+          "ENTERTAINMENT"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "ffdd246f-b33f-4ab4-b738-024aa84cb80d",
+    "signal_id": 8397,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to MCH Forum Vijaya Mall Chennai",
+    "timestamp": "2026-04-25T17:18:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "Chennai",
+          "Mall",
+          "Forum",
+          "Vijaya",
+          "Paid",
+          "MCH"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "2401d85e-363a-4e83-b0c7-302e27038611",
+    "signal_id": 8398,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to Kfc nexus Vija Mall fc 6749",
+    "timestamp": "2026-04-25T17:30:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "Vija",
+          "Mall",
+          "Paid",
+          "Kfc"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "1212e7b9-1eb5-41cd-b8d7-b54caba576d9",
+    "signal_id": 8399,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to CMRL MEENAMBAKKAM CARGO SIDE PARKING",
+    "timestamp": "2026-04-25T18:53:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "PARKING",
+          "SIDE",
+          "MEENAMBAKKAM",
+          "Paid",
+          "CMRL",
+          "CARGO"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "ea710eff-f154-4dcf-9061-7131c4026d9a",
+    "signal_id": 8400,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to Mr RAMACHANDRAN D",
+    "timestamp": "2026-04-26T07:44:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "Paid",
+          "Mr",
+          "RAMACHANDRAN"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "77bdaabf-ce09-4eba-be85-9b6a82c5fd28",
+    "signal_id": 8401,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to Mr Saravanan R",
+    "timestamp": "2026-04-26T07:53:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "Saravanan",
+          "Paid",
+          "Mr"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "de2ccbcb-e180-4290-b85a-1a29d70949ff",
+    "signal_id": 8402,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to VEERAPPAN K",
+    "timestamp": "2026-04-26T07:56:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "VEERAPPAN",
+          "Paid"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "b20d53d6-84c5-491b-ba7a-5ef05a7dd5b1",
+    "signal_id": 8403,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to SEENIRAJ S",
+    "timestamp": "2026-04-26T19:50:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "Paid",
+          "SEENIRAJ"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "f23719cc-d35f-4922-ac48-9c9596a35dd2",
+    "signal_id": 8685,
+    "source": "whatsapp",
+    "sender": "WhatsApp: Senthil RFC",
+    "message": "Got the link",
+    "timestamp": "2026-06-25T16:41:16.265+00:00",
+    "expected": {
+      "signal_type": "NOISE",
+      "importance": 0.1,
+      "contract": {
+        "entities": [
+          "Got"
+        ],
+        "financial_candidate": false,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": true,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "23dffb58-11d1-44f3-b423-9c057755d8af",
+    "signal_id": 8404,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to JISHA JOHN C",
+    "timestamp": "2026-04-27T17:11:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "Paid",
+          "JOHN",
+          "JISHA"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "e24edfff-8202-4d91-98a2-bc6af24c1dcb",
+    "signal_id": 8405,
+    "source": "gpay",
+    "sender": "Shobana Kumari",
+    "message": "Received from Shobana Kumari",
+    "timestamp": "2026-04-30T20:42:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "CREDIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "Shobana",
+          "Kumari",
+          "Received"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "f59928dd-e31a-435f-b5ee-5a1bbc64d455",
+    "signal_id": 8406,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to THAMARAI HOTCHIPS",
+    "timestamp": "2026-05-01T20:23:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "THAMARAI",
+          "Paid",
+          "HOTCHIPS"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "2a300512-67b5-4798-8b08-8f11c21d9e10",
+    "signal_id": 8407,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to SARATHKUMAR S",
+    "timestamp": "2026-05-02T17:00:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "SARATHKUMAR",
+          "Paid"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "9801a9fe-c6a2-4ed1-996d-4b89919e0079",
+    "signal_id": 8408,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to G M VIYOMAVATHY",
+    "timestamp": "2026-05-02T17:15:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "Paid",
+          "VIYOMAVATHY"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "a70dbbc4-697f-421b-a5c9-ef78095f0cb2",
+    "signal_id": 8409,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to IRCTC Web UPI",
+    "timestamp": "2026-05-04T11:02:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UPI",
+        "merchant": null,
+        "entities": [
+          "IRCTC",
+          "UPI",
+          "Paid",
+          "Web"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "7e46902c-145c-4eb9-b885-8a79fbb9f54c",
+    "signal_id": 8410,
+    "source": "gpay",
+    "sender": "NAGARAJAN A",
+    "message": "Received from NAGARAJAN A",
+    "timestamp": "2026-05-04T11:08:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "CREDIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "NAGARAJAN",
+          "Received"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "41cbd89c-cad7-42a5-9d9b-0fc6cb308cf3",
+    "signal_id": 8411,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to IMPRESSIONZ DLF RAMAPURAM",
+    "timestamp": "2026-05-05T12:24:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "RAMAPURAM",
+          "Paid",
+          "DLF",
+          "IMPRESSIONZ"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "3f59a4e8-740d-463e-9291-1b31a741c32a",
+    "signal_id": 8412,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to EDF Juice Juices P Ltd",
+    "timestamp": "2026-05-05T12:46:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "Juices",
+          "Juice",
+          "Paid",
+          "EDF",
+          "Ltd"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "e4f2d14f-b357-4971-925f-e413415c49e5",
+    "signal_id": 8413,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to JISHA JOHN C",
+    "timestamp": "2026-05-05T16:42:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "Paid",
+          "JOHN",
+          "JISHA"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "754c1844-6cb3-40d0-9f26-ce96234e8ba3",
+    "signal_id": 8686,
+    "source": "whatsapp",
+    "sender": "WhatsApp: Shraddha Jaiswal",
+    "message": "Done , Pradeep!",
+    "timestamp": "2026-06-25T17:05:46.826+00:00",
+    "expected": {
+      "signal_type": "NOISE",
+      "importance": 0.1,
+      "contract": {
+        "entities": [
+          "Done",
+          "Pradeep"
+        ],
+        "financial_candidate": false,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": true,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "532cc70a-1b7e-4dc7-ab32-b383b1c92eb2",
+    "signal_id": 8414,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to EDF Juice Juices P Ltd",
+    "timestamp": "2026-05-06T12:47:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "Juices",
+          "Juice",
+          "Paid",
+          "EDF",
+          "Ltd"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "b9705235-5719-41bf-ade2-287948249074",
+    "signal_id": 8415,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to JISHA JOHN C",
+    "timestamp": "2026-05-06T16:12:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "Paid",
+          "JOHN",
+          "JISHA"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "1547a6e3-e2dd-4542-a87f-ba341e4264c9",
+    "signal_id": 8416,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to Nithiya Raja",
+    "timestamp": "2026-05-07T19:37:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "Paid",
+          "Raja",
+          "Nithiya"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "b4e4445d-b464-409f-9039-29d64b98d81c",
+    "signal_id": 8417,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to VIJAYA J",
+    "timestamp": "2026-05-07T19:45:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "VIJAYA",
+          "Paid"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "c66ab3be-b341-4599-9371-bc1a1b2585c7",
+    "signal_id": 8418,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to TANGEDCO",
+    "timestamp": "2026-05-07T20:55:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "Paid",
+          "TANGEDCO"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "2569bb48-0ae1-47b9-bdb3-bdccbcefab29",
+    "signal_id": 8419,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to Anusha Sampath",
+    "timestamp": "2026-05-08T09:58:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "Anusha",
+          "Paid",
+          "Sampath"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "1f037052-f7c7-4840-b13d-b67fa165b5fa",
+    "signal_id": 8420,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to JISHA JOHN C",
+    "timestamp": "2026-05-08T16:06:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "Paid",
+          "JOHN",
+          "JISHA"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "65184c98-3b84-4132-a120-2300b869e2ec",
+    "signal_id": 8421,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to AMMA MESS",
+    "timestamp": "2026-05-08T20:03:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "Paid",
+          "AMMA",
+          "MESS"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "22864544-985d-415e-beb6-e10af1fdb116",
+    "signal_id": 8422,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to AMMA MESS",
+    "timestamp": "2026-05-09T08:38:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "Paid",
+          "AMMA",
+          "MESS"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "d18b9ca1-5d99-405d-919b-b5aa0109d743",
+    "signal_id": 8423,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to HOTEL SRI GANESH BHAVAN",
+    "timestamp": "2026-05-09T13:15:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "HOTEL",
+          "BHAVAN",
+          "SRI",
+          "Paid",
+          "GANESH"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "f4884dd1-1870-45e9-b3c4-ad0c60bb0de8",
+    "signal_id": 8687,
+    "source": "whatsapp",
+    "sender": "Shraddha Jaiswal",
+    "message": "Done , Pradeep!",
+    "timestamp": "2026-06-25T17:05:46.835+00:00",
+    "expected": {
+      "signal_type": "NOISE",
+      "importance": 0.1,
+      "contract": {
+        "entities": [
+          "Done",
+          "Pradeep"
+        ],
+        "financial_candidate": false,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": true,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "a3537146-c338-4dae-9c1e-4057d855b43a",
+    "signal_id": 8424,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to Prabhakaran R",
+    "timestamp": "2026-05-09T15:28:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "Paid",
+          "Prabhakaran"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "a3a8b063-a5bc-4e63-abfc-71e6ac6f0a22",
+    "signal_id": 8425,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to sundar sr",
+    "timestamp": "2026-05-14T07:31:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "Paid"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "975f6f97-f116-4d11-b066-98bdbe9f9e9d",
+    "signal_id": 8426,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to Vasan Fuels",
+    "timestamp": "2026-05-14T07:37:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "Fuels",
+          "Paid",
+          "Vasan"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "4bd39723-986f-4911-a3f5-667a6f1818ae",
+    "signal_id": 8427,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to CANAVIL FAMILY RESTAURANT",
+    "timestamp": "2026-05-15T22:50:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "Paid",
+          "RESTAURANT",
+          "FAMILY",
+          "CANAVIL"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "3512b493-a129-45ea-bd98-10371cf926df",
+    "signal_id": 8428,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to SUNDARESAN N S",
+    "timestamp": "2026-05-16T02:25:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "Paid",
+          "SUNDARESAN"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "2146080c-4b2a-4955-8240-115d793f226c",
+    "signal_id": 8429,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to Mallelil Fuels",
+    "timestamp": "2026-05-16T12:40:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "Fuels",
+          "Paid",
+          "Mallelil"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "e9e1d00e-65e4-47f2-a87a-c0615ade28dc",
+    "signal_id": 8430,
+    "source": "gpay",
+    "sender": "Nagarajan A",
+    "message": "Received from Nagarajan A",
+    "timestamp": "2026-05-16T12:43:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "CREDIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "Nagarajan",
+          "Received"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "1e4ad300-2b7c-4623-9964-9ffc0cd9ca2a",
+    "signal_id": 8431,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to ALMAS KITCHEN",
+    "timestamp": "2026-05-16T16:40:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "KITCHEN",
+          "Paid",
+          "ALMAS"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "24dff39e-3c7e-48e2-8fb5-f93b74c4631a",
+    "signal_id": 8432,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to SOUNDRARAJAN T",
+    "timestamp": "2026-05-17T12:57:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "SOUNDRARAJAN",
+          "Paid"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "93f537a3-2cb4-4ac2-9aea-5631fbe0f4aa",
+    "signal_id": 8433,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to Shobana Kumari",
+    "timestamp": "2026-05-17T16:27:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "Shobana",
+          "Paid",
+          "Kumari"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "355fadaa-76d7-4a24-a4b6-4d76fc743f5f",
+    "signal_id": 8688,
+    "source": "whatsapp",
+    "sender": "Daily Badminton Update: ~\u202fGanesh Pandian \ud83e\udef0\ud83c\udffe",
+    "message": "Guys pls come around 6:30am",
+    "timestamp": "2026-06-26T00:16:33.948+00:00",
+    "expected": {
+      "signal_type": "NOISE",
+      "importance": 0.1,
+      "contract": {
+        "entities": [
+          "Guys"
+        ],
+        "financial_candidate": false,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": true,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "7da1c6ef-d6a8-424b-b196-156efc51201e",
+    "signal_id": 8434,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to SELVAM B",
+    "timestamp": "2026-05-17T16:50:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "Paid",
+          "SELVAM"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "151f33c6-9b0a-42c4-9b5d-dfc7e8551403",
+    "signal_id": 8435,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to MUTTOM KADARKARAI SUITULA",
+    "timestamp": "2026-05-17T17:45:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "Paid",
+          "SUITULA",
+          "MUTTOM",
+          "KADARKARAI"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "b849147b-e220-449c-8cdb-f1ef38d8acd3",
+    "signal_id": 8436,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to Mrs Pratheebha A",
+    "timestamp": "2026-05-17T17:48:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "Paid",
+          "Mrs",
+          "Pratheebha"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "c31588f9-27e1-4222-9eed-5fc0fb79a23b",
+    "signal_id": 8437,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to T Raja AHILARAJA",
+    "timestamp": "2026-05-17T19:40:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "Paid",
+          "Raja",
+          "AHILARAJA"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "c6810b71-ebad-4dd6-8f18-aa6863df3ebc",
+    "signal_id": 8438,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to SIVASANKER S",
+    "timestamp": "2026-05-17T19:44:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "SIVASANKER",
+          "Paid"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "30603abd-2a68-44f7-9e5a-ec0b9e14ee96",
+    "signal_id": 8439,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to RAJESH MUTHULINGAM",
+    "timestamp": "2026-05-17T19:49:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "Paid",
+          "MUTHULINGAM",
+          "RAJESH"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "91f44162-4435-43ef-b9be-c50025ce54ac",
+    "signal_id": 8440,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to KSA FASHION",
+    "timestamp": "2026-05-17T20:03:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "FASHION",
+          "Paid",
+          "KSA"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "5108e3bf-53a7-4265-9923-0661e09fd324",
+    "signal_id": 8441,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to Abila Benign",
+    "timestamp": "2026-05-18T21:04:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "Paid",
+          "Benign",
+          "Abila"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "8c011a99-4647-4bac-b6b0-443c11281a3c",
+    "signal_id": 8442,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to Coverfox Insurance Broking Pvt Ltd",
+    "timestamp": "2026-05-22T14:54:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "Insurance",
+          "Pvt",
+          "Paid",
+          "Coverfox",
+          "Broking",
+          "Ltd"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "15c05020-55cc-4216-8fd9-e8b959a51ada",
+    "signal_id": 8443,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to P P M HOSPITAL",
+    "timestamp": "2026-05-22T19:41:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "Paid",
+          "HOSPITAL"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "7f151ec8-3d75-4251-add0-3ab22c82b250",
+    "signal_id": 8444,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to Ameer Ali",
+    "timestamp": "2026-05-23T09:55:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "Ameer",
+          "Paid",
+          "Ali"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "02a0b76b-5d08-4334-8a23-7cc9b90d001d",
+    "signal_id": 8445,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to ROSE DENTAL CLINIC",
+    "timestamp": "2026-05-23T11:18:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "ROSE",
+          "CLINIC",
+          "Paid",
+          "DENTAL"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "03721443-49fc-4130-a00b-81c010631cf6",
+    "signal_id": 8446,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to T Raja AHILARAJA",
+    "timestamp": "2026-05-23T11:31:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "Paid",
+          "Raja",
+          "AHILARAJA"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "6db55cfb-634f-458a-9cde-530263653e8b",
+    "signal_id": 8447,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to Vasan Fuels",
+    "timestamp": "2026-05-23T16:06:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "Fuels",
+          "Paid",
+          "Vasan"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "4a936ced-e0b8-4b75-9c1e-295229b355ac",
+    "signal_id": 8448,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to RAJESH MUTHULINGAM",
+    "timestamp": "2026-05-23T16:16:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "Paid",
+          "MUTHULINGAM",
+          "RAJESH"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "921cde7f-6dbf-4b73-a6e7-a762ca7cbfa8",
+    "signal_id": 8449,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to Arun Antony",
+    "timestamp": "2026-05-23T16:43:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "Paid",
+          "Arun",
+          "Antony"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "52990bfa-3aa5-49b1-a0cf-413f4a588762",
+    "signal_id": 8450,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to Jeya Sree",
+    "timestamp": "2026-05-24T08:26:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "Paid",
+          "Jeya",
+          "Sree"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "2a42964d-b4a0-4b9b-8a30-c08f39c4deb1",
+    "signal_id": 8451,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to GOLDEN BAKERS",
+    "timestamp": "2026-05-24T09:26:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "BAKERS",
+          "Paid",
+          "GOLDEN"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "f0cbd7a6-f2bd-49b0-8624-66526c3c89f7",
+    "signal_id": 8452,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to RETHINASWAMY C",
+    "timestamp": "2026-05-24T09:42:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "RETHINASWAMY",
+          "Paid"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "d3fc5520-2a42-444a-818d-c6e10fa2f456",
+    "signal_id": 8453,
+    "source": "gpay",
+    "sender": "kalai chelvi",
+    "message": "Received from kalai chelvi",
+    "timestamp": "2026-05-24T13:53:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "CREDIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "Received"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "2d4c3214-f045-48e0-ad4c-c31e9ea5b8ec",
+    "signal_id": 8690,
+    "source": "whatsapp",
+    "sender": "Daily Badminton Update (3 messages): ~\u202fGanesh Pandian \ud83e\udef0\ud83c\udffe",
+    "message": "Started will reach in 10mins",
+    "timestamp": "2026-06-26T00:50:21.491+00:00",
+    "expected": {
+      "signal_type": "NOISE",
+      "importance": 0.1,
+      "contract": {
+        "entities": [
+          "Started"
+        ],
+        "financial_candidate": false,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": true,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "de60db75-af6d-423e-976d-73edc3f1b4e9",
+    "signal_id": 8454,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to RETHINASWAMY C",
+    "timestamp": "2026-05-24T16:03:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "RETHINASWAMY",
+          "Paid"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "4381f0e1-04d1-4b05-8801-8aa0ae03ffa6",
+    "signal_id": 8455,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to SREE SINDHU SWEETS AND SNACKS",
+    "timestamp": "2026-05-24T16:20:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "AND",
+          "SWEETS",
+          "Paid",
+          "SINDHU",
+          "SREE",
+          "SNACKS"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "0265c9f7-d767-4298-91a2-3307899c10d9",
+    "signal_id": 8456,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to THE ITALIAN CAKE SHOP 12",
+    "timestamp": "2026-05-24T16:31:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "THE",
+          "ITALIAN",
+          "CAKE",
+          "Paid",
+          "SHOP"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "a4331c74-afd6-4283-95b8-64f3145ecc5a",
+    "signal_id": 8457,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to KSA FASHION",
+    "timestamp": "2026-05-24T16:52:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "FASHION",
+          "Paid",
+          "KSA"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "eeb5077f-c86d-4128-9a05-796807400112",
+    "signal_id": 8458,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to RAMYA",
+    "timestamp": "2026-05-25T09:24:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "Paid",
+          "RAMYA"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "33f38681-d918-44b1-9eb7-5713ae87a0e2",
+    "signal_id": 8459,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to MURUGAN VELU NADAR",
+    "timestamp": "2026-05-25T10:18:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "MURUGAN",
+          "Paid",
+          "VELU",
+          "NADAR"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "a7232114-7b36-46c5-97e9-6abab1e21fab",
+    "signal_id": 8460,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to GURUSAMY RAVICHANDRAN",
+    "timestamp": "2026-05-25T17:45:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "RAVICHANDRAN",
+          "Paid",
+          "GURUSAMY"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "d0c5bb9d-26ad-4a2c-a17a-9510d255b9b6",
+    "signal_id": 8461,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to DELIGHT MART",
+    "timestamp": "2026-05-25T19:30:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "DELIGHT",
+          "Paid",
+          "MART"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "517f6ddf-799e-4157-b7bd-c42550be5886",
+    "signal_id": 8462,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to K MALLESAN",
+    "timestamp": "2026-05-26T17:48:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "Paid",
+          "MALLESAN"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "1742f26b-0b88-4218-8899-03da6aba7c49",
+    "signal_id": 8463,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to Mr.S JAGAN",
+    "timestamp": "2026-05-27T06:29:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "JAGAN",
+          "Paid",
+          "Mr"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "00fc3e35-5954-4ffe-b44a-1dcb83f59cd5",
+    "signal_id": 8691,
+    "source": "whatsapp",
+    "sender": "Daily Badminton Update: ~\u202fGanesh Pandian \ud83e\udef0\ud83c\udffe",
+    "message": "We are in",
+    "timestamp": "2026-06-26T01:13:17.667+00:00",
+    "expected": {
+      "signal_type": "NOISE",
+      "importance": 0.1,
+      "contract": {
+        "entities": [
+          "We"
+        ],
+        "financial_candidate": false,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": true,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "3d09f287-34ac-42c2-9931-00769a483f1c",
+    "signal_id": 8464,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to DINESH R",
+    "timestamp": "2026-05-27T07:18:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "Paid",
+          "DINESH"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "baaed53a-066d-4670-be24-6458862d50c0",
+    "signal_id": 8465,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to RACIN NELUFUR S I",
+    "timestamp": "2026-05-27T07:20:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "Paid",
+          "RACIN",
+          "NELUFUR"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "295ebcf3-b0fc-45f4-a552-6dde7c9793a7",
+    "signal_id": 8466,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to Ellammal",
+    "timestamp": "2026-05-27T07:40:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "Paid",
+          "Ellammal"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "52f9d52a-d683-4047-8295-571e44a81dcf",
+    "signal_id": 8467,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to Periyapalayathal Pachaiyappan",
+    "timestamp": "2026-05-27T07:42:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "Periyapalayathal",
+          "Paid",
+          "Pachaiyappan"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "4109212c-c23b-4f70-99d3-bc69ea302ade",
+    "signal_id": 8468,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to SRI NARAYANA HOTEL",
+    "timestamp": "2026-05-27T07:46:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "NARAYANA",
+          "HOTEL",
+          "Paid",
+          "SRI"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "f2d6d5c6-6603-48d9-bd75-6fb8743bd11e",
+    "signal_id": 8469,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to RADHAKRISHNANKR",
+    "timestamp": "2026-05-27T07:52:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "Paid",
+          "RADHAKRISHNANKR"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "2574dd9c-b869-4a1f-a40b-d975c3f515bc",
+    "signal_id": 8470,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to Sumithra K",
+    "timestamp": "2026-05-27T07:57:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "Paid",
+          "Sumithra"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "ff9a9391-2a02-475c-89c7-5f8f489f95c8",
+    "signal_id": 8471,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to SIVANANDA SARASWATHI SEVASHRAM",
+    "timestamp": "2026-05-29T14:21:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "Paid",
+          "SEVASHRAM",
+          "SARASWATHI",
+          "SIVANANDA"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "65756347-0cbc-4591-9387-11d2852bbab0",
+    "signal_id": 8472,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to OSR SEA FOODS",
+    "timestamp": "2026-05-30T06:52:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "SEA",
+          "Paid",
+          "FOODS",
+          "OSR"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "c63c5b38-135d-4ebb-bad4-60cf319244bb",
+    "signal_id": 8473,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to Ellammal",
+    "timestamp": "2026-05-30T07:07:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "Paid",
+          "Ellammal"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "c34de267-953c-4fd9-a768-3cd27f1164cd",
+    "signal_id": 8692,
+    "source": "whatsapp",
+    "sender": "Daily Badminton Update: ~\u202fGanesh Pandian \ud83e\udef0\ud83c\udffe",
+    "message": "Reacted \ud83d\udc4d\ud83c\udffe to \"5 mins\"",
+    "timestamp": "2026-06-26T01:13:44.733+00:00",
+    "expected": {
+      "signal_type": "NOISE",
+      "importance": 0.1,
+      "contract": {
+        "entities": [
+          "Reacted"
+        ],
+        "financial_candidate": false,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": true,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "efdda169-6249-4960-9a8b-a8c90d390ac7",
+    "signal_id": 8474,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to EBENEZAR TRADERS",
+    "timestamp": "2026-05-30T10:02:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "EBENEZAR",
+          "Paid",
+          "TRADERS"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "f47b3351-86b3-4d4c-a8ff-9a31d686d633",
+    "signal_id": 8475,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to Sumithra K",
+    "timestamp": "2026-05-30T10:12:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "Paid",
+          "Sumithra"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "bead9ca3-442e-4fdf-a308-d170bca64d62",
+    "signal_id": 8476,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to PARAMASIVAM UTHARKUMAR",
+    "timestamp": "2026-05-30T10:26:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "Paid",
+          "PARAMASIVAM",
+          "UTHARKUMAR"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "b728db28-568c-438c-bb94-8b760f86585c",
+    "signal_id": 8477,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to PARAMASIVAM UTHARKUMAR",
+    "timestamp": "2026-05-30T10:28:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "Paid",
+          "PARAMASIVAM",
+          "UTHARKUMAR"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "5f07d780-ac11-451e-85e3-ef74054e0c27",
+    "signal_id": 8478,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to KANI VEGITABLES AND FRUITS",
+    "timestamp": "2026-05-30T10:56:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "AND",
+          "KANI",
+          "Paid",
+          "VEGITABLES",
+          "FRUITS"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "bd59e2fe-e370-4678-9474-629af390862f",
+    "signal_id": 8479,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to Mrs RAMYA S",
+    "timestamp": "2026-05-30T14:10:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "RAMYA",
+          "Paid",
+          "Mrs"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "28d48bba-c828-4d2b-bc9a-a168b843afbd",
+    "signal_id": 8480,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to Daddy Aquarium",
+    "timestamp": "2026-05-30T14:19:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "Aquarium",
+          "Paid",
+          "Daddy"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "c3def296-36d2-431b-9621-2f76b0f66fc9",
+    "signal_id": 8481,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to HEAD AND HEAD AQUATICS",
+    "timestamp": "2026-05-30T14:24:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "AND",
+          "AQUATICS",
+          "Paid",
+          "HEAD"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "3b4a9c91-8892-4cf4-9784-6d16bd425450",
+    "signal_id": 8482,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to SENBAGARAJ G",
+    "timestamp": "2026-05-30T15:08:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "Paid",
+          "SENBAGARAJ"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "cc60f190-11e7-4bb3-893b-fc3ecc8e7b54",
+    "signal_id": 8483,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to Radha Radha",
+    "timestamp": "2026-05-31T07:07:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "Radha",
+          "Paid"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "e9e3cce9-2285-427a-a309-e1d5860002d6",
+    "signal_id": 8693,
+    "source": "whatsapp",
+    "sender": "Daily Badminton Update: ~\u202fGanesh Pandian \ud83e\udef0\ud83c\udffe",
+    "message": "Reacted \ud83d\udc4d\ud83c\udffe to \"5 mins\"",
+    "timestamp": "2026-06-26T02:43:58.346+00:00",
+    "expected": {
+      "signal_type": "NOISE",
+      "importance": 0.1,
+      "contract": {
+        "entities": [
+          "Reacted"
+        ],
+        "financial_candidate": false,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": true,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "b56a62ba-764d-4e48-9e63-f04c91949985",
+    "signal_id": 8484,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to Babu Enterprises",
+    "timestamp": "2026-05-31T13:30:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "Paid",
+          "Enterprises",
+          "Babu"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "55b62235-b38c-4ac7-ae4f-1b077d566603",
+    "signal_id": 8485,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to Sri Raaja Ganesh Sweets",
+    "timestamp": "2026-05-31T17:50:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "Sri",
+          "Raaja",
+          "Paid",
+          "Ganesh",
+          "Sweets"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "7f66d824-fce2-4b01-9f6a-20ac33eebdef",
+    "signal_id": 8486,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to MOHAMED JAMALUDIN",
+    "timestamp": "2026-05-31T18:07:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "MOHAMED",
+          "Paid",
+          "JAMALUDIN"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "b1cc4cd9-90de-4133-8451-de08703aaeb7",
+    "signal_id": 8487,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to GRACE SUPER MARKET",
+    "timestamp": "2026-05-31T18:38:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "MARKET",
+          "Paid",
+          "GRACE",
+          "SUPER"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "bb69c2e4-b32d-4412-8dc6-1b895e4a20ea",
+    "signal_id": 8488,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to SKM FLOWER SHOP",
+    "timestamp": "2026-05-31T19:13:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "Paid",
+          "SHOP",
+          "FLOWER",
+          "SKM"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "1ea2c876-a5c0-48de-a861-fa802207cb40",
+    "signal_id": 8489,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to SELVA VINAYAGAR STORE",
+    "timestamp": "2026-05-31T19:16:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "Paid",
+          "SELVA",
+          "VINAYAGAR",
+          "STORE"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "d9d3f680-bf36-49e2-8102-8111918a2968",
+    "signal_id": 8490,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to Mr VELMURUGAN V",
+    "timestamp": "2026-06-01T07:35:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "VELMURUGAN",
+          "Paid",
+          "Mr"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "fd07a226-b070-4a4a-9e07-e243944927b3",
+    "signal_id": 8491,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to THE THOMAS SPORTS",
+    "timestamp": "2026-06-01T16:47:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "Paid",
+          "THE",
+          "SPORTS",
+          "THOMAS"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "dbdedeb4-a60a-4e23-808d-815f34108490",
+    "signal_id": 8492,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to SEENIRAJ S",
+    "timestamp": "2026-06-01T16:55:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "Paid",
+          "SEENIRAJ"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "6fbf20e8-1f0a-41fd-a358-3478605c5620",
+    "signal_id": 8493,
+    "source": "gpay",
+    "sender": "Shobana Kumari",
+    "message": "Received from Shobana Kumari",
+    "timestamp": "2026-06-02T09:49:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "CREDIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "Shobana",
+          "Kumari",
+          "Received"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "b8f37c9a-b2b2-4dcd-bd4f-884bb60f343f",
+    "signal_id": 8694,
+    "source": "whatsapp",
+    "sender": "WhatsApp: Nag Sittapa Alt",
+    "message": "\ud83d\udcf7 \u0bb5\u0ba3\u0b95\u0bcd\u0b95\u0bae\u0bcd \u0bb5\u0bbe\u0bb4\u0bcd\u0b95 \u0bb5\u0bb3\u0bae\u0bc1\u0b9f\u0ba9\u0bcd",
+    "timestamp": "2026-06-26T02:43:58.379+00:00",
+    "expected": {
+      "signal_type": "NOISE",
+      "importance": 0.1,
+      "contract": {
+        "entities": [],
+        "financial_candidate": false,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": true,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "0f47300d-413b-4d0f-8c9f-b3757d1e7d8f",
+    "signal_id": 8494,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to SPD Stationery & Xerox",
+    "timestamp": "2026-06-03T21:09:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "Xerox",
+          "Paid",
+          "Stationery",
+          "SPD"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "46f89c67-b6bd-4d43-a253-84a05065ab54",
+    "signal_id": 8495,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to GRACE SUPER MARKET",
+    "timestamp": "2026-06-04T09:41:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "MARKET",
+          "Paid",
+          "GRACE",
+          "SUPER"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "260fcf75-9170-4255-91d3-fe7b46c0c11d",
+    "signal_id": 8496,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to FAREED KHAN",
+    "timestamp": "2026-06-04T19:58:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "KHAN",
+          "Paid",
+          "FAREED"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "9e1d3a9f-c8e7-4c7e-8d2f-1c961140332c",
+    "signal_id": 8497,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to Sumithra K",
+    "timestamp": "2026-06-04T20:27:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "Paid",
+          "Sumithra"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "a1d66edd-864e-40f6-a914-a079bf1d8205",
+    "signal_id": 8498,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to VIJAYA J",
+    "timestamp": "2026-06-05T09:34:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "VIJAYA",
+          "Paid"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "a2afc6a6-9eab-4860-8301-83b5fb8fd559",
+    "signal_id": 8499,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to SEENIRAJ S",
+    "timestamp": "2026-06-05T20:48:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "Paid",
+          "SEENIRAJ"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "996426d4-6217-4834-9e03-22a8dc427721",
+    "signal_id": 8500,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to MARAN T",
+    "timestamp": "2026-06-06T06:38:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "Paid",
+          "MARAN"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "0d43f6d6-7f49-459d-ada1-f76359716474",
+    "signal_id": 8501,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to Ellammal",
+    "timestamp": "2026-06-06T06:48:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "Paid",
+          "Ellammal"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "a6a36a44-0fa3-407f-866e-1a17ed1c4902",
+    "signal_id": 8502,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to MG TWO WHEELERS LLP",
+    "timestamp": "2026-06-06T10:32:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "LLP",
+          "TWO",
+          "Paid",
+          "MG",
+          "WHEELERS"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "8b746afb-699d-4b37-a963-59fbe90a8d91",
+    "signal_id": 8503,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to Chaya Kadai",
+    "timestamp": "2026-06-06T10:39:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "Paid",
+          "Chaya",
+          "Kadai"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "95e07035-a263-49db-83cb-49ed71529232",
+    "signal_id": 8544,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to VIJAYA J",
+    "timestamp": "2026-06-14T11:06:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "VIJAYA",
+          "Paid"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "a25b0d5a-a97c-4518-9451-aed51b23bea5",
+    "signal_id": 8504,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to PARAMASIVAM UTHARKUMAR",
+    "timestamp": "2026-06-06T11:04:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "Paid",
+          "PARAMASIVAM",
+          "UTHARKUMAR"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "10294ecf-89da-4020-b271-1e98e94ab14c",
+    "signal_id": 8505,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to AXIS BANK LIMITED",
+    "timestamp": "2026-06-06T15:57:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "Paid",
+          "AXIS",
+          "LIMITED",
+          "BANK"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "64831843-0555-4d24-9591-e855389eb730",
+    "signal_id": 8506,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to PAMMAL SARAVANA SHOPPING",
+    "timestamp": "2026-06-06T18:47:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "SHOPPING",
+          "Paid",
+          "PAMMAL",
+          "SARAVANA"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "11df836c-0e00-46ab-8707-4905f962a603",
+    "signal_id": 8507,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to Pandi raj",
+    "timestamp": "2026-06-06T19:00:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "Pandi",
+          "Paid"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "151e2ed7-a9b5-4123-ae08-440a01211d9d",
+    "signal_id": 8508,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to Apollo Pharmacy",
+    "timestamp": "2026-06-06T19:19:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "Paid",
+          "Apollo",
+          "Pharmacy"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "c1146783-ddfa-4dca-8466-4dd7e29f81f3",
+    "signal_id": 8509,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to Mr RAMACHANDRAN D",
+    "timestamp": "2026-06-07T06:54:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "Paid",
+          "Mr",
+          "RAMACHANDRAN"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "014b7b45-5f0b-4cf0-aae6-d5be6ba9d20b",
+    "signal_id": 8510,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to YAASMIN HARDWARES AND ELECTRICALS",
+    "timestamp": "2026-06-07T11:17:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "AND",
+          "ELECTRICALS",
+          "Paid",
+          "HARDWARES",
+          "YAASMIN"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "8f4dc644-f8a6-4a6d-80d4-e1ef84162fa3",
+    "signal_id": 8511,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to YAASMIN HARDWARES AND ELECTRICALS",
+    "timestamp": "2026-06-07T12:20:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "AND",
+          "ELECTRICALS",
+          "Paid",
+          "HARDWARES",
+          "YAASMIN"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "b43970d3-ff60-4677-baee-4700267f4d8c",
+    "signal_id": 8512,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to RameshBavi RameshBavi",
+    "timestamp": "2026-06-07T12:54:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "Paid",
+          "RameshBavi"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "58b3f176-9c31-438b-9d47-0168720a8715",
+    "signal_id": 8513,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to sundar sr",
+    "timestamp": "2026-06-07T12:57:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "Paid"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "24bac41d-b8c1-4e26-8b9b-4c11f28da99a",
+    "signal_id": 8658,
+    "source": "whatsapp",
+    "sender": "Nag Sittapa Alt",
+    "message": "\ud83d\udcf7 Photo",
+    "timestamp": "2026-06-24T03:04:14.013+00:00",
+    "expected": {
+      "signal_type": "NOISE",
+      "importance": 0.1,
+      "contract": {
+        "entities": [
+          "Photo"
+        ],
+        "financial_candidate": false,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": true,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "2ebeca1a-2547-40a6-9f4d-bd7f7ab0adc9",
+    "signal_id": 8514,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to MS ANU AISHWARYA RAJASIGAMANI",
+    "timestamp": "2026-06-07T14:19:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "RAJASIGAMANI",
+          "MS",
+          "Paid",
+          "AISHWARYA",
+          "ANU"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  },
+  {
+    "id": "a9d88de2-feea-4800-8c85-42fc63f27cf5",
+    "signal_id": 8515,
+    "source": "gpay",
+    "sender": "pprad",
+    "message": "Paid to SRK ELECTRICALS AND",
+    "timestamp": "2026-06-07T17:48:00+00:00",
+    "expected": {
+      "signal_type": "FINANCIAL",
+      "importance": 0.85,
+      "contract": {
+        "amount": null,
+        "currency": null,
+        "transaction_type": "DEBIT",
+        "payment_channel": "UNKNOWN",
+        "merchant": null,
+        "entities": [
+          "AND",
+          "Paid",
+          "ELECTRICALS",
+          "SRK"
+        ],
+        "financial_candidate": true,
+        "fact_candidate": false,
+        "fyi_candidate": false,
+        "noise_candidate": false,
+        "requires_action": false,
+        "memory_candidate": false
+      }
+    }
+  }
+]
