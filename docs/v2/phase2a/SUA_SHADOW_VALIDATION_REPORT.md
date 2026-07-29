@@ -16,4 +16,4 @@ Log of signals where the active LLM classifier disagreed with the heuristics fal
 
 | Message | Expected Type | LLM Actual Type | Heuristic Fallback Type | Processing Path |
 |---|---|---|---|---|
-| 348959 is the OTP for Trxn. of INR 244.00 at FLIPKART I with... | NOISE | NOISE | FINANCIAL | fallback |
+| 000000 is the OTP for Trxn. of INR 100.00 at SAMPLE STORE with... | NOISE | NOISE | FINANCIAL | fallback |

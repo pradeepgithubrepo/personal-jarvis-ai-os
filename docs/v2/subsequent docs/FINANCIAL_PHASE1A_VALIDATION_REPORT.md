@@ -45,10 +45,10 @@ We validated that the duplicate detection engine correctly identified all **7 du
 
 | Transaction ID / Canonical Hash | Amount | Event Date | Merchant | Evidence Count | Reason for Deduplication |
 | :--- | :---: | :---: | :--- | :---: | :--- |
-| `ETMoney Investment` | ₹5,000.00 | 2026-07-02 | ETMoney | 2 | Same amount, date, and merchant (SMS duplicate). |
-| `ETMoney Investment` | ₹5,000.00 | 2026-07-01 | ETMoney | 2 | Same amount, date, and merchant (SMS duplicate). |
-| `Amazon Payment` | ₹5,000.00 | 2026-07-12 | Amazon | 2 | Same amount, date, and merchant. |
-| `UPI Mandate` | ₹5,000.00 | 2026-07-01 | UPI Mandate | 2 | Same amount, date, and merchant. |
+| `Sample Investment` | ₹1,000.00 | 2026-07-02 | Sample Merchant | 2 | Same amount, date, and merchant (SMS duplicate). |
+| `Sample Investment` | ₹1,000.00 | 2026-07-01 | Sample Merchant | 2 | Same amount, date, and merchant (SMS duplicate). |
+| `Sample Payment` | ₹1,000.00 | 2026-07-12 | Sample Merchant | 2 | Same amount, date, and merchant. |
+| `UPI Mandate` | ₹1,000.00 | 2026-07-01 | UPI Mandate | 2 | Same amount, date, and merchant. |
 
 ---
 
@@ -63,9 +63,9 @@ Internal transfer rules (is_self_transfer = True) correctly identified **3 self-
 
 | Event Date | Direction | Amount | Raw Narration | Inferred Category |
 | :--- | :---: | :---: | :--- | :--- |
-| **2026-05-29** | CREDIT | ₹20,500.00 | Dear Customer, Your a/c no. XXXXXXXX4264 is credited by Rs.20,500.00... | TRANSFER |
-| **2026-04-30** | CREDIT | ₹10,000.00 | Dear Customer, Your a/c no. XXXXXXXX4264 is credited by Rs.10,000.00... | TRANSFER |
-| **2026-06-21** | CREDIT | ₹300.00 | Dear SBI User, your A/c X4264-credited by Rs.300 on 21Jun26... | TRANSFER |
+| **2026-05-29** | CREDIT | ₹1,000.00 | Dear Customer, Your a/c no. XXXXXXXX0000 is credited by Rs.1,000.00... | TRANSFER |
+| **2026-04-30** | CREDIT | ₹1,000.00 | Dear Customer, Your a/c no. XXXXXXXX0000 is credited by Rs.1,000.00... | TRANSFER |
+| **2026-06-21** | CREDIT | ₹100.00 | Dear Bank User, your A/c X0000-credited by Rs.100 on 21Jun26... | TRANSFER |
 
 ---
 
@@ -77,11 +77,11 @@ The Stage 1 (Deterministic) and Stage 2 (LLM Fallback) merchant normalization en
 
 | Raw Merchant (Substring) | Normalized Merchant | Count | Normalization Source |
 | :--- | :--- | :---: | :--- |
-| `LIC PREMIUM` | LIC | 12 | Stage 1 (Deterministic Rule) |
-| `ETMoney / ETMONEY` | ETMoney | 8 | Stage 1 (Deterministic Rule) |
-| `Lalaji Memorial School` | Lalaji Memorial School | 1 | Stage 2 (LLM normalization) |
-| `NPS Trust` | NPS Trust | 1 | Stage 2 (LLM normalization) |
-| `Vilvah` | Vilvah | 1 | Stage 2 (LLM normalization) |
+| `SAMPLE INS` | Sample Ins | 12 | Stage 1 (Deterministic Rule) |
+| `Sample Merchant` | Sample Merchant | 8 | Stage 1 (Deterministic Rule) |
+| `Sample School` | Sample School | 1 | Stage 2 (LLM normalization) |
+| `Sample Trust` | Sample Trust | 1 | Stage 2 (LLM normalization) |
+| `Sample Brand` | Sample Brand | 1 | Stage 2 (LLM normalization) |
 | `Amazon` | Amazon | 1 | Stage 1 (Deterministic Rule) |
 | `Google India` | Google | 1 | Stage 1 (Deterministic Rule) |
 | `HDFC Bank` | HDFC Bank | 1 | Stage 1 (Deterministic Rule) |
@@ -95,9 +95,9 @@ To prevent "silent skipping" and ensure zero lost money, the **3 skipped signals
 
 ### Skipped Signals Audit
 
-* **Signal 1**: `APY (PRAN XX0157)-Your Account Closure Request has been processed & funds have been transferred...` (Informational text, no transaction amount present).
-* **Signal 2**: `Dear UPI user A/C X4264 debited by 180.00 on date 09Jun26 trf to Mr CHOKALINGAM...` (SUA failed to extract amount).
-* **Signal 3**: `Dear UPI user A/C X4264 debited by 10000.00 on date 29May26 trf to GROWW INVEST...` (SUA failed to extract amount).
+* **Signal 1**: `APY (PRAN XX0000)-Your Account Closure Request has been processed & funds have been transferred...` (Informational text, no transaction amount present).
+* **Signal 2**: `Dear UPI user A/C X0000 debited by 100.00 on date 09Jun26 trf to Mr SAMPLE USER...` (SUA failed to extract amount).
+* **Signal 3**: `Dear UPI user A/C X0000 debited by 1000.00 on date 29May26 trf to SAMPLE INVEST...` (SUA failed to extract amount).
 
 > [!WARNING]
 > **Operational Risk**: Signals 2 and 3 represent active transactions that were skipped because the SUA agent wrote `amount: null` into `contract_json`.

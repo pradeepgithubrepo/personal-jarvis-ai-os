@@ -11,8 +11,8 @@
 - **Oldest source_event_time:** `2026-04-02T08:39:00+00:00`
 - **Newest source_event_time:** `2026-06-30T18:45:00+00:00`
 - **Sample Records:**
-  - Time: `2026-04-02T08:39:00+00:00` | Sender: `user_alias` | Message: `Paid to Radha Radha`
-  - Time: `2026-04-03T16:15:00+00:00` | Sender: `user_alias` | Message: `Paid to JISHA JOHN C`
+  - Time: `2026-04-02T08:39:00+00:00` | Sender: `user_alias` | Message: `Paid to Sample Payee A`
+  - Time: `2026-04-03T16:15:00+00:00` | Sender: `user_alias` | Message: `Paid to Sample Payee B`
 - **Validation Result:** **PASS**
 
 ### Source: whatsapp
@@ -20,8 +20,8 @@
 - **Oldest source_event_time:** `2026-06-22T16:23:59.500000+00:00`
 - **Newest source_event_time:** `2026-07-09T11:24:42.102000+00:00`
 - **Sample Records:**
-  - Time: `2026-06-25T12:05:13.591+00:00` | Sender: `Shraddha Jaiswal` | Message: `Let me see User ,pre prod week is going on I’ll update in`
-  - Time: `2026-06-25T16:38:34.815+00:00` | Sender: `WhatsApp: Senthil RFC` | Message: `Yeah looks so`
+  - Time: `2026-06-25T12:05:13.591+00:00` | Sender: `Sample Contact` | Message: `Let me see User ,pre prod week is going on I’ll update in`
+  - Time: `2026-06-25T16:38:34.815+00:00` | Sender: `WhatsApp: Sample Group` | Message: `Yeah looks so`
 - **Validation Result:** **PASS**
 
 ### Source: sms
@@ -29,9 +29,8 @@
 - **Oldest source_event_time:** `2026-03-26T04:34:14.244000+00:00`
 - **Newest source_event_time:** `2026-07-09T11:28:04.032000+00:00`
 - **Sample Records:**
-  - Time: `2026-06-25T13:44:11.896+00:00` | Sender: `VM-SBICRD-T` | Message: `348959 is the OTP for Trxn. of INR 244.00 at FLIPKART I with`
-  - Time: `2026-06-26T02:38:17.494+00:00` | Sender: `JD-HDFCBK-S` | Message: `Pay Now!
-SBI Card Bill 8707 of Rs.3141.02 is due on 01-Jul-2`
+  - Time: `2026-06-25T13:44:11.896+00:00` | Sender: `VM-BANK-T` | Message: `000000 is the OTP for Trxn. of INR 100.00 at SAMPLE STORE`
+  - Time: `2026-06-26T02:38:17.494+00:00` | Sender: `JD-BANK-S` | Message: `Pay Now! Card Bill 0000 of Rs.1000.00 is due on 01-Jul-26`
 - **Validation Result:** **PASS**
 
 ### Source: bank_statement
@@ -39,7 +38,7 @@ SBI Card Bill 8707 of Rs.3141.02 is due on 01-Jul-2`
 - **Oldest source_event_time:** `2026-04-04T00:00:00+00:00`
 - **Newest source_event_time:** `2026-06-30T00:00:00+00:00`
 - **Sample Records:**
-  - Time: `2026-04-04T00:00:00+00:00` | Sender: `user_alias` | Message: `WDL TFR IY209420261713387162172 0036515075873 OF SBI CARDS A`
-  - Time: `2026-04-09T00:00:00+00:00` | Sender: `user_alias` | Message: `WDL TFR IMPS/609916501529/HDFC- xx221-User/Transfer 00982`
+  - Time: `2026-04-04T00:00:00+00:00` | Sender: `user_alias` | Message: `WDL TFR IY000000000000000000000 0000000000000 OF CARD PAYMENT`
+  - Time: `2026-04-09T00:00:00+00:00` | Sender: `user_alias` | Message: `WDL TFR IMPS/000000000000/BANK- xx000-User/Transfer 00000`
 - **Validation Result:** **PASS**
 

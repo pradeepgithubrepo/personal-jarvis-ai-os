@@ -19,10 +19,10 @@ This review presents a quality and importance audit of 50 representative FYI rec
 
 | ID | Message Text | Current Category | Expected Category | Importance Level | In Briefing? |
 |---|---|---|---|---|---|
-| 1 | `Dear Customer, Plz note that Third Party Insurance is a must. Renew TN149509 insurance policy 020...` | **UTILITY_INFO** | **FINANCE_INSURANCE** | `CRITICAL` | **Y** |
+| 1 | `Dear Customer, Plz note that Third Party Insurance is a must. Renew TN00XX0000 insurance policy 00000000000000000000...` | **UTILITY_INFO** | **FINANCE_INSURANCE** | `CRITICAL` | **Y** |
 | 2 | `I think other than centre gate everything need to lock it` | **TRAVEL** | **SECURITY_ALERT** | `CRITICAL` | **Y** |
 | 3 | `🔗 Polimer News on Instagram: "" ரூ.62,000 ஃபீஸ் வாங்குறாங்க.. கிளாஸ்ல 10 பசங்க தான் இருக்குறாங்க....` | **FAMILY_SCHOOL** | **FAMILY_SCHOOL** | `CRITICAL` | **Y** |
-| 4 | `Dear Customer, Renew TN149509 insurance policy 0206003125P103503491 before its expiry 16/06/2026....` | **GENERAL** | **FINANCE_INSURANCE** | `CRITICAL` | **Y** |
+| 4 | `Dear Customer, Renew TN00XX0000 insurance policy 00000000000000000000 before its expiry 16/06/2026....` | **GENERAL** | **FINANCE_INSURANCE** | `CRITICAL` | **Y** |
 | 5 | `Your Locker No SF02-00097 standing in the name of [REDACTED_NAME] AND [REDACTED_NAME] PA...` | **SECURITY_ALERT** | **SECURITY_ALERT** | `CRITICAL` | **Y** |
 | 6 | `Hi user, the previous insurance policy of your bike expires tomorrow. Log on to www.coverfox.c...` | **GENERAL** | **FINANCE_INSURANCE** | `CRITICAL` | **Y** |
 | 7 | `Now also @⁨[REDACTED_NAME] T1⁩ parking gate is open.` | **TRAVEL** | **SECURITY_ALERT** | `CRITICAL` | **Y** |
@@ -36,12 +36,12 @@ This review presents a quality and importance audit of 50 representative FYI rec
 | 15 | `🔗 health.oneglance.in | Dear Master.[REDACTED_NAME], Thanks for consulting with Dr [REDACTED_NAME] K, Access ...` | **GENERAL** | **HEALTH** | `HIGH` | **Y** |
 | 16 | `🔗 health.oneglance.in | Dear Baby.[REDACTED_NAME], Thanks for consulting with Dr [REDACTED_NAME] K, Access...` | **GENERAL** | **HEALTH** | `HIGH` | **Y** |
 | 17 | `Dear Parents   Homework: Book 1 : pg 9  Thank you  [REDACTED_NAME]  Little Millennium  Anakaputhur` | **GENERAL** | **FAMILY_SCHOOL** | `HIGH` | **Y** |
-| 18 | `Hi user, your bike insurance policy was added to your Coverfox My Account 48 hours ago. We rec...` | **GENERAL** | **FINANCE_INSURANCE** | `HIGH` | **Y** |
-| 19 | `Your 2GB gift is expiring soon! Claim it at no extra cost via Airtel Thanks App. Click i.airtel.i...` | **GENERAL** | **FINANCE_INSURANCE** | `HIGH` | **Y** |
-| 20 | `Dear Customer, Received INR 909 Receipt No 11302060026156896167 on 22/05/2026. Plz submit Proposa...` | **ORDER_TRACKING** | **FINANCE_INSURANCE** | `HIGH` | **Y** |
-| 21 | `Your purchase trxn in Folio No. 15693680 has been processed. Click Here https://cams.co.in/PPFAMF...` | **GENERAL** | **GENERAL** | `MEDIUM` | **Y** |
-| 22 | `Dear user, sample collection for your order PO10002559035-265 has been assigned to [REDACTED_NAME] S, p...` | **ORDER_TRACKING** | **ORDER_TRACKING** | `MEDIUM` | **Y** |
-| 23 | `Your purchase trxn in Folio No. 15693680 has been processed. Click Here https://cams.co.in/PPFAMF...` | **GENERAL** | **GENERAL** | `MEDIUM` | **Y** |
+| 18 | `Hi user, your insurance policy was added to your account 48 hours ago. We rec...` | **GENERAL** | **FINANCE_INSURANCE** | `HIGH` | **Y** |
+| 19 | `Your 2GB gift is expiring soon! Claim it at no extra cost via App. Click example.com...` | **GENERAL** | **FINANCE_INSURANCE** | `HIGH` | **Y** |
+| 20 | `Dear Customer, Received INR 100 Receipt No 00000000000000000000 on 22/05/2026. Plz submit Proposa...` | **ORDER_TRACKING** | **FINANCE_INSURANCE** | `HIGH` | **Y** |
+| 21 | `Your purchase trxn in Folio No. 00000000 has been processed. Click Here https://example.com/PPFAMF...` | **GENERAL** | **GENERAL** | `MEDIUM` | **Y** |
+| 22 | `Dear user, sample collection for your order PO00000000000-000 has been assigned to [REDACTED_NAME] S, p...` | **ORDER_TRACKING** | **ORDER_TRACKING** | `MEDIUM` | **Y** |
+| 23 | `Your purchase trxn in Folio No. 00000000 has been processed. Click Here https://example.com/PPFAMF...` | **GENERAL** | **GENERAL** | `MEDIUM` | **Y** |
 | 24 | `The tenant's name is [REDACTED_TENANT_1].` | **GENERAL** | **GENERAL** | `MEDIUM` | **Y** |
 | 25 | `India's first-ever Priority Postpaid is LIVE. Powered by Fast Lane Technology for superfast speed...` | **UTILITY_INFO** | **UTILITY_INFO** | `MEDIUM` | **Y** |
 | 26 | `Still in there but made progress` | **GENERAL** | **GENERAL** | `MEDIUM` | **Y** |

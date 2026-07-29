@@ -61,7 +61,7 @@ The core architectural principle is: **"Signals are messy. Tasks must be clean."
 The local LLM is instructed to rewrite tasks into a professional, brief, imperative form (starting with a strong action verb).
 
 ```
-"Electricity charges of Rs.2527 are due on 27-May."
+"Electricity charges of Rs.500 are due on 27-May."
       ↳ [LLM Reasoning] ↳ "Pay TNEB Electricity Bill"
 
 "Dear Parents. Homework Book 1 page 9."
@@ -82,7 +82,7 @@ The local LLM must return a structured JSON response matching the following sche
   "decision": "CREATE_TASK", 
   "rationale": "Signal indicates an electricity bill payment due by May 27th.",
   "title": "Pay TNEB Electricity Bill",
-  "description": "Electricity charges of Rs.2527 are due on 27-May.",
+  "description": "Electricity charges of Rs.500 are due on 27-May.",
   "priority": "HIGH",
   "due_datetime": "2026-05-27T23:59:59Z",
   "notification_profile": "IMPORTANT",

@@ -64,9 +64,9 @@ The `qualified_signals.metadata` will store a canonical JSON block designed to s
     "currency": "INR",
     "transaction_type": "DEBIT",
     "payment_channel": "UPI",
-    "counterparty": "HOTEL SRI GANESH BHAVAN",
+    "counterparty": "SAMPLE HOTEL",
     "reference_number": "TXN202607110992",
-    "source_file_name": "gpay_statement_may.pdf",
+    "source_file_name": "sample_gpay_statement.pdf",
     "source_file_hash": "a1b2c3d4e5f6g7h8i9j0a1b2c3d4e5f6g7h8i9j0a1b2c3d4e5f6g7h8i9j0a1b2",
     "source_ingested_at": "2026-07-11T08:30:00Z"
   },

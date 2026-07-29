@@ -238,16 +238,16 @@ Below is an assessment of which raw columns survive the qualification boundary:
 1. **Device Attribution (`device_id`)**: The ID specifying which device uploaded the signal (e.g. `family_member_1` vs `user`) is dropped. Downstream agents are forced to guess context based on message body text, violating the multi-device design.
 2. **Collector Metadata (`metadata`)**: Rich transaction metadata (the precise numerical amount, reference IDs, transaction currencies, and verified counterparty names) parsed from PDF statements or Google Pay logs in Phase 1B is **permanently discarded**.
 
-### Examples from Actual Records
+### Examples from Sample Records
 
-#### Example 1 (Sample 8 - Family_Member_1 Kumari payment)
-- **Original Message**: `Paid to Family_Member_1 Kumari`
+#### Example 1 (Sample Payment A)
+- **Original Message**: `Paid to Sample Counterparty A`
 - **Original Metadata**: `{"amount": 50.00, "currency": "INR", "transaction_type": "DEBIT", "payment_channel": "UPI"}`
-- **Qualified Signal Result**: Mapped strictly to message text (`Paid to Family_Member_1 Kumari`). The `$50.00` value is lost.
-- **SUA Contract Output**: The SUA processes the raw string `Paid to Family_Member_1 Kumari`. Having no amount keyword in the text, it extracts **`amount: Paid`** (an invalid string). Lineage is broken, and downstream financial rollups receive invalid data.
+- **Qualified Signal Result**: Mapped strictly to message text (`Paid to Sample Counterparty A`). The `$50.00` value is lost.
+- **SUA Contract Output**: The SUA processes the raw string `Paid to Sample Counterparty A`. Having no amount keyword in the text, it extracts **`amount: Paid`** (an invalid string). Lineage is broken, and downstream financial rollups receive invalid data.
 
-#### Example 2 (Sample 3 - Restaurant Bill)
-- **Original Message**: `Paid to CANAVIL FAMILY RESTAURANT`
+#### Example 2 (Sample Payment B)
+- **Original Message**: `Paid to SAMPLE RESTAURANT`
 - **Original Metadata**: `{"amount": 420.00, "currency": "INR", "transaction_type": "DEBIT", "payment_channel": "UPI"}`
 - **Qualified Signal Result**: Mapped strictly to text.
 - **SUA Contract Output**: The LLM guesses the amount as **`$50`** based on other context, corrupting the actual spend value.

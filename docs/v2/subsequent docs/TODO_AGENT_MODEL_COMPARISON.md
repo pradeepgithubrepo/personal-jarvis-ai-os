@@ -24,22 +24,22 @@ Using the actual Jarvis runtime environment (secrets loaded from `.env` without 
 Below is the comparative analysis across 6 representative signal categories.
 
 ### 1. Insurance Renewal
-* **Raw Message**: `"Greetings from United India Insurance. Your Vehicle TN149509 insurance policy 0206003125P103503491 expires on 16/06/2026. Please renew your Policy Online..."`
-* **Existing Open Task**: `Renew Vehicle Insurance Policy TN149509`
+* **Raw Message**: `"Greetings from Insurance Co. Your Vehicle TN00XX0000 insurance policy 00000000000000000000 expires on 16/06/2026. Please renew your Policy Online..."`
+* **Existing Open Task**: `Renew Vehicle Insurance Policy TN00XX0000`
 
 | Metric | Google Gemini | Cerebras | Local Qwen |
 |---|---|---|---|
 | **Task Decision** | `MERGE_WITH_EXISTING` | `MERGE_WITH_EXISTING` | `CREATE_TASK` |
 | **Matched Task ID** | `11111111-2222-3333-4444-555555555555` | `11111111-2222-3333-4444-555555555555` | None (duplicate created) |
-| **Task Title** | N/A (merged) | N/A (merged) | `Renew Vehicle Insurance TN149509` |
+| **Task Title** | N/A (merged) | N/A (merged) | `Renew Vehicle Insurance TN00XX0000` |
 | **Latency** | 6.07s | **0.69s** | 12.81s |
 | **Quality Rating** | **Excellent (10/10)** | **Excellent (10/10)** | Poor (0/10) - created duplicate |
 
 ---
 
 ### 2. Utility Bill
-* **Raw Message**: `"New Bill Alert: Your SBI Card Bill 8707 of Rs.3141.02 is due on 01-Jul-2026. To pay, login to HDFC Bank..."`
-* **Existing Open Task**: `Pay SBI Card Bill` (Rs. 3141.02)
+* **Raw Message**: `"New Bill Alert: Your Card Bill 0000 of Rs.1000.00 is due on 01-Jul-2026. To pay, login to Bank..."`
+* **Existing Open Task**: `Pay Card Bill` (Rs. 1000.00)
 
 | Metric | Google Gemini | Cerebras | Local Qwen |
 |---|---|---|---|
