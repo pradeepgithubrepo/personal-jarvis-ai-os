@@ -10,7 +10,7 @@ This document outlines the testing strategy, scenarios, inputs, and validation c
 * **Storage Bucket:** `jarvis-signals`
 * **Incoming Path:** `incoming/`
 * **Archive Path:** `archive/`
-* **Test Orchestrator:** `/home/prad/petprojects/ai/jarvis/.venv/bin/python -m unittest tests/test_consumer_agent.py`
+* **Test Orchestrator:** `/home/user/petprojects/ai/jarvis/.venv/bin/python -m unittest tests/test_consumer_agent.py`
 
 ---
 

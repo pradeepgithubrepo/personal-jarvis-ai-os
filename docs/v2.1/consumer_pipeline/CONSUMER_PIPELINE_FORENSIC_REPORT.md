@@ -4,7 +4,7 @@
 
 A forensic review of the Jarvis Consumer Pipeline was conducted to determine why files remain unprocessed in the `jarvis-signals/incoming` Supabase Storage bucket. The investigation revealed the following critical findings:
 
-1. **Scheduler Configuration Gap (Primary Root Cause):** The consumer pipeline (`consumer_sync`) has **not executed since July 9, 2026 at 17:10:38 UTC**. While the Windows Task Scheduler wakes the system and triggers [wakeup_launcher.ps1](file:///mnt/c/jarvis/JarvisScheduler/wakeup_launcher.ps1) successfully on schedule (latest run today, July 13, 2026), the launcher script is only configured to run the connectivity check script [verify_v1_connectivity.py](file:///home/prad/petprojects/ai/jarvis/scripts/verify_v1_connectivity.py). It does not execute the actual consumer sync script [run_consumer.py](file:///home/prad/petprojects/ai/jarvis/scripts/run_consumer.py).
+1. **Scheduler Configuration Gap (Primary Root Cause):** The consumer pipeline (`consumer_sync`) has **not executed since July 9, 2026 at 17:10:38 UTC**. While the Windows Task Scheduler wakes the system and triggers [wakeup_launcher.ps1](file:///mnt/c/jarvis/JarvisScheduler/wakeup_launcher.ps1) successfully on schedule (latest run today, July 13, 2026), the launcher script is only configured to run the connectivity check script [verify_v1_connectivity.py](file:///home/user/petprojects/ai/jarvis/scripts/verify_v1_connectivity.py). It does not execute the actual consumer sync script [run_consumer.py](file:///home/user/petprojects/ai/jarvis/scripts/run_consumer.py).
 2. **File Misrouting (Secondary Root Cause):** A bank statement PDF file (`5010XXXXXX3221_e5444aa8_01Apr2026_TO_30Jun2026_084431939.pdf`) was uploaded directly to the root `incoming/` directory instead of the designated `incoming/statements/` subfolder. Even if the consumer pipeline had been running, it would have skipped this file because the root orchestrator only discovers files ending with `.json`, and the bank statement collector only scans `incoming/statements/`.
 3. **No Active Failures:** All 16 JSON files currently in `incoming/` are valid, parse successfully, and have unique hashes. They have never been seen or processed by any run of the consumer, and the deduplication and archiving systems are healthy.
 
@@ -19,22 +19,22 @@ An inventory of the `jarvis-signals` storage bucket shows **17 files** sitting i
 | # | Filename | Size (Bytes) | Created Timestamp | File Type | JSON Parse | Target Collector / Routing |
 |---|---|---|---|---|---|---|
 | 1 | `5010XXXXXX3221_e5444aa8_01Apr2026_TO_30Jun2026_084431939.pdf` | 64,572 | 2026-07-13T03:16:17.428Z | PDF (Binary) | N/A (Failed UTF-8) | Bank Statement (Should be in `statements/` subfolder) |
-| 2 | `pradeep_1783643610948.json` | 439 | 2026-07-10T00:33:32.413Z | JSON | SUCCESS (1 signal) | Legacy Root Folder Processor |
-| 3 | `pradeep_1783671905889.json` | 2,506 | 2026-07-10T08:25:06.929Z | JSON | SUCCESS (8 signals) | Legacy Root Folder Processor |
-| 4 | `pradeep_1783698218000.json` | 2,617 | 2026-07-10T15:43:38.896Z | JSON | SUCCESS (2 signals) | Legacy Root Folder Processor |
-| 5 | `pradeep_1783758304991.json` | 6,321 | 2026-07-11T08:25:06.086Z | JSON | SUCCESS (16 signals) | Legacy Root Folder Processor |
-| 6 | `pradeep_1783783504741.json` | 6,454 | 2026-07-11T15:25:05.938Z | JSON | SUCCESS (16 signals) | Legacy Root Folder Processor |
-| 7 | `pradeep_1783815911734.json` | 888 | 2026-07-12T00:25:15.948Z | JSON | SUCCESS (2 signals) | Legacy Root Folder Processor |
-| 8 | `pradeep_1783845181697.json` | 9,501 | 2026-07-12T08:33:02.854Z | JSON | SUCCESS (29 signals) | Legacy Root Folder Processor |
-| 9 | `pradeep_1783870768644.json` | 11,164 | 2026-07-12T15:39:29.651Z | JSON | SUCCESS (35 signals) | Legacy Root Folder Processor |
-| 10 | `pradeep_1783902585344.json` | 519 | 2026-07-13T00:29:47.046Z | JSON | SUCCESS (1 signal) | Legacy Root Folder Processor |
-| 11 | `pradeep_1783931609096.json` | 4,164 | 2026-07-13T08:33:29.763Z | JSON | SUCCESS (13 signals) | Legacy Root Folder Processor |
-| 12 | `shobana_1783655118573.json` | 777 | 2026-07-10T03:45:20.679Z | JSON | SUCCESS (2 signals) | Legacy Root Folder Processor |
-| 13 | `shobana_1783698664749.json` | 1,927 | 2026-07-10T15:51:06.606Z | JSON | SUCCESS (4 signals) | Legacy Root Folder Processor |
-| 14 | `shobana_1783846995046.json` | 5,447 | 2026-07-12T09:03:17.176Z | JSON | SUCCESS (12 signals) | Legacy Root Folder Processor |
-| 15 | `shobana_1783871971855.json` | 5,956 | 2026-07-12T15:59:34.554Z | JSON | SUCCESS (16 signals) | Legacy Root Folder Processor |
-| 16 | `shobana_1783904085638.json` | 432 | 2026-07-13T00:54:47.473Z | JSON | SUCCESS (1 signal) | Legacy Root Folder Processor |
-| 17 | `shobana_1783931180799.json` | 1,736 | 2026-07-13T08:26:24.320Z | JSON | SUCCESS (4 signals) | Legacy Root Folder Processor |
+| 2 | `user_1783643610948.json` | 439 | 2026-07-10T00:33:32.413Z | JSON | SUCCESS (1 signal) | Legacy Root Folder Processor |
+| 3 | `user_1783671905889.json` | 2,506 | 2026-07-10T08:25:06.929Z | JSON | SUCCESS (8 signals) | Legacy Root Folder Processor |
+| 4 | `user_1783698218000.json` | 2,617 | 2026-07-10T15:43:38.896Z | JSON | SUCCESS (2 signals) | Legacy Root Folder Processor |
+| 5 | `user_1783758304991.json` | 6,321 | 2026-07-11T08:25:06.086Z | JSON | SUCCESS (16 signals) | Legacy Root Folder Processor |
+| 6 | `user_1783783504741.json` | 6,454 | 2026-07-11T15:25:05.938Z | JSON | SUCCESS (16 signals) | Legacy Root Folder Processor |
+| 7 | `user_1783815911734.json` | 888 | 2026-07-12T00:25:15.948Z | JSON | SUCCESS (2 signals) | Legacy Root Folder Processor |
+| 8 | `user_1783845181697.json` | 9,501 | 2026-07-12T08:33:02.854Z | JSON | SUCCESS (29 signals) | Legacy Root Folder Processor |
+| 9 | `user_1783870768644.json` | 11,164 | 2026-07-12T15:39:29.651Z | JSON | SUCCESS (35 signals) | Legacy Root Folder Processor |
+| 10 | `user_1783902585344.json` | 519 | 2026-07-13T00:29:47.046Z | JSON | SUCCESS (1 signal) | Legacy Root Folder Processor |
+| 11 | `user_1783931609096.json` | 4,164 | 2026-07-13T08:33:29.763Z | JSON | SUCCESS (13 signals) | Legacy Root Folder Processor |
+| 12 | `family_member_1_1783655118573.json` | 777 | 2026-07-10T03:45:20.679Z | JSON | SUCCESS (2 signals) | Legacy Root Folder Processor |
+| 13 | `family_member_1_1783698664749.json` | 1,927 | 2026-07-10T15:51:06.606Z | JSON | SUCCESS (4 signals) | Legacy Root Folder Processor |
+| 14 | `family_member_1_1783846995046.json` | 5,447 | 2026-07-12T09:03:17.176Z | JSON | SUCCESS (12 signals) | Legacy Root Folder Processor |
+| 15 | `family_member_1_1783871971855.json` | 5,956 | 2026-07-12T15:59:34.554Z | JSON | SUCCESS (16 signals) | Legacy Root Folder Processor |
+| 16 | `family_member_1_1783904085638.json` | 432 | 2026-07-13T00:54:47.473Z | JSON | SUCCESS (1 signal) | Legacy Root Folder Processor |
+| 17 | `family_member_1_1783931180799.json` | 1,736 | 2026-07-13T08:26:24.320Z | JSON | SUCCESS (4 signals) | Legacy Root Folder Processor |
 
 ---
 
@@ -112,13 +112,13 @@ An audit of [wakeup_launcher.ps1](file:///mnt/c/jarvis/JarvisScheduler/wakeup_la
 
 ```powershell
 # In wakeup_launcher.ps1:
-$python = "/home/prad/petprojects/ai/jarvis/.venv/bin/python"
-$script = "/home/prad/petprojects/ai/jarvis/scripts/verify_v1_connectivity.py"
+$python = "/home/user/petprojects/ai/jarvis/.venv/bin/python"
+$script = "/home/user/petprojects/ai/jarvis/scripts/verify_v1_connectivity.py"
 
 $command = "$python $script"
 ```
 
-The PowerShell script **only executes the validation script**, which counts the files in `incoming/` but does not process them. There is **no command** in `wakeup_launcher.ps1` to execute the consumer agent CLI [run_consumer.py](file:///home/prad/petprojects/ai/jarvis/scripts/run_consumer.py).
+The PowerShell script **only executes the validation script**, which counts the files in `incoming/` but does not process them. There is **no command** in `wakeup_launcher.ps1` to execute the consumer agent CLI [run_consumer.py](file:///home/user/petprojects/ai/jarvis/scripts/run_consumer.py).
 
 ---
 
@@ -129,22 +129,22 @@ Every file currently sitting in the `incoming/` directory is classified below:
 | Path | SHA-256 Hash | Classification | Details |
 |---|---|---|---|
 | `incoming/5010XXXXXX3221_e5444aa8_01Apr2026_TO_30Jun2026_084431939.pdf` | `5704d8413bcf54...` | **NOT_SEEN** | Stranded in root folder instead of `incoming/statements/`. Unseen because consumer is not running. If consumer runs, this file will still be skipped due to incorrect folder/extension. |
-| `incoming/pradeep_1783643610948.json` | `e80beccea0db8e...` | **NOT_SEEN** | Unseen because consumer pipeline is not scheduled. |
-| `incoming/pradeep_1783671905889.json` | `9687308937ce19...` | **NOT_SEEN** | Unseen because consumer pipeline is not scheduled. |
-| `incoming/pradeep_1783698218000.json` | `fab894504a2b78...` | **NOT_SEEN** | Unseen because consumer pipeline is not scheduled. |
-| `incoming/pradeep_1783758304991.json` | `3b38306bd5151b...` | **NOT_SEEN** | Unseen because consumer pipeline is not scheduled. |
-| `incoming/pradeep_1783783504741.json` | `207ffe77aaa4b4...` | **NOT_SEEN** | Unseen because consumer pipeline is not scheduled. |
-| `incoming/pradeep_1783815911734.json` | `f0bf796a5f08af...` | **NOT_SEEN** | Unseen because consumer pipeline is not scheduled. |
-| `incoming/pradeep_1783845181697.json` | `54a2be0a74d940...` | **NOT_SEEN** | Unseen because consumer pipeline is not scheduled. |
-| `incoming/pradeep_1783870768644.json` | `2b0acb067a720f...` | **NOT_SEEN** | Unseen because consumer pipeline is not scheduled. |
-| `incoming/pradeep_1783902585344.json` | `fb5391c781a64c...` | **NOT_SEEN** | Unseen because consumer pipeline is not scheduled. |
-| `incoming/pradeep_1783931609096.json` | `c99cfe673d6c25...` | **NOT_SEEN** | Unseen because consumer pipeline is not scheduled. |
-| `incoming/shobana_1783655118573.json` | `05060a19444905...` | **NOT_SEEN** | Unseen because consumer pipeline is not scheduled. |
-| `incoming/shobana_1783698664749.json` | `c81eaf0bd10b80...` | **NOT_SEEN** | Unseen because consumer pipeline is not scheduled. |
-| `incoming/shobana_1783846995046.json` | `b6bb9213e208f0...` | **NOT_SEEN** | Unseen because consumer pipeline is not scheduled. |
-| `incoming/shobana_1783871971855.json` | `e2e82dd9b18996...` | **NOT_SEEN** | Unseen because consumer pipeline is not scheduled. |
-| `incoming/shobana_1783904085638.json` | `4034524c5825fb...` | **NOT_SEEN** | Unseen because consumer pipeline is not scheduled. |
-| `incoming/shobana_1783931180799.json` | `0917a22cb2bc8d...` | **NOT_SEEN** | Unseen because consumer pipeline is not scheduled. |
+| `incoming/user_1783643610948.json` | `e80beccea0db8e...` | **NOT_SEEN** | Unseen because consumer pipeline is not scheduled. |
+| `incoming/user_1783671905889.json` | `9687308937ce19...` | **NOT_SEEN** | Unseen because consumer pipeline is not scheduled. |
+| `incoming/user_1783698218000.json` | `fab894504a2b78...` | **NOT_SEEN** | Unseen because consumer pipeline is not scheduled. |
+| `incoming/user_1783758304991.json` | `3b38306bd5151b...` | **NOT_SEEN** | Unseen because consumer pipeline is not scheduled. |
+| `incoming/user_1783783504741.json` | `207ffe77aaa4b4...` | **NOT_SEEN** | Unseen because consumer pipeline is not scheduled. |
+| `incoming/user_1783815911734.json` | `f0bf796a5f08af...` | **NOT_SEEN** | Unseen because consumer pipeline is not scheduled. |
+| `incoming/user_1783845181697.json` | `54a2be0a74d940...` | **NOT_SEEN** | Unseen because consumer pipeline is not scheduled. |
+| `incoming/user_1783870768644.json` | `2b0acb067a720f...` | **NOT_SEEN** | Unseen because consumer pipeline is not scheduled. |
+| `incoming/user_1783902585344.json` | `fb5391c781a64c...` | **NOT_SEEN** | Unseen because consumer pipeline is not scheduled. |
+| `incoming/user_1783931609096.json` | `c99cfe673d6c25...` | **NOT_SEEN** | Unseen because consumer pipeline is not scheduled. |
+| `incoming/family_member_1_1783655118573.json` | `05060a19444905...` | **NOT_SEEN** | Unseen because consumer pipeline is not scheduled. |
+| `incoming/family_member_1_1783698664749.json` | `c81eaf0bd10b80...` | **NOT_SEEN** | Unseen because consumer pipeline is not scheduled. |
+| `incoming/family_member_1_1783846995046.json` | `b6bb9213e208f0...` | **NOT_SEEN** | Unseen because consumer pipeline is not scheduled. |
+| `incoming/family_member_1_1783871971855.json` | `e2e82dd9b18996...` | **NOT_SEEN** | Unseen because consumer pipeline is not scheduled. |
+| `incoming/family_member_1_1783904085638.json` | `4034524c5825fb...` | **NOT_SEEN** | Unseen because consumer pipeline is not scheduled. |
+| `incoming/family_member_1_1783931180799.json` | `0917a22cb2bc8d...` | **NOT_SEEN** | Unseen because consumer pipeline is not scheduled. |
 
 ---
 
@@ -173,7 +173,7 @@ Every file currently sitting in the `incoming/` directory is classified below:
 2. **Update Scheduler Launcher:** Modify [wakeup_launcher.ps1](file:///mnt/c/jarvis/JarvisScheduler/wakeup_launcher.ps1) to execute both the connectivity check and the consumer sync:
    ```powershell
    # Add to wakeup_launcher.ps1:
-   $consumerScript = "/home/prad/petprojects/ai/jarvis/scripts/run_consumer.py"
+   $consumerScript = "/home/user/petprojects/ai/jarvis/scripts/run_consumer.py"
    $consumerCommand = "$python $consumerScript --trigger SCHEDULED"
    # Execute consumer command
    ```

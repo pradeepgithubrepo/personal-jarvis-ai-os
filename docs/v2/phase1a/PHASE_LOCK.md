@@ -11,21 +11,21 @@ No modifications should be made to the files listed in this baseline without an 
 The following files constitute the locked Phase 1A implementation:
 
 ### Codebase Components
-* **Consumer Agent:** [agent.py](file:///home/prad/petprojects/ai/jarvis/src/agents/consumer/agent.py)  
+* **Consumer Agent:** [agent.py](file:///home/user/petprojects/ai/jarvis/src/agents/consumer/agent.py)  
   *Implements client calls, file downloading, hashing, checks, insertions, events logging, and file moves.*
-* **Ingestion Orchestrator:** [orchestrator.py](file:///home/prad/petprojects/ai/jarvis/src/agents/consumer/orchestrator.py)  
+* **Ingestion Orchestrator:** [orchestrator.py](file:///home/user/petprojects/ai/jarvis/src/agents/consumer/orchestrator.py)  
   *Coordinates the execution lifecycle, handling file loops, error transitions, and metrics.*
-* **CLI Entrypoint:** [run_consumer.py](file:///home/prad/petprojects/ai/jarvis/scripts/run_consumer.py)  
+* **CLI Entrypoint:** [run_consumer.py](file:///home/user/petprojects/ai/jarvis/scripts/run_consumer.py)  
   *Provides CLI command interface for manual or scheduled execution context.*
-* **Test Suite:** [test_consumer_agent.py](file:///home/prad/petprojects/ai/jarvis/tests/test_consumer_agent.py)  
+* **Test Suite:** [test_consumer_agent.py](file:///home/user/petprojects/ai/jarvis/tests/test_consumer_agent.py)  
   *Automated unit tests covering single/duplicate files, broken JSON, offline DB state, and duplicate signal reruns.*
 
 ### Documentation Deliverables
-* **Architecture Design:** [DESIGN.md](file:///home/prad/petprojects/ai/jarvis/docs/v2/phase1a/DESIGN.md)
-* **Database Schema Specs:** [SCHEMA.md](file:///home/prad/petprojects/ai/jarvis/docs/v2/phase1a/SCHEMA.md)
-* **Pipeline Lifecycle Specs:** [PIPELINE_RUNS.md](file:///home/prad/petprojects/ai/jarvis/docs/v2/phase1a/PIPELINE_RUNS.md)
-* **Validation Test Plan:** [TEST_PLAN.md](file:///home/prad/petprojects/ai/jarvis/docs/v2/phase1a/TEST_PLAN.md)
-* **Validation Run Report:** [VALIDATION_REPORT.md](file:///home/prad/petprojects/ai/jarvis/docs/v2/phase1a/VALIDATION_REPORT.md)
+* **Architecture Design:** [DESIGN.md](file:///home/user/petprojects/ai/jarvis/docs/v2/phase1a/DESIGN.md)
+* **Database Schema Specs:** [SCHEMA.md](file:///home/user/petprojects/ai/jarvis/docs/v2/phase1a/SCHEMA.md)
+* **Pipeline Lifecycle Specs:** [PIPELINE_RUNS.md](file:///home/user/petprojects/ai/jarvis/docs/v2/phase1a/PIPELINE_RUNS.md)
+* **Validation Test Plan:** [TEST_PLAN.md](file:///home/user/petprojects/ai/jarvis/docs/v2/phase1a/TEST_PLAN.md)
+* **Validation Run Report:** [VALIDATION_REPORT.md](file:///home/user/petprojects/ai/jarvis/docs/v2/phase1a/VALIDATION_REPORT.md)
 
 ---
 

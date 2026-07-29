@@ -11,8 +11,8 @@
 - **Oldest source_event_time:** `2026-04-02T08:39:00+00:00`
 - **Newest source_event_time:** `2026-06-30T18:45:00+00:00`
 - **Sample Records:**
-  - Time: `2026-04-02T08:39:00+00:00` | Sender: `pprad` | Message: `Paid to Radha Radha`
-  - Time: `2026-04-03T16:15:00+00:00` | Sender: `pprad` | Message: `Paid to JISHA JOHN C`
+  - Time: `2026-04-02T08:39:00+00:00` | Sender: `user_alias` | Message: `Paid to Radha Radha`
+  - Time: `2026-04-03T16:15:00+00:00` | Sender: `user_alias` | Message: `Paid to JISHA JOHN C`
 - **Validation Result:** **PASS**
 
 ### Source: whatsapp
@@ -20,7 +20,7 @@
 - **Oldest source_event_time:** `2026-06-22T16:23:59.500000+00:00`
 - **Newest source_event_time:** `2026-07-09T11:24:42.102000+00:00`
 - **Sample Records:**
-  - Time: `2026-06-25T12:05:13.591+00:00` | Sender: `Shraddha Jaiswal` | Message: `Let me see Pradeep ,pre prod week is going on I’ll update in`
+  - Time: `2026-06-25T12:05:13.591+00:00` | Sender: `Shraddha Jaiswal` | Message: `Let me see User ,pre prod week is going on I’ll update in`
   - Time: `2026-06-25T16:38:34.815+00:00` | Sender: `WhatsApp: Senthil RFC` | Message: `Yeah looks so`
 - **Validation Result:** **PASS**
 
@@ -39,7 +39,7 @@ SBI Card Bill 8707 of Rs.3141.02 is due on 01-Jul-2`
 - **Oldest source_event_time:** `2026-04-04T00:00:00+00:00`
 - **Newest source_event_time:** `2026-06-30T00:00:00+00:00`
 - **Sample Records:**
-  - Time: `2026-04-04T00:00:00+00:00` | Sender: `pprad` | Message: `WDL TFR IY209420261713387162172 0036515075873 OF SBI CARDS A`
-  - Time: `2026-04-09T00:00:00+00:00` | Sender: `pprad` | Message: `WDL TFR IMPS/609916501529/HDFC- xx221-Pradeep/Transfer 00982`
+  - Time: `2026-04-04T00:00:00+00:00` | Sender: `user_alias` | Message: `WDL TFR IY209420261713387162172 0036515075873 OF SBI CARDS A`
+  - Time: `2026-04-09T00:00:00+00:00` | Sender: `user_alias` | Message: `WDL TFR IMPS/609916501529/HDFC- xx221-User/Transfer 00982`
 - **Validation Result:** **PASS**
 

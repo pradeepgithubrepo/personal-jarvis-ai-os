@@ -3,7 +3,7 @@
 Document Version: 1.0.0  
 Date: 2026-07-11T10:49:25Z  
 Schema: `jarvis_insights_schemav1`  
-Workspace: `/home/prad/petprojects/ai/jarvis`  
+Workspace: `/home/user/petprojects/ai/jarvis`  
 
 ---
 
@@ -176,7 +176,7 @@ No LLM is utilized in the qualification stage; the process is fully deterministi
 While the **Qualification stage is 100% deterministic** and makes no LLM calls, the downstream stages of the backfill pipeline rely on LLM inference. Here are the specific areas where LLM calls are made:
 
 1. **Signal Understanding Agent (SUA) - Classification & Extraction**
-   - **File**: [agent.py](file:///home/prad/petprojects/ai/jarvis/src/agents/sua/agent.py)
+   - **File**: [agent.py](file:///home/user/petprojects/ai/jarvis/src/agents/sua/agent.py)
    - **Function**: `SignalUnderstandingAgent.understand_signal()`
    - **Details**: 
      - Once a signal passes qualification with a `QUALIFIED` status, it is eligible for the SUA stage. 
@@ -186,7 +186,7 @@ While the **Qualification stage is 100% deterministic** and makes no LLM calls, 
      - **Fallback**: If the LLM call fails or times out (30-second threshold), the agent catches the exception and falls back to deterministic rule-based heuristics (`_fallback_understand`).
 
 2. **Downstream Agents (Stubs in Phase 2B)**
-   - **Files**: [src/agents/stubs/](file:///home/prad/petprojects/ai/jarvis/src/agents/stubs/) (`financial_agent_stub.py`, `todo_agent_stub.py`, `fyi_agent_stub.py`, `fact_agent_stub.py`)
+   - **Files**: [src/agents/stubs/](file:///home/user/petprojects/ai/jarvis/src/agents/stubs/) (`financial_agent_stub.py`, `todo_agent_stub.py`, `fyi_agent_stub.py`, `fact_agent_stub.py`)
    - **Details**: Downstream agents in the current Phase 2B framework are stubs and do not make LLM calls. They consume the JSON contract produced by the SUA.
 
 ---
@@ -235,16 +235,16 @@ Below is an assessment of which raw columns survive the qualification boundary:
 **NO.** 
 
 ### What information is permanently lost?
-1. **Device Attribution (`device_id`)**: The ID specifying which device uploaded the signal (e.g. `shobana` vs `pradeep`) is dropped. Downstream agents are forced to guess context based on message body text, violating the multi-device design.
+1. **Device Attribution (`device_id`)**: The ID specifying which device uploaded the signal (e.g. `family_member_1` vs `user`) is dropped. Downstream agents are forced to guess context based on message body text, violating the multi-device design.
 2. **Collector Metadata (`metadata`)**: Rich transaction metadata (the precise numerical amount, reference IDs, transaction currencies, and verified counterparty names) parsed from PDF statements or Google Pay logs in Phase 1B is **permanently discarded**.
 
 ### Examples from Actual Records
 
-#### Example 1 (Sample 8 - Shobana Kumari payment)
-- **Original Message**: `Paid to Shobana Kumari`
+#### Example 1 (Sample 8 - Family_Member_1 Kumari payment)
+- **Original Message**: `Paid to Family_Member_1 Kumari`
 - **Original Metadata**: `{"amount": 50.00, "currency": "INR", "transaction_type": "DEBIT", "payment_channel": "UPI"}`
-- **Qualified Signal Result**: Mapped strictly to message text (`Paid to Shobana Kumari`). The `$50.00` value is lost.
-- **SUA Contract Output**: The SUA processes the raw string `Paid to Shobana Kumari`. Having no amount keyword in the text, it extracts **`amount: Paid`** (an invalid string). Lineage is broken, and downstream financial rollups receive invalid data.
+- **Qualified Signal Result**: Mapped strictly to message text (`Paid to Family_Member_1 Kumari`). The `$50.00` value is lost.
+- **SUA Contract Output**: The SUA processes the raw string `Paid to Family_Member_1 Kumari`. Having no amount keyword in the text, it extracts **`amount: Paid`** (an invalid string). Lineage is broken, and downstream financial rollups receive invalid data.
 
 #### Example 2 (Sample 3 - Restaurant Bill)
 - **Original Message**: `Paid to CANAVIL FAMILY RESTAURANT`

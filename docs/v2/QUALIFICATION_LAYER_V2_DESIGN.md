@@ -40,11 +40,11 @@ PROPOSED STATE:
 To support lineage and metadata preservation, the `qualified_signals` table must be altered to include three new columns.
 
 ### Target Schema Definition
-* `device_id` (`text`): Preserves the source device name (e.g. `shobana`, `pradeep`).
+* `device_id` (`text`): Preserves the source device name (e.g. `family_member_1`, `user`).
 * `message_hash` (`text`): Mapped directly from `mobile_signals.message_hash` and enforced as `UNIQUE` to prevent duplicate qualification events.
 * `metadata` (`jsonb`): Holds the complete structured JSON payload from the ingestion stage.
 
-The DDL for these changes is located in [QUALIFICATION_SCHEMA_CHANGES.sql](file:///home/prad/petprojects/ai/jarvis/QUALIFICATION_SCHEMA_CHANGES.sql).
+The DDL for these changes is located in [QUALIFICATION_SCHEMA_CHANGES.sql](file:///home/user/petprojects/ai/jarvis/QUALIFICATION_SCHEMA_CHANGES.sql).
 
 ---
 
@@ -63,7 +63,7 @@ Under V2, the qualification logic will become source-aware. Instead of applying 
 * **Strategy**: Metadata-First.
 * **Logic**:
   - If `metadata` has valid transaction fields, it is classified as `QUALIFIED` (score `100.0`, reason `bank_statement_structured_metadata`).
-  - This avoids running text-based keyword matchers on bank statements that contain noise (e.g., promotional terms mixed with balance details).
+  - This avoids running text-based keyword matchers on bank statements that contain noise (e.g., promotional terms mixed with contact_7nce details).
 
 ### 3.3 SMS / WhatsApp Signals (Unstructured)
 * **Strategy**: Rule-Based Scoring Engine (Preserved from V1).

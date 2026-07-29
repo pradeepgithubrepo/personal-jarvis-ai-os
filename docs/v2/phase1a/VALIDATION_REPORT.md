@@ -11,7 +11,7 @@ All tests were executed against the live Supabase environment using the Python v
 * **Execution Timestamp:** 2026-07-08T04:59:02Z
 * **Runtime Command:**
   ```bash
-  /home/prad/petprojects/ai/jarvis/.venv/bin/python -m unittest tests/test_consumer_agent.py
+  /home/user/petprojects/ai/jarvis/.venv/bin/python -m unittest tests/test_consumer_agent.py
   ```
 * **Overall Result:** **PASSED (5/5 tests successful)**
 * **Execution Duration:** 55.327 seconds

@@ -51,7 +51,7 @@ A head-to-head quality comparison was executed on 6 actual routed signals:
 * **Hallucination & Context Leakage**: Qwen suffered from severe context leakage, repeating keywords like "purifier person" on unrelated medical or tenant shifting signals. Gemini and Cerebras maintained strict context boundaries.
 * **Overall Rating**: Gemini (Grade A - Primary), Cerebras (Grade A- - Fallback), Local Qwen (Grade D - Last Resort).
 
-For the full comparison table, refer to [TODO_AGENT_MODEL_COMPARISON.md](file:///home/prad/petprojects/ai/jarvis/docs/TODO_AGENT_MODEL_COMPARISON.md).
+For the full comparison table, refer to [TODO_AGENT_MODEL_COMPARISON.md](file:///home/user/petprojects/ai/jarvis/docs/TODO_AGENT_MODEL_COMPARISON.md).
 
 ---
 

@@ -25,7 +25,7 @@ This document defines the baseline file locks and checksums for the validated an
 
 ## 2. Validation Suite Lock
 
-* File: [test_source_collectors.py](file:///home/prad/petprojects/ai/jarvis/tests/test_source_collectors.py)
+* File: [test_source_collectors.py](file:///home/user/petprojects/ai/jarvis/tests/test_source_collectors.py)
 * Test Suite DTD:
   1. `test_1_whatsapp_ingestion`
   2. `test_2_sms_ingestion`

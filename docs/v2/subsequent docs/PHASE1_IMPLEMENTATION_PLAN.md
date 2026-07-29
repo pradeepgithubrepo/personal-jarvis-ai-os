@@ -3,10 +3,10 @@
 ## Readiness Summary
 
 ### What Already Exists
-- PDF extraction engine (`pypdf`) in [pdf_parser.py](file:///home/prad/petprojects/ai/jarvis/src/agents/consumer/parsers/pdf_parser.py) — reusable as-is
-- GPay PDF parser with regex extractors in [gpay_collector.py](file:///home/prad/petprojects/ai/jarvis/src/agents/consumer/collectors/gpay_collector.py) — 278 transactions extracted accurately
-- SBI/HDFC PDF parsers in [bank_statement_collector.py](file:///home/prad/petprojects/ai/jarvis/src/agents/consumer/collectors/bank_statement_collector.py) — partially broken (see defects below)
-- Financial agent stub in [financial_agent_stub.py](file:///home/prad/petprojects/ai/jarvis/src/agents/stubs/financial_agent_stub.py) — stub only, no real logic
+- PDF extraction engine (`pypdf`) in [pdf_parser.py](file:///home/user/petprojects/ai/jarvis/src/agents/consumer/parsers/pdf_parser.py) — reusable as-is
+- GPay PDF parser with regex extractors in [gpay_collector.py](file:///home/user/petprojects/ai/jarvis/src/agents/consumer/collectors/gpay_collector.py) — 278 transactions extracted accurately
+- SBI/HDFC PDF parsers in [bank_statement_collector.py](file:///home/user/petprojects/ai/jarvis/src/agents/consumer/collectors/bank_statement_collector.py) — partially broken (see defects below)
+- Financial agent stub in [financial_agent_stub.py](file:///home/user/petprojects/ai/jarvis/src/agents/stubs/financial_agent_stub.py) — stub only, no real logic
 - `understood_signals` table with 132 FINANCIAL-classified records — live in Supabase
 - Pipeline event logging infrastructure — reusable
 
@@ -23,7 +23,7 @@
 5. Unit tests `tests/test_financial_agent.py`
 
 ### Defects to Fix First
-1. **SBI multi-page parser bug** ([bank_statement_collector.py L12-14](file:///home/prad/petprojects/ai/jarvis/src/agents/consumer/collectors/bank_statement_collector.py#L12-L14)): Missing `break` in `start_idx` scan causes early pages to be skipped
+1. **SBI multi-page parser bug** ([bank_statement_collector.py L12-14](file:///home/user/petprojects/ai/jarvis/src/agents/consumer/collectors/bank_statement_collector.py#L12-L14)): Missing `break` in `start_idx` scan causes early pages to be skipped
 2. **HDFC parser DEBIT/CREDIT detection**: Relies only on text keywords (`CR`, `CREDIT`) — misclassifies many debits as credits
 3. **Financial SMS spam leakage**: 75% of FINANCIAL-classified signals are promotions/offers (no `transaction_type` guard)
 

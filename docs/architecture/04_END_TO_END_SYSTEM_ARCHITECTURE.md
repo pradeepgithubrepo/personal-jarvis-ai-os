@@ -121,7 +121,7 @@ erDiagram
 
 ## 🔄 End-to-End Signal Execution Lifecycle
 
-1. **Collection**: The mobile collector ([jarviscollector](https://github.com/pradeepgithubrepo/jarviscollector)) intercepts transactional SMS/notifications on Android devices and pushes structured JSON to Supabase.
+1. **Collection**: The mobile collector ([jarviscollector](https://github.com/usergithubrepo/jarviscollector)) intercepts transactional SMS/notifications on Android devices and pushes structured JSON to Supabase.
 2. **Ingestion & Dedup**: `ConsumerAgent` computes the SHA-256 digest of the payload. If unique, the file is logged in `processed_files` and passed to `SignalQualificationAgent`.
 3. **Qualification**: `SignalQualificationAgent` applies heuristic domain context matching (`config/qualification_rules.json`). Qualified entries are inserted into `qualified_signals` with status `QUALIFIED`.
 4. **Understanding (SUA)**: `SignalUnderstandingAgent` reads `QUALIFIED` signals. Structured inputs (GPay, Bank Statements) take the 1.0 confidence metadata bypass path. Unstructured SMS entries are parsed via Ollama/Local LLM (`qwen2.5:1.5b`). Output is saved in `understood_signals`.

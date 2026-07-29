@@ -61,9 +61,9 @@ A single row from `qualified_signals` serves as the input.
 ```json
 {
   "source": "gpay",
-  "sender": "pprad",
+  "sender": "user_alias",
   "message": "Paid to Radha Radha",
-  "device_id": "pradeep",
+  "device_id": "user",
   "message_hash": "6f1de9d316d846...",
   "metadata": {
     "source_metadata": {
@@ -86,7 +86,7 @@ A single row from `qualified_signals` serves as the input.
   "source": "bank_statement",
   "sender": "hdfc",
   "message": "ATM Cash Withdrawal HDFC",
-  "device_id": "shobana",
+  "device_id": "family_member_1",
   "message_hash": "7a3b4c5d...",
   "metadata": {
     "source_metadata": {
@@ -106,7 +106,7 @@ A single row from `qualified_signals` serves as the input.
   "source": "sms",
   "sender": "SBI-ALERT",
   "message": "Your a/c no. XXX1234 is debited for Rs 2500.00 on 2026-07-11...",
-  "device_id": "pradeep",
+  "device_id": "user",
   "message_hash": "a1b2c3d4...",
   "metadata": {}
 }
@@ -117,9 +117,9 @@ A single row from `qualified_signals` serves as the input.
 ```json
 {
   "source": "whatsapp",
-  "sender": "Shobana",
+  "sender": "Family_Member_1",
   "message": "Can you buy bread and milk on your way back home today?",
-  "device_id": "shobana",
+  "device_id": "family_member_1",
   "message_hash": "a9b8c7d6...",
   "metadata": {}
 }
@@ -154,7 +154,7 @@ When written to `understood_signals`, every record must contain a `contract_json
 {
   "task_name": "Buy bread and milk on the way back home",
   "due_date": "2026-07-11T23:59:59Z",
-  "assigned_to": "pradeep",
+  "assigned_to": "user",
   "priority": "MEDIUM"
 }
 ```
@@ -165,7 +165,7 @@ When written to `understood_signals`, every record must contain a `contract_json
 * **Sample Output**:
 ```json
 {
-  "summary": "Pradeep is heading to Chennai for a meeting",
+  "summary": "User is heading to Chennai for a meeting",
   "topic": "travel",
   "event_date": "2026-07-11T12:00:00Z"
 }
