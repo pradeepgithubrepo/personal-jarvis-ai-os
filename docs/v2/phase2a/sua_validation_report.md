@@ -25,7 +25,7 @@ Ollama URL: http://127.0.0.1:11434
 | Paid to PAMMAL SARAVANA SHOPPING | FINANCIAL | FINANCIAL | ✅ PASS | fallback | None |
 | Paid to Mrs V Deepa | FINANCIAL | FINANCIAL | ✅ PASS | fallback | None |
 | Paid to MOHAMMED RIYAS MOHAM | FINANCIAL | FINANCIAL | ✅ PASS | fallback | None |
-| Let me see Pradeep ,pre prod week is going on I’ll update in... | NOISE | FYI | ❌ FAIL | fallback | None |
+| Let me see User ,pre prod week is going on I’ll update in... | NOISE | FYI | ❌ FAIL | fallback | None |
 | Paid to BABUN | FINANCIAL | FINANCIAL | ✅ PASS | fallback | None |
 | Paid to VIJAY BALU | FINANCIAL | FINANCIAL | ✅ PASS | fallback | None |
 | Paid to S J PAZHAMUTHIR CHOLAI | FINANCIAL | FINANCIAL | ✅ PASS | fallback | None |
@@ -55,7 +55,7 @@ Ollama URL: http://127.0.0.1:11434
 | Received from kalai chelvi | FINANCIAL | FINANCIAL | ✅ PASS | fallback | None |
 | Paid to EDF Juice Juices P Ltd | FINANCIAL | FINANCIAL | ✅ PASS | fallback | None |
 | Received from kalai chelvi | FINANCIAL | FINANCIAL | ✅ PASS | fallback | None |
-| Paid to Shobana Kumari | FINANCIAL | FINANCIAL | ✅ PASS | fallback | None |
+| Paid to Family_Member_1 Kumari | FINANCIAL | FINANCIAL | ✅ PASS | fallback | None |
 | Paid to SEENIRAJ S | FINANCIAL | FINANCIAL | ✅ PASS | fallback | None |
 | Paid to Vijayalakshmi Annamalai | FINANCIAL | FINANCIAL | ✅ PASS | fallback | None |
 | Yeah looks so | NOISE | FYI | ❌ FAIL | fallback | None |
@@ -104,7 +104,7 @@ Ollama URL: http://127.0.0.1:11434
 | Paid to SEENIRAJ S | FINANCIAL | FINANCIAL | ✅ PASS | fallback | None |
 | Got the link | NOISE | FYI | ❌ FAIL | fallback | None |
 | Paid to JISHA JOHN C | FINANCIAL | FINANCIAL | ✅ PASS | fallback | None |
-| Received from Shobana Kumari | FINANCIAL | FINANCIAL | ✅ PASS | fallback | None |
+| Received from Family_Member_1 Kumari | FINANCIAL | FINANCIAL | ✅ PASS | fallback | None |
 | Paid to THAMARAI HOTCHIPS | FINANCIAL | FINANCIAL | ✅ PASS | fallback | None |
 | Paid to SARATHKUMAR S | FINANCIAL | FINANCIAL | ✅ PASS | fallback | None |
 | Paid to G M VIYOMAVATHY | FINANCIAL | FINANCIAL | ✅ PASS | fallback | None |
@@ -113,15 +113,15 @@ Ollama URL: http://127.0.0.1:11434
 | Paid to IMPRESSIONZ DLF RAMAPURAM | FINANCIAL | FINANCIAL | ✅ PASS | fallback | None |
 | Paid to EDF Juice Juices P Ltd | FINANCIAL | FINANCIAL | ✅ PASS | fallback | None |
 | Paid to JISHA JOHN C | FINANCIAL | FINANCIAL | ✅ PASS | fallback | None |
-| Done , Pradeep! | NOISE | FYI | ❌ FAIL | fallback | None |
+| Done , User! | NOISE | FYI | ❌ FAIL | fallback | None |
 | Paid to EDF Juice Juices P Ltd | FINANCIAL | FINANCIAL | ✅ PASS | fallback | None |
 | Paid to JISHA JOHN C | FINANCIAL | FINANCIAL | ✅ PASS | fallback | None |
 | Paid to Nithiya Raja | FINANCIAL | FINANCIAL | ✅ PASS | fallback | None |
 | Paid to VIJAYA J | FINANCIAL | FINANCIAL | ✅ PASS | fallback | None |
 | Paid to TANGEDCO | FINANCIAL | FINANCIAL | ✅ PASS | fallback | None |
-| Paid to Anusha Sampath | FINANCIAL | FINANCIAL | ✅ PASS | fallback | None |
+| Paid to [REDACTED_NAME] Sampath | FINANCIAL | FINANCIAL | ✅ PASS | fallback | None |
 | Paid to JISHA JOHN C | FINANCIAL | FINANCIAL | ✅ PASS | fallback | None |
 | Paid to AMMA MESS | FINANCIAL | FINANCIAL | ✅ PASS | fallback | None |
 | Paid to AMMA MESS | FINANCIAL | FINANCIAL | ✅ PASS | fallback | None |
 | Paid to HOTEL SRI GANESH BHAVAN | FINANCIAL | FINANCIAL | ✅ PASS | fallback | None |
-| Done , Pradeep! | NOISE | FYI | ❌ FAIL | fallback | None |
+| Done , User! | NOISE | FYI | ❌ FAIL | fallback | None |

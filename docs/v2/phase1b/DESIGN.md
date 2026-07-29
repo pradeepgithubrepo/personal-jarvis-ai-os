@@ -51,7 +51,7 @@ Each collector manages its own lifecycle for each discovered file:
   * `source_type`: `whatsapp`
   * `source_subtype`: `chat`
   * `sender`: msg["sender"]
-  * `receiver`: "pprad" (default)
+  * `receiver`: "user_alias" (default)
   * `content`: msg["message"]
   * `source_event_time`: UTC conversion of `timestamp`
   * `metadata`: `{"chat_name": "...", "attachment_indicator": ...}`
@@ -65,7 +65,7 @@ Each collector manages its own lifecycle for each discovered file:
   * `source_type`: `sms`
   * `source_subtype`: `inbox`
   * `sender`: msg["sender"]
-  * `receiver`: "pprad" (default)
+  * `receiver`: "user_alias" (default)
   * `content`: msg["message"]
   * `source_event_time`: UTC conversion of `timestamp`
   * `metadata`: `{}`
@@ -76,8 +76,8 @@ Each collector manages its own lifecycle for each discovered file:
   * `source_type`: `financial`
   * `source_subtype`: `gpay` or `bank_statement`
   * `content`: tx["description"]
-  * `sender`: if CREDIT: `counterparty`, if DEBIT: `pprad`
-  * `receiver`: if CREDIT: `pprad`, if DEBIT: `counterparty`
+  * `sender`: if CREDIT: `counterparty`, if DEBIT: `user_alias`
+  * `receiver`: if CREDIT: `user_alias`, if DEBIT: `counterparty`
   * `source_event_time`: Parse date/time strings to UTC ISO format.
   * `metadata`: **Financial Transaction Schema**:
     ```json

@@ -5,7 +5,7 @@
 
 ## 1. Database Schema Migrations
 
-We created a structured migration file [phase3a_todo_agent.sql](file:///home/prad/petprojects/ai/jarvis/sql/migrations/phase3a_todo_agent.sql) to set up the tasks schemas:
+We created a structured migration file [phase3a_todo_agent.sql](file:///home/user/petprojects/ai/jarvis/sql/migrations/phase3a_todo_agent.sql) to set up the tasks schemas:
 * Custom Postgres enums: `task_status` (`OPEN`, `IN_PROGRESS`, `COMPLETED`, `CANCELLED`), `task_priority` (`LOW`, `MEDIUM`, `HIGH`, `URGENT`), `task_source_type` (`AUTO_GENERATED`, `USER_TEXT`, `USER_VOICE`), `task_created_by` (`JARVIS`, `USER`).
 * Columns `assigned_to` and `notification_profile` are integrated for multi-user assignment and flexible alarm offsets.
 * Foreign key constraint `route_id REFERENCES signal_routes(id)` maps task lineage to routing decisions.
@@ -14,7 +14,7 @@ We created a structured migration file [phase3a_todo_agent.sql](file:///home/pra
 
 ## 2. To-Do Agent Implementation (`todo_agent.py`)
 
-The real `TodoAgent` has been implemented in [todo_agent.py](file:///home/prad/petprojects/ai/jarvis/src/agents/todo/todo_agent.py).
+The real `TodoAgent` has been implemented in [todo_agent.py](file:///home/user/petprojects/ai/jarvis/src/agents/todo/todo_agent.py).
 
 ### Core Features
 
@@ -34,9 +34,9 @@ The real `TodoAgent` has been implemented in [todo_agent.py](file:///home/prad/p
 We implemented two entry points for executing the worker:
 
 1. **Standalone CLI Ingestion Worker**:
-   [run_todo_agent.py](file:///home/prad/petprojects/ai/jarvis/scripts/run_todo_agent.py) triggers pulling pending routes, running LLM checks, and updating Supabase states.
+   [run_todo_agent.py](file:///home/user/petprojects/ai/jarvis/scripts/run_todo_agent.py) triggers pulling pending routes, running LLM checks, and updating Supabase states.
 2. **Orchestrated Backfill Pipeline**:
-   Modified [run_pipeline_backfill.py](file:///home/prad/petprojects/ai/jarvis/scripts/run_pipeline_backfill.py) to automatically execute the `TodoAgent` ingestion worker at the end of the backfill process.
+   Modified [run_pipeline_backfill.py](file:///home/user/petprojects/ai/jarvis/scripts/run_pipeline_backfill.py) to automatically execute the `TodoAgent` ingestion worker at the end of the backfill process.
 
 ---
 

@@ -58,7 +58,7 @@ Below is a brief, self-explanatory overview of each agent operating in the Jarvi
 
 ### 3. 💳 Financial Agent (`src/agents/financial/financial_agent.py`)
 * **Role**: Personal Finance & Transaction Specialist.
-* **Responsibilities**: Managing transactional ledgers, categorizing expenses (e.g., Dining, Utilities, Subscriptions, Transfer), linking counterparties, calculating category totals, and enforcing double-entry check balances.
+* **Responsibilities**: Managing transactional ledgers, categorizing expenses (e.g., Dining, Utilities, Subscriptions, Transfer), linking counterparties, calculating category totals, and enforcing double-entry check contact_7nces.
 * **Outputs**: Classified ledger records in `financial_transactions`.
 
 ---

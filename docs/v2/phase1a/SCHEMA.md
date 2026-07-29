@@ -138,7 +138,7 @@ Raw ingested signals extracted from JSON uploads.
 | Column | Data Type | Nullability | Description |
 |---|---|---|---|
 | `id` | `bigint` | `NOT NULL` | Auto-incrementing primary key. |
-| `device_id` | `text` | `NOT NULL` | Device source identifier (e.g. `pradeep_phone`). |
+| `device_id` | `text` | `NOT NULL` | Device source identifier (e.g. `user_phone`). |
 | `source` | `text` | `NOT NULL` | Ingestion source (e.g. `sms`, `whatsapp`). |
 | `sender` | `text` | `NOT NULL` | Phone number or name of the sender. |
 | `message` | `text` | `NOT NULL` | Raw content of the message. |

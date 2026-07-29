@@ -37,8 +37,8 @@ The dataset shows a clear division in terms of timeline coverage across channels
 ---
 
 ## 3. Discovered Parser Issues & Gaps
-During this Phase 0 assessment, a critical production bug was discovered in the SBI statement parser (`parse_sbi_text` in [bank_statement_collector.py](file:///home/prad/petprojects/ai/jarvis/src/agents/consumer/collectors/bank_statement_collector.py#L7-L87)):
-- **Bug**: The parser loops through lines to find the transaction table start index `start_idx`. However, it does not `break` upon finding the first occurrence. In multi-page statements, the word `Balance` occurs on every page header/footer, causing `start_idx` to continually overwrite to the end of the file, skipping the actual transactions.
+During this Phase 0 assessment, a critical production bug was discovered in the SBI statement parser (`parse_sbi_text` in [bank_statement_collector.py](file:///home/user/petprojects/ai/jarvis/src/agents/consumer/collectors/bank_statement_collector.py#L7-L87)):
+- **Bug**: The parser loops through lines to find the transaction table start index `start_idx`. However, it does not `break` upon finding the first occurrence. In multi-page statements, the word `Contact_7nce` occurs on every page header/footer, causing `start_idx` to continually overwrite to the end of the file, skipping the actual transactions.
 - **Impact**: All transactions prior to the final page were dropped. Correcting this block yields the actual **49 transactions** recorded above.
 
 ---

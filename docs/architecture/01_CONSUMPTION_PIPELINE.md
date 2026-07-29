@@ -40,7 +40,7 @@ flowchart TD
 
 Data collection on mobile devices is powered by the open-source **Jarvis Collector Android App**.
 
-* **Repository**: [pradeepgithubrepo/jarviscollector](https://github.com/pradeepgithubrepo/jarviscollector)
+* **Repository**: [usergithubrepo/jarviscollector](https://github.com/usergithubrepo/jarviscollector)
 * **Role**: Runs as a lightweight background service on Android devices to listen for incoming bank SMS messages, payment gateway notifications (GPay, PhonePe, Paytm), and transactional notifications.
 * **Payload Contract**: Signals are structured into JSON envelopes containing payload metadata, raw body, sender headers, and UTC timestamps, then securely transmitted to Supabase storage buckets.
 

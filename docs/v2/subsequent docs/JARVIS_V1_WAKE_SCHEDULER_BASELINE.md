@@ -60,12 +60,12 @@ Ubuntu
 ## Jarvis Runtime Location
 
 ```text
-/home/prad/petprojects/ai/jarvis
+/home/user/petprojects/ai/jarvis
 ```
 
 ## Validation Script
 
-[verify_v1_connectivity.py](file:///home/prad/petprojects/ai/jarvis/scripts/verify_v1_connectivity.py)
+[verify_v1_connectivity.py](file:///home/user/petprojects/ai/jarvis/scripts/verify_v1_connectivity.py)
 
 ---
 
@@ -213,7 +213,7 @@ Jarvis Wake Validation V1
 ```text
 Run whether user is logged on or not
 Run with highest privileges
-User = pprad
+User = user_alias
 ```
 
 Important:
@@ -342,14 +342,14 @@ A successful execution produces:
 
 ```text
 Triggered
-User=pprad
-Computer=PRADEEP
+User=user_alias
+Computer=USER
 
 WSL Ready
 
 Executing:
-/home/prad/petprojects/ai/jarvis/.venv/bin/python
-/home/prad/petprojects/ai/jarvis/scripts/verify_v1_connectivity.py
+/home/user/petprojects/ai/jarvis/.venv/bin/python
+/home/user/petprojects/ai/jarvis/scripts/verify_v1_connectivity.py
 
 Starting Validation
 Loading Environment
@@ -395,7 +395,7 @@ For Jarvis V1:
 Use Hibernate
 Use Wake Timers
 Use Task Scheduler
-Use User Context (pprad)
+Use User Context (user_alias)
 Do NOT rely on S0 Sleep
 Do NOT run WSL under SYSTEM
 ```

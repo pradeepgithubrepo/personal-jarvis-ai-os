@@ -12,12 +12,12 @@ It explicitly excludes all downstream features (such as spend analytics, budget 
 Based on the Phase-0 findings, we audit existing codebase components to define our baseline strategy:
 
 ### A. What Can Be Reused
-- **PDF Extraction Engine**: The `pypdf` text parsing structure inside [pdf_parser.py](file:///home/prad/petprojects/ai/jarvis/src/agents/consumer/parsers/pdf_parser.py) is sound and will be reused.
-- **Deterministic Regex Extractors**: The date and token regex patterns inside [gpay_collector.py](file:///home/prad/petprojects/ai/jarvis/src/agents/consumer/collectors/gpay_collector.py) are highly accurate for GPay statement parsing and will be reused.
-- **Orchestrator Logs & Events**: The event logging system (`log_event`) inside [orchestrator.py](file:///home/prad/petprojects/ai/jarvis/src/agents/consumer/orchestrator.py) will continue to track execution metrics.
+- **PDF Extraction Engine**: The `pypdf` text parsing structure inside [pdf_parser.py](file:///home/user/petprojects/ai/jarvis/src/agents/consumer/parsers/pdf_parser.py) is sound and will be reused.
+- **Deterministic Regex Extractors**: The date and token regex patterns inside [gpay_collector.py](file:///home/user/petprojects/ai/jarvis/src/agents/consumer/collectors/gpay_collector.py) are highly accurate for GPay statement parsing and will be reused.
+- **Orchestrator Logs & Events**: The event logging system (`log_event`) inside [orchestrator.py](file:///home/user/petprojects/ai/jarvis/src/agents/consumer/orchestrator.py) will continue to track execution metrics.
 
 ### B. What Must Change
-- **SBI Statement Index Scan**: [bank_statement_collector.py](file:///home/prad/petprojects/ai/jarvis/src/agents/consumer/collectors/bank_statement_collector.py) must be patched with a `break` statement when the first page's `Balance` header is matched. This fixes the multi-page parsing bug that drops the first few pages of transactions.
+- **SBI Statement Index Scan**: [bank_statement_collector.py](file:///home/user/petprojects/ai/jarvis/src/agents/consumer/collectors/bank_statement_collector.py) must be patched with a `break` statement when the first page's `Contact_7nce` header is matched. This fixes the multi-page parsing bug that drops the first few pages of transactions.
 - **Financial SMS Classifier**: The current router / classifier must be upgraded. Marketing spam containing financial offers (Lifetime Free Cards, loan limits) must be filtered out before entering the financial pipeline, resolving the 75% spam leakage rate.
 - **Extraction Schema**: The output contracts must move away from generic string mappings and utilize our new structured canonical transaction model.
 

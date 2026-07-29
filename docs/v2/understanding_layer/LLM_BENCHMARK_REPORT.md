@@ -15,11 +15,11 @@
 | 4 | 8671 | `Super anna` | 4.46s | `SUCCESS` | `ACTION` |
 | 5 | 8684 | `Can you share the mercury one gate url i...` | 2.93s | `SUCCESS` | `ACTION` |
 | 6 | 8685 | `Got the link` | 5.38s | `SUCCESS` | `ACTION` |
-| 7 | 8686 | `Done , Pradeep!` | 6.02s | `SUCCESS` | `ACTION` |
+| 7 | 8686 | `Done , User!` | 6.02s | `SUCCESS` | `ACTION` |
 | 8 | 8888 | `📷 Photo` | 5.24s | `SUCCESS` | `ACTION` |
-| 9 | 8687 | `Done , Pradeep!` | 6.62s | `SUCCESS` | `ACTION` |
+| 9 | 8687 | `Done , User!` | 6.62s | `SUCCESS` | `ACTION` |
 | 10 | 8688 | `Guys pls come around 6:30am` | 3.51s | `SUCCESS` | `ACTION` |
-| 11 | 8889 | `from Harish` | 5.05s | `SUCCESS` | `ACTION` |
+| 11 | 8889 | `from Contact_1` | 5.05s | `SUCCESS` | `ACTION` |
 | 12 | 8689 | `Sure` | 5.20s | `SUCCESS` | `ACTION` |
 | 13 | 8719 | `Same as @⁨~Ganesh Pandian 🫰🏾⁩ said` | 5.28s | `SUCCESS` | `ACTION` |
 | 14 | 8720 | `Tap for more info` | 5.69s | `SUCCESS` | `NOISE` |
@@ -35,7 +35,7 @@
 ## 2. Detailed Request & Response Trace
 
 ### Signal 1 (ID: 8668)
-* **Sender**: `Daily Badminton Update: ~ Ganesh Pandian 🫰🏾`
+* **Sender**: `[REDACTED_SPORTS_GROUP]: ~ Ganesh Pandian 🫰🏾`
 * **Timestamp**: `2026-06-25T03:47:19.177+00:00`
 * **Message**: *"Yes I'm ready if school holiday ✋🏾"*
 * **Response Time**: `8.74 seconds`
@@ -51,7 +51,7 @@ Analyze the message and classify it into exactly one of these types:
 - NOISE: Greetings, spam, chit-chat, OTPs, promotional codes, or generic messages.
 
 Message to analyze:
-Sender: Daily Badminton Update: ~ Ganesh Pandian 🫰🏾
+Sender: [REDACTED_SPORTS_GROUP]: ~ Ganesh Pandian 🫰🏾
 Source: whatsapp
 Content: Yes I'm ready if school holiday ✋🏾
 Timestamp: 2026-06-25T03:47:19.177+00:00
@@ -103,7 +103,7 @@ Contract fields per type:
 ---
 
 ### Signal 2 (ID: 8669)
-* **Sender**: `Daily Badminton Update (2 messages): ~ Arun Kumar`
+* **Sender**: `[REDACTED_SPORTS_GROUP] (2 messages): ~ Arun Kumar`
 * **Timestamp**: `2026-06-25T03:48:19.167+00:00`
 * **Message**: *"Ok anna"*
 * **Response Time**: `4.69 seconds`
@@ -119,7 +119,7 @@ Analyze the message and classify it into exactly one of these types:
 - NOISE: Greetings, spam, chit-chat, OTPs, promotional codes, or generic messages.
 
 Message to analyze:
-Sender: Daily Badminton Update (2 messages): ~ Arun Kumar
+Sender: [REDACTED_SPORTS_GROUP] (2 messages): ~ Arun Kumar
 Source: whatsapp
 Content: Ok anna
 Timestamp: 2026-06-25T03:48:19.167+00:00
@@ -171,7 +171,7 @@ Contract fields per type:
 ---
 
 ### Signal 3 (ID: 8670)
-* **Sender**: `Daily Badminton Update: ~ santhosh rao`
+* **Sender**: `[REDACTED_SPORTS_GROUP]: ~ santhosh rao`
 * **Timestamp**: `2026-06-25T04:26:48.27+00:00`
 * **Message**: *"Yes I am coming tomorrow morning 6.30"*
 * **Response Time**: `6.42 seconds`
@@ -187,7 +187,7 @@ Analyze the message and classify it into exactly one of these types:
 - NOISE: Greetings, spam, chit-chat, OTPs, promotional codes, or generic messages.
 
 Message to analyze:
-Sender: Daily Badminton Update: ~ santhosh rao
+Sender: [REDACTED_SPORTS_GROUP]: ~ santhosh rao
 Source: whatsapp
 Content: Yes I am coming tomorrow morning 6.30
 Timestamp: 2026-06-25T04:26:48.27+00:00
@@ -247,7 +247,7 @@ Contract fields per type:
 ---
 
 ### Signal 4 (ID: 8671)
-* **Sender**: `Daily Badminton Update (2 messages): ~ Arun Kumar`
+* **Sender**: `[REDACTED_SPORTS_GROUP] (2 messages): ~ Arun Kumar`
 * **Timestamp**: `2026-06-25T04:46:30.382+00:00`
 * **Message**: *"Super anna"*
 * **Response Time**: `4.46 seconds`
@@ -263,7 +263,7 @@ Analyze the message and classify it into exactly one of these types:
 - NOISE: Greetings, spam, chit-chat, OTPs, promotional codes, or generic messages.
 
 Message to analyze:
-Sender: Daily Badminton Update (2 messages): ~ Arun Kumar
+Sender: [REDACTED_SPORTS_GROUP] (2 messages): ~ Arun Kumar
 Source: whatsapp
 Content: Super anna
 Timestamp: 2026-06-25T04:46:30.382+00:00
@@ -453,7 +453,7 @@ Contract fields per type:
 ### Signal 7 (ID: 8686)
 * **Sender**: `WhatsApp: Shraddha Jaiswal`
 * **Timestamp**: `2026-06-25T17:05:46.826+00:00`
-* **Message**: *"Done , Pradeep!"*
+* **Message**: *"Done , User!"*
 * **Response Time**: `6.02 seconds`
 * **Parse Status**: `SUCCESS`
 
@@ -469,7 +469,7 @@ Analyze the message and classify it into exactly one of these types:
 Message to analyze:
 Sender: WhatsApp: Shraddha Jaiswal
 Source: whatsapp
-Content: Done , Pradeep!
+Content: Done , User!
 Timestamp: 2026-06-25T17:05:46.826+00:00
 
 Respond ONLY with a single JSON object. Do not wrap in markdown or code blocks.
@@ -497,8 +497,8 @@ Contract fields per type:
   "signal_type": "ACTION",
   "importance": 0.8,
   "confidence": 0.95,
-  "summary": "A message indicating that Pradeep has been completed by Shraddha Jaiswal.",
-  "reason": "The content 'Done, Pradeep!' is a direct request to do something (task) and does not involve any financial transactions or scheduling information.",
+  "summary": "A message indicating that User has been completed by Shraddha Jaiswal.",
+  "reason": "The content 'Done, User!' is a direct request to do something (task) and does not involve any financial transactions or scheduling information.",
   "contract": {}
 }
 ```
@@ -510,8 +510,8 @@ Contract fields per type:
   "signal_type": "ACTION",
   "importance": 0.8,
   "confidence": 0.95,
-  "summary": "A message indicating that Pradeep has been completed by Shraddha Jaiswal.",
-  "reason": "The content 'Done, Pradeep!' is a direct request to do something (task) and does not involve any financial transactions or scheduling information.",
+  "summary": "A message indicating that User has been completed by Shraddha Jaiswal.",
+  "reason": "The content 'Done, User!' is a direct request to do something (task) and does not involve any financial transactions or scheduling information.",
   "contract": {}
 }
 ```
@@ -519,7 +519,7 @@ Contract fields per type:
 ---
 
 ### Signal 8 (ID: 8888)
-* **Sender**: `Harish`
+* **Sender**: `Contact_1`
 * **Timestamp**: `2026-07-02T03:25:22.768+00:00`
 * **Message**: *"📷 Photo"*
 * **Response Time**: `5.24 seconds`
@@ -535,7 +535,7 @@ Analyze the message and classify it into exactly one of these types:
 - NOISE: Greetings, spam, chit-chat, OTPs, promotional codes, or generic messages.
 
 Message to analyze:
-Sender: Harish
+Sender: Contact_1
 Source: whatsapp
 Content: 📷 Photo
 Timestamp: 2026-07-02T03:25:22.768+00:00
@@ -564,7 +564,7 @@ Contract fields per type:
   "signal_type": "ACTION",
   "importance": 0.8,
   "confidence": 0.95,
-  "summary": "A photo message from Harish.",
+  "summary": "A photo message from Contact_1.",
   "reason": "The content is a photo sent via WhatsApp, which falls under the ACTION category as it involves an action (taking a photo).",
   "contract": {}
 }
@@ -576,7 +576,7 @@ Contract fields per type:
   "signal_type": "ACTION",
   "importance": 0.8,
   "confidence": 0.95,
-  "summary": "A photo message from Harish.",
+  "summary": "A photo message from Contact_1.",
   "reason": "The content is a photo sent via WhatsApp, which falls under the ACTION category as it involves an action (taking a photo).",
   "contract": {}
 }
@@ -587,7 +587,7 @@ Contract fields per type:
 ### Signal 9 (ID: 8687)
 * **Sender**: `Shraddha Jaiswal`
 * **Timestamp**: `2026-06-25T17:05:46.835+00:00`
-* **Message**: *"Done , Pradeep!"*
+* **Message**: *"Done , User!"*
 * **Response Time**: `6.62 seconds`
 * **Parse Status**: `SUCCESS`
 
@@ -603,7 +603,7 @@ Analyze the message and classify it into exactly one of these types:
 Message to analyze:
 Sender: Shraddha Jaiswal
 Source: whatsapp
-Content: Done , Pradeep!
+Content: Done , User!
 Timestamp: 2026-06-25T17:05:46.835+00:00
 
 Respond ONLY with a single JSON object. Do not wrap in markdown or code blocks.
@@ -631,8 +631,8 @@ Contract fields per type:
   "signal_type": "ACTION",
   "importance": 0.8,
   "confidence": 0.95,
-  "summary": "A message indicating that Pradeep's task has been completed.",
-  "reason": "The content 'Done, Pradeep!' is a direct request to do something (task completion) and does not involve money transactions or any other context-specific information.",
+  "summary": "A message indicating that User's task has been completed.",
+  "reason": "The content 'Done, User!' is a direct request to do something (task completion) and does not involve money transactions or any other context-specific information.",
   "contract": {}
 }
 ```
@@ -644,8 +644,8 @@ Contract fields per type:
   "signal_type": "ACTION",
   "importance": 0.8,
   "confidence": 0.95,
-  "summary": "A message indicating that Pradeep's task has been completed.",
-  "reason": "The content 'Done, Pradeep!' is a direct request to do something (task completion) and does not involve money transactions or any other context-specific information.",
+  "summary": "A message indicating that User's task has been completed.",
+  "reason": "The content 'Done, User!' is a direct request to do something (task completion) and does not involve money transactions or any other context-specific information.",
   "contract": {}
 }
 ```
@@ -653,7 +653,7 @@ Contract fields per type:
 ---
 
 ### Signal 10 (ID: 8688)
-* **Sender**: `Daily Badminton Update: ~ Ganesh Pandian 🫰🏾`
+* **Sender**: `[REDACTED_SPORTS_GROUP]: ~ Ganesh Pandian 🫰🏾`
 * **Timestamp**: `2026-06-26T00:16:33.948+00:00`
 * **Message**: *"Guys pls come around 6:30am"*
 * **Response Time**: `3.51 seconds`
@@ -669,7 +669,7 @@ Analyze the message and classify it into exactly one of these types:
 - NOISE: Greetings, spam, chit-chat, OTPs, promotional codes, or generic messages.
 
 Message to analyze:
-Sender: Daily Badminton Update: ~ Ganesh Pandian 🫰🏾
+Sender: [REDACTED_SPORTS_GROUP]: ~ Ganesh Pandian 🫰🏾
 Source: whatsapp
 Content: Guys pls come around 6:30am
 Timestamp: 2026-06-26T00:16:33.948+00:00
@@ -723,7 +723,7 @@ Contract fields per type:
 ### Signal 11 (ID: 8889)
 * **Sender**: `Downloading video`
 * **Timestamp**: `2026-07-02T03:25:28.029+00:00`
-* **Message**: *"from Harish"*
+* **Message**: *"from Contact_1"*
 * **Response Time**: `5.05 seconds`
 * **Parse Status**: `SUCCESS`
 
@@ -739,7 +739,7 @@ Analyze the message and classify it into exactly one of these types:
 Message to analyze:
 Sender: Downloading video
 Source: whatsapp
-Content: from Harish
+Content: from Contact_1
 Timestamp: 2026-07-02T03:25:28.029+00:00
 
 Respond ONLY with a single JSON object. Do not wrap in markdown or code blocks.
@@ -787,7 +787,7 @@ Contract fields per type:
 ---
 
 ### Signal 12 (ID: 8689)
-* **Sender**: `Daily Badminton Update (2 messages): ~ Arun Kumar`
+* **Sender**: `[REDACTED_SPORTS_GROUP] (2 messages): ~ Arun Kumar`
 * **Timestamp**: `2026-06-26T00:25:37.256+00:00`
 * **Message**: *"Sure"*
 * **Response Time**: `5.20 seconds`
@@ -803,7 +803,7 @@ Analyze the message and classify it into exactly one of these types:
 - NOISE: Greetings, spam, chit-chat, OTPs, promotional codes, or generic messages.
 
 Message to analyze:
-Sender: Daily Badminton Update (2 messages): ~ Arun Kumar
+Sender: [REDACTED_SPORTS_GROUP] (2 messages): ~ Arun Kumar
 Source: whatsapp
 Content: Sure
 Timestamp: 2026-06-26T00:25:37.256+00:00
@@ -855,7 +855,7 @@ Contract fields per type:
 ---
 
 ### Signal 13 (ID: 8719)
-* **Sender**: `Daily Badminton Update (2 messages): ~ Imtiaz`
+* **Sender**: `[REDACTED_SPORTS_GROUP] (2 messages): ~ Contact_3`
 * **Timestamp**: `2026-06-27T03:22:49.969+00:00`
 * **Message**: *"Same as @⁨~Ganesh Pandian 🫰🏾⁩ said"*
 * **Response Time**: `5.28 seconds`
@@ -871,7 +871,7 @@ Analyze the message and classify it into exactly one of these types:
 - NOISE: Greetings, spam, chit-chat, OTPs, promotional codes, or generic messages.
 
 Message to analyze:
-Sender: Daily Badminton Update (2 messages): ~ Imtiaz
+Sender: [REDACTED_SPORTS_GROUP] (2 messages): ~ Contact_3
 Source: whatsapp
 Content: Same as @⁨~Ganesh Pandian 🫰🏾⁩ said
 Timestamp: 2026-06-27T03:22:49.969+00:00
@@ -901,7 +901,7 @@ Contract fields per type:
   "signal_type": "ACTION",
   "importance": 0.8,
   "confidence": 0.95,
-  "summary": "Daily Badminton Update from Imtiaz.",
+  "summary": "[REDACTED_SPORTS_GROUP] from Contact_3.",
   "reason": "The message contains a recurring update on daily activities, which is typically categorized as an action request.",
   "contract": {}
 }
@@ -914,7 +914,7 @@ Contract fields per type:
   "signal_type": "ACTION",
   "importance": 0.8,
   "confidence": 0.95,
-  "summary": "Daily Badminton Update from Imtiaz.",
+  "summary": "[REDACTED_SPORTS_GROUP] from Contact_3.",
   "reason": "The message contains a recurring update on daily activities, which is typically categorized as an action request.",
   "contract": {}
 }

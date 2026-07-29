@@ -58,7 +58,7 @@ Status: **SUCCESS (QUALIFICATION, UNDERSTANDING & ROUTING INGESTED)**
 - **Signal Type**: `FYI`
 - **Confidence**: 0.9
 - **Processing Path**: `CEREBRAS_DIRECT`
-- **Device ID**: `pradeep_phone`
+- **Device ID**: `user_phone`
 - **Message Hash**: `d08263eef5b2449f2da73227ea0191214f8e17f135f0517162a98cb0840e7b50`
 - **Summary**: *Incoming call notification from Aappa.*
 - **Contract Schema JSON (`contract_json`)**:
@@ -85,11 +85,11 @@ Status: **SUCCESS (QUALIFICATION, UNDERSTANDING & ROUTING INGESTED)**
   "processing_path": "CEREBRAS_DIRECT",
   "source_metadata": {
     "sender": "Aappa",
-    "receiver": "pradeep_phone",
+    "receiver": "user_phone",
     "signal_id": null,
     "source_subtype": "",
     "source_file_hash": null,
-    "source_file_name": "pradeep_1783783504741.json",
+    "source_file_name": "user_1783783504741.json",
     "source_ingested_at": null
   },
   "canonical_version": 1,
@@ -111,7 +111,7 @@ Status: **SUCCESS (QUALIFICATION, UNDERSTANDING & ROUTING INGESTED)**
 - **Signal Type**: `FINANCIAL`
 - **Confidence**: 0.99
 - **Processing Path**: `CEREBRAS_DIRECT`
-- **Device ID**: `pradeep_phone`
+- **Device ID**: `user_phone`
 - **Message Hash**: `f68d20090eefb2df755f6363d886b51739e74166c87d34a69ee950bc6bc05534`
 - **Summary**: *Debit transaction of Rs.2351.00 from HDFC Bank A/C *3221 to TANGEDCO.*
 - **Contract Schema JSON (`contract_json`)**:
@@ -152,11 +152,11 @@ Status: **SUCCESS (QUALIFICATION, UNDERSTANDING & ROUTING INGESTED)**
   "processing_path": "CEREBRAS_DIRECT",
   "source_metadata": {
     "sender": "JD-HDFCBK-T",
-    "receiver": "pradeep_phone",
+    "receiver": "user_phone",
     "signal_id": null,
     "source_subtype": "",
     "source_file_hash": null,
-    "source_file_name": "pradeep_1783783504741.json",
+    "source_file_name": "user_1783783504741.json",
     "source_ingested_at": null
   },
   "canonical_version": 1,
@@ -178,7 +178,7 @@ Status: **SUCCESS (QUALIFICATION, UNDERSTANDING & ROUTING INGESTED)**
 - **Signal Type**: `ACTION`
 - **Confidence**: 1
 - **Processing Path**: `CEREBRAS_DIRECT`
-- **Device ID**: `pradeep_phone`
+- **Device ID**: `user_phone`
 - **Message Hash**: `499644b4d3ee6d3c0077f02c8e1213af27b22ab6ee2919514513674b73bcbf7d`
 - **Summary**: *Electricity bill of Rs.2351 is due on 30/07/2026.*
 - **Contract Schema JSON (`contract_json`)**:
@@ -209,11 +209,11 @@ Status: **SUCCESS (QUALIFICATION, UNDERSTANDING & ROUTING INGESTED)**
   "processing_path": "CEREBRAS_DIRECT",
   "source_metadata": {
     "sender": "AD-TANGED-S",
-    "receiver": "pradeep_phone",
+    "receiver": "user_phone",
     "signal_id": null,
     "source_subtype": "",
     "source_file_hash": null,
-    "source_file_name": "pradeep_1783783504741.json",
+    "source_file_name": "user_1783783504741.json",
     "source_ingested_at": null
   },
   "canonical_version": 1,
@@ -235,7 +235,7 @@ Status: **SUCCESS (QUALIFICATION, UNDERSTANDING & ROUTING INGESTED)**
 - **Signal Type**: `FYI`
 - **Confidence**: 0.9
 - **Processing Path**: `CEREBRAS_DIRECT`
-- **Device ID**: `pradeep_phone`
+- **Device ID**: `user_phone`
 - **Message Hash**: `dd8168d003171c49599e22acfeda2e5b78879a6d0c4fbdd722ab0650e06312e2`
 - **Summary**: *Maintenance charges for June 2026 have been shared for the flat.*
 - **Contract Schema JSON (`contract_json`)**:
@@ -264,12 +264,12 @@ Status: **SUCCESS (QUALIFICATION, UNDERSTANDING & ROUTING INGESTED)**
   "llm_model_used": "gemma-4-31b",
   "processing_path": "CEREBRAS_DIRECT",
   "source_metadata": {
-    "sender": "SRI PATATHUARASI AMMAN FLAT: Sundar T1",
-    "receiver": "pradeep_phone",
+    "sender": "[REDACTED_BUILDING_GROUP]: [REDACTED_NAME] T1",
+    "receiver": "user_phone",
     "signal_id": null,
     "source_subtype": "",
     "source_file_hash": null,
-    "source_file_name": "pradeep_1783815911734.json",
+    "source_file_name": "user_1783815911734.json",
     "source_ingested_at": null
   },
   "canonical_version": 1,
@@ -291,9 +291,9 @@ Status: **SUCCESS (QUALIFICATION, UNDERSTANDING & ROUTING INGESTED)**
 - **Signal Type**: `FYI`
 - **Confidence**: 0.9
 - **Processing Path**: `CEREBRAS_DIRECT`
-- **Device ID**: `pradeep_phone`
+- **Device ID**: `user_phone`
 - **Message Hash**: `72ef8c77a568f3e64f72c89d5fc82c6eda144449043c7afda6e2cf9d6b334f85`
-- **Summary**: *Harish notified that the shoes have arrived.*
+- **Summary**: *Contact_1 notified that the shoes have arrived.*
 - **Contract Schema JSON (`contract_json`)**:
 ```json
 {
@@ -317,12 +317,12 @@ Status: **SUCCESS (QUALIFICATION, UNDERSTANDING & ROUTING INGESTED)**
   "llm_model_used": "gemma-4-31b",
   "processing_path": "CEREBRAS_DIRECT",
   "source_metadata": {
-    "sender": "Harish",
-    "receiver": "pradeep_phone",
+    "sender": "Contact_1",
+    "receiver": "user_phone",
     "signal_id": null,
     "source_subtype": "",
     "source_file_hash": null,
-    "source_file_name": "pradeep_1783845181697.json",
+    "source_file_name": "user_1783845181697.json",
     "source_ingested_at": null
   },
   "canonical_version": 1,
@@ -344,7 +344,7 @@ Status: **SUCCESS (QUALIFICATION, UNDERSTANDING & ROUTING INGESTED)**
 - **Signal Type**: `FINANCIAL`
 - **Confidence**: 1
 - **Processing Path**: `metadata_bypass`
-- **Device ID**: `pradeep`
+- **Device ID**: `user`
 - **Message Hash**: `3c0f2af6adc11476aa95f0a9474b8912eea101e8e27f11993e3e9a39cd99ee1b`
 - **Summary**: *Paid 1500.0 INR to UPI-LITE-50100534333221-615732889848-ADD MONEY.*
 - **Contract Schema JSON (`contract_json`)**:
@@ -376,7 +376,7 @@ Status: **SUCCESS (QUALIFICATION, UNDERSTANDING & ROUTING INGESTED)**
   "processing_path": "metadata_bypass",
   "source_metadata": {
     "amount": 1500.0,
-    "sender": "pprad",
+    "sender": "user_alias",
     "currency": "INR",
     "receiver": "UPI-LITE-50100534333221-615732889848-ADD MONEY",
     "signal_id": "8348b254-ffa6-4242-8cc5-49f4f0bb9e98",
@@ -408,7 +408,7 @@ Status: **SUCCESS (QUALIFICATION, UNDERSTANDING & ROUTING INGESTED)**
 - **Signal Type**: `FYI`
 - **Confidence**: 0.95
 - **Processing Path**: `CEREBRAS_DIRECT`
-- **Device ID**: `pradeep_phone`
+- **Device ID**: `user_phone`
 - **Message Hash**: `bb9788259e8e371e4f224e75fdcd99f78b949c83cb07eee35bc81f5a3fe983f4`
 - **Summary**: *Notification about an ongoing video call from Aappa.*
 - **Contract Schema JSON (`contract_json`)**:
@@ -435,11 +435,11 @@ Status: **SUCCESS (QUALIFICATION, UNDERSTANDING & ROUTING INGESTED)**
   "processing_path": "CEREBRAS_DIRECT",
   "source_metadata": {
     "sender": "Aappa",
-    "receiver": "pradeep_phone",
+    "receiver": "user_phone",
     "signal_id": null,
     "source_subtype": "",
     "source_file_hash": null,
-    "source_file_name": "pradeep_1783783504741.json",
+    "source_file_name": "user_1783783504741.json",
     "source_ingested_at": null
   },
   "canonical_version": 1,
@@ -461,7 +461,7 @@ Status: **SUCCESS (QUALIFICATION, UNDERSTANDING & ROUTING INGESTED)**
 - **Signal Type**: `FINANCIAL`
 - **Confidence**: 0.99
 - **Processing Path**: `CEREBRAS_DIRECT`
-- **Device ID**: `pradeep_phone`
+- **Device ID**: `user_phone`
 - **Message Hash**: `fe400769b360209fda29b9f95d03b9629b16f4b9874d81b8bb5309e5c7d7a99e`
 - **Summary**: *Received INR 1,500.00 in HDFC Bank account via IMPS transfer.*
 - **Contract Schema JSON (`contract_json`)**:
@@ -476,9 +476,9 @@ Status: **SUCCESS (QUALIFICATION, UNDERSTANDING & ROUTING INGESTED)**
     "On",
     "IMPS",
     "Received",
-    "PRADEEP"
+    "USER"
   ],
-  "merchant": "PRADEEP P",
+  "merchant": "USER P",
   "fyi_candidate": false,
   "fact_candidate": false,
   "noise_candidate": false,
@@ -496,11 +496,11 @@ Status: **SUCCESS (QUALIFICATION, UNDERSTANDING & ROUTING INGESTED)**
   "processing_path": "CEREBRAS_DIRECT",
   "source_metadata": {
     "sender": "JM-HDFCBK-S",
-    "receiver": "pradeep_phone",
+    "receiver": "user_phone",
     "signal_id": null,
     "source_subtype": "",
     "source_file_hash": null,
-    "source_file_name": "pradeep_1783783504741.json",
+    "source_file_name": "user_1783783504741.json",
     "source_ingested_at": null
   },
   "canonical_version": 1,
@@ -522,9 +522,9 @@ Status: **SUCCESS (QUALIFICATION, UNDERSTANDING & ROUTING INGESTED)**
 - **Signal Type**: `ACTION`
 - **Confidence**: 0.9
 - **Processing Path**: `CEREBRAS_DIRECT`
-- **Device ID**: `pradeep_phone`
+- **Device ID**: `user_phone`
 - **Message Hash**: `f2a4e13641c024bc1e851393bc2581ba6a3e9f8b1c06afc3fa1e14481cd553c3`
-- **Summary**: *Axis Bank credit card statement generated with a zero balance due on 30-07-26.*
+- **Summary**: *Axis Bank credit card statement generated with a zero contact_7nce due on 30-07-26.*
 - **Contract Schema JSON (`contract_json`)**:
 ```json
 {
@@ -543,7 +543,7 @@ Status: **SUCCESS (QUALIFICATION, UNDERSTANDING & ROUTING INGESTED)**
     "Min",
     "Due"
   ],
-  "task_name": "Axis Bank credit card statement generated with a zero balance due on 30-07-26.",
+  "task_name": "Axis Bank credit card statement generated with a zero contact_7nce due on 30-07-26.",
   "event_name": "Credit Card Statement Generation",
   "event_time": "2026-07-30",
   "description": "Statement generated for card XX6540 with 0.00 amount due.",
@@ -562,11 +562,11 @@ Status: **SUCCESS (QUALIFICATION, UNDERSTANDING & ROUTING INGESTED)**
   "processing_path": "CEREBRAS_DIRECT",
   "source_metadata": {
     "sender": "AD-AXISBK-S",
-    "receiver": "pradeep_phone",
+    "receiver": "user_phone",
     "signal_id": null,
     "source_subtype": "",
     "source_file_hash": null,
-    "source_file_name": "pradeep_1783815911734.json",
+    "source_file_name": "user_1783815911734.json",
     "source_ingested_at": null
   },
   "canonical_version": 1,
@@ -588,9 +588,9 @@ Status: **SUCCESS (QUALIFICATION, UNDERSTANDING & ROUTING INGESTED)**
 - **Signal Type**: `FYI`
 - **Confidence**: 0.9
 - **Processing Path**: `CEREBRAS_DIRECT`
-- **Device ID**: `pradeep_phone`
+- **Device ID**: `user_phone`
 - **Message Hash**: `29665422fe032d6b398db6320f31edf8daf6779b8de4881db17636157730e4ee`
-- **Summary**: *Harish sent a photo via WhatsApp.*
+- **Summary**: *Contact_1 sent a photo via WhatsApp.*
 - **Contract Schema JSON (`contract_json`)**:
 ```json
 {
@@ -599,7 +599,7 @@ Status: **SUCCESS (QUALIFICATION, UNDERSTANDING & ROUTING INGESTED)**
   ],
   "event_name": "Photo attachment",
   "event_time": "2026-07-12T02:07:57.656+00:00",
-  "description": "Photo sent by Harish via WhatsApp.",
+  "description": "Photo sent by Contact_1 via WhatsApp.",
   "fyi_candidate": true,
   "fact_candidate": false,
   "noise_candidate": false,
@@ -614,12 +614,12 @@ Status: **SUCCESS (QUALIFICATION, UNDERSTANDING & ROUTING INGESTED)**
   "llm_model_used": "gemma-4-31b",
   "processing_path": "CEREBRAS_DIRECT",
   "source_metadata": {
-    "sender": "Harish",
-    "receiver": "pradeep_phone",
+    "sender": "Contact_1",
+    "receiver": "user_phone",
     "signal_id": null,
     "source_subtype": "",
     "source_file_hash": null,
-    "source_file_name": "pradeep_1783845181697.json",
+    "source_file_name": "user_1783845181697.json",
     "source_ingested_at": null
   },
   "canonical_version": 1,

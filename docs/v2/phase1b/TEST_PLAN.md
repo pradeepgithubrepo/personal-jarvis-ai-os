@@ -41,7 +41,7 @@ The test dataset is placed in subdirectories of the `jarvis-signals` storage buc
 ### Test 4: Bank Statement Ingestion
 * **Goal:** Verify SBI and HDFC bank statement PDF layout parsing.
 * **Checks:**
-  * Matches dates, transaction descriptions, debits, credits, reference IDs, and balances.
+  * Matches dates, transaction descriptions, debits, credits, reference IDs, and contact_7nces.
   * Normalizes and inserts transactions to `mobile_signals`.
   * File is moved to `archive/statements/`.
 
@@ -58,5 +58,5 @@ The test dataset is placed in subdirectories of the `jarvis-signals` storage buc
 
 Run the following command to execute the test suite:
 ```bash
-/home/prad/petprojects/ai/jarvis/.venv/bin/python -m unittest tests/test_source_collectors.py
+/home/user/petprojects/ai/jarvis/.venv/bin/python -m unittest tests/test_source_collectors.py
 ```

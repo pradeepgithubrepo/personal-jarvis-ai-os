@@ -39,7 +39,7 @@ client: Client = create_client(supabase_url, supabase_key, options=options)
 
 ## 4. Required Environment Variables
 
-The following environment variables must be populated in the project's [`.env`](file:///home/prad/petprojects/ai/jarvis/.env) file:
+The following environment variables must be populated in the project's [`.env`](file:///home/user/petprojects/ai/jarvis/.env) file:
 
 * `SUPABASE_URL`: The HTTPS REST API endpoint for the Supabase project.
 * `SUPABASE_SERVICE_ROLE_KEY`: The secret service role JWT key used to bypass RLS policies.
@@ -80,7 +80,7 @@ CREATE TABLE jarvis_insights_schemav1.v1_connectivity_test (
 
 ## 7. Known Working Validation Script
 
-* **Script Path:** [`scripts/verify_v1_connectivity.py`](file:///home/prad/petprojects/ai/jarvis/scripts/verify_v1_connectivity.py)
+* **Script Path:** [`scripts/verify_v1_connectivity.py`](file:///home/user/petprojects/ai/jarvis/scripts/verify_v1_connectivity.py)
 * **Purpose:** Performs the V1 Wakeup verification sequence: loads env vars, connects to Supabase, reads `jarvis-signals/incoming` bucket, retrieves file names & timestamps, logs `Files Found: X`, inserts a validation record with the count and execution timestamp, and exits.
 * **Dependencies:** `supabase`, `python-dotenv`
 

@@ -149,7 +149,7 @@ Dispatched to: `todo_agent`, optionally `fact_agent` when `memory_candidate=True
 ```json
 {
   "task_name": "Call plumber for kitchen tap repair",
-  "assignee": "Pradeep",
+  "assignee": "User",
   "due_date": null
 }
 ```
@@ -188,7 +188,7 @@ Dispatched to: `fact_agent`
 
 ```json
 {
-  "entity": "Pradeep",
+  "entity": "User",
   "attribute": "employer",
   "value": "Accenture"
 }

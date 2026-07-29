@@ -6,7 +6,7 @@ The **Signal Understanding & Analysis (SUA)** layer is the cognitive core of **J
 
 ## 🏗️ Architecture & Dual-Path Engine
 
-SUA operates a hybrid dual-path processing model balancing zero-latency structured execution with LLM intelligence for unstructured data.
+SUA operates a hybrid dual-path processing model contact_7ncing zero-latency structured execution with LLM intelligence for unstructured data.
 
 ```mermaid
 flowchart TD

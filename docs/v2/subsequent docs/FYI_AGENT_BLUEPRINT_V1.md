@@ -132,7 +132,7 @@ The Morning Briefing generator queries the `information_items` table and formats
 ### Sample Briefing Output:
 
 ```markdown
-## 🌅 Good Morning, Pradeep!
+## 🌅 Good Morning, User!
 Here is your Jarvis FYI Briefing for July 12, 2026:
 
 ### 🔒 Security Alerts
@@ -150,5 +150,5 @@ Here is your Jarvis FYI Briefing for July 12, 2026:
   * *19:10 (Latest)*: Train has departed NCJ. Status: On Time.
 
 ### 🏫 Family & School
-* **Times Kids Homework**: Anusha uploaded homework instructions for Book 1: pg 9. [Path: LLM_GEMINI]
+* **Times Kids Homework**: [REDACTED_NAME] uploaded homework instructions for Book 1: pg 9. [Path: LLM_GEMINI]
 ```

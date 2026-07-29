@@ -60,7 +60,7 @@ graph TD
 
 ## 2. Task Schema
 
-All system-generated and user-created tasks converge into a single unified `tasks` table. To support multiple future users (e.g. Charan, Chinicka, Shobana, Pradeep) and modular notification frequencies, ownership and notification profiles are integrated directly into the schema.
+All system-generated and user-created tasks converge into a single unified `tasks` table. To support multiple future users (e.g. Charan, Chinicka, Family_Member_1, User) and modular notification frequencies, ownership and notification profiles are integrated directly into the schema.
 
 ```sql
 CREATE TYPE jarvis_insights_schemav1.task_status AS ENUM (
@@ -99,7 +99,7 @@ CREATE TABLE IF NOT EXISTS jarvis_insights_schemav1.tasks (
     source_type          jarvis_insights_schemav1.task_source_type NOT NULL,
     route_id             UUID        REFERENCES jarvis_insights_schemav1.signal_routes(id) ON DELETE SET NULL,
     created_by           jarvis_insights_schemav1.task_created_by NOT NULL DEFAULT 'USER',
-    assigned_to          TEXT        NOT NULL DEFAULT 'Pradeep',  -- Prepares schema for Charan, Chinicka, Shobana, etc.
+    assigned_to          TEXT        NOT NULL DEFAULT 'User',  -- Prepares schema for Charan, Chinicka, Family_Member_1, etc.
     created_at           TIMESTAMPTZ NOT NULL DEFAULT NOW(),
     updated_at           TIMESTAMPTZ NOT NULL DEFAULT NOW(),
     completed_at         TIMESTAMPTZ
