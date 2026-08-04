@@ -81,6 +81,48 @@ class TodoAgent(BaseAgentStub):
                 
         return "PRADEEP"
 
+    def _ensure_due_datetime(self, raw_due: str | None, base_dt: datetime | None = None) -> str:
+        """
+        Guarantees that every task has a valid ISO 8601 due_datetime (reminder timestamp).
+        If raw_due is missing, empty, 'null', 'none', or invalid, defaults to
+        at least next day morning 7:30 AM (07:30:00+05:30 IST).
+        If raw_due is a date-only string (e.g. '2026-08-10'), sets time to 07:30:00.
+        """
+        from datetime import datetime, timedelta, timezone, time
+        try:
+            ist_tz = timezone(timedelta(hours=5, minutes=30))
+            now = base_dt or datetime.now(ist_tz)
+            
+            # Default fallback: next day morning 7:30 AM IST
+            next_day_730 = (now + timedelta(days=1)).replace(hour=7, minute=30, second=0, microsecond=0)
+            fallback_iso = next_day_730.isoformat()
+
+            if not raw_due or not isinstance(raw_due, str):
+                return fallback_iso
+                
+            clean_due = raw_due.strip().lower()
+            if clean_due in ("null", "none", "", "undefined"):
+                return fallback_iso
+
+            # Date-only string like YYYY-MM-DD
+            if len(clean_due) == 10 and clean_due.count("-") == 2:
+                dt_obj = datetime.strptime(clean_due, "%Y-%m-%d")
+                dt_obj = dt_obj.replace(hour=7, minute=30, tzinfo=ist_tz)
+                return dt_obj.isoformat()
+
+            # Attempt full ISO parse
+            try:
+                dt_obj = datetime.fromisoformat(raw_due.replace("Z", "+00:00"))
+                return dt_obj.isoformat()
+            except Exception:
+                return fallback_iso
+
+        except Exception as e:
+            logger.warning(f"todo_agent: _ensure_due_datetime error: {e}. Defaulting to next day 7:30 AM.")
+            now = datetime.now(timezone(timedelta(hours=5, minutes=30)))
+            next_day_730 = (now + timedelta(days=1)).replace(hour=7, minute=30, second=0, microsecond=0)
+            return next_day_730.isoformat()
+
     def process_pending_routes(self, supabase_client: Any) -> None:
         """
         Query PENDING routes for todo_agent in Supabase, reason over them
@@ -172,12 +214,13 @@ class TodoAgent(BaseAgentStub):
                     # Create a new clean task in tasks table
                     title_val = decision_data.get("title") or contract.get("summary") or "New Task"
                     desc_val = decision_data.get("description") or raw_message
+                    raw_due = decision_data.get("due_datetime") or contract.get("type_specific", {}).get("due_date") or contract.get("due_date")
                     task_row = {
                         "title": title_val,
                         "description": desc_val,
                         "status": "OPEN",
                         "priority": decision_data.get("priority") or "MEDIUM",
-                        "due_datetime": decision_data.get("due_datetime") or contract.get("type_specific", {}).get("due_date"),
+                        "due_datetime": self._ensure_due_datetime(raw_due),
                         "notification_profile": decision_data.get("notification_profile") or "STANDARD",
                         "source_type": "AUTO_GENERATED",
                         "route_id": route_id,
@@ -220,12 +263,13 @@ class TodoAgent(BaseAgentStub):
                         logger.warning(f"todo_agent: Matched task ID {matched_id} not found in open tasks. Falling back to CREATE_TASK.")
                         title_val = decision_data.get("title") or contract.get("summary") or "New Task"
                         desc_val = decision_data.get("description") or raw_message
+                        raw_due = decision_data.get("due_datetime") or contract.get("type_specific", {}).get("due_date") or contract.get("due_date")
                         task_row = {
                             "title": title_val,
                             "description": desc_val,
                             "status": "OPEN",
                             "priority": decision_data.get("priority") or "MEDIUM",
-                            "due_datetime": decision_data.get("due_datetime") or contract.get("type_specific", {}).get("due_date"),
+                            "due_datetime": self._ensure_due_datetime(raw_due),
                             "notification_profile": decision_data.get("notification_profile") or "STANDARD",
                             "source_type": "AUTO_GENERATED",
                             "route_id": route_id,
@@ -405,7 +449,7 @@ Instructions:
   * Rationalize the title. Turn messy inputs into clean, human-oriented, imperative task titles starting with a strong action verb (e.g., "Pay TNEB Electricity Bill" instead of "Electricity charges Rs.2527 due on 27-May", or "Renew Bike Insurance" instead of "Your insurance expires tomorrow").
   * Specify priority ("LOW", "MEDIUM", "HIGH", "URGENT").
   * Specify notification_profile ("NONE", "STANDARD", "IMPORTANT", "CRITICAL").
-  * Parse due_datetime from due dates in ISO format.
+  * Parse due_datetime from due dates in ISO format. Every task MUST have a reminder timestamp — if no explicit due date is present, default due_datetime to next day morning at 7:30 AM (e.g. "2026-08-05T07:30:00+05:30").
 - If MERGE_WITH_EXISTING:
   * Identify which existing task matches by providing its "matched_task_id" from the list of open tasks.
 - If IGNORE:
@@ -434,7 +478,7 @@ You MUST return a raw JSON object ONLY, conforming EXACTLY to this schema (no su
             
             # Deterministic Fallback if LLM fails
             summary = contract.get("summary") or raw_message[:50]
-            due_date = contract.get("type_specific", {}).get("due_date")
+            raw_due = contract.get("type_specific", {}).get("due_date") or contract.get("due_date")
             priority = "HIGH" if contract.get("importance", 0.0) >= 0.8 else "MEDIUM"
             
             return {
@@ -443,7 +487,7 @@ You MUST return a raw JSON object ONLY, conforming EXACTLY to this schema (no su
                 "title": f"Review Alert: {summary}",
                 "description": raw_message,
                 "priority": priority,
-                "due_datetime": due_date,
+                "due_datetime": self._ensure_due_datetime(raw_due),
                 "notification_profile": "STANDARD"
             }
 

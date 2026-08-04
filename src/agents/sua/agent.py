@@ -86,20 +86,34 @@ class SignalUnderstandingAgent:
         noise_keywords = ["otp", "verification code", "one-time password", "verification pin", "one time password", "trans.no", "your otp"]
         greeting_keywords = ["good morning", "good night", "happy birthday", "have a wonderful day", "have a great day"]
         promo_keywords = ["vi.in", "recharge your prepaid", "gb/day", "promo code", "discount", "click to buy"]
-        
+
+        # Fix 1: Phone/call status strings (WhatsApp call notifications — zero information value)
+        call_status_keywords = [
+            "calling\u2026", "calling...", "ringing\u2026", "ringing...",
+            "ongoing voice call", "ongoing video call",
+            "missed voice call", "missed video call",
+            "group voice call", "group video call",
+            "call??", "call?", "i missed to attend",
+        ]
+
+        # Fix 1: WhatsApp emoji reactions (always noise — no content)
+        reaction_pattern = re.compile(r'^reacted\s+.+\s+to\s+["\u201c]', re.IGNORECASE)
+
         is_noise = (
             any(kw in msg_lower for kw in noise_keywords) or
             any(kw in msg_lower for kw in greeting_keywords) or
-            any(kw in msg_lower for kw in promo_keywords)
+            any(kw in msg_lower for kw in promo_keywords) or
+            any(kw in msg_lower for kw in call_status_keywords) or
+            bool(reaction_pattern.search(message))
         )
-        
-        if is_noise:
-            result = {
+
+        def _make_noise_result(reason: str) -> dict:
+            return {
                 "signal_type": "NOISE",
-                "importance": 0.1,
+                "importance": 0.05,
                 "confidence": 1.0,
                 "summary": message[:100] + "..." if len(message) > 100 else message,
-                "reason": "Deterministic noise classification (OTP/greetings/spam)",
+                "reason": reason,
                 "processing_path": "fallback",
                 "llm_model_used": None,
                 "contract_json": {},
@@ -109,7 +123,39 @@ class SignalUnderstandingAgent:
                     "escalation_reason": "",
                 }
             }
-            return self._normalize_contract_fields(result, message, sender)
+
+        if is_noise:
+            return self._normalize_contract_fields(
+                _make_noise_result("Deterministic noise: OTP/greetings/spam/call-status/reaction"),
+                message, sender
+            )
+
+        # Fix 2: Short-message NOISE gate (pre-LLM, deterministic)
+        # Messages under 40 chars with no domain-sensitive keywords are conversational noise.
+        # Guards against dropping domain keywords like "fee", "deadline", "school".
+        short_noise_exclude_keywords = [
+            "homework", "fee", "school", "doctor", "hospital", "insurance",
+            "policy", "claim", "payment due", "bill due", "bill payment",
+            "submit", "upload", "deadline", "expiry", "renew", "tenant", "lease",
+        ]
+        # Media stubs — always noise (no content regardless of length)
+        media_stub_prefixes = ["\U0001f4f7 photo", "\U0001f4f7 image", "\U0001f4c4 document",
+                               "\U0001f4f9 video", "\U0001f3b5 audio"]
+        # Shared media links with no text body
+        link_only = re.compile(r'^\U0001f517\s', re.UNICODE)  # 🔗 emoji only messages
+
+        is_very_short_no_domain = (
+            len(message.strip()) < 40 and
+            not any(kw in msg_lower for kw in short_noise_exclude_keywords)
+        )
+        is_media_stub = any(message.lower().startswith(p) for p in media_stub_prefixes)
+        is_link_only = bool(link_only.match(message.strip()))
+
+        if is_very_short_no_domain or is_media_stub or is_link_only:
+            return self._normalize_contract_fields(
+                _make_noise_result("Deterministic noise: short conversational message / media stub / link-only"),
+                message, sender
+            )
 
         # 2. LLM classification path
         prompt = self._build_prompt(message, sender, source, timestamp)
@@ -289,11 +335,19 @@ class SignalUnderstandingAgent:
         # Strong Action Verbs: typically require a deadline to override generally,
         # but override immediately in sensitive domains.
         strong_action_verbs = [
-            "submit", "pay", "upload", "renew", "verify", "register", "complete", "sign"
+            "submit", "pay", "upload", "renew", "verify", "register", "complete", "sign",
+            # Fix 4a: noun forms that imply obligation
+            "payment",  # catches "fee payment due" patterns
         ]
         weak_action_verbs = [
-            "bring", "attend", "join", "provide", "carry", "wear", "request", "require", 
-            "compulsory", "mandatory", "must", "please", "kindly", "feedback", "fill", "update"
+            "bring", "attend", "join", "provide", "carry", "wear", "request", "require",
+            "compulsory", "mandatory", "must", "please", "kindly", "feedback", "fill", "update",
+            # Fix 4a: additional school/family obligation verbs from live data
+            "dress",    # "kindly dress the boys as farmers"
+            "confirm",  # "please confirm by tomorrow"
+            "note",     # "parents to note"
+            "ensure",   # "ensure uniform is worn"
+            "book",     # "book rapido/cab" family logistics
         ]
         all_action_verbs = strong_action_verbs + weak_action_verbs
         
@@ -352,9 +406,21 @@ class SignalUnderstandingAgent:
                 
         # Absolute overrides: anything to do with homework/assignments in school domain is always ACTION
         if not should_override and is_school:
-            if self._has_word(msg_lower, ["homework", "assignment"]):
+            if self._has_word(msg_lower, ["homework", "home work", "assignment"]):
                 should_override = True
-                
+
+        # Fix 4b: "Dear Parents" opener with any obligation content → always ACTION in school domain
+        if not should_override and is_school:
+            if msg_lower.startswith("dear parents") or msg_lower.startswith("dear parent"):
+                obligation_hints = [
+                    "homework", "fee", "activity", "kindly", "please", "note", "bring",
+                    "wear", "dress", "attend", "tomorrow", "monday", "tuesday", "wednesday",
+                    "thursday", "friday", "saturday", "sunday", "submit", "confirm", "payment",
+                    "uniform", "material", "send", "ensure",
+                ]
+                if any(kw in msg_lower for kw in obligation_hints):
+                    should_override = True
+
         if should_override:
             # Reclassify to ACTION
             result["signal_type"] = "ACTION"
@@ -388,17 +454,18 @@ class SignalUnderstandingAgent:
         return False
 
     def _build_prompt(self, message: str, sender: str, source: str, timestamp: str) -> str:
-        return f"""Analyze the incoming message and classify it into exactly one of these 4 types:
-- FINANCIAL: Active transactions, credit/debit alerts, bank spent/received notifications, payment receipts. (Only if money is actively transferred or spent)
-- ACTION: Reminders, todos, tasks, chores, or direct requests to do something (e.g. 'call plumber', 'buy milk').
-- FYI: Schedules, bookings, flight/train/movie status, appointments, personal notes, medical info, insurance policies, school updates, or non-actionable info.
-- NOISE: Greetings, spam, chit-chat, OTPs, verification codes, promotional codes, marketing, advertisements.
+        return f"""Analyze the incoming message and classify it into exactly one of these 4 signal types:
+
+- FINANCIAL: Money is actively transferred or spent. Credit/debit alerts, UPI payment receipts, bank transaction notifications. NOT bill reminders (those are ACTION).
+- ACTION: The user or a family member is required to DO something. Includes: homework to complete, fees to pay, forms to submit, appointments to attend, items to bring, bills due, deadlines. School obligation messages ("Dear Parents…") with any task are ACTION.
+- FYI: Passive, non-actionable information. Examples: train departure notices, order shipped/delivered, flight status, bank PIN set successfully, medical test results (no follow-up needed), insurance policy details, security alerts. NOT school obligation messages.
+- NOISE: Greetings, OTPs, spam, marketing, pure chit-chat, voice/video call status strings, emoji reactions.
 
 CRITICAL CLASSIFICATION RULES:
-1. False Positive (over-classifying as FYI/ACTION/FINANCIAL) is highly preferred over False Negative (classifying as NOISE).
-2. Unknown or uncertain messages are NOT Noise. Noise requires positive evidence of being OTP, Spam, Greetings, Promotions, Marketing, or Advertisements.
-3. If uncertain between FYI and NOISE, you MUST prefer FYI.
-4. The FACT class is retired. Any factual statements, context, or personal info (e.g. medical info, insurance details) must be classified as FYI.
+1. School messages (from school WhatsApp groups or "Dear Parents" senders) with any task, activity, fee, or obligation → ACTION, not FYI.
+2. NOISE requires positive evidence: OTP, spam, greetings, promotions, or purely social filler with no subject matter.
+3. If uncertain between FYI and NOISE, prefer FYI only if the message contains a named entity (person, place, organization, date, or amount). Pure conversational filler with no subject is NOISE.
+4. The FACT class is retired. Factual personal info (medical details, insurance policy summaries) → FYI.
 
 Message details:
 Sender: {sender}

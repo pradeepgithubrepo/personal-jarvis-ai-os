@@ -58,6 +58,14 @@ class FyiAgent(BaseAgentStub):
             "e-voting", "evoting", "voting begins"
         ]
 
+        # Fix 5a: Lane 2 school informational keywords — deterministic route to FAMILY_SCHOOL
+        # Saves LLM calls for routine school circulars that are clearly informational (no action needed)
+        self.school_info_keywords = [
+            "holiday notice", "term calendar", "school holiday", "no school",
+            "parent-teacher", "pta meeting", "sports day notice", "annual day notice",
+            "school circular", "school note",
+        ]
+
     @property
     def agent_name(self) -> str:
         return "fyi_agent"
@@ -123,6 +131,10 @@ class FyiAgent(BaseAgentStub):
                 # 1. Classification & Lane Routing
                 decision = self._classify_and_route(raw_message, contract)
                 
+                evt_dt = decision.get("event_datetime")
+                if evt_dt and isinstance(evt_dt, str) and evt_dt.strip().lower() in ("null", "none", ""):
+                    evt_dt = None
+
                 # 2. Persist to information_items
                 info_item = {
                     "route_id": route_id,
@@ -136,7 +148,7 @@ class FyiAgent(BaseAgentStub):
                         "raw_message": raw_message,
                         "contract": contract
                     },
-                    "event_datetime": decision["event_datetime"],
+                    "event_datetime": evt_dt,
                     "timeline_group_id": decision["timeline_group_id"],
                     "importance_level": decision["importance_level"]
                 }
@@ -274,6 +286,18 @@ class FyiAgent(BaseAgentStub):
                 "importance_level": "MEDIUM"
             }
 
+        # Fix 5a: Lane 2 — school informational (holiday notices, PTA, annual day — no obligation)
+        if any(kw in msg_lower for kw in self.school_info_keywords):
+            return {
+                "processing_path": "RULE_BASED",
+                "category": "FAMILY_SCHOOL",
+                "title": "School Notice / Parent Circular",
+                "summary": msg_clean[:150] + ("..." if len(msg_clean) > 150 else ""),
+                "event_datetime": None,
+                "timeline_group_id": None,
+                "importance_level": "HIGH"
+            }
+
         # ========================================================
         # LANE 2.5: RULE_BASED (Conversational & Short Chat / Status Updates)
         # ========================================================
@@ -372,7 +396,7 @@ You MUST return a raw JSON object ONLY, conforming EXACTLY to this schema (no su
             clean_res = raw_response.replace("```json", "").replace("```", "").strip()
             parsed = json.loads(clean_res)
             
-            # Post-process category to strictly conform to db check constraint
+            # Fix 5b: Post-process category — broader match to ensure FAMILY_SCHOOL is actually applied
             cat = parsed.get("category") or "GENERAL"
             cat = cat.strip().upper()
             if "TRAVEL" in cat:
@@ -381,7 +405,8 @@ You MUST return a raw JSON object ONLY, conforming EXACTLY to this schema (no su
                 category = "ORDER_TRACKING"
             elif "SECURITY_ALERT" in cat or "SECURITY" in cat:
                 category = "SECURITY_ALERT"
-            elif "FAMILY_SCHOOL" in cat or "FAMILY" in cat or "SCHOOL" in cat:
+            elif ("FAMILY_SCHOOL" in cat or "FAMILY" in cat or "SCHOOL" in cat
+                  or "PARENT" in cat or "EDUCATION" in cat or "CHILD" in cat):
                 category = "FAMILY_SCHOOL"
             elif "HEALTH" in cat or "MEDICAL" in cat:
                 category = "HEALTH"
